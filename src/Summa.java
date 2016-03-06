@@ -1,5 +1,3 @@
-package data;
-
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -10,7 +8,7 @@ public class Summa {
     private double arv;
     private String arvSonena;
 
-    public Summa(double arv) {
+    public Summa(double arv) { //arv sonena? double to string on muidu .50 -> .05 // loetakse kui 5 senti
         this.setArv(arv);
     }
 
