@@ -31,6 +31,13 @@ public class Kassa {
             //http://alvinalexander.com/java/edu/pj/pj010005
 
             //näidis vb https://www.wowza.com/forums/content.php?151-How-to-set-up-a-command-line-interface-to-Wowza-API
+            //String next = sc.nextLine();
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+            double nextSumma = sc.nextDouble();
+            System.out.println(nextSumma);
+            summa = new Summa(nextSumma);
+            System.out.println(summa);
 
         }
 

@@ -5,7 +5,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.util.Properties;
 
 public class Aruanne {
     //http://tutorials.jenkov.com/java-itext/getting-started.html
