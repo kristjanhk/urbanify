@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Kassa {
     private static boolean running = true;
-    private static ArrayList<Üritus> üritused;
+    private static ArrayList<Yritus> üritused;
 
     public static void main(String[] args) {
         Summa summa = new Summa(19915.16);
@@ -23,6 +23,7 @@ public class Kassa {
             //jne
 
 
+
             //käsurea jaoks tuleb mingi loogiline graafiline süsteem teha
             //tavalisele graafilisele liidesele sobib praegu paremini
 
@@ -38,12 +39,14 @@ public class Kassa {
             System.out.println(nextSumma);
             summa = new Summa(nextSumma);
             System.out.println(summa);
+            Aruanne aruanne = new Aruanne("Aruande sisu!");
+            aruanne.looAruanne();
 
         }
 
     }
 
     private static void looÜritus(String nimi) {
-        üritused.add(new Üritus(nimi));
+        üritused.add(new Yritus(nimi));
     }
 }
