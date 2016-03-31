@@ -10,10 +10,6 @@ public class Kassa {
         System.out.println(summa);
         Scanner sc = new Scanner(System.in);
         while (running) {
-            //todo clear console
-            //todo print current info etc
-            //todo scan for cmd
-
             //todo cmds
             //help
             //loo üritus - kysida kohe infi selle kohta
@@ -22,25 +18,12 @@ public class Kassa {
             //lisa pileti kogus vms
             //jne
 
-
-
-            //käsurea jaoks tuleb mingi loogiline graafiline süsteem teha
-            //tavalisele graafilisele liidesele sobib praegu paremini
-
-            //http://commons.apache.org/proper/commons-cli/
-            //http://commons.apache.org/proper/commons-cli/usage.html
-            //http://alvinalexander.com/java/edu/pj/pj010005
-
-            //näidis vb https://www.wowza.com/forums/content.php?151-How-to-set-up-a-command-line-interface-to-Wowza-API
-            //String next = sc.nextLine();
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
             double nextSumma = sc.nextDouble();
             System.out.println(nextSumma);
             summa = new Summa(nextSumma);
             System.out.println(summa);
-            Aruanne aruanne = new Aruanne("Aruande sisu!");
-            aruanne.looAruanne();
+            /*Aruanne aruanne = new Aruanne("Aruande sisu!");
+            aruanne.looAruanne();*/
 
         }
 
