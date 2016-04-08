@@ -3,7 +3,7 @@ package system.graphics.eventCreator;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import system.Main;
+import system.MainHandler;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,7 +27,7 @@ public class Controller implements Initializable{
     }
 
     public void vaheta() {
-        Main.getSceneHandler().getCurrentScene().getStylesheets().add("system/graphics/common/darkTheme.css");
+        MainHandler.getSceneHandler().getCurrentScene().getStylesheets().add("system/graphics/common/darkTheme.css");
     }
 
 

@@ -3,7 +3,7 @@ package system;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class Main extends Application{
+public class MainHandler extends Application{
     private static StageHandler stageHandler;
     private static SceneHandler sceneHandler;
     private static EventHandler eventHandler;

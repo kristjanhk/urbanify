@@ -8,6 +8,8 @@ public class StageHandler {
     public StageHandler(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Superpilet 3000");
+        this.primaryStage.setMinHeight(600);
+        this.primaryStage.setMinWidth(1000);
     }
 
     public Stage getPrimaryStage() {
