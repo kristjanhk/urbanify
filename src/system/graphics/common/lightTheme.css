@@ -1,10 +1,12 @@
 .whiteField {
     -fx-background-color: #ffffff;
     -fx-text-fill: #b0afb0;
+    -fx-prompt-text-fill: #b0afb0;
     -fx-max-height: 70.5;
     -fx-min-height: 70.5;
     -fx-pref-height: 70.5;
-    -fx-prompt-text-fill: #b0afb0;
+    -fx-font-family: GeosansLight;
+    -fx-font-size: 35;
 }
 
 .background {
@@ -13,4 +15,6 @@
 
 .text {
     -fx-fill: #b0afb0;
+    -fx-font-size: 50;
+    -fx-font-family: GeosansLight;
 }
