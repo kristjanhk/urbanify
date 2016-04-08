@@ -1,3 +1,5 @@
+package old;
+
 public class Pilet {
     private String nimi;
     private double hind;

@@ -1,0 +1,16 @@
+.whiteField {
+    -fx-background-color: #151515;
+    -fx-max-height: 70.5;
+    -fx-min-height: 70.5;
+    -fx-pref-height: 70.5;
+    -fx-prompt-text-fill: #f05455;
+    -fx-text-fill: #f05455;
+}
+
+.background {
+    -fx-background-color: #262626;
+}
+
+.text {
+    -fx-fill: #f05455;
+}

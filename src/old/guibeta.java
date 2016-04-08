@@ -1,21 +1,11 @@
-/**
+package old; /**
  * Created by Kristen on 02.04.2016.
  */
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.logging.Level;
@@ -30,7 +20,7 @@ public class guibeta extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            BorderPane page = FXMLLoader.load(Main.class.getResource("newProov.fxml"));
+            BorderPane page = FXMLLoader.load(Main.class.getResource("old/newProov.fxml"));
 
             Scene scene = new Scene(page);
             primaryStage.setScene(scene);
@@ -40,8 +30,8 @@ public class guibeta extends Application {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-/*
-    @Override
+
+    /*@Override
     public void start(Stage primaryStage) {
         BorderPane border = new BorderPane();
         Text eventCreator = new Text("event creator");
@@ -64,5 +54,6 @@ public class guibeta extends Application {
         primaryStage.setTitle("Piletisüsteem");
         primaryStage.setScene(scene);
         primaryStage.show();
+        System.out.println(border.getChildren());
     }*/
 }
