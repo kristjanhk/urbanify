@@ -36,4 +36,5 @@
 
 .buttonField:armed {
     -fx-background-color: #333333;
+    -fx-text-fill: #f05455;
 }
