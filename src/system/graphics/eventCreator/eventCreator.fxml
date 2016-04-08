@@ -15,12 +15,12 @@
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.eventCreator.Controller">
    <top>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <Text styleClass="text" strokeType="OUTSIDE" strokeWidth="0.0" text="event creator">
+         <Text styleClass="topText" strokeType="OUTSIDE" strokeWidth="0.0" text="event creator">
             <VBox.margin>
                <Insets left="40.0" top="40.0"/>
             </VBox.margin>
          </Text>
-         <TextField fx:id="nameYourEvent" styleClass="whiteField" minWidth="40.0"
+         <TextField fx:id="nameYourEvent" styleClass="textField" minWidth="40.0"
                     promptText="name your event">
             <VBox.margin>
                <Insets left="40.0" right="40.0" top="40.0"/>
@@ -31,13 +31,13 @@
    <right>
       <VBox BorderPane.alignment="CENTER">
          <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="200.0" VBox.vgrow="NEVER"/>
-         <TextField fx:id="setDate" styleClass="whiteField" maxWidth="304.0" minWidth="304.0"
+         <TextField fx:id="setDate" styleClass="textField" maxWidth="304.0" minWidth="304.0"
                     prefWidth="304.0" promptText="set date" VBox.vgrow="NEVER">
             <VBox.margin>
                <Insets right="40.0"/>
             </VBox.margin>
          </TextField>
-         <TextField fx:id="setTime" styleClass="whiteField" maxWidth="304.0" minWidth="304.0"
+         <TextField fx:id="setTime" styleClass="textField" maxWidth="304.0" minWidth="304.0"
                     prefWidth="304.0" promptText="set time">
             <VBox.margin>
                <Insets right="40.0" top="40.0"/>
@@ -49,13 +49,13 @@
       <BorderPane id="bottom" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <right>
              <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                 <Button fx:id="cancel" styleClass="whiteField" alignment="CENTER" maxWidth="121.0"
+                 <Button fx:id="cancel" styleClass="buttonField" alignment="CENTER" maxWidth="121.0"
                          minWidth="121.0" mnemonicParsing="false" prefWidth="121.0" text="cancel">
                     <HBox.margin>
                         <Insets right="40.0" top="40.0"/>
                     </HBox.margin>
                  </Button>
-                 <Button fx:id="next" styleClass="whiteField" alignment="CENTER" maxWidth="92.3"
+                 <Button fx:id="next" styleClass="buttonField" alignment="CENTER" maxWidth="92.3"
                          minWidth="92.3" mnemonicParsing="false" prefWidth="92.3" text="next" onMousePressed="#vaheta">
                     <HBox.margin>
                         <Insets right="40.0" top="40.0"/>
@@ -69,26 +69,26 @@
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <VBox prefHeight="200.0" prefWidth="100.0">
             <HBox prefHeight="136.0" prefWidth="664.0">
-               <Button fx:id="deleteTicketField" styleClass="whiteField" maxWidth="70.5"
+               <Button fx:id="deleteTicketField" styleClass="buttonField" maxWidth="70.5"
                        minWidth="70.5" mnemonicParsing="false" prefWidth="70.5" text="X" textAlignment="CENTER">
                   <HBox.margin>
                      <Insets left="40.0" top="40.0"/>
                   </HBox.margin>
                </Button>
-               <TextField fx:id="priceField" styleClass="whiteField" maxWidth="110.0"
+               <TextField fx:id="priceField" styleClass="textField" maxWidth="110.0"
                           minWidth="110.0" prefWidth="110.0" promptText="price">
                   <HBox.margin>
                      <Insets left="40.0" top="40.0"/>
                   </HBox.margin>
                </TextField>
-               <TextField fx:id="ticketField" styleClass="whiteField" maxWidth="292.5"
+               <TextField fx:id="ticketField" styleClass="textField" maxWidth="292.5"
                           minWidth="292.5" prefWidth="174.0" promptText="ticket type">
                   <HBox.margin>
                      <Insets left="40.0" top="40.0"/>
                   </HBox.margin>
                </TextField>
             </HBox>
-            <Button fx:id="addTicketField" styleClass="whiteField" maxWidth="70.5" minWidth="70.5"
+            <Button fx:id="addTicketField" styleClass="buttonField" maxWidth="70.5" minWidth="70.5"
                     mnemonicParsing="false" prefWidth="70.5" text="+" textAlignment="CENTER">
                <VBox.margin>
                   <Insets left="40.0" top="40.0"/>
