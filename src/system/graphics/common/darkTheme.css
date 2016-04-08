@@ -1,4 +1,4 @@
-.whiteField {
+.textField {
     -fx-background-color: #151515;
     -fx-prompt-text-fill: #f05455;
     -fx-text-fill: #f05455;
@@ -9,12 +9,31 @@
     -fx-font-size: 35;
 }
 
+.buttonField {
+    -fx-background-color: #151515;
+    -fx-text-fill: #f05455;
+    -fx-max-height: 70.5;
+    -fx-min-height: 70.5;
+    -fx-pref-height: 70.5;
+    -fx-font-family: GeosansLight;
+    -fx-font-size: 30;
+}
+
 .background {
     -fx-background-color: #262626;
 }
 
-.text {
+.topText {
     -fx-fill: #f05455;
     -fx-font-size: 50;
     -fx-font-family: GeosansLight;
+}
+
+.buttonField:hover {
+    -fx-background-color: #5b5c5c;
+    -fx-text-fill: #f05455;
+}
+
+.buttonField:armed {
+    -fx-background-color: #333333;
 }
