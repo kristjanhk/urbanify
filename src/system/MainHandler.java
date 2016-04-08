@@ -1,6 +1,7 @@
 package system;
 
 import javafx.application.Application;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class MainHandler extends Application{
@@ -11,6 +12,10 @@ public class MainHandler extends Application{
     private static ReportHandler reportHandler;
 
     public static void main(String[] args) {
+        //??
+        Font font = Font.loadFont(
+                MainHandler.class.getResource("graphics/common/Lato-Hairline.ttf").toExternalForm(), 10);
+        System.out.println(font);
         launch(args);
     }
 
