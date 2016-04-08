@@ -5,8 +5,9 @@
     -fx-max-height: 70.5;
     -fx-min-height: 70.5;
     -fx-pref-height: 70.5;
-    -fx-font-family: GeosansLight;
+    -fx-font-family: TicketFont;
     -fx-font-size: 35;
+    -fx-font-smoothing-type: gray;
 }
 
 .buttonField {
@@ -15,8 +16,9 @@
     -fx-max-height: 70.5;
     -fx-min-height: 70.5;
     -fx-pref-height: 70.5;
-    -fx-font-family: GeosansLight;
+    -fx-font-family: TicketFont;
     -fx-font-size: 30;
+    -fx-font-smoothing-type: gray;
 }
 
 .background {
@@ -26,15 +28,18 @@
 .topText {
     -fx-fill: #b0afb0;
     -fx-font-size: 50;
-    -fx-font-family: GeosansLight;
+    -fx-font-family: TicketFont;
+    -fx-font-smoothing-type: gray;
  }
 
 .buttonField:hover {
     -fx-background-color: #dddddd;
     -fx-text-fill: #ffffff;
+    -fx-font-smoothing-type: gray;
 }
 
 .buttonField:armed {
     -fx-background-color: #d0d3d3;
     -fx-text-fill: #ffffff;
+    -fx-font-smoothing-type: gray;
 }
