@@ -34,11 +34,6 @@
     -fx-text-fill: #f05455;
 }
 
-.buttonField:focused {
-    -fx-background-color: #5b5c5c;
-    -fx-text-fill: #f05455;
-}
-
 .buttonField:armed {
     -fx-background-color: #333333;
     -fx-text-fill: #f05455;
