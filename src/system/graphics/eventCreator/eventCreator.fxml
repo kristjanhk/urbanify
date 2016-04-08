@@ -70,7 +70,7 @@
          <VBox prefHeight="200.0" prefWidth="100.0">
             <HBox prefHeight="136.0" prefWidth="664.0">
                <Button fx:id="deleteTicketField" styleClass="buttonField" maxWidth="70.5"
-                       minWidth="70.5" mnemonicParsing="false" prefWidth="70.5" text="X" textAlignment="CENTER">
+                       minWidth="70.5" mnemonicParsing="false" prefWidth="70.5" text="ó" textAlignment="CENTER">
                   <HBox.margin>
                      <Insets left="40.0" top="40.0"/>
                   </HBox.margin>
@@ -89,7 +89,7 @@
                </TextField>
             </HBox>
             <Button fx:id="addTicketField" styleClass="buttonField" maxWidth="70.5" minWidth="70.5"
-                    mnemonicParsing="false" prefWidth="70.5" text="+" textAlignment="CENTER">
+                    mnemonicParsing="false" prefWidth="70.5" text="ò" textAlignment="CENTER">
                <VBox.margin>
                   <Insets left="40.0" top="40.0"/>
                </VBox.margin>
