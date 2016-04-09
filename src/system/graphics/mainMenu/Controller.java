@@ -1,6 +1,19 @@
 package system.graphics.mainMenu;
 
-public class Controller {
+import javafx.scene.control.Button;
+import system.graphics.AbstractController;
+import system.graphics.Scenetype;
 
-    // TODO: 8.04.2016
+public class Controller extends AbstractController{
+    public Button next;
+    public Button quit;
+
+    public void doNext() {
+        getSceneHandler().switchSceneTo(Scenetype.EVENTCREATOR);
+    }
+
+    public void doQuit() {
+        System.out.println("quit pressed");
+    }
+
 }

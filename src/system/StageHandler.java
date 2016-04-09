@@ -2,18 +2,30 @@ package system;
 
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class StageHandler {
-    private Stage primaryStage;
+    private SceneHandler sceneHandler;
+    private ArrayList<Stage> stages = new ArrayList<>();
 
     public StageHandler(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Superpilet 3000");
-        this.primaryStage.setMinHeight(670);
-        this.primaryStage.setMinWidth(1000);
+        this.stages.add(primaryStage);
+        this.sceneHandler = new SceneHandler(this);
+        primaryStage.setTitle("Superpilet 3000");
+        primaryStage.setMinHeight(670);
+        primaryStage.setMinWidth(1000);
         //this.primaryStage.setFullScreen(true);
     }
 
+    public ArrayList<Stage> getStages() {
+        return stages;
+    }
+
     public Stage getPrimaryStage() {
-        return primaryStage;
+        return stages.get(0);
+    }
+
+    public SceneHandler getSceneHandler() {
+        return sceneHandler;
     }
 }

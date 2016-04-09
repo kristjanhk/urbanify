@@ -1,12 +1,10 @@
 package system;
 
 import javafx.application.Application;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class MainHandler extends Application{
     private static StageHandler stageHandler;
-    private static SceneHandler sceneHandler;
     private static EventHandler eventHandler;
     private static FileHandler fileHandler;
     private static ReportHandler reportHandler;
@@ -16,21 +14,14 @@ public class MainHandler extends Application{
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         stageHandler = new StageHandler(primaryStage);
-        sceneHandler = new SceneHandler();
         //todo init all handlers
         stageHandler.getPrimaryStage().show();
     }
 
-    //maini kaudu saab siis handleritele ligi ja nende asjadele
-
     public static StageHandler getStageHandler() {
         return stageHandler;
-    }
-
-    public static SceneHandler getSceneHandler() {
-        return sceneHandler;
     }
 
     public static FileHandler getFileHandler() {

@@ -3,13 +3,13 @@ package system.graphics.eventCreator;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import system.MainHandler;
+import system.graphics.AbstractController;
+import system.graphics.Scenetype;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable{
-
+public class Controller extends AbstractController implements Initializable{
     public TextField nameYourEvent;
     public TextField setDate;
     public TextField setTime;
@@ -27,8 +27,11 @@ public class Controller implements Initializable{
     }
 
     public void vaheta() {
-        MainHandler.getSceneHandler().getCurrentScene().getStylesheets().add("system/graphics/common/darkTheme.css");
+        // FIXME: 9.04.2016 mitme stseeniga ei toimi enam
+        getSceneHandler().getCurrentScene().getStylesheets().add("system/graphics/common/darkTheme.css");
     }
 
-
+    public void doCancel() {
+        getSceneHandler().switchSceneTo(Scenetype.MAINMENU);
+    }
 }
