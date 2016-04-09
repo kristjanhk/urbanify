@@ -14,7 +14,7 @@ public class MainHandler extends Application{
     public static void main(String[] args) {
         //??
         Font font = Font.loadFont(
-                MainHandler.class.getResource("graphics/common/Lato-Hairline.ttf").toExternalForm(), 10);
+                MainHandler.class.getResource("graphics/common/TicketFont.ttf").toExternalForm(), 10);
         System.out.println(font);
         launch(args);
     }

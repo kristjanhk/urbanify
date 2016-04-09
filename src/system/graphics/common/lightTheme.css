@@ -1,6 +1,5 @@
 @font-face {
-    -fx-font-family: "TestLato";
-    src: url("Lato-Hairline.ttf");
+    src: url("TicketFont.ttf");
 }
 
 .textField {
@@ -10,7 +9,7 @@
     -fx-max-height: 70.5;
     -fx-min-height: 70.5;
     -fx-pref-height: 70.5;
-    -fx-font-family: 'TestLato';
+    -fx-font-family: 'TicketFont';
     -fx-font-size: 35;
     -fx-font-smoothing-type: gray;
 }
@@ -21,7 +20,7 @@
     -fx-max-height: 70.5;
     -fx-min-height: 70.5;
     -fx-pref-height: 70.5;
-    -fx-font-family: 'TestLato';
+    -fx-font-family: 'TicketFont';
     -fx-font-size: 30;
     -fx-font-smoothing-type: gray;
 }
@@ -33,7 +32,7 @@
 .topText {
     -fx-fill: #b0afb0;
     -fx-font-size: 50;
-    -fx-font-family: 'TestLato';
+    -fx-font-family: 'TicketFont';
     -fx-font-smoothing-type: gray;
  }
 
