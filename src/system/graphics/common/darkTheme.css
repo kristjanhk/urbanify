@@ -43,3 +43,28 @@
     -fx-text-fill: #f05455;
     -fx-font-smoothing-type: gray;
 }
+
+.context-menu {
+    -fx-background-color: #262626;
+    -fx-border-color: #262626;
+    -fx-font-size: 25;
+}
+
+.menu-item:hover {
+    -fx-background-color: #5b5c5c;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-item:focused {
+    -fx-background-color: #5b5c5c;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-item .label {
+    -fx-text-fill: #f05455;
+}
+
+.separator .line {
+    -fx-border-width: 0.5px;
+    -fx-border-color: #f05455;
+}

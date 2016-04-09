@@ -47,3 +47,27 @@
     -fx-text-fill: #ffffff;
     -fx-font-smoothing-type: gray;
 }
+.context-menu {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-font-size: 25;
+}
+
+.menu-item:hover {
+    -fx-background-color: #dddddd;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-item:focused {
+    -fx-background-color: #dddddd;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-item .label {
+    -fx-text-fill: #b0afb0;
+}
+
+.separator .line {
+    -fx-border-width: 0.5px;
+    -fx-border-color: #b0afb0;
+}
