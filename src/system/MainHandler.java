@@ -12,10 +12,6 @@ public class MainHandler extends Application{
     private static ReportHandler reportHandler;
 
     public static void main(String[] args) {
-        //??
-        Font font = Font.loadFont(
-                MainHandler.class.getResource("graphics/common/TicketFont.ttf").toExternalForm(), 10);
-        System.out.println(font);
         launch(args);
     }
 

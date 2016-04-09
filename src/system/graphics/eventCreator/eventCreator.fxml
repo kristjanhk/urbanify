@@ -12,7 +12,7 @@
 
 <BorderPane minHeight="600.0" minWidth="1000.0" prefHeight="900.0" prefWidth="1600.0"
             styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="system.graphics.eventCreator.Controller" stylesheets="@../common/lightTheme.css">
+            fx:controller="system.graphics.eventCreator.Controller">
    <top>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <Text styleClass="topText" strokeType="OUTSIDE" strokeWidth="0.0" text="event creator">

@@ -10,8 +10,7 @@ public class SceneHandler {
 
     public SceneHandler() throws IOException {
         currentScene = new Scene(FXMLLoader.load(getClass().getResource("graphics/eventCreator/eventCreator.fxml")));
-        //laetakse praegu fxmlis sisse
-        //currentScene.getStylesheets().add(getClass().getResource("graphics/common/lightTheme.css").toExternalForm());
+        currentScene.getStylesheets().add(getClass().getResource("graphics/common/lightTheme.css").toExternalForm());
         MainHandler.getStageHandler().getPrimaryStage().setScene(currentScene);
     }
 
