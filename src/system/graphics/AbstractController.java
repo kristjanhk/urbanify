@@ -1,25 +1,23 @@
 package system.graphics;
 
 import javafx.scene.Scene;
-import javafx.stage.Stage;
-import system.MainHandler;
 import system.SceneHandler;
 import system.StageHandler;
 
 public abstract class AbstractController {
-    protected Stage myStage;
+    protected CustomStage myStage;
     protected Scene myScene;
 
-    public void initData(Stage stage, Scene scene) {
+    public void initData(CustomStage stage, Scene scene) {
         this.myStage = stage;
         this.myScene = scene;
     }
 
-    protected StageHandler getStageHandler() {
-        return MainHandler.getStageHandler();
+    protected StageHandler getMyStageHandler() {
+        return this.myStage.getParentStageHandler();
     }
 
-    protected SceneHandler getSceneHandler() {
-        return getStageHandler().getSceneHandler();
+    protected SceneHandler getMySceneHandler() {
+        return this.myStage.getSceneHandler();
     }
 }

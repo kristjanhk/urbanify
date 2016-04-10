@@ -1,8 +1,8 @@
 package system.graphics;
 
 public enum Scenetype {
-    MAINMENU("mainMenu", "test"),
-    EVENTCREATOR("eventCreator", "eventCreator");
+    MAINMENU("mainMenu", "test.fxml"),
+    EVENTCREATOR("eventCreator", "eventCreator.fxml");
 
     private String packageString;
     private String sceneString;
