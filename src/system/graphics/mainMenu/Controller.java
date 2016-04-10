@@ -9,11 +9,10 @@ public class Controller extends AbstractController{
     public Button quit;
 
     public void doNext() {
-        getSceneHandler().switchSceneTo(Scenetype.EVENTCREATOR);
+        this.stageHandler.switchSceneTo(Scenetype.EVENTCREATOR);
     }
 
     public void doQuit() {
         System.out.println("quit pressed");
     }
-
 }

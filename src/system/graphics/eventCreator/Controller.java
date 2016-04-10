@@ -3,8 +3,10 @@ package system.graphics.eventCreator;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import system.MainHandler;
 import system.graphics.AbstractController;
 import system.graphics.Scenetype;
+import system.graphics.common.Csstype;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,11 +29,10 @@ public class Controller extends AbstractController implements Initializable{
     }
 
     public void vaheta() {
-        // FIXME: 9.04.2016 mitme stseeniga ei toimi enam
-        getSceneHandler().getCurrentScene().getStylesheets().add("system/graphics/common/darkTheme.css");
+        MainHandler.changeSceneThemeTo(this.scene, Csstype.toggleTheme());
     }
 
     public void doCancel() {
-        getSceneHandler().switchSceneTo(Scenetype.MAINMENU);
+        this.stageHandler.switchSceneTo(Scenetype.MAINMENU);
     }
 }
