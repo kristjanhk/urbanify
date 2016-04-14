@@ -47,6 +47,7 @@
     -fx-text-fill: #ffffff;
     -fx-font-smoothing-type: gray;
 }
+
 .context-menu {
     -fx-background-color: #ffffff;
     -fx-border-color: #ffffff;
@@ -70,4 +71,39 @@
 .separator .line {
     -fx-border-width: 0.5px;
     -fx-border-color: #b0afb0;
+}
+.newEvent {
+    -fx-image: url("../mainMenu/images/newEvent.png");
+}
+
+.openEvent {
+    -fx-image: url("../mainMenu/images/openEvent.png");
+}
+
+.archive {
+    -fx-image: url("../mainMenu/images/archive.png");
+}
+
+.newEvent:hover {
+    -fx-image: url("../mainMenu/images/newEventHover.png");
+}
+
+.openEvent:hover {
+    -fx-image: url("../mainMenu/images/openEventHover.png");
+}
+
+.archive:hover {
+    -fx-image: url("../mainMenu/images/archiveHover.png");
+}
+
+.newEvent:armed {
+    -fx-image: url("../mainMenu/images/newEventArmed.png");
+}
+
+.openEvent:armed {
+    -fx-image: url("../mainMenu/images/openEventArmed.png");
+}
+
+.archive:armed {
+    -fx-image: url("../mainMenu/images/archiveArmed.png");
 }

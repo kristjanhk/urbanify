@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?xml-stylesheet type="text/css" href="lightTheme.css"?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,28 +13,22 @@
         <HBox alignment="CENTER" BorderPane.alignment="CENTER">
             <children>
                 <ImageView fx:id="newEvent"
-                           onMouseClicked="#doNext">
-                    <image>
-                        <Image url="@newEvent.png" />
-                    </image>
+                           onMouseClicked="#doNext"
+                           styleClass="newEvent">
                     <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                     </HBox.margin>
                 </ImageView>
                 <Region prefHeight="20.0" prefWidth="60.0" />
-                <ImageView fx:id="openEvent">
-                    <image>
-                        <Image url="@openEvent.png" />
-                    </image>
+                <ImageView fx:id="openEvent"
+                            styleClass="openEvent">
                     <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                     </HBox.margin>
                 </ImageView>
                 <Region prefHeight="20.0" prefWidth="60.0" />
-                <ImageView fx:id="archive">
-                    <image>
-                        <Image url="@archive.png" />
-                    </image>
+                <ImageView fx:id="archive"
+                            styleClass="archive">
                     <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                     </HBox.margin>
