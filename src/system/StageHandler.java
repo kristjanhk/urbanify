@@ -8,11 +8,11 @@ import system.graphics.Scenetype;
 import system.graphics.common.Csstype;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class StageHandler {
     private Stage stage;
-    private ArrayList<Scene> scenes = new ArrayList<>();
+    private HashMap<Scenetype, Scene> scenes = new HashMap<>();
 
     public StageHandler() {
         this(new Stage());
@@ -20,9 +20,8 @@ public class StageHandler {
 
     public StageHandler(Stage primaryStage) {
         this.stage = primaryStage;
-        Scene scene = createScene(Scenetype.MAINMENU);
-        this.scenes.add(scene);
-        this.stage.setScene(scene);
+        this.initScenes();
+        this.switchSceneTo(Scenetype.MAINMENU);
         // TODO: 11.04.2016 moditavad argumendid
         primaryStage.setTitle("Superpilet 3000");
         primaryStage.setMinHeight(670);
@@ -35,16 +34,12 @@ public class StageHandler {
         return stage;
     }
 
-    public ArrayList<Scene> getScenes() {
+    public HashMap<Scenetype, Scene> getScenes() {
         return scenes;
     }
 
-    public Scene getScene(int id) {
-        return this.scenes.get(id);
-    }
-
-    public int getSceneId(Scene scene) {
-        return this.scenes.indexOf(scene);
+    private void initScenes() {
+        Scenetype.getScenetypes().forEach(this::createScene);
     }
     
     private Scene createScene(Scenetype scenetype) {
@@ -52,9 +47,10 @@ public class StageHandler {
         try {
             Scene scene = new Scene(fxmlLoader.load());
             AbstractController controller = fxmlLoader.getController();
-            controller.initData(this, scene);
+            controller.initData(this, scene, scenetype);
             // TODO: 9.04.2016 themes, list, settings file
             MainHandler.changeSceneThemeTo(scene, Csstype.getActiveTheme());
+            this.scenes.put(scenetype, scene);
             return scene;
         } catch (IOException e) {
             e.printStackTrace();
@@ -62,16 +58,15 @@ public class StageHandler {
         return null;
     }
 
+    public void replaceScene() {
+
+    }
+
     private String getResourceFile(Scenetype type) {
         return "graphics/" + type.toPackageString() + "/" + type.toSceneString();
     }
 
     public void switchSceneTo(Scenetype scenetype) {
-        // TODO: 9.04.2016 stseenid ette luua?, mingi delay värk laadimisel 
-        Scene scene = createScene(scenetype);
-        this.scenes.add(scene);
-        this.stage.setScene(scene);
-        // TODO: 9.04.2016 add scene to list 
-        // TODO: 9.04.2016 switch to existing scene if exists 
+        this.stage.setScene(this.scenes.get(scenetype));
     }
 }

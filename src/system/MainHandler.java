@@ -6,6 +6,8 @@ import javafx.stage.Stage;
 import system.graphics.common.Csstype;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 public class MainHandler extends Application{
     private static ArrayList<StageHandler> stageHandlers = new ArrayList<>();
@@ -52,8 +54,15 @@ public class MainHandler extends Application{
     //http://stackoverflow.com/questions/10887525/javafx-style-class-wont-refresh
     public static void changeGlobalThemeTo(Csstype csstype) {
         for (StageHandler stageHandler : stageHandlers) {
-            for (Scene scene : stageHandler.getScenes()) {
+            /*for (Scene scene : stageHandler.getScenes()) {
                 changeSceneThemeTo(scene, csstype);
+            }*/
+            //http://stackoverflow.com/questions/1066589/iterate-through-a-hashmap
+            Iterator it = stageHandler.getScenes().entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                changeSceneThemeTo((Scene) pair.getKey(), csstype);
+                it.remove();
             }
         }
     }
@@ -70,7 +79,7 @@ Arraylist<StageHandler>
    /|\
 StageHandler - hoiab ühte lava ja selle jaoks scenesid, nende loogika
     |
-Arraylist<Scene>
+Hashmap<Scene>
    /|\
 Scene
     |
