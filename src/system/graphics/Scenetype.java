@@ -1,15 +1,16 @@
 package system.graphics;
 
-import java.util.Arrays;
-import java.util.List;
-
 public enum Scenetype {
-    MAINMENU("mainMenu", "test.fxml"),
-    EVENTCREATOR("eventCreator", "eventCreator.fxml");
+    //foldername, fxml name
+    MAINMENU("mainMenu", "mainMenu.fxml"),
+    EVENTCREATOR("eventCreator", "eventCreator.fxml"),
+    EVENTMANAGER("eventManager", "eventManager.fxml"),
+    FLOORPLANNER("floorPlanner", "floorPlanner.fxml"),
+    POINTOFSALE("pointOfSale", "pointOfSale.fxml"),
+    ARCHIVE("archive", "archive.fxml");
 
     private String packageString;
     private String sceneString;
-    private static final List<Scenetype> scenetypes = Arrays.asList(values());
 
     Scenetype(String packageString, String sceneString) {
         this.packageString = packageString;
@@ -22,9 +23,5 @@ public enum Scenetype {
 
     public String toPackageString() {
         return this.packageString;
-    }
-
-    public static List<Scenetype> getScenetypes() {
-        return scenetypes;
     }
 }

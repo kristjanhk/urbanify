@@ -1,18 +1,16 @@
 package system;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import system.graphics.AbstractController;
+import system.graphics.CustomScene;
 import system.graphics.Scenetype;
-import system.graphics.common.Csstype;
 
 import java.io.IOException;
 import java.util.HashMap;
 
 public class StageHandler {
     private Stage stage;
-    private HashMap<Scenetype, Scene> scenes = new HashMap<>();
+    private HashMap<Scenetype, CustomScene> scenes = new HashMap<>();
 
     public StageHandler() {
         this(new Stage());
@@ -34,32 +32,29 @@ public class StageHandler {
         return stage;
     }
 
-    public HashMap<Scenetype, Scene> getScenes() {
+    public HashMap<Scenetype, CustomScene> getScenes() {
         return scenes;
     }
 
     private void initScenes() {
-        Scenetype.getScenetypes().forEach(this::createScene);
+        for (Scenetype scenetype : Scenetype.values()) {
+            this.scenes.put(scenetype, createScene(scenetype));
+        }
+
     }
     
-    private Scene createScene(Scenetype scenetype) {
+    private CustomScene createScene(Scenetype scenetype) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(getResourceFile(scenetype)));
         try {
-            Scene scene = new Scene(fxmlLoader.load());
-            AbstractController controller = fxmlLoader.getController();
-            controller.initData(this, scene, scenetype);
-            // TODO: 9.04.2016 themes, list, settings file
-            MainHandler.changeSceneThemeTo(scene, Csstype.getActiveTheme());
-            this.scenes.put(scenetype, scene);
-            return scene;
+            return new CustomScene(fxmlLoader.load(), fxmlLoader, this, scenetype);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public void replaceScene() {
-
+    public void replaceScene(Scenetype scenetype) {
+        this.scenes.replace(scenetype, createScene(scenetype));
     }
 
     private String getResourceFile(Scenetype type) {
@@ -67,6 +62,7 @@ public class StageHandler {
     }
 
     public void switchSceneTo(Scenetype scenetype) {
+        this.scenes.get(scenetype).getController().prepareToDisplay();
         this.stage.setScene(this.scenes.get(scenetype));
     }
 }

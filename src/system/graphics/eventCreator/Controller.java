@@ -29,10 +29,36 @@ public class Controller extends AbstractController implements Initializable{
     }
 
     public void vaheta() {
+        // FIXME: 14.04.2016
         MainHandler.changeSceneThemeTo(this.scene, Csstype.toggleTheme());
+        MainHandler.changeSceneThemeTo(this.scene.getStageHandler().getScenes().get(Scenetype.MAINMENU), Csstype.getActiveTheme());
     }
 
     public void doCancel() {
-        this.stageHandler.switchSceneTo(Scenetype.MAINMENU);
+        this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
+        // TODO: 14.04.2016 reset current scene
+    }
+
+
+    // TODO: 14.04.2016 to be changed
+    public void addTicket() {
+        //store id-s ?
+    }
+
+    public void removeTicket(int id) {
+
+    }
+
+    public void openFloorPlanner() {
+        this.scene.getStageHandler().switchSceneTo(Scenetype.FLOORPLANNER);
+    }
+
+    public void doNext() {
+
+    }
+
+    @Override
+    public void prepareToDisplay() {
+
     }
 }

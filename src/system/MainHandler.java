@@ -1,8 +1,8 @@
 package system;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import system.graphics.CustomScene;
 import system.graphics.common.Csstype;
 
 import java.util.ArrayList;
@@ -61,13 +61,13 @@ public class MainHandler extends Application{
             Iterator it = stageHandler.getScenes().entrySet().iterator();
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
-                changeSceneThemeTo((Scene) pair.getKey(), csstype);
+                changeSceneThemeTo((CustomScene) pair.getValue(), csstype);
                 it.remove();
             }
         }
     }
 
-    public static void changeSceneThemeTo(Scene scene, Csstype csstype) {
+    public static void changeSceneThemeTo(CustomScene scene, Csstype csstype) {
         scene.getStylesheets().add("system/graphics/common/" + csstype.toString());
     }
 }
@@ -79,11 +79,11 @@ Arraylist<StageHandler>
    /|\
 StageHandler - hoiab ühte lava ja selle jaoks scenesid, nende loogika
     |
-Hashmap<Scene>
+Hashmap<Scenetype, CustomScene>
    /|\
-Scene
+CustomScene
     |
-fxml + controller - controlleris on oma lava ja scenei kohta viide olemas
+fxml + controller - controller saab läbi scenei eelmistele asjadele ligi
     |
 css
 */
