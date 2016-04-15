@@ -51,10 +51,18 @@
     -fx-font-smoothing-type: gray;
 }
 
-.menu-button:expanded {
-    -fx-background-color: #d0d3d3;
+.menu-button .label{
+    -fx-text-fill: #b0afb0;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-button .label:hover{
     -fx-text-fill: #ffffff;
     -fx-font-smoothing-type: gray;
+}
+
+.menu-button:openvertically .arrow-button {
+    visibility: false;
 }
 
 .background {
