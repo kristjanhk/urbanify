@@ -96,14 +96,14 @@
     -fx-image: url("../mainMenu/images/archiveHover.png");
 }
 
-.newEvent:armed {
+.newEvent:pressed {
     -fx-image: url("../mainMenu/images/newEventArmed.png");
 }
 
-.openEvent:armed {
+.openEvent:pressed {
     -fx-image: url("../mainMenu/images/openEventArmed.png");
 }
 
-.archive:armed {
+.archive:pressed {
     -fx-image: url("../mainMenu/images/archiveArmed.png");
 }
