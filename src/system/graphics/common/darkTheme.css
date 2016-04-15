@@ -1,0 +1,70 @@
+.textField {
+    -fx-background-color: #151515;
+    -fx-prompt-text-fill: #f05455;
+    -fx-text-fill: #f05455;
+    -fx-max-height: 70.5;
+    -fx-min-height: 70.5;
+    -fx-pref-height: 70.5;
+    -fx-font-family: TicketFont;
+    -fx-font-size: 35;
+    -fx-font-smoothing-type: gray;
+}
+
+.buttonField {
+    -fx-background-color: #151515;
+    -fx-text-fill: #f05455;
+    -fx-max-height: 70.5;
+    -fx-min-height: 70.5;
+    -fx-pref-height: 70.5;
+    -fx-font-family: TicketFont;
+    -fx-font-size: 30;
+    -fx-font-smoothing-type: gray;
+}
+
+.background {
+    -fx-background-color: #262626;
+}
+
+.topText {
+    -fx-fill: #f05455;
+    -fx-font-size: 50;
+    -fx-font-family: TicketFont;
+    -fx-font-smoothing-type: gray;
+}
+
+.buttonField:hover {
+    -fx-background-color: #5b5c5c;
+    -fx-text-fill: #f05455;
+    -fx-font-smoothing-type: gray;
+}
+
+.buttonField:armed {
+    -fx-background-color: #333333;
+    -fx-text-fill: #f05455;
+    -fx-font-smoothing-type: gray;
+}
+
+.context-menu {
+    -fx-background-color: #262626;
+    -fx-border-color: #262626;
+    -fx-font-size: 25;
+}
+
+.menu-item:hover {
+    -fx-background-color: #5b5c5c;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-item:focused {
+    -fx-background-color: #5b5c5c;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-item .label {
+    -fx-text-fill: #f05455;
+}
+
+.separator .line {
+    -fx-border-width: 0.5px;
+    -fx-border-color: #f05455;
+}

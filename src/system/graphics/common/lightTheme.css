@@ -1,0 +1,109 @@
+@font-face {
+    src: url("TicketFont.ttf");
+}
+
+.textField {
+    -fx-background-color: #ffffff;
+    -fx-prompt-text-fill: #b0afb0;
+    -fx-text-fill: #b0afb0;
+    -fx-max-height: 70.5;
+    -fx-min-height: 70.5;
+    -fx-pref-height: 70.5;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 35;
+    -fx-font-smoothing-type: gray;
+}
+
+.buttonField {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #b0afb0;
+    -fx-max-height: 70.5;
+    -fx-min-height: 70.5;
+    -fx-pref-height: 70.5;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 30;
+    -fx-font-smoothing-type: gray;
+}
+
+.background {
+    -fx-background-color: #e6e6e5;
+}
+
+.topText {
+    -fx-fill: #b0afb0;
+    -fx-font-size: 50;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
+ }
+
+.buttonField:hover {
+    -fx-background-color: #dddddd;
+    -fx-text-fill: #ffffff;
+    -fx-font-smoothing-type: gray;
+}
+
+.buttonField:armed {
+    -fx-background-color: #d0d3d3;
+    -fx-text-fill: #ffffff;
+    -fx-font-smoothing-type: gray;
+}
+
+.context-menu {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-font-size: 25;
+}
+
+.menu-item:hover {
+    -fx-background-color: #dddddd;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-item:focused {
+    -fx-background-color: #dddddd;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-item .label {
+    -fx-text-fill: #b0afb0;
+}
+
+.separator .line {
+    -fx-border-width: 0.5px;
+    -fx-border-color: #b0afb0;
+}
+.newEvent {
+    -fx-image: url("../mainMenu/images/newEvent.png");
+}
+
+.openEvent {
+    -fx-image: url("../mainMenu/images/openEvent.png");
+}
+
+.archive {
+    -fx-image: url("../mainMenu/images/archive.png");
+}
+
+.newEvent:hover {
+    -fx-image: url("../mainMenu/images/newEventHover.png");
+}
+
+.openEvent:hover {
+    -fx-image: url("../mainMenu/images/openEventHover.png");
+}
+
+.archive:hover {
+    -fx-image: url("../mainMenu/images/archiveHover.png");
+}
+
+.newEvent:pressed {
+    -fx-image: url("../mainMenu/images/newEventArmed.png");
+}
+
+.openEvent:pressed {
+    -fx-image: url("../mainMenu/images/openEventArmed.png");
+}
+
+.archive:pressed {
+    -fx-image: url("../mainMenu/images/archiveArmed.png");
+}
