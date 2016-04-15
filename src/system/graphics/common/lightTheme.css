@@ -14,7 +14,7 @@
     -fx-font-smoothing-type: gray;
 }
 
-.buttonField {
+.button {
     -fx-background-color: #ffffff;
     -fx-text-fill: #b0afb0;
     -fx-max-height: 70.5;
@@ -25,8 +25,54 @@
     -fx-font-smoothing-type: gray;
 }
 
+.buttonRound {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #b0afb0;
+    -fx-background-radius: 37;
+    -fx-pref-width: 71.5;
+    -fx-pref-height: 71.5;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 30;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-button {
+    -fx-background-color: #ffffff;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 26;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-button:hover {
+    -fx-background-color: #dddddd;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 26;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-button:expanded {
+    -fx-background-color: #d0d3d3;
+    -fx-text-fill: #ffffff;
+    -fx-font-smoothing-type: gray;
+}
+
 .background {
     -fx-background-color: #e6e6e5;
+}
+
+.text19 {
+    -fx-fill: #b0afb0;
+    -fx-font-size: 19;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
+}
+
+.text35 {
+    -fx-fill: #b0afb0;
+    -fx-font-size: 35;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
 }
 
 .topText {
@@ -36,13 +82,13 @@
     -fx-font-smoothing-type: gray;
  }
 
-.buttonField:hover {
+.button:hover {
     -fx-background-color: #dddddd;
     -fx-text-fill: #ffffff;
     -fx-font-smoothing-type: gray;
 }
 
-.buttonField:armed {
+.button:armed {
     -fx-background-color: #d0d3d3;
     -fx-text-fill: #ffffff;
     -fx-font-smoothing-type: gray;
