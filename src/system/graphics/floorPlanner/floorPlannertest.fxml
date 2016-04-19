@@ -45,7 +45,7 @@
                     </HBox.margin>
                 </MenuButton>
             </HBox>
-            <Region maxHeight="40.0" minHeight="20.0" prefHeight="40.0" />
+            <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0" />
             <HBox alignment="CENTER" prefHeight="0.0" prefWidth="355.0">
             <Region prefHeight="71.0" prefWidth="161.0" />
                 <Button fx:id="removeRow" maxHeight="71.0" mnemonicParsing="false" prefWidth="94.0" styleClass="buttonRound" text="-" />
@@ -63,7 +63,7 @@
                     </HBox.margin>
                 </Button>
             </HBox>
-            <Region maxHeight="40.0" minHeight="20.0" prefHeight="40.0" prefWidth="463.0" />
+            <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="463.0" />
             <HBox alignment="CENTER" prefHeight="8.0" prefWidth="355.0">
             <Region prefHeight="73.0" prefWidth="166.0" />
                 <Button fx:id="removeSeat" mnemonicParsing="false" styleClass="buttonRound" text="-" />
@@ -81,7 +81,7 @@
                     </HBox.margin>
                 </Button>
             </HBox>
-         <Region prefHeight="364.0" prefWidth="523.0" />
+         <Region minHeight="40.0" prefHeight="9999.0" prefWidth="523.0" />
               <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="523.0">
                   <Region minWidth="40.0" />
                   <Button fx:id="cancel" maxHeight="70.5" maxWidth="121.0" minHeight="70.5" minWidth="121.0" mnemonicParsing="false" prefHeight="70.5" prefWidth="121.0" text="cancel">
@@ -105,13 +105,21 @@
         </VBox>
     </right>
    <center>
-         <VBox alignment="BOTTOM_CENTER" prefHeight="825.0" prefWidth="443.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="728.0" prefWidth="1152.0" />
-                <ImageView fitHeight="82.0" fitWidth="443.0">
-                    <Image url="@images/stage.png" />
-                </ImageView>
+            <Region minWidth="40.0" prefHeight="200.0" prefWidth="200.0" />
+               <VBox alignment="BOTTOM_CENTER" prefHeight="825.0" prefWidth="1339.0">
+               <children>
+                  <Pane prefHeight="728.0" prefWidth="1152.0" />
+                      <ImageView fitHeight="82.0" fitWidth="443.0">
+                          <Image url="@images/stage.png" />
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                      </ImageView>
+               </children>
+               </VBox>
          </children>
-         </VBox>
+      </HBox>
    </center>
 </BorderPane>

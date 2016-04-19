@@ -28,11 +28,13 @@
 .buttonRound {
     -fx-background-color: #ffffff;
     -fx-text-fill: #b0afb0;
-    -fx-background-radius: 37;
-    -fx-pref-width: 71.5;
-    -fx-pref-height: 71.5;
+    -fx-background-radius: 35;
+    -fx-pref-width: 70;
+    -fx-pref-height: 70;
+    -fx-max-height: 70;
+    -fx-max-width: 70;
     -fx-font-family: 'TicketFont';
-    -fx-font-size: 30;
+    -fx-font-size: 10;
     -fx-font-smoothing-type: gray;
 }
 
