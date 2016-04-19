@@ -2,7 +2,7 @@ package system.graphics;
 
 public enum Scenetype {
     //foldername, fxml name
-    MAINMENU("floorPlanner", "floorPlanner.fxml"),
+    MAINMENU("mainMenu", "mainMenu.fxml"),
     EVENTCREATOR("eventCreator", "eventCreator.fxml"),
     EVENTMANAGER("eventManager", "eventManager.fxml"),
     FLOORPLANNER("floorPlanner", "floorPlanner.fxml"),

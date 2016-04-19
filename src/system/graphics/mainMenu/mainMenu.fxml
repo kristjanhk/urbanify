@@ -7,32 +7,31 @@
 <?import javafx.scene.layout.Region?>
 
 
-<BorderPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.mainMenu.Controller">
+<BorderPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.65"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.mainMenu.Controller">
     <center>
         <HBox alignment="CENTER" BorderPane.alignment="CENTER">
-            <children>
-                <ImageView fx:id="newEvent"
-                           onMouseClicked="#doNext"
-                           styleClass="newEvent">
-                    <HBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                    </HBox.margin>
-                </ImageView>
-                <Region prefHeight="20.0" prefWidth="60.0" />
-                <ImageView fx:id="openEvent"
-                            styleClass="openEvent">
-                    <HBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                    </HBox.margin>
-                </ImageView>
-                <Region prefHeight="20.0" prefWidth="60.0" />
-                <ImageView fx:id="archive"
-                            styleClass="archive">
-                    <HBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                    </HBox.margin>
-                </ImageView>
-            </children>
+            <ImageView fx:id="newEvent"
+                       onMouseClicked="#doNext"
+                       styleClass="newEvent">
+                <HBox.margin>
+                    <Insets left="10.0" right="10.0"/>
+                </HBox.margin>
+            </ImageView>
+            <Region prefHeight="20.0" prefWidth="60.0"/>
+            <ImageView fx:id="openEvent"
+                       styleClass="openEvent">
+                <HBox.margin>
+                    <Insets left="10.0" right="10.0"/>
+                </HBox.margin>
+            </ImageView>
+            <Region prefHeight="20.0" prefWidth="60.0"/>
+            <ImageView fx:id="archive"
+                       styleClass="archive">
+                <HBox.margin>
+                    <Insets left="10.0" right="10.0"/>
+                </HBox.margin>
+            </ImageView>
         </HBox>
     </center>
 </BorderPane>

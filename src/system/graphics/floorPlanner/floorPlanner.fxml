@@ -15,7 +15,7 @@
 
 <BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" stylesheets="@../common/lightTheme.css"
             xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="system.graphics.mainMenu.Controller">
+            fx:controller="system.graphics.floorPlanner.Controller">
    <top>
       <Text styleClass="topText" text="new floorplan" BorderPane.alignment="TOP_LEFT">
          <BorderPane.margin>
@@ -52,7 +52,7 @@
          <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0" />
          <HBox alignment="CENTER" prefHeight="0.0" prefWidth="355.0">
             <Region prefHeight="71.0" prefWidth="161.0" />
-            <Button fx:id="removeRow" mnemonicParsing="false" styleClass="buttonRound" text="-" />
+            <Button fx:id="removeRow" onAction="#removeLastRow" mnemonicParsing="false" styleClass="buttonRound" text="-" />
             <Region maxWidth="20.0" minWidth="20.0" prefHeight="0.0" prefWidth="20.0" />
             <VBox alignment="CENTER">
                <Text styleClass="text35" text="25" textAlignment="CENTER" wrappingWidth="50.0">
@@ -61,7 +61,7 @@
                </Text>
             </VBox>
             <Region maxWidth="20.0" minWidth="20.0" prefHeight="200.0" prefWidth="20.0" />
-            <Button fx:id="addRow" mnemonicParsing="false" styleClass="buttonRound" text="ò">
+            <Button fx:id="addRow" onAction="#addNewRow" mnemonicParsing="false" styleClass="buttonRound" text="ò">
                <HBox.margin>
                   <Insets right="40.0" />
                </HBox.margin>
@@ -70,7 +70,7 @@
          <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="463.0" />
          <HBox alignment="CENTER" prefHeight="8.0" prefWidth="355.0">
             <Region prefHeight="73.0" prefWidth="166.0" />
-            <Button fx:id="removeSeat" mnemonicParsing="false" styleClass="buttonRound" text="-" />
+            <Button fx:id="removeSeat" onAction="#removeLastColumn" mnemonicParsing="false" styleClass="buttonRound" text="-" />
             <Region maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
             <VBox alignment="CENTER">
                <Text styleClass="text35" text="19" textAlignment="CENTER" wrappingWidth="50.0">
@@ -79,7 +79,7 @@
                </Text>
             </VBox>
             <Region maxWidth="20.0" minWidth="20.0" prefHeight="200.0" prefWidth="20.0" />
-            <Button fx:id="addSeat" mnemonicParsing="false" styleClass="buttonRound" text="ò">
+            <Button fx:id="addSeat" onAction="#addNewColumn" mnemonicParsing="false" styleClass="buttonRound" text="ò">
                <HBox.margin>
                   <Insets right="40.0" />
                </HBox.margin>
