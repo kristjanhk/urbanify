@@ -115,7 +115,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Region minWidth="40.0" prefHeight="200.0" prefWidth="200.0" />
-            <VBox alignment="BOTTOM_CENTER" prefHeight="9999" prefWidth="9999">
+            <VBox alignment="BOTTOM_CENTER" prefHeight="9998" prefWidth="9999">
                <children>
                   <Pane prefHeight="9999" prefWidth="9999" style="-fx-background-color: white" />
                   <ImageView fitHeight="82.0" fitWidth="443.0">
