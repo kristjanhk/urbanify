@@ -40,7 +40,6 @@ public class StageHandler {
         for (Scenetype scenetype : Scenetype.values()) {
             this.scenes.put(scenetype, createScene(scenetype));
         }
-
     }
     
     private CustomScene createScene(Scenetype scenetype) {

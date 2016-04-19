@@ -1,13 +1,11 @@
 package system;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -28,7 +26,7 @@ public class RistLoomine extends Application {
     public static Circle teeRuut() {
         //Rectangle kujund = new Rectangle(50,50);
         Circle kujund = new Circle(25, Color.GRAY);
-        kujund.setCenterX(150+laius*(50+10));
+        kujund.setCenterX(150 + laius * (50 + 10));
         return kujund;
     }
 
@@ -37,7 +35,7 @@ public class RistLoomine extends Application {
         laius = 0;
         for (int i = 0; i < laiusmax; i++) {
             rida.getChildren().add(teeRuut());
-            rida.setLayoutY(150+kõrgus*(50+10));
+            rida.setLayoutY(150 + kõrgus * (50 + 10));
             laius++;
         }
         return rida;
@@ -55,6 +53,28 @@ public class RistLoomine extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static void muudaSuurust(Scene stseen1, Pane paan) {
+        if ((mainY > stseen1.getHeight() - 50)) {
+            resize(stseen1, paan);
+        }
+        if (mainX > stseen1.getWidth() - 150) {
+            resize(stseen1, paan);
+        }
+    }
+
+    public static void resize(Scene stseen1, Pane paan) {
+        suurusY = (stseen1.getHeight() - 150) / mainY;
+        suurusX = (stseen1.getWidth() - 150) / mainX;
+        if (suurusY < suurusX) {
+            suurus = suurusY;
+        } else {
+            suurus = suurusX;
+        }
+        paan.setScaleX(suurus);
+        paan.setScaleY(suurus);
+        paan.resizeRelocate(10, 10, 0, 0);
     }
 
 
@@ -85,175 +105,82 @@ public class RistLoomine extends Application {
         kõrgus.setLayoutY(50);
 
 
-
         paan.getChildren().addAll(põhigrupp);
         paan2.getChildren().addAll(suurendaX, suurendaY, vähendaX, vähendaY, kõrgus, laius);
         BorderPane.setAlignment(paan, Pos.TOP_LEFT);
         piiripaan.getChildren().add(paan);
         piiripaan.setRight(paan2);
 
-        Scene stseen1 = new Scene(piiripaan, 1280,720, Color.valueOf("E6E6E5"));
-        suurendaY.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                kõrgusmax++;
-                if (laiusmax == 0) {
-                    laiusmax++;
-                }
-                System.out.println(laiusmax + " - " + kõrgusmax);
-                põhigrupp.getChildren().clear();
-                põhigrupp.getChildren().add(teeTulp());
-                põhigrupp.getChildren().addAll(teeRida());
-                laius.setText(Integer.toString(laiusmax));
-                kõrgus.setText(Integer.toString(kõrgusmax+1));
-                mainX = laiusmax*60+100;
-                mainY = (kõrgusmax-1)*60+100;
-                if ((mainY > stseen1.getHeight()-50)) {
-                    suurusY = (stseen1.getHeight()-150)/mainY;
-                    suurusX = (stseen1.getWidth()-150)/mainX;
-                    if (suurusY < suurusX) {
-                        suurus = suurusY;
-                    }else {suurus = suurusX;}
-
-                    paan.setScaleX(suurus);
-                    paan.setScaleY(suurus);
-                    paan.resizeRelocate(10,10,0,0);
-                }
-                if (mainX > stseen1.getWidth()-150) {
-                    suurusY = (stseen1.getHeight()-150)/mainY;
-                    suurusX = (stseen1.getWidth()-150)/mainX;
-                    if (suurusY < suurusX) {
-                        suurus = suurusY;
-                    }else {suurus = suurusX;}
-                    paan.setScaleX(suurus);
-                    paan.setScaleY(suurus);
-                    paan.resizeRelocate(10,10,0,0);
-                }
-            }
-        });
-
-        suurendaX.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
+        Scene stseen1 = new Scene(piiripaan, 1280, 720, Color.valueOf("E6E6E5"));
+        suurendaY.setOnMouseClicked(event -> {
+            kõrgusmax++;
+            if (laiusmax == 0) {
                 laiusmax++;
-                if (kõrgusmax == -1) {
-                    kõrgusmax++;
-                }
-                System.out.println(laiusmax + " - " + kõrgusmax);
+            }
+            System.out.println(laiusmax + " - " + kõrgusmax);
+            põhigrupp.getChildren().clear();
+            põhigrupp.getChildren().add(teeTulp());
+            põhigrupp.getChildren().addAll(teeRida());
+            laius.setText(Integer.toString(laiusmax));
+            kõrgus.setText(Integer.toString(kõrgusmax + 1));
+            mainX = laiusmax * 60 + 100;
+            mainY = (kõrgusmax - 1) * 60 + 100;
+            muudaSuurust(stseen1, paan);
+        });
+
+        suurendaX.setOnMouseClicked(event -> {
+            laiusmax++;
+            if (kõrgusmax == -1) {
+                kõrgusmax++;
+            }
+            System.out.println(laiusmax + " - " + kõrgusmax);
+            põhigrupp.getChildren().clear();
+            põhigrupp.getChildren().add(teeTulp());
+            põhigrupp.getChildren().addAll(teeRida());
+            laius.setText(Integer.toString(laiusmax));
+            kõrgus.setText(Integer.toString(kõrgusmax + 1));
+            mainX = laiusmax * 60 + 100;
+            mainY = (kõrgusmax - 1) * 60 + 100;
+            muudaSuurust(stseen1, paan);
+        });
+
+        vähendaY.setOnMouseClicked(event -> {
+            if (kõrgusmax >= 0) {
+                kõrgusmax--;
+            }
+            System.out.println(laiusmax + " - " + kõrgusmax);
+            põhigrupp.getChildren().clear();
+            põhigrupp.getChildren().add(teeTulp());
+            põhigrupp.getChildren().addAll(teeRida());
+            if (kõrgusmax == -1) {
+                põhigrupp.getChildren().clear();
+            }
+            laius.setText(Integer.toString(laiusmax));
+            kõrgus.setText(Integer.toString(kõrgusmax + 1));
+            mainX = laiusmax * 60 + 100;
+            mainY = (kõrgusmax - 1) * 60 + 100;
+            muudaSuurust(stseen1, paan);
+        });
+
+        vähendaX.setOnMouseClicked(event -> {
+            System.out.println(laiusmax + " - " + kõrgusmax);
+            if (laiusmax > 0) {
+                laiusmax--;
+            }
+            if (kõrgusmax == -1) {
+                põhigrupp.getChildren().clear();
+                laius.setText(Integer.toString(laiusmax));
+                kõrgus.setText(Integer.toString(kõrgusmax + 1));
+            }
+            if (kõrgusmax > -1) {
                 põhigrupp.getChildren().clear();
                 põhigrupp.getChildren().add(teeTulp());
                 põhigrupp.getChildren().addAll(teeRida());
                 laius.setText(Integer.toString(laiusmax));
-                kõrgus.setText(Integer.toString(kõrgusmax+1));
-                mainX = laiusmax*60+100;
-                mainY = (kõrgusmax-1)*60+100;
-                if ((mainY > stseen1.getHeight()-50)) {
-                    suurusY = (stseen1.getHeight()-150)/mainY;
-                    suurusX = (stseen1.getWidth()-150)/mainX;
-                    if (suurusY < suurusX) {
-                        suurus = suurusY;
-                    }else {suurus = suurusX;}
-
-                    paan.setScaleX(suurus);
-                    paan.setScaleY(suurus);
-                    paan.resizeRelocate(10,10,0,0);
-                }
-                if (mainX > stseen1.getWidth()-150) {
-                    suurusY = (stseen1.getHeight()-150)/mainY;
-                    suurusX = (stseen1.getWidth()-150)/mainX;
-                    if (suurusY < suurusX) {
-                        suurus = suurusY;
-                    }else {suurus = suurusX;}
-                    paan.setScaleX(suurus);
-                    paan.setScaleY(suurus);
-                    paan.resizeRelocate(10,10,0,0);
-                }
-            }
-        });
-
-        vähendaY.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (kõrgusmax >= 0) {
-                    kõrgusmax--;
-                }
-                System.out.println(laiusmax + " - " + kõrgusmax);
-                põhigrupp.getChildren().clear();
-                põhigrupp.getChildren().add(teeTulp());
-                põhigrupp.getChildren().addAll(teeRida());
-                if (kõrgusmax == -1) {
-                    põhigrupp.getChildren().clear();
-                }
-                laius.setText(Integer.toString(laiusmax));
-                kõrgus.setText(Integer.toString(kõrgusmax+1));
-                mainX = laiusmax*60+100;
-                mainY = (kõrgusmax-1)*60+100;
-                if ((mainY > stseen1.getHeight()-50)) {
-                    suurusY = (stseen1.getHeight()-150)/mainY;
-                    suurusX = (stseen1.getWidth()-150)/mainX;
-                    if (suurusY < suurusX) {
-                        suurus = suurusY;
-                    }else {suurus = suurusX;}
-
-                    paan.setScaleX(suurus);
-                    paan.setScaleY(suurus);
-                    paan.resizeRelocate(10,10,0,0);
-                }
-                if (mainX > stseen1.getWidth()-150) {
-                    suurusY = (stseen1.getHeight()-150)/mainY;
-                    suurusX = (stseen1.getWidth()-150)/mainX;
-                    if (suurusY < suurusX) {
-                        suurus = suurusY;
-                    }else {suurus = suurusX;}
-                    paan.setScaleX(suurus);
-                    paan.setScaleY(suurus);
-                    paan.resizeRelocate(10,10,0,0);
-                }
-            }
-        });
-
-        vähendaX.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                System.out.println(laiusmax + " - " + kõrgusmax);
-                if (laiusmax > 0) {
-                    laiusmax--;
-                }
-                if (kõrgusmax == - 1) {
-                    põhigrupp.getChildren().clear();
-                    laius.setText(Integer.toString(laiusmax));
-                    kõrgus.setText(Integer.toString(kõrgusmax+1));
-                }
-                if (kõrgusmax > -1) {
-                    põhigrupp.getChildren().clear();
-                    põhigrupp.getChildren().add(teeTulp());
-                    põhigrupp.getChildren().addAll(teeRida());
-                    laius.setText(Integer.toString(laiusmax));
-                    kõrgus.setText(Integer.toString(kõrgusmax+1));
-                    mainX = laiusmax*60+100;
-                    mainY = (kõrgusmax-1)*60+100;
-                    if ((mainY > stseen1.getHeight()-50)) {
-                        suurusY = (stseen1.getHeight()-150)/mainY;
-                        suurusX = (stseen1.getWidth()-150)/mainX;
-                        if (suurusY < suurusX) {
-                            suurus = suurusY;
-                        }else {suurus = suurusX;}
-
-                        paan.setScaleX(suurus);
-                        paan.setScaleY(suurus);
-                        paan.resizeRelocate(10,10,0,0);
-                    }
-                    if (mainX > stseen1.getWidth()-150) {
-                        suurusY = (stseen1.getHeight()-150)/mainY;
-                        suurusX = (stseen1.getWidth()-150)/mainX;
-                        if (suurusY < suurusX) {
-                            suurus = suurusY;
-                        }else {suurus = suurusX;}
-                        paan.setScaleX(suurus);
-                        paan.setScaleY(suurus);
-                        paan.resizeRelocate(10,10,0,0);
-                    }
-                }
+                kõrgus.setText(Integer.toString(kõrgusmax + 1));
+                mainX = laiusmax * 60 + 100;
+                mainY = (kõrgusmax - 1) * 60 + 100;
+                muudaSuurust(stseen1, paan);
             }
         });
 

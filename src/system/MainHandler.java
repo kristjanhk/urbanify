@@ -16,6 +16,7 @@ public class MainHandler extends Application{
     private static ReportHandler reportHandler;
 
     public static void main(String[] args) {
+        fileHandler = new FileHandler();
         launch(args);
     }
 

@@ -57,7 +57,7 @@
                     </Button>
                     <Button fx:id="next" styleClass="buttonField" alignment="CENTER" maxWidth="92.3"
                             minWidth="92.3" mnemonicParsing="false" prefWidth="92.3" text="next"
-                            onMousePressed="#vaheta">
+                            onMousePressed="#openFloorPlanner">
                         <HBox.margin>
                             <Insets right="40.0" top="40.0"/>
                         </HBox.margin>
