@@ -163,3 +163,11 @@
 .archive:pressed {
     -fx-image: url("../mainMenu/images/archiveArmed.png");
 }
+
+.seatButton {
+    -fx-background-color: #5b5c5c;
+}
+
+.seatButton:hover {
+    -fx-background-color: #e6e6e5;
+}

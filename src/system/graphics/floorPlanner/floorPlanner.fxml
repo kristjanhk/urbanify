@@ -16,113 +16,119 @@
 <BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" stylesheets="@../common/lightTheme.css"
             xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="system.graphics.floorPlanner.Controller">
-   <top>
-      <Text styleClass="topText" text="new floorplan" BorderPane.alignment="TOP_LEFT">
-         <BorderPane.margin>
-            <Insets left="40.0" top="40.0" />
-         </BorderPane.margin>
-      </Text>
-   </top>
-   <right>
-      <VBox prefHeight="810.0" prefWidth="0.0" BorderPane.alignment="CENTER">
-         <HBox prefHeight="92.0" prefWidth="355.0">
-            <Region prefHeight="111.0" prefWidth="172.0" />
-            <MenuButton alignment="CENTER" contentDisplay="CENTER" maxHeight="70.5" maxWidth="130.0" minHeight="70.5"
-                        minWidth="130.0" mnemonicParsing="false" prefHeight="70.5" prefWidth="130.0" text="plans">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="saal 1" />
-                  <MenuItem mnemonicParsing="false" text="saal 2" />
-               </items>
-               <HBox.margin>
-                  <Insets top="40.0" />
-               </HBox.margin>
-            </MenuButton>
-            <Region minWidth="40.0" prefWidth="40.0" />
-            <MenuButton alignment="CENTER" contentDisplay="CENTER" maxHeight="70.5" maxWidth="130.0" minHeight="70.5"
-                        minWidth="130.0" mnemonicParsing="false" prefHeight="70.5" prefWidth="130.0" text="type">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="stage" />
-                  <MenuItem mnemonicParsing="false" text="screen" />
-               </items>
-               <HBox.margin>
-                  <Insets right="40.0" top="40.0" />
-               </HBox.margin>
-            </MenuButton>
-         </HBox>
-         <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0" />
-         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="355.0">
-            <Region prefHeight="71.0" prefWidth="161.0" />
-            <Button fx:id="removeRow" onAction="#removeLastRow" mnemonicParsing="false" styleClass="buttonRound" text="-" />
-            <Region maxWidth="20.0" minWidth="20.0" prefHeight="0.0" prefWidth="20.0" />
-            <VBox alignment="CENTER">
-               <Text styleClass="text35" text="25" textAlignment="CENTER" wrappingWidth="50.0">
-               </Text>
-               <Text styleClass="text19" text="rows" textAlignment="CENTER" wrappingWidth="50.0">
-               </Text>
+    <top>
+        <Text styleClass="topText" text="new floorplan" BorderPane.alignment="TOP_LEFT">
+            <BorderPane.margin>
+                <Insets left="40.0" top="40.0"/>
+            </BorderPane.margin>
+        </Text>
+    </top>
+    <right>
+        <VBox prefHeight="810.0" prefWidth="0.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="92.0" prefWidth="355.0">
+                <Region prefHeight="111.0" prefWidth="172.0"/>
+                <MenuButton alignment="CENTER" contentDisplay="CENTER" maxHeight="70.5" maxWidth="130.0"
+                            minHeight="70.5"
+                            minWidth="130.0" mnemonicParsing="false" prefHeight="70.5" prefWidth="130.0" text="plans">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="saal 1"/>
+                        <MenuItem mnemonicParsing="false" text="saal 2"/>
+                    </items>
+                    <HBox.margin>
+                        <Insets top="40.0"/>
+                    </HBox.margin>
+                </MenuButton>
+                <Region minWidth="40.0" prefWidth="40.0"/>
+                <MenuButton alignment="CENTER" contentDisplay="CENTER" maxHeight="70.5" maxWidth="130.0"
+                            minHeight="70.5"
+                            minWidth="130.0" mnemonicParsing="false" prefHeight="70.5" prefWidth="130.0" text="type">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="stage"/>
+                        <MenuItem mnemonicParsing="false" text="screen"/>
+                    </items>
+                    <HBox.margin>
+                        <Insets right="40.0" top="40.0"/>
+                    </HBox.margin>
+                </MenuButton>
+            </HBox>
+            <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0"/>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="355.0">
+                <Region prefHeight="71.0" prefWidth="161.0"/>
+                <Button fx:id="removeRow" onAction="#removeLastRow" mnemonicParsing="false" styleClass="buttonRound"
+                        text="-"/>
+                <Region maxWidth="20.0" minWidth="20.0" prefHeight="0.0" prefWidth="20.0"/>
+                <VBox alignment="CENTER">
+                    <Text fx:id="rowCountText" text="0" styleClass="text35" textAlignment="CENTER" wrappingWidth="50.0">
+                    </Text>
+                    <Text styleClass="text19" text="rows" textAlignment="CENTER" wrappingWidth="50.0">
+                    </Text>
+                </VBox>
+                <Region maxWidth="20.0" minWidth="20.0" prefHeight="200.0" prefWidth="20.0"/>
+                <Button fx:id="addRow" onAction="#addNewRow" mnemonicParsing="false" styleClass="buttonRound" text="ò">
+                    <HBox.margin>
+                        <Insets right="40.0"/>
+                    </HBox.margin>
+                </Button>
+            </HBox>
+            <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="463.0"/>
+            <HBox alignment="CENTER" prefHeight="8.0" prefWidth="355.0">
+                <Region prefHeight="73.0" prefWidth="166.0"/>
+                <Button fx:id="removeSeat" onAction="#removeLastColumn" mnemonicParsing="false" styleClass="buttonRound"
+                        text="-"/>
+                <Region maxWidth="20.0" minWidth="20.0" prefWidth="20.0"/>
+                <VBox alignment="CENTER">
+                    <Text fx:id="columnCountText" text="0" styleClass="text35" textAlignment="CENTER"
+                          wrappingWidth="50.0">
+                    </Text>
+                    <Text styleClass="text19" text="seats in row" textAlignment="CENTER" wrappingWidth="50.0">
+                    </Text>
+                </VBox>
+                <Region maxWidth="20.0" minWidth="20.0" prefHeight="200.0" prefWidth="20.0"/>
+                <Button fx:id="addSeat" onAction="#addNewColumn" mnemonicParsing="false" styleClass="buttonRound"
+                        text="ò">
+                    <HBox.margin>
+                        <Insets right="40.0"/>
+                    </HBox.margin>
+                </Button>
+            </HBox>
+            <Region minHeight="40.0" prefHeight="9999.0" prefWidth="523.0"/>
+            <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="523.0">
+                <Region minWidth="40.0"/>
+                <Button fx:id="cancel" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0"
+                        text="cancel">
+                    <HBox.margin>
+                        <Insets bottom="40.0"/>
+                    </HBox.margin>
+                </Button>
+                <Region minWidth="40.0" prefHeight="200.0" prefWidth="40.0"/>
+                <Button fx:id="save" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0"
+                        text="save">
+                    <HBox.margin>
+                        <Insets bottom="40.0"/>
+                    </HBox.margin>
+                </Button>
+                <Region minWidth="40.0" prefHeight="200.0" prefWidth="40.0"/>
+                <Button fx:id="create" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0"
+                        text="create">
+                    <HBox.margin>
+                        <Insets bottom="40.0" right="40.0"/>
+                    </HBox.margin>
+                </Button>
+            </HBox>
+        </VBox>
+    </right>
+    <center>
+        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <Region minWidth="40.0" prefHeight="200.0" prefWidth="200.0"/>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="9998" prefWidth="9999">
+                <Pane fx:id="floorPlanPane" prefHeight="9999" prefWidth="9999" style="-fx-background-color: white"/>
+                <ImageView fitHeight="82.0" fitWidth="443.0">
+                    <Image url="@images/stage.png"/>
+                    <VBox.margin>
+                        <Insets bottom="20.0"/>
+                    </VBox.margin>
+                </ImageView>
             </VBox>
-            <Region maxWidth="20.0" minWidth="20.0" prefHeight="200.0" prefWidth="20.0" />
-            <Button fx:id="addRow" onAction="#addNewRow" mnemonicParsing="false" styleClass="buttonRound" text="ò">
-               <HBox.margin>
-                  <Insets right="40.0" />
-               </HBox.margin>
-            </Button>
-         </HBox>
-         <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="463.0" />
-         <HBox alignment="CENTER" prefHeight="8.0" prefWidth="355.0">
-            <Region prefHeight="73.0" prefWidth="166.0" />
-            <Button fx:id="removeSeat" onAction="#removeLastColumn" mnemonicParsing="false" styleClass="buttonRound" text="-" />
-            <Region maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-            <VBox alignment="CENTER">
-               <Text styleClass="text35" text="19" textAlignment="CENTER" wrappingWidth="50.0">
-               </Text>
-               <Text styleClass="text19" text="seats in row" textAlignment="CENTER" wrappingWidth="50.0">
-               </Text>
-            </VBox>
-            <Region maxWidth="20.0" minWidth="20.0" prefHeight="200.0" prefWidth="20.0" />
-            <Button fx:id="addSeat" onAction="#addNewColumn" mnemonicParsing="false" styleClass="buttonRound" text="ò">
-               <HBox.margin>
-                  <Insets right="40.0" />
-               </HBox.margin>
-            </Button>
-         </HBox>
-         <Region minHeight="40.0" prefHeight="9999.0" prefWidth="523.0" />
-         <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="523.0">
-            <Region minWidth="40.0" />
-            <Button fx:id="cancel" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0"
-                    text="cancel">
-               <HBox.margin>
-                  <Insets bottom="40.0" />
-               </HBox.margin>
-            </Button>
-            <Region minWidth="40.0" prefHeight="200.0" prefWidth="40.0" />
-            <Button fx:id="save" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0"
-                    text="save">
-               <HBox.margin>
-                  <Insets bottom="40.0" />
-               </HBox.margin>
-            </Button>
-            <Region minWidth="40.0" prefHeight="200.0" prefWidth="40.0" />
-            <Button fx:id="create" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0"
-                    text="create">
-               <HBox.margin>
-                  <Insets bottom="40.0" right="40.0" />
-               </HBox.margin>
-            </Button>
-         </HBox>
-      </VBox>
-   </right>
-   <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <Region minWidth="40.0" prefHeight="200.0" prefWidth="200.0"/>
-         <VBox alignment="BOTTOM_CENTER" prefHeight="9998" prefWidth="9999">
-            <Pane fx:id="floorPlanPane" prefHeight="9999" prefWidth="9999" style="-fx-background-color: white"/>
-            <ImageView fitHeight="82.0" fitWidth="443.0">
-               <Image url="@images/stage.png"/>
-               <VBox.margin>
-                  <Insets bottom="20.0"/>
-               </VBox.margin>
-            </ImageView>
-         </VBox>
-      </HBox>
-   </center>
+        </HBox>
+    </center>
 </BorderPane>
