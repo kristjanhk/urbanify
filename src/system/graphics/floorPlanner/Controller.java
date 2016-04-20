@@ -7,8 +7,10 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import system.MainHandler;
 import system.graphics.AbstractController;
 import system.graphics.Scenetype;
+import system.graphics.common.Csstype;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,7 +35,6 @@ public class Controller extends AbstractController implements Initializable {
         this.addNewColumn();
     }
 
-    // TODO: 20.04.2016 istmete asukohad vaja paika panna
     // TODO: 20.04.2016 asukohtade, suuruste muutused teha
 
     public void addNewRow() {
@@ -41,21 +42,21 @@ public class Controller extends AbstractController implements Initializable {
         for (int i = 0; i < this.columnCount; i++) {
             group.getChildren().add(new Seat(getFloor().size(), i));
         }
-        getFloor().add(group);
+        getFloor().add(0, group);
         this.rowCountText.setText(String.valueOf(getFloor().size()));
         printout();
     }
 
-    public void removeLastRow() {
+    public void removeFirstRow() {
         if (getFloor().size() > 0) {
-            getFloor().remove(getFloor().size() - 1);
+            getFloor().remove(0);
+            this.rowCountText.setText(String.valueOf(getFloor().size()));
         }
-        this.rowCountText.setText(String.valueOf(getFloor().size()));
         printout();
     }
 
     public void addNewColumn() {
-        for (int i = 0; i < getFloor().size(); i++) {
+        for (int i = getFloor().size() - 1; i >= 0; i--) {
             ((Group) getFloor().get(i)).getChildren().add(new Seat(i, this.columnCount));
         }
         this.columnCount++;
@@ -69,8 +70,8 @@ public class Controller extends AbstractController implements Initializable {
                 ((Group) group).getChildren().remove(this.columnCount - 1);
             }
             this.columnCount--;
+            this.columnCountText.setText(String.valueOf(this.columnCount));
         }
-        this.columnCountText.setText(String.valueOf(this.columnCount));
         printout();
     }
 
@@ -97,11 +98,13 @@ public class Controller extends AbstractController implements Initializable {
     }
 
     public void doSave() {
-
+        // TODO: 21.04.2016 save
+        System.out.println(this.scene.getStylesheets());
     }
 
     public void doCreate() {
-
+        System.out.println(this.scene.getScenetype());
+        MainHandler.changeGlobalThemeTo(Csstype.toggleTheme());
     }
 
     public void selectPlan(int id) {

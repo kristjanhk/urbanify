@@ -6,8 +6,6 @@ import system.graphics.CustomScene;
 import system.graphics.common.Csstype;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
 
 public class MainHandler extends Application{
     private static ArrayList<StageHandler> stageHandlers = new ArrayList<>();
@@ -50,26 +48,18 @@ public class MainHandler extends Application{
         stageHandlers.add(new StageHandler());
     }
 
-    
-    // TODO: 11.04.2016 2 args, remove old one and add new one
-    //http://stackoverflow.com/questions/10887525/javafx-style-class-wont-refresh
     public static void changeGlobalThemeTo(Csstype csstype) {
         for (StageHandler stageHandler : stageHandlers) {
-            /*for (Scene scene : stageHandler.getScenes()) {
-                changeSceneThemeTo(scene, csstype);
-            }*/
-            //http://stackoverflow.com/questions/1066589/iterate-through-a-hashmap
-            Iterator it = stageHandler.getScenes().entrySet().iterator();
-            while (it.hasNext()) {
-                Map.Entry pair = (Map.Entry) it.next();
-                changeSceneThemeTo((CustomScene) pair.getValue(), csstype);
-                it.remove();
-            }
+            stageHandler.getScenes().forEach((type, scene) -> changeSceneThemeTo(scene, csstype));
         }
     }
 
     public static void changeSceneThemeTo(CustomScene scene, Csstype csstype) {
-        scene.getStylesheets().add("system/graphics/common/" + csstype.toString());
+        //http://stackoverflow.com/questions/17769388/javafx-change-css-at-runtime
+        //https://community.oracle.com/thread/2566519?start=0&tstart=0
+        // TODO: 21.04.2016 hoida alles mingit põhi css faili, vahetada aind theme 
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("system/graphics/common/" + csstype.toString(true));
     }
 }
 

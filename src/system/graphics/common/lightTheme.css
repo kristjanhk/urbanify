@@ -164,10 +164,10 @@
     -fx-image: url("../mainMenu/images/archiveArmed.png");
 }
 
-.seatButton {
-    -fx-background-color: #5b5c5c;
+Seat {
+    -fx-fill: #5b5c5c;
 }
 
-.seatButton:hover {
-    -fx-background-color: #e6e6e5;
+Seat:hover {
+    -fx-fill: #e6e6e5;
 }

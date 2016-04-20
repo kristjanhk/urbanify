@@ -41,14 +41,10 @@ public enum Csstype {
         }
     }
 
-    public String toString() {
-        setActiveTheme(this);
+    public String toString(boolean setActive) {
+        if (setActive) {
+            setActiveTheme(this);
+        }
         return this.themeName;
     }
-
-
-
-
-
-
 }

@@ -21,6 +21,10 @@ public class Controller extends AbstractController {
         this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
     }
 
+    public void doNext() {
+
+    }
+
 
     @Override
     public void prepareToDisplay() {

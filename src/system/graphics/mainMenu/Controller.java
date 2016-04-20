@@ -1,31 +1,26 @@
 package system.graphics.mainMenu;
 
-import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import system.graphics.AbstractController;
 import system.graphics.Scenetype;
 
 public class Controller extends AbstractController {
-    public Button next;
-    public Button quit;
-
-    public void doNext() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR);
-    }
-
-    public void doQuit() {
-        System.exit(0);
-    }
+    public ImageView newEvent;
+    public ImageView events;
+    public ImageView archive;
 
     public void openNewEvent() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR);
     }
 
     public void openEvents() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
+        // FIXME: 21.04.2016
+        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR);
     }
 
     public void openArchive() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.ARCHIVE);
+        // FIXME: 21.04.2016
+        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR);
     }
 
     @Override

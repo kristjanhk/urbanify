@@ -8,8 +8,12 @@ public class Controller extends AbstractController {
 
     // TODO: 14.04.2016 to be changed
 
+    public void doNext() {
+
+    }
+
     public void doBack() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
+        this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
     }
 
     public void doCheckout() {
