@@ -1,16 +1,18 @@
 package system.graphics.floorPlanner;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import system.graphics.AbstractController;
 import system.graphics.Scenetype;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class Controller extends AbstractController implements Initializable{
+public class Controller extends AbstractController implements Initializable {
     public Button removeRow;
     public Button addRow;
     public Button removeSeat;
@@ -21,39 +23,34 @@ public class Controller extends AbstractController implements Initializable{
     public Pane floorPlanPane;
 
     private int columnCount = 0;
-    //private ArrayList<ArrayList<Seat>> floor = new ArrayList<>();
-    private ArrayList<ArrayList<Integer>> floor = new ArrayList<>();
-    // rows<columns<seat>>
-    // TODO: 20.04.2016 hashmap?
-    // TODO: 20.04.2016 custom classes?
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
-
-
-
+    // TODO: 20.04.2016 istmete asukohad vaja paika panna
+    // TODO: 20.04.2016 asukohtade, suuruste muutused teha
 
     public void addNewRow() {
-        this.floor.add(new ArrayList<>());
+        Group group = new Group();
         for (int i = 0; i < this.columnCount; i++) {
-            this.floor.get(this.floor.size() - 1).add(8);
+            group.getChildren().add(new Seat(this.floorPlanPane, group));
         }
+        getFloor().add(group);
         printout();
     }
 
     public void removeLastRow() {
-        if (this.floor.size() > 0) {
-            this.floor.remove(this.floor.size() - 1);
+        if (getFloor().size() > 0) {
+            getFloor().remove(getFloor().size() - 1);
         }
         printout();
     }
 
     public void addNewColumn() {
-        for (ArrayList<Integer> row : this.floor) {
-            row.add(8);
+        for (Node group : getFloor()) {
+            ((Group) group).getChildren().add(new Seat(this.floorPlanPane)); //crashib???
         }
         this.columnCount++;
         printout();
@@ -61,33 +58,21 @@ public class Controller extends AbstractController implements Initializable{
 
     public void removeLastColumn() {
         if (this.columnCount > 0) {
-            for (ArrayList<Integer> row : this.floor) {
-                row.remove(this.columnCount - 1);
+            for (Node group : getFloor()) {
+                ((Group) group).getChildren().remove(this.columnCount - 1);
             }
             this.columnCount--;
         }
         printout();
     }
 
-
-    private void printout() {
-        System.out.println(this.floor);
+    private ObservableList<Node> getFloor() {
+        return this.floorPlanPane.getChildren();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    private void printout() {
+        System.out.println(getFloor());
+    }
 
 
     // TODO: 14.04.2016 to be changed

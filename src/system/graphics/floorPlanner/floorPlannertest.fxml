@@ -105,21 +105,17 @@
         </VBox>
     </right>
    <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Region minWidth="40.0" prefHeight="200.0" prefWidth="200.0" />
-               <VBox alignment="BOTTOM_CENTER" prefHeight="825.0" prefWidth="1339.0">
-               <children>
-                  <Pane prefHeight="728.0" prefWidth="1152.0" />
-                      <ImageView fitHeight="82.0" fitWidth="443.0">
-                          <Image url="@images/stage.png" />
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                      </ImageView>
-               </children>
-               </VBox>
-         </children>
-      </HBox>
+       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+           <Region minWidth="40.0" prefHeight="200.0" prefWidth="200.0"/>
+           <VBox alignment="BOTTOM_CENTER" prefHeight="825.0" prefWidth="1339.0">
+               <Pane fx:id="floorPlanPane" prefHeight="728.0" prefWidth="1152.0"/>
+               <ImageView fitHeight="82.0" fitWidth="443.0">
+                   <Image url="@images/stage.png"/>
+                   <VBox.margin>
+                       <Insets bottom="20.0"/>
+                   </VBox.margin>
+               </ImageView>
+           </VBox>
+       </HBox>
    </center>
 </BorderPane>
