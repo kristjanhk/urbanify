@@ -14,7 +14,7 @@
     -fx-font-smoothing-type: gray;
 }
 
-.buttonField {
+.button {
     -fx-background-color: #151515;
     -fx-text-fill: #f05455;
     -fx-max-height: 70.5;
@@ -25,8 +25,64 @@
     -fx-font-smoothing-type: gray;
 }
 
+.menu-button {
+    -fx-background-color: #151515;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 26;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-button:hover {
+    -fx-background-color: #5b5c5c;
+    -fx-text-fill: #f05455;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 26;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-button .label{
+    -fx-text-fill: #f05455;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-button .label:hover{
+    -fx-text-fill: #f05455;
+    -fx-font-smoothing-type: gray;
+}
+
+.menu-button:openvertically .arrow-button {
+    visibility: false;
+}
+
 .background {
     -fx-background-color: #262626;
+}
+
+.text19 {
+    -fx-fill: #f05455;
+    -fx-font-size: 19;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
+}
+
+.text35 {
+    -fx-fill: #f05455;
+    -fx-font-size: 35;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
+}
+
+.buttonRound {
+    -fx-background-color: #151515;
+    -fx-text-fill: #f05455;
+    -fx-background-radius: 35;
+    -fx-pref-width: 70;
+    -fx-pref-height: 70;
+    -fx-max-height: 70;
+    -fx-max-width: 70;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 30;
+    -fx-font-smoothing-type: gray;
 }
 
 .topText {
@@ -36,13 +92,13 @@
     -fx-font-smoothing-type: gray;
 }
 
-.buttonField:hover {
+.button:hover {
     -fx-background-color: #5b5c5c;
     -fx-text-fill: #f05455;
     -fx-font-smoothing-type: gray;
 }
 
-.buttonField:armed {
+.button:armed {
     -fx-background-color: #333333;
     -fx-text-fill: #f05455;
     -fx-font-smoothing-type: gray;
@@ -71,4 +127,48 @@
 .separator .line {
     -fx-border-width: 0.5px;
     -fx-border-color: #f05455;
+}
+
+.newEvent {
+    -fx-image: url("../mainMenu/images/newEventDark.png");
+}
+
+.openEvent {
+    -fx-image: url("../mainMenu/images/openEventDark.png");
+}
+
+.archive {
+    -fx-image: url("../mainMenu/images/archiveDark.png");
+}
+
+.newEvent:hover {
+    -fx-image: url("../mainMenu/images/newEventHoverDark.png");
+}
+
+.openEvent:hover {
+    -fx-image: url("../mainMenu/images/openEventHoverDark.png");
+}
+
+.archive:hover {
+    -fx-image: url("../mainMenu/images/archiveHoverDark.png");
+}
+
+.newEvent:pressed {
+    -fx-image: url("../mainMenu/images/newEventArmedDark.png");
+}
+
+.openEvent:pressed {
+    -fx-image: url("../mainMenu/images/openEventArmedDark.png");
+}
+
+.archive:pressed {
+    -fx-image: url("../mainMenu/images/archiveArmedDark.png");
+}
+
+Seat {
+    -fx-fill: #151515;
+}
+
+Seat:hover {
+    -fx-fill: #5b5c5c;
 }
