@@ -8,7 +8,7 @@ public enum Csstype {
     LIGHT("lightTheme.css"),
     DARK("darkTheme.css");
 
-    private static Csstype activeTheme = LIGHT;
+    private static Csstype activeTheme = DARK;
     private static final List<Csstype> csstypes = Arrays.asList(values());
     private static Random random = new Random();
     private String themeName;

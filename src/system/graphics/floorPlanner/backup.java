@@ -1,16 +1,14 @@
+/*
 package system.graphics.floorPlanner;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-import javafx.scene.transform.Scale;
-import javafx.scene.transform.Translate;
 import system.MainHandler;
 import system.graphics.AbstractController;
 import system.graphics.Scenetype;
@@ -19,7 +17,7 @@ import system.graphics.common.Csstype;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller extends AbstractController implements Initializable {
+public class backup extends AbstractController implements Initializable {
     public Button removeRow;
     public Button addRow;
     public Button removeSeat;
@@ -28,20 +26,17 @@ public class Controller extends AbstractController implements Initializable {
     public Button save;
     public Button create;
     public BorderPane borderPane;
-    public StackPane floorPlan;
+    public AnchorPane floorPlanPane;
     public Text rowCountText;
     public Text columnCountText;
 
     private int columnCount = 0;
 
-    private double scalefactor = 1.0;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.floorPlan.setAlignment(Pos.BOTTOM_CENTER);
-        this.floorPlan.setMinSize(10, 10);
-        this.floorPlan.getChildren().add(new Group());
-        this.floorPlan.getChildren().get(0).setStyle("-fx-background-color: #006464");
+        this.floorPlanPane.getChildren().add(new Group());
+        AnchorPane.setBottomAnchor(this.floorPlanPane.getChildren().get(0), 10.0);
+        AnchorPane.setLeftAnchor(this.floorPlanPane.getChildren().get(0), 10.0);
     }
 
     // TODO: 20.04.2016 asukohtade, suuruste muutused teha
@@ -112,27 +107,19 @@ public class Controller extends AbstractController implements Initializable {
     }
 
     private ObservableList<Node> getFloor() {
-        return ((Group) this.floorPlan.getChildren().get(0)).getChildren();
+        return ((Group) this.floorPlanPane.getChildren().get(0)).getChildren();
     }
 
     private void resize() {
-
-
-
-
-
-
-
-
-        /*// TODO: 21/04/2016 offsets
+        // TODO: 21/04/2016 offsets
         int width = this.columnCount * 60;
         int height = getFloor().size() * 60;
         System.out.println(width);
         System.out.println(height);
-        if (width > this.floorPlan.getWidth() - 50 || height > this.floorPlan.getHeight() - 50) {
+        if (width > this.floorPlanPane.getWidth() - 50 || height > this.floorPlanPane.getHeight() - 50) {
             double ratio;
-            double widthratio = (this.floorPlan.getWidth() - 50) / width;
-            double heightratio = (this.floorPlan.getHeight() - 50) / height;
+            double widthratio = (this.floorPlanPane.getWidth() - 50) / width;
+            double heightratio = (this.floorPlanPane.getHeight() - 50) / height;
             System.out.println(widthratio);
             System.out.println(heightratio);
             if (widthratio > heightratio) {
@@ -141,10 +128,10 @@ public class Controller extends AbstractController implements Initializable {
                 ratio = widthratio;
             }
             System.out.println(ratio);
-            this.floorPlan.getChildren().get(0).setScaleX(ratio);
-            this.floorPlan.getChildren().get(0).setScaleY(ratio);
-            this.floorPlan.getChildren().get(0).resizeRelocate(10, 10, 0, 0);*/
-        //}
+            this.floorPlanPane.getChildren().get(0).setScaleX(ratio);
+            this.floorPlanPane.getChildren().get(0).setScaleY(ratio);
+            this.floorPlanPane.getChildren().get(0).resizeRelocate(10, 10, 0, 0);
+        }
     }
 
     private void printout() {
@@ -155,7 +142,6 @@ public class Controller extends AbstractController implements Initializable {
             out.append("], ");
         }
         System.out.println(out);
-        System.out.println(this.floorPlan.getChildren().get(0).getBoundsInParent());
     }
 
 
@@ -168,27 +154,7 @@ public class Controller extends AbstractController implements Initializable {
 
     public void doSave() {
         // TODO: 21.04.2016 save
-        Group seats = (Group) this.floorPlan.getChildren().get(0);
-        System.out.println(seats.getBoundsInParent());
-
-        //seats.getTransforms().clear();
-        System.out.println(seats.getTranslateX());
-        System.out.println(seats.getTranslateY());
-
-        double seatsx = seats.getBoundsInParent().getMinX();
-        double seatsy = seats.getBoundsInParent().getMinY();
-        double seatsw = seats.getBoundsInParent().getWidth();
-        double seatsh = seats.getBoundsInParent().getHeight();
-
-        double middlex = (seatsx + seatsw) / 2;
-        double middley = (seatsy + seatsh) / 2;
-
-        seats.getTransforms().add(new Scale(0.95, 0.95, middlex, middley));
-
-        double seatnewx = seats.getBoundsInParent().getMinX();
-        double seatnewy = seats.getBoundsInParent().getMinY();
-
-        seats.getTransforms().add(new Translate(seatsx - seatnewx, seatsy - seatnewy));
+        System.out.println(this.scene.getStylesheets());
     }
 
     public void doCreate() {
@@ -211,3 +177,4 @@ public class Controller extends AbstractController implements Initializable {
 
 
 }
+*/

@@ -41,19 +41,3 @@ public class Seat extends Circle {
         return String.valueOf(this.x);
     }
 }
-
-
-/*
-
-
-|
-|
-|
-|
-|
-
-
-
-
-
- */

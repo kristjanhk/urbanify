@@ -15,7 +15,7 @@ public class Controller extends AbstractController {
 
     public void openEvents() {
         // FIXME: 21.04.2016
-        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR);
+        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
     }
 
     public void openArchive() {
