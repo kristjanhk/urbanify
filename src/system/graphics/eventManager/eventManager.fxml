@@ -40,7 +40,7 @@
                           <Insets right="40.0" />
                        </HBox.margin>
                     </Button>
-                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
                              <font>
@@ -56,7 +56,7 @@
                        </HBox.margin>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER" minWidth="180">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
                              <font>
@@ -66,7 +66,7 @@
                        </children>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
                        <HBox.margin>
                           <Insets right="40.0" />
                        </HBox.margin>
@@ -87,7 +87,7 @@
                           <Insets right="40.0" />
                        </HBox.margin>
                     </Button>
-                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
                              <font>
@@ -103,7 +103,7 @@
                        </HBox.margin>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER" minWidth="180">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
                              <font>
@@ -113,7 +113,7 @@
                        </children>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
                        <HBox.margin>
                           <Insets right="40.0" />
                        </HBox.margin>
@@ -134,7 +134,7 @@
                           <Insets right="40.0" />
                        </HBox.margin>
                     </Button>
-                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
                              <font>
@@ -150,7 +150,7 @@
                        </HBox.margin>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER" minWidth="180">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
                              <font>
@@ -160,7 +160,7 @@
                        </children>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
                        <HBox.margin>
                           <Insets right="40.0" />
                        </HBox.margin>
@@ -181,7 +181,7 @@
                           <Insets right="40.0" />
                        </HBox.margin>
                     </Button>
-                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
                              <font>
@@ -197,7 +197,7 @@
                        </HBox.margin>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER" minWidth="180">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
                              <font>
@@ -207,7 +207,7 @@
                        </children>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
                        <HBox.margin>
                           <Insets right="40.0" />
                        </HBox.margin>
@@ -228,7 +228,7 @@
                           <Insets right="40.0" />
                        </HBox.margin>
                     </Button>
-                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
                              <font>
@@ -244,7 +244,7 @@
                        </HBox.margin>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER" minWidth="180">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
                              <font>
@@ -254,7 +254,7 @@
                        </children>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
                        <HBox.margin>
                           <Insets right="40.0" />
                        </HBox.margin>
@@ -275,7 +275,7 @@
                           <Insets right="40.0" />
                        </HBox.margin>
                     </Button>
-                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
                              <font>
@@ -291,7 +291,7 @@
                        </HBox.margin>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER" minWidth="180">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
                              <font>
@@ -301,7 +301,7 @@
                        </children>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
                        <HBox.margin>
                           <Insets right="40.0" />
                        </HBox.margin>
@@ -322,7 +322,7 @@
                           <Insets right="40.0" />
                        </HBox.margin>
                     </Button>
-                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
                              <font>
@@ -338,7 +338,7 @@
                        </HBox.margin>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER" minWidth="180">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
                              <font>
@@ -348,7 +348,7 @@
                        </children>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
                        <HBox.margin>
                           <Insets right="40.0" />
                        </HBox.margin>
@@ -369,7 +369,7 @@
                           <Insets right="40.0" />
                        </HBox.margin>
                     </Button>
-                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
                              <font>
@@ -385,7 +385,7 @@
                        </HBox.margin>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER" minWidth="180">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
                              <font>
@@ -395,7 +395,7 @@
                        </children>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
                        <HBox.margin>
                           <Insets right="40.0" />
                        </HBox.margin>
@@ -416,7 +416,7 @@
                           <Insets right="40.0" />
                        </HBox.margin>
                     </Button>
-                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
                              <font>
@@ -432,7 +432,7 @@
                        </HBox.margin>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER" minWidth="180">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
                              <font>
@@ -442,7 +442,7 @@
                        </children>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
                        <HBox.margin>
                           <Insets right="40.0" />
                        </HBox.margin>
@@ -463,7 +463,7 @@
                           <Insets right="40.0" />
                        </HBox.margin>
                     </Button>
-                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
                              <font>
@@ -479,7 +479,7 @@
                        </HBox.margin>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER" minWidth="180">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
                              <font>
@@ -489,7 +489,7 @@
                        </children>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
                        <HBox.margin>
                           <Insets right="40.0" />
                        </HBox.margin>
@@ -510,7 +510,7 @@
                           <Insets right="40.0" />
                        </HBox.margin>
                     </Button>
-                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                    <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
                              <font>
@@ -526,7 +526,7 @@
                        </HBox.margin>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER" minWidth="180">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
                        <children>
                           <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
                              <font>
@@ -536,7 +536,7 @@
                        </children>
                     </TextFlow>
                     <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER">
+                    <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
                        <HBox.margin>
                           <Insets right="40.0" />
                        </HBox.margin>

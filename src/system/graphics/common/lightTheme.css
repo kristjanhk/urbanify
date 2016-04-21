@@ -214,8 +214,10 @@ Seat:hover {
 }
 .textFlowNimi {
     -fx-padding: 25 25 26 25;
+    -fx-background-color: white;
 }
 
 .textFlowInfo {
     -fx-padding: 25 0 26 0;
+    -fx-background-color: white;
 }

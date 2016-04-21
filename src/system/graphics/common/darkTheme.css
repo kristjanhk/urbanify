@@ -181,3 +181,43 @@ Seat {
 Seat:hover {
     -fx-fill: #5b5c5c;
 }
+
+.scroll-pane {
+    -fx-background-color: #262626;
+}
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #161616;
+    -fx-background-radius: 0;
+}
+.scroll-bar:vertical .track {
+    -fx-background-color: #333333;
+    -fx-background-radius: 0;
+}
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 12 0 12;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow{
+    -fx-shape: " ";
+    -fx-padding:0;
+}
+
+.textEvent {
+    -fx-fill: #f05455;
+    -fx-font-size: 35;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
+}
+.textFlowNimi {
+    -fx-padding: 25 25 26 25;
+    -fx-background-color: #151515;
+}
+
+.textFlowInfo {
+    -fx-padding: 25 0 26 0;
+    -fx-background-color: #151515;
+}
