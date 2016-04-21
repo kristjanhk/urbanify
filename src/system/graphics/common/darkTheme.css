@@ -189,6 +189,17 @@ Seat:hover {
     -fx-background-color: #161616;
     -fx-background-radius: 0;
 }
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #0e0e0e;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: #000000;
+    -fx-background-radius: 0;
+}
+
 .scroll-bar:vertical .track {
     -fx-background-color: #333333;
     -fx-background-radius: 0;

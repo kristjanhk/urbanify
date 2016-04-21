@@ -185,14 +185,27 @@ Seat:hover {
 .scroll-pane {
     -fx-background-color: #e6e6e5;
 }
+
 .scroll-bar:vertical .thumb {
     -fx-background-color: #babab9;
     -fx-background-radius: 0;
 }
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #929291;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: #727271;
+    -fx-background-radius: 0;
+}
+
 .scroll-bar:vertical .track {
     -fx-background-color: #d6d6d6;
     -fx-background-radius: 0;
 }
+
 .scroll-bar .increment-button,
 .scroll-bar .decrement-button {
     -fx-background-color:transparent;
