@@ -13,7 +13,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background"
+<?import javafx.scene.layout.AnchorPane?>
+<BorderPane fx:id="borderPane" prefHeight="900.0" prefWidth="1600.0" styleClass="background"
             xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="system.graphics.floorPlanner.Controller">
     <top>
@@ -119,7 +120,7 @@
     </right>
     <center>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <Region minWidth="40.0" prefHeight="200.0" prefWidth="200.0"/>
+            <Region minWidth="40.0" prefHeight="40.0" prefWidth="40.0"/>
             <VBox alignment="BOTTOM_CENTER" prefHeight="9998" prefWidth="9999">
                 <Pane fx:id="floorPlanPane" prefHeight="9999" prefWidth="9999" style="-fx-background-color: white"/>
                 <ImageView fitHeight="82.0" fitWidth="443.0">

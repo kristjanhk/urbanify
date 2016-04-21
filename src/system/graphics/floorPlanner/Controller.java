@@ -2,9 +2,11 @@ package system.graphics.floorPlanner;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import system.MainHandler;
@@ -23,6 +25,7 @@ public class Controller extends AbstractController implements Initializable {
     public Button cancel;
     public Button save;
     public Button create;
+    public BorderPane borderPane;
     public Pane floorPlanPane;
     public Text rowCountText;
     public Text columnCountText;
@@ -31,7 +34,8 @@ public class Controller extends AbstractController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        //BorderPane.setAlignment(this.floorPlanPane, Pos.BOTTOM_LEFT);
+        this.floorPlanPane.getChildren().add(new Group());
     }
 
     // TODO: 20.04.2016 asukohtade, suuruste muutused teha
@@ -46,6 +50,7 @@ public class Controller extends AbstractController implements Initializable {
         if (this.columnCount < 1) {
             this.addNewColumn();
         }
+        resize();
         printout();
     }
 
@@ -58,6 +63,7 @@ public class Controller extends AbstractController implements Initializable {
             getFloor().remove(getFloor().size() - 1);
             setRowCountText();
         }
+        resize();
         printout();
     }
 
@@ -70,6 +76,7 @@ public class Controller extends AbstractController implements Initializable {
         if (getFloor().size() < 1) {
             this.addNewRow();
         }
+        resize();
         printout();
     }
 
@@ -86,6 +93,7 @@ public class Controller extends AbstractController implements Initializable {
             }
             setColumnCountText();
         }
+        resize();
         printout();
     }
 
@@ -98,7 +106,31 @@ public class Controller extends AbstractController implements Initializable {
     }
 
     private ObservableList<Node> getFloor() {
-        return this.floorPlanPane.getChildren();
+        return ((Group) this.floorPlanPane.getChildren().get(0)).getChildren();
+    }
+
+    private void resize() {
+        // TODO: 21/04/2016 offsets
+        int width = this.columnCount * 60;
+        int height = getFloor().size() * 60;
+        System.out.println(width);
+        System.out.println(height);
+        if (width > this.floorPlanPane.getWidth() - 50 || height > this.floorPlanPane.getHeight() - 50) {
+            double ratio;
+            double widthratio = (this.floorPlanPane.getWidth() - 50) / width;
+            double heightratio = (this.floorPlanPane.getHeight() - 50) / height;
+            System.out.println(widthratio);
+            System.out.println(heightratio);
+            if (widthratio > heightratio) {
+                ratio = heightratio;
+            } else {
+                ratio = widthratio;
+            }
+            System.out.println(ratio);
+            this.floorPlanPane.setScaleX(ratio);
+            this.floorPlanPane.setScaleY(ratio);
+            this.floorPlanPane.resizeRelocate(10, 10, 0, 0);
+        }
     }
 
     private void printout() {
