@@ -31,8 +31,7 @@ public class Controller extends AbstractController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.addNewRow();
-        this.addNewColumn();
+
     }
 
     // TODO: 20.04.2016 asukohtade, suuruste muutused teha
@@ -42,15 +41,22 @@ public class Controller extends AbstractController implements Initializable {
         for (int i = 0; i < this.columnCount; i++) {
             group.getChildren().add(new Seat(getFloor().size(), i));
         }
-        getFloor().add(0, group);
-        this.rowCountText.setText(String.valueOf(getFloor().size()));
+        getFloor().add(group);
+        setRowCountText();
+        if (this.columnCount < 1) {
+            this.addNewColumn();
+        }
         printout();
     }
 
     public void removeFirstRow() {
         if (getFloor().size() > 0) {
-            getFloor().remove(0);
-            this.rowCountText.setText(String.valueOf(getFloor().size()));
+            if (getFloor().size() == 1) {
+                this.columnCount = 0;
+                setColumnCountText();
+            }
+            getFloor().remove(getFloor().size() - 1);
+            setRowCountText();
         }
         printout();
     }
@@ -60,19 +66,35 @@ public class Controller extends AbstractController implements Initializable {
             ((Group) getFloor().get(i)).getChildren().add(new Seat(i, this.columnCount));
         }
         this.columnCount++;
-        this.columnCountText.setText(String.valueOf(this.columnCount));
+        setColumnCountText();
+        if (getFloor().size() < 1) {
+            this.addNewRow();
+        }
         printout();
     }
 
     public void removeLastColumn() {
         if (this.columnCount > 0) {
-            for (Node group : getFloor()) {
-                ((Group) group).getChildren().remove(this.columnCount - 1);
-            }
             this.columnCount--;
-            this.columnCountText.setText(String.valueOf(this.columnCount));
+            if (this.columnCount == 0) {
+                getFloor().clear();
+                setRowCountText();
+            } else {
+                for (Node group : getFloor()) {
+                    ((Group) group).getChildren().remove(this.columnCount);
+                }
+            }
+            setColumnCountText();
         }
         printout();
+    }
+
+    private void setColumnCountText() {
+        this.columnCountText.setText(String.valueOf(this.columnCount));
+    }
+
+    private void setRowCountText() {
+        this.rowCountText.setText(String.valueOf(getFloor().size()));
     }
 
     private ObservableList<Node> getFloor() {
