@@ -165,6 +165,15 @@
     -fx-image: url("../mainMenu/images/archiveArmedDark.png");
 }
 
+.screen {
+    -fx-image: url("../floorPlanner/images/screenDark.png");
+}
+
+.stage {
+    -fx-image: url("../floorPlanner/images/stageDark.png");
+}
+
+
 Seat {
     -fx-fill: #151515;
 }
