@@ -23,19 +23,7 @@
     -fx-font-family: 'TicketFont';
     -fx-font-size: 30;
     -fx-font-smoothing-type: gray;
-}
-
-.buttonRound {
-    -fx-background-color: #ffffff;
-    -fx-text-fill: #b0afb0;
-    -fx-background-radius: 35;
-    -fx-pref-width: 70;
-    -fx-pref-height: 70;
-    -fx-max-height: 70;
-    -fx-max-width: 70;
-    -fx-font-family: 'TicketFont';
-    -fx-font-size: 30;
-    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-button {
@@ -43,6 +31,7 @@
     -fx-font-family: 'TicketFont';
     -fx-font-size: 26;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-button:hover {
@@ -51,16 +40,19 @@
     -fx-font-family: 'TicketFont';
     -fx-font-size: 26;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-button .label{
     -fx-text-fill: #b0afb0;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-button .label:hover{
     -fx-text-fill: #ffffff;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-button:openvertically .arrow-button {
@@ -97,32 +89,38 @@
     -fx-background-color: #dddddd;
     -fx-text-fill: #ffffff;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .button:armed {
     -fx-background-color: #d0d3d3;
     -fx-text-fill: #ffffff;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .context-menu {
     -fx-background-color: #ffffff;
     -fx-border-color: #ffffff;
     -fx-font-size: 25;
+    -fx-background-radius: 0;
 }
 
 .menu-item:hover {
     -fx-background-color: #dddddd;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-item:focused {
     -fx-background-color: #dddddd;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-item .label {
     -fx-text-fill: #b0afb0;
+    -fx-background-radius: 0;
 }
 
 .separator .line {
@@ -210,7 +208,7 @@ Seat:hover {
 .scroll-bar .decrement-button {
     -fx-background-color:transparent;
     -fx-background-radius: 0em;
-    -fx-padding:0 12 0 12;
+    -fx-padding:0 10 0 10;
 }
 
 .scroll-bar .increment-arrow,
@@ -233,4 +231,43 @@ Seat:hover {
 .textFlowInfo {
     -fx-padding: 25 0 26 0;
     -fx-background-color: white;
+}
+
+.buttonRound {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #b0afb0;
+    -fx-background-radius: 35;
+    -fx-pref-width: 70;
+    -fx-pref-height: 70;
+    -fx-max-height: 70;
+    -fx-max-width: 70;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 30;
+    -fx-font-smoothing-type: gray;
+}
+
+.buttonRound:hover {
+    -fx-background-color: #dddddd;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 35;
+    -fx-pref-width: 70;
+    -fx-pref-height: 70;
+    -fx-max-height: 70;
+    -fx-max-width: 70;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 30;
+    -fx-font-smoothing-type: gray;
+}
+
+.buttonRound:armed {
+    -fx-background-color: #d0d3d3;
+    -fx-text-fill: #ffffff;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 35;
+    -fx-pref-width: 70;
+    -fx-pref-height: 70;
+    -fx-max-height: 70;
+    -fx-max-width: 70;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 30;
 }

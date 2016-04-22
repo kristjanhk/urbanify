@@ -23,6 +23,7 @@
     -fx-font-family: 'TicketFont';
     -fx-font-size: 30;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-button {
@@ -30,6 +31,7 @@
     -fx-font-family: 'TicketFont';
     -fx-font-size: 26;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-button:hover {
@@ -38,16 +40,19 @@
     -fx-font-family: 'TicketFont';
     -fx-font-size: 26;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-button .label{
     -fx-text-fill: #f05455;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-button .label:hover{
     -fx-text-fill: #f05455;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-button:openvertically .arrow-button {
@@ -72,19 +77,6 @@
     -fx-font-smoothing-type: gray;
 }
 
-.buttonRound {
-    -fx-background-color: #151515;
-    -fx-text-fill: #f05455;
-    -fx-background-radius: 35;
-    -fx-pref-width: 70;
-    -fx-pref-height: 70;
-    -fx-max-height: 70;
-    -fx-max-width: 70;
-    -fx-font-family: 'TicketFont';
-    -fx-font-size: 30;
-    -fx-font-smoothing-type: gray;
-}
-
 .topText {
     -fx-fill: #f05455;
     -fx-font-size: 50;
@@ -96,32 +88,38 @@
     -fx-background-color: #5b5c5c;
     -fx-text-fill: #f05455;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .button:armed {
     -fx-background-color: #333333;
     -fx-text-fill: #f05455;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .context-menu {
     -fx-background-color: #262626;
     -fx-border-color: #262626;
     -fx-font-size: 25;
+    -fx-background-radius: 0;
 }
 
 .menu-item:hover {
     -fx-background-color: #5b5c5c;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-item:focused {
     -fx-background-color: #5b5c5c;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .menu-item .label {
     -fx-text-fill: #f05455;
+    -fx-background-radius: 0;
 }
 
 .separator .line {
@@ -175,16 +173,17 @@
 
 
 Seat {
-    -fx-fill: #151515;
+    -fx-fill: #5b5c5c;
 }
 
 Seat:hover {
-    -fx-fill: #5b5c5c;
+    -fx-fill: #943233;
 }
 
 .scroll-pane {
     -fx-background-color: #262626;
 }
+
 .scroll-bar:vertical .thumb {
     -fx-background-color: #161616;
     -fx-background-radius: 0;
@@ -204,11 +203,12 @@ Seat:hover {
     -fx-background-color: #333333;
     -fx-background-radius: 0;
 }
+
 .scroll-bar .increment-button,
 .scroll-bar .decrement-button {
     -fx-background-color:transparent;
     -fx-background-radius: 0em;
-    -fx-padding:0 12 0 12;
+    -fx-padding:0 10 0 10;
 }
 
 .scroll-bar .increment-arrow,
@@ -231,4 +231,43 @@ Seat:hover {
 .textFlowInfo {
     -fx-padding: 25 0 26 0;
     -fx-background-color: #151515;
+}
+
+.buttonRound {
+    -fx-background-color: #151515;
+    -fx-text-fill: #f05455;
+    -fx-background-radius: 35;
+    -fx-pref-width: 70;
+    -fx-pref-height: 70;
+    -fx-max-height: 70;
+    -fx-max-width: 70;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 30;
+    -fx-font-smoothing-type: gray;
+}
+
+.buttonRound:hover {
+    -fx-background-color: #5b5c5c;
+    -fx-text-fill: #f05455;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 35;
+    -fx-pref-width: 70;
+    -fx-pref-height: 70;
+    -fx-max-height: 70;
+    -fx-max-width: 70;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 30;
+}
+
+.buttonRound:armed {
+    -fx-background-color: #333333;
+    -fx-text-fill: #f05455;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 35;
+    -fx-pref-width: 70;
+    -fx-pref-height: 70;
+    -fx-max-height: 70;
+    -fx-max-width: 70;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 30;
 }
