@@ -139,6 +139,10 @@
     -fx-image: url("../mainMenu/images/archiveDark.png");
 }
 
+.settings {
+    -fx-image: url("../mainMenu/images/settingsDark.png");
+}
+
 .newEvent:hover {
     -fx-image: url("../mainMenu/images/newEventHoverDark.png");
 }
@@ -151,6 +155,10 @@
     -fx-image: url("../mainMenu/images/archiveHoverDark.png");
 }
 
+.settings:hover {
+    -fx-image: url("../mainMenu/images/settingsHoverDark.png");
+}
+
 .newEvent:pressed {
     -fx-image: url("../mainMenu/images/newEventArmedDark.png");
 }
@@ -161,6 +169,10 @@
 
 .archive:pressed {
     -fx-image: url("../mainMenu/images/archiveArmedDark.png");
+}
+
+.settings:pressed {
+    -fx-image: url("../mainMenu/images/settingsArmedDark.png");
 }
 
 .screen {

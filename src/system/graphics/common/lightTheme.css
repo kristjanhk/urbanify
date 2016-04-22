@@ -129,39 +129,51 @@
 }
 
 .newEvent {
-    -fx-image: url("../mainMenu/images/newEvent.png");
+    -fx-image: url("../mainMenu/images/newEventLight.png");
 }
 
 .openEvent {
-    -fx-image: url("../mainMenu/images/openEvent.png");
+    -fx-image: url("../mainMenu/images/openEventLight.png");
 }
 
 .archive {
-    -fx-image: url("../mainMenu/images/archive.png");
+    -fx-image: url("../mainMenu/images/archiveLight.png");
+}
+
+.settings {
+    -fx-image: url("../mainMenu/images/settingsLight.png");
 }
 
 .newEvent:hover {
-    -fx-image: url("../mainMenu/images/newEventHover.png");
+    -fx-image: url("../mainMenu/images/newEventHoverLight.png");
 }
 
 .openEvent:hover {
-    -fx-image: url("../mainMenu/images/openEventHover.png");
+    -fx-image: url("../mainMenu/images/openEventHoverLight.png");
 }
 
 .archive:hover {
-    -fx-image: url("../mainMenu/images/archiveHover.png");
+    -fx-image: url("../mainMenu/images/archiveHoverLight.png");
+}
+
+.settings:hover {
+    -fx-image: url("../mainMenu/images/settingsHoverLight.png");
 }
 
 .newEvent:pressed {
-    -fx-image: url("../mainMenu/images/newEventArmed.png");
+    -fx-image: url("../mainMenu/images/newEventArmedLight.png");
 }
 
 .openEvent:pressed {
-    -fx-image: url("../mainMenu/images/openEventArmed.png");
+    -fx-image: url("../mainMenu/images/openEventArmedLight.png");
 }
 
 .archive:pressed {
-    -fx-image: url("../mainMenu/images/archiveArmed.png");
+    -fx-image: url("../mainMenu/images/archiveArmedLight.png");
+}
+
+.settings:pressed {
+    -fx-image: url("../mainMenu/images/settingsArmedLight.png");
 }
 
 .screen {
