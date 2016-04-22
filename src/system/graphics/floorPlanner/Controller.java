@@ -1,5 +1,8 @@
 package system.graphics.floorPlanner;
 
+import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -10,8 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-import javafx.scene.transform.Scale;
-import javafx.scene.transform.Translate;
 import system.MainHandler;
 import system.graphics.AbstractController;
 import system.graphics.Scenetype;
@@ -34,9 +35,7 @@ public class Controller extends AbstractController implements Initializable {
     public Text columnCountText;
 
     private int columnCount = 0;
-    private double dx = 0.0;
-    private double dy = 0.0;
-    private double scalefactor = 0.95;
+    private double maxY = 0.0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,12 +43,93 @@ public class Controller extends AbstractController implements Initializable {
         this.floorPlan.setMinSize(100, 100);
         this.floorPlan.getChildren().add(new Group());
         StackPane.setMargin(getFloorGroup(), new Insets(10));
+        this.floorPlan.widthProperty().addListener((observable, oldValue, newValue) -> {
+            double paneWidth = newValue.doubleValue() - 20;
+            double groupWidth = this.getFloorGroup().getBoundsInParent().getWidth();
+            double groupOrigWidth = this.getFloorGroup().getBoundsInLocal().getWidth();
+            double groupHeight = this.getFloorGroup().getBoundsInParent().getHeight();
+            double groupOrigHeight = this.getFloorGroup().getBoundsInLocal().getHeight();
+            System.out.println(String.valueOf(paneWidth - groupWidth > 60) + ", " +
+                    String.valueOf(groupWidth < groupOrigWidth) + ", " +
+                    String.valueOf(groupHeight < groupOrigHeight) + ", " +
+                    String.valueOf(groupHeight < this.floorPlan.getHeight()));
+            double suhe = paneWidth / groupWidth;
+                if (groupWidth > paneWidth) {
+                    checkResize(getGroupMaxY(), true, suhe);
+                } else if (paneWidth - groupWidth > 120 && //laiuses vähemalt 2x istet ruumi
+                        groupWidth < groupOrigWidth && // ollakse laiuselt väiksem kui orig
+                        groupHeight < groupOrigHeight && // ollakse pikkuselt väiksem kui orig
+                        groupHeight < this.floorPlan.getHeight()) { //ollakse pikkuselt väiksem kui pane
+                    checkResize(getGroupMaxY(), true, suhe);
+                }
+        });
+        this.floorPlan.heightProperty().addListener((observable, oldValue, newValue) -> {
+            double paneHeight = newValue.doubleValue() - 20;
+            double groupHeight = this.getFloorGroup().getBoundsInParent().getHeight();
+            double groupOrigHeight = this.getFloorGroup().getBoundsInLocal().getHeight();
+            double groupWidth = this.getFloorGroup().getBoundsInParent().getWidth();
+            double groupOrigWidth = this.getFloorGroup().getBoundsInLocal().getWidth();
+            double suhe = paneHeight / groupHeight;
+            if (groupHeight > paneHeight) {
+                checkResize(getGroupMaxY(), true, suhe);
+            } else if (paneHeight - groupHeight > 60 + 10 && //pikkuses vähemalt 1x iste + padding ruumi
+                    groupHeight < groupOrigHeight && //ollakse pikkuselt väiksem kui orig
+                    groupWidth < groupOrigWidth && // ollakse laiuselt väiksem kui orig
+                    groupWidth < this.floorPlan.getWidth()) { // ollakse laiuselt väiksem kui pane
+                checkResize(getGroupMaxY(), true, suhe);
+            }
+        });
+    }
+
+    private void resize(ReadOnlyDoubleProperty propertyType, Number value) {
+        double propertyValue = value.doubleValue() - 20;
+        double groupWidth = this.getFloorGroup().getBoundsInParent().getWidth();
+        double groupOrigWidth = this.getFloorGroup().getBoundsInLocal().getWidth();
+        double groupHeight = this.getFloorGroup().getBoundsInParent().getHeight();
+        double groupOrigHeight = this.getFloorGroup().getBoundsInLocal().getHeight();
+        if (propertyType.equals(this.floorPlan.widthProperty())) {
+            double ratio = propertyValue / groupWidth;
+            if (groupWidth > propertyValue) {
+                checkResize(getGroupMaxY(), true, ratio);
+            } else if (propertyValue - groupWidth > 60) {
+
+            }
+        } else if (propertyType.equals(this.floorPlan.heightProperty())){
+            double ratio = propertyValue / groupHeight;
+            if (groupHeight > propertyValue) {
+                checkResize(getGroupMaxY(), true, ratio);
+            }
+        }
     }
 
     // TODO: 20.04.2016 asukohtade, suuruste muutused teha
 
-    public void addNewRow() {
-        double maxy = getFloorGroup().getBoundsInParent().getMaxY();
+
+    public void addRowAction() {
+        double maxy = getGroupMaxY();
+        this.addNewRow();
+        this.checkResize(maxy, false, 0.95);
+    }
+
+    public void removeRowAction() {
+        double maxy = getGroupMaxY();
+        this.removeFirstRow();
+        this.checkResize(maxy, false, 0.95);
+    }
+
+    public void addColumnAction() {
+        double maxy = getGroupMaxY();
+        this.addNewColumn();
+        this.checkResize(maxy, false, 0.95);
+    }
+
+    public void removeColumnAction() {
+        double maxy = getGroupMaxY();
+        this.removeLastColumn();
+        this.checkResize(maxy, false, 0.95);
+    }
+
+    private void addNewRow() {
         Group group = new Group();
         for (int i = 0; i < this.columnCount; i++) {
             group.getChildren().add(new Seat(getFloor().size(), i));
@@ -59,17 +139,9 @@ public class Controller extends AbstractController implements Initializable {
         if (this.columnCount < 1) {
             this.addNewColumn();
         }
-        if (maxy != -1) {
-            double newmaxy = getFloorGroup().getBoundsInParent().getMaxY();
-            this.dy += maxy - newmaxy;
-            getFloorGroup().setTranslateY(dy);
-        }
-        //resize();
-        printout();
     }
 
-    public void removeFirstRow() {
-        double maxy = getFloorGroup().getBoundsInParent().getMaxY();
+    private void removeFirstRow() {
         if (getFloor().size() > 0) {
             if (getFloor().size() == 1) {
                 this.columnCount = 0;
@@ -78,16 +150,9 @@ public class Controller extends AbstractController implements Initializable {
             getFloor().remove(getFloor().size() - 1);
             setRowCountText();
         }
-        if (maxy != -1) {
-            double newmaxy = getFloorGroup().getBoundsInParent().getMaxY();
-            this.dy += maxy - newmaxy;
-            getFloorGroup().setTranslateY(dy);
-        }
-        //resize();
-        printout();
     }
 
-    public void addNewColumn() {
+    private void addNewColumn() {
         for (int i = getFloor().size() - 1; i >= 0; i--) {
             ((Group) getFloor().get(i)).getChildren().add(new Seat(i, this.columnCount));
         }
@@ -96,11 +161,9 @@ public class Controller extends AbstractController implements Initializable {
         if (getFloor().size() < 1) {
             this.addNewRow();
         }
-        //resize();
-        printout();
     }
 
-    public void removeLastColumn() {
+    private void removeLastColumn() {
         if (this.columnCount > 0) {
             this.columnCount--;
             if (this.columnCount == 0) {
@@ -113,8 +176,6 @@ public class Controller extends AbstractController implements Initializable {
             }
             setColumnCountText();
         }
-        //resize();
-        printout();
     }
 
     private void setColumnCountText() {
@@ -133,29 +194,27 @@ public class Controller extends AbstractController implements Initializable {
         return (Group) this.floorPlan.getChildren().get(0);
     }
 
-    private void resize() {
-        System.out.println(getFloorGroup().getBoundsInLocal());
-        System.out.println(getFloorGroup().getBoundsInParent());
 
-        //double maxx = getFloorGroup().getBoundsInParent().getMaxX();
-        double maxy = getFloorGroup().getBoundsInParent().getMaxY();
+    private void checkResize(double prevY, boolean forced, double scalefactor) {
+        if (prevY != -1.0) {
+            if (forced) {
 
-        getFloorGroup().setScaleX(getFloorGroup().getScaleX() * this.scalefactor);
-        getFloorGroup().setScaleY(getFloorGroup().getScaleY() * this.scalefactor);
+                //System.out.println("orig: " + getGroupMaxY());
 
-        System.out.println(getFloorGroup().getBoundsInParent());
+                getFloorGroup().setScaleX(getFloorGroup().getScaleX() * scalefactor);
+                getFloorGroup().setScaleY(getFloorGroup().getScaleY() * scalefactor);
 
-        //double newmaxx = getFloorGroup().getBoundsInParent().getMaxX();
-        double newmaxy = getFloorGroup().getBoundsInParent().getMaxY();
+                //System.out.println("scale: " + getGroupMaxY());
 
-        //this.dx += maxx - newmaxx;
-        this.dy += maxy - newmaxy;
+                double newY = getGroupMaxY();
 
-        //getFloorGroup().setTranslateX(dx); // FIXME: 22.04.2016 x pidi pole vaja liikuda??
-        getFloorGroup().setTranslateY(dy);
+                this.maxY += prevY - newY;
+                getFloorGroup().setTranslateY(this.maxY);
 
-        System.out.println(getFloorGroup().getBoundsInParent());
-        System.out.println();
+                //System.out.println("norm: " + getGroupMaxY());
+            }
+        }
+    }
 
         /*// TODO: 21/04/2016 offsets
         int width = this.columnCount * 60;
@@ -177,20 +236,11 @@ public class Controller extends AbstractController implements Initializable {
             this.floorPlan.getChildren().get(0).setScaleX(ratio);
             this.floorPlan.getChildren().get(0).setScaleY(ratio);
             this.floorPlan.getChildren().get(0).resizeRelocate(10, 10, 0, 0);*/
-        //}
-    }
+    //}
 
-    private void printout() {
-        /*StringBuilder out = new StringBuilder();
-        for (Node group : getFloor()) {
-            out.append("[");
-            ((Group) group).getChildren().forEach(out::append);
-            out.append("], ");
-        }
-        System.out.println(out);*/
-       // System.out.println(getFloorGroup().getBoundsInLocal());
+    private double getGroupMaxY() {
+        return getFloorGroup().getBoundsInParent().getMaxY();
     }
-
 
     // TODO: 14.04.2016 to be changed
 
@@ -201,32 +251,10 @@ public class Controller extends AbstractController implements Initializable {
 
     public void doSave() {
         // TODO: 21.04.2016 save
-        resize();
-        /*Group seats = (Group) this.floorPlan.getChildren().get(0);
-        System.out.println(seats.getBoundsInParent());
-
-        //seats.getTransforms().clear();
-        System.out.println(seats.getTranslateX());
-        System.out.println(seats.getTranslateY());
-
-        double seatsx = seats.getBoundsInParent().getMinX();
-        double seatsy = seats.getBoundsInParent().getMinY();
-        double seatsw = seats.getBoundsInParent().getWidth();
-        double seatsh = seats.getBoundsInParent().getHeight();
-
-        double middlex = (seatsx + seatsw) / 2;
-        double middley = (seatsy + seatsh) / 2;
-
-        seats.getTransforms().add(new Scale(0.95, 0.95, middlex, middley));
-
-        double seatnewx = seats.getBoundsInParent().getMinX();
-        double seatnewy = seats.getBoundsInParent().getMinY();
-
-        seats.getTransforms().add(new Translate(seatsx - seatnewx, seatsy - seatnewy));*/
+        this.checkResize(getGroupMaxY(), true, 0.95);
     }
 
     public void doCreate() {
-        System.out.println(this.scene.getScenetype());
         MainHandler.changeGlobalThemeTo(Csstype.toggleTheme());
     }
 

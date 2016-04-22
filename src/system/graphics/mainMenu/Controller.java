@@ -18,6 +18,10 @@ public class Controller extends AbstractController {
         this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
     }
 
+    public void openSettings() {
+        this.scene.getStageHandler().switchSceneTo(Scenetype.SETTINGS);
+    }
+
     public void openArchive() {
         // FIXME: 21.04.2016
         this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR);
