@@ -36,11 +36,8 @@
         <VBox alignment="TOP_RIGHT" prefHeight="595.0" prefWidth="404.0" BorderPane.alignment="CENTER">
             <DatePicker fx:id="calendar" maxHeight="70.5" maxWidth="304.0" minHeight="70.5" minWidth="304.0"
                         prefHeight="70.5" prefWidth="304.0" showWeekNumbers="false" promptText="dd.mm.yyyy">
-                <VBox.margin>
-                    <Insets right="40.0"/>
-                </VBox.margin>
             </DatePicker>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="set date" wrappingWidth="324.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="set date" wrappingWidth="284.0">
                 <VBox.margin>
                     <Insets left="20.0" top="6.0"/>
                 </VBox.margin>
@@ -48,10 +45,10 @@
             <TextField fx:id="timeText" maxHeight="70.5" maxWidth="304.0" minHeight="70.5" minWidth="304.0"
                        prefHeight="70.5" prefWidth="304.0" promptText="mm:hh">
                 <VBox.margin>
-                    <Insets right="40.0" top="20.0"/>
+                    <Insets top="20.0"/>
                 </VBox.margin>
             </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="set time" wrappingWidth="324.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="set time" wrappingWidth="284.0">
                 <VBox.margin>
                     <Insets left="20.0" top="6.0"/>
                 </VBox.margin>
@@ -101,19 +98,19 @@
             <right>
                 <HBox BorderPane.alignment="CENTER">
                     <Button fx:id="cancel" alignment="CENTER" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false"
-                            onMousePressed="#doCancel" prefWidth="121.0" styleClass="button" text="cancel">
+                            onMousePressed="#doCancel" prefWidth="121.0" styleClass="bottomButton" text="cancel>
                         <HBox.margin>
                             <Insets bottom="40.0" right="40.0" top="40.0"/>
                         </HBox.margin>
                     </Button>
                     <Button fx:id="next" alignment="CENTER" maxWidth="92.3" minWidth="92.3" mnemonicParsing="false"
-                            onMousePressed="#doNext" prefWidth="92.3" styleClass="button" text="next">
+                            onMousePressed="#doNext" prefWidth="92.3" styleClass="bottomButton" text="next">
                         <HBox.margin>
                             <Insets bottom="40.0" right="40.0" top="40.0"/>
                         </HBox.margin>
                     </Button>
                     <Button fx:id="create" alignment="CENTER" maxWidth="92.3" minWidth="92.3" mnemonicParsing="false"
-                            onMousePressed="#doNext" prefWidth="92.3" styleClass="button" text="create">
+                            onMousePressed="#doNext" prefWidth="92.3" styleClass="bottomButton" text="create">
                         <HBox.margin>
                             <Insets bottom="40.0" right="40.0" top="40.0"/>
                         </HBox.margin>

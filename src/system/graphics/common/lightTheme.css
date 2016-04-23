@@ -12,6 +12,7 @@
     -fx-font-family: 'TicketFont';
     -fx-font-size: 35;
     -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
 }
 
 .button {

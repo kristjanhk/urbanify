@@ -96,21 +96,21 @@
             <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="523.0">
                 <Region minWidth="40.0"/>
                 <Button fx:id="cancel" onAction="#doCancel" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false"
-                        prefWidth="121.0" text="cancel">
+                        prefWidth="121.0" text="cancel" styleClass="bottomButton">
                     <HBox.margin>
                         <Insets bottom="40.0"/>
                     </HBox.margin>
                 </Button>
                 <Region minWidth="40.0" prefHeight="200.0" prefWidth="40.0"/>
                 <Button fx:id="save" onAction="#doSave" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false"
-                        prefWidth="121.0" text="save">
+                        prefWidth="121.0" text="save" styleClass="bottomButton">
                     <HBox.margin>
                         <Insets bottom="40.0"/>
                     </HBox.margin>
                 </Button>
                 <Region minWidth="40.0" prefHeight="200.0" prefWidth="40.0"/>
                 <Button fx:id="create" onAction="#doCreate" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false"
-                        prefWidth="121.0" text="create">
+                        prefWidth="121.0" text="create" styleClass="bottomButton">
                     <HBox.margin>
                         <Insets bottom="40.0" right="40.0"/>
                     </HBox.margin>
@@ -123,7 +123,7 @@
             <Region minWidth="40.0" prefHeight="40.0" prefWidth="40.0"/>
             <VBox alignment="BOTTOM_CENTER" prefHeight="9998" prefWidth="9999">
                 <StackPane styleClass="background" fx:id="floorPlan" prefHeight="9999" prefWidth="9999"
-                           alignment="BOTTOM_CENTER" minWidth="0" minHeight="0" style="-fx-background-color: #e6e6e5"/>
+                           alignment="BOTTOM_CENTER" minWidth="0" minHeight="0"  style="-fx-background-color: #e6e6e5"/>
                 <ImageView fitHeight="82.0" fitWidth="443.0" styleClass="stage">
                     <VBox.margin>
                         <Insets bottom="20.0"/>

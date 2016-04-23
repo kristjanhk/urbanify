@@ -41,7 +41,7 @@
             <BorderPane.margin>
                 <Insets left="40.0" right="40.0"/>
             </BorderPane.margin>
-            <VBox fx:id="eventsVBox" styleClass="background" prefHeight="739.0" prefWidth="1520.0"/>
+            <VBox fx:id="eventsVBox" styleClass="background" prefHeight="739.0" prefWidth="1520."/>
         </ScrollPane>
     </center>
 </BorderPane>
