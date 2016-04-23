@@ -22,7 +22,6 @@ public class Ticket extends HBox {
 
     private void initChildren() {
         this.deleteTicket = new Button("ó");
-        this.deleteTicket.getStyleClass().add("buttonField"); //unused?
         this.deleteTicket.setMinWidth(70.5);
         this.deleteTicket.setMaxWidth(70.5);
         this.deleteTicket.setPrefWidth(70.5);
@@ -34,7 +33,6 @@ public class Ticket extends HBox {
         // TODO: 23.04.2016 add pattern listeners 
         
         this.priceText = new TextField();
-        this.priceText.getStyleClass().add("textField");
         this.priceText.setMinWidth(110.0);
         this.priceText.setMaxWidth(110.0);
         this.priceText.setPrefWidth(110.0);
@@ -42,7 +40,6 @@ public class Ticket extends HBox {
         HBox.setMargin(this.priceText, new Insets(40.0, 0.0, 0.0, 40.0));
 
         this.ticketText = new TextField();
-        this.ticketText.getStyleClass().add("textField");
         this.ticketText.setMinWidth(292.5);
         this.ticketText.setMaxWidth(292.5);
         this.ticketText.setPrefWidth(174.0);

@@ -63,6 +63,9 @@ public class MainHandler extends Application{
     }
 }
 
+//cssi hierarhia
+//default caspian.css < API settings < user's Scene css < user's Parent css < setStyle()
+
 /*
 mainhandler - hoiab handlereid
     |

@@ -2,7 +2,7 @@
     src: url("TicketFont.ttf");
 }
 
-.textField {
+.text-field {
     -fx-background-color: #151515;
     -fx-prompt-text-fill: #f05455;
     -fx-text-fill: #f05455;

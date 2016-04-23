@@ -25,7 +25,7 @@ public class Controller extends AbstractController implements Initializable {
     }
 
     public void openNewEvent() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR, this.scene.getScenetype());
+        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR);
     }
 
     public void openEvents() {

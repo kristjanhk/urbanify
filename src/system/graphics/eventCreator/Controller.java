@@ -44,6 +44,7 @@ public class Controller extends AbstractController implements Initializable {
 
     public void doCancel() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
+        this.scene.getStageHandler().replaceScene(this.scene.getScenetype());
     }
 
     public void doNext() {
@@ -52,9 +53,5 @@ public class Controller extends AbstractController implements Initializable {
     }
 
     @Override
-    public void prepareToDisplay(Scenetype prevSceneType) {
-        if (prevSceneType.equals(Scenetype.MAINMENU)) {
-            this.scene.getStageHandler().replaceScene(this.scene.getScenetype());
-        }
-    }
+    public void prepareToDisplay(Scenetype prevSceneType) {}
 }
