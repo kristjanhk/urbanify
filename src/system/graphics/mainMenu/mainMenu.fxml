@@ -2,7 +2,6 @@
 
 <?xml-stylesheet type="text/css" href="lightTheme.css"?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -11,85 +10,85 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.mainMenu.Controller">
-   <center>
-      <GridPane prefHeight="840.0" prefWidth="1543.0" BorderPane.alignment="BOTTOM_CENTER">
-        <columnConstraints>
-          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
+<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.65"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.mainMenu.Controller">
+    <center>
+        <GridPane prefHeight="840.0" prefWidth="1543.0" BorderPane.alignment="BOTTOM_CENTER">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES"/>
+            </rowConstraints>
             <VBox alignment="BOTTOM_RIGHT" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <ImageView fx:id="newEvent" onMouseClicked="#openNewEvent" styleClass="newEvent">
-                     <VBox.margin>
-                        <Insets right="3.5" />
-                     </VBox.margin></ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="new event" textAlignment="CENTER" wrappingWidth="140.0">
-                     <VBox.margin>
-                        <Insets bottom="25.0" top="15.0" />
-                     </VBox.margin>
-                  </Text>
-               </children>
-               <GridPane.margin>
-                  <Insets right="60.0" />
-               </GridPane.margin>
+                <GridPane.margin>
+                    <Insets right="60.0"/>
+                </GridPane.margin>
+                <ImageView fx:id="newEventImage" onMouseClicked="#openNewEvent" styleClass="newEvent">
+                    <VBox.margin>
+                        <Insets right="3.5"/>
+                    </VBox.margin>
+                </ImageView>
+                <Text fx:id="newEventText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="new event"
+                      textAlignment="CENTER"
+                      wrappingWidth="140.0">
+                    <VBox.margin>
+                        <Insets bottom="25.0" top="15.0"/>
+                    </VBox.margin>
+                </Text>
             </VBox>
             <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
-               <children>
-                  <ImageView fx:id="events" onMouseClicked="#openEvents" styleClass="openEvent">
-                     <VBox.margin>
-                        <Insets left="9.5" />
-                     </VBox.margin></ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="open event" textAlignment="CENTER" wrappingWidth="152.0">
-                     <VBox.margin>
-                        <Insets bottom="25.0" top="15.0" />
-                     </VBox.margin>
-                  </Text>
-               </children>
-               <GridPane.margin>
-                  <Insets left="60.0" />
-               </GridPane.margin>
+                <GridPane.margin>
+                    <Insets left="60.0"/>
+                </GridPane.margin>
+                <ImageView fx:id="eventsImage" onMouseClicked="#openEvents" styleClass="openEvent">
+                    <VBox.margin>
+                        <Insets left="9.5"/>
+                    </VBox.margin>
+                </ImageView>
+                <Text fx:id="eventsText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="open event"
+                      textAlignment="CENTER"
+                      wrappingWidth="152.0">
+                    <VBox.margin>
+                        <Insets bottom="25.0" top="15.0"/>
+                    </VBox.margin>
+                </Text>
             </VBox>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-               <children>
-                  <ImageView fx:id="settings" onMouseClicked="#openSettings" styleClass="settings">
-                  </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="settings" textAlignment="CENTER" wrappingWidth="98.0">
-                     <VBox.margin>
-                        <Insets right="17.5" top="15.0" />
-                     </VBox.margin>
-                  </Text>
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <GridPane.margin>
-                  <Insets right="60.0" />
-               </GridPane.margin>
+                <opaqueInsets>
+                    <Insets/>
+                </opaqueInsets>
+                <GridPane.margin>
+                    <Insets right="60.0"/>
+                </GridPane.margin>
+                <ImageView fx:id="settingsImage" onMouseClicked="#openSettings" styleClass="settings">
+                </ImageView>
+                <Text fx:id="settingsText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="settings"
+                      textAlignment="CENTER" wrappingWidth="98.0">
+                    <VBox.margin>
+                        <Insets right="17.5" top="15.0"/>
+                    </VBox.margin>
+                </Text>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                  <ImageView fx:id="archive" onMouseClicked="#openArchive" styleClass="archive">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="archive" textAlignment="CENTER" wrappingWidth="100.0">
-                     <VBox.margin>
-                        <Insets left="16.5" top="15.0" />
-                     </VBox.margin>
-                  </Text>
-               </children>
-               <GridPane.margin>
-                  <Insets left="60.0" />
-               </GridPane.margin>
+                <GridPane.margin>
+                    <Insets left="60.0"/>
+                </GridPane.margin>
+                <ImageView fx:id="archiveImage" onMouseClicked="#openArchive" styleClass="archive">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </ImageView>
+                <Text fx:id="archiveText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="archive"
+                      textAlignment="CENTER"
+                      wrappingWidth="100.0">
+                    <VBox.margin>
+                        <Insets left="16.5" top="15.0"/>
+                    </VBox.margin>
+                </Text>
             </VBox>
-         </children>
-      </GridPane>
-   </center>
+        </GridPane>
+    </center>
 </BorderPane>

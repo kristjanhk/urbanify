@@ -60,8 +60,13 @@ public class StageHandler {
         return "graphics/" + type.toPackageString() + "/" + type.toSceneString();
     }
 
+    // TODO: 23.04.2016 remove?
     public void switchSceneTo(Scenetype scenetype) {
-        this.scenes.get(scenetype).getController().prepareToDisplay();
+        this.stage.setScene(this.scenes.get(scenetype));
+    }
+
+    public void switchSceneTo(Scenetype scenetype, Scenetype prevSceneType) {
+        this.scenes.get(scenetype).getController().prepareToDisplay(prevSceneType);
         this.stage.setScene(this.scenes.get(scenetype));
     }
 }

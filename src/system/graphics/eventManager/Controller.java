@@ -27,7 +27,7 @@ public class Controller extends AbstractController {
 
 
     @Override
-    public void prepareToDisplay() {
+    public void prepareToDisplay(Scenetype prevSceneType) {
 
     }
 }

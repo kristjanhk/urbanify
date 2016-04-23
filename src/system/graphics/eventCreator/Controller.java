@@ -3,6 +3,7 @@ package system.graphics.eventCreator;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import system.MainHandler;
 import system.graphics.AbstractController;
 import system.graphics.Scenetype;
@@ -11,40 +12,38 @@ import system.graphics.common.Csstype;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller extends AbstractController implements Initializable{
-    public TextField nameYourEvent;
-    public TextField setDate;
-    public TextField setTime;
+public class Controller extends AbstractController implements Initializable {
+    public TextField eventText;
+    public TextField dateText;
+    public TextField timeText;
     public Button cancel;
     public Button next;
-    public Button deleteTicketField;
-    public TextField priceField;
-    public TextField ticketField;
-    public Button addTicketField;
+    public Button addTicketButton;
+    public VBox ticketVBox;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //siia saab controlleri käivitumisel asjadega tegeleda
-        //ja ka failidega tegeleda?
+        this.eventText.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) { //when focus lost
+                if (!this.eventText.getText().equals("tere")) { // TODO: 23.04.2016 pattern matching
+                    this.eventText.setText("");
+                }
+            }
+        });
+        // TODO: 23.04.2016 add pattern listeners
     }
-
-    public void doCancel() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
-        // TODO: 14.04.2016 reset current scene
-    }
-
 
     // TODO: 14.04.2016 to be changed
     public void addTicket() {
-        //store id-s ?
-    }
-
-    public void removeTicket(int id) {
-
+        this.ticketVBox.getChildren().add(this.ticketVBox.getChildren().size() - 1, new Ticket(this.ticketVBox));
     }
 
     public void openFloorPlanner() {
 
+    }
+
+    public void doCancel() {
+        this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
     }
 
     public void doNext() {
@@ -53,7 +52,9 @@ public class Controller extends AbstractController implements Initializable{
     }
 
     @Override
-    public void prepareToDisplay() {
-
+    public void prepareToDisplay(Scenetype prevSceneType) {
+        if (prevSceneType.equals(Scenetype.MAINMENU)) {
+            this.scene.getStageHandler().replaceScene(this.scene.getScenetype());
+        }
     }
 }

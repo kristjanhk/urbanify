@@ -7,5 +7,5 @@ public abstract class AbstractController {
         this.scene = scene;
     }
 
-    public abstract void prepareToDisplay();
+    public abstract void prepareToDisplay(Scenetype prevSceneType);
 }

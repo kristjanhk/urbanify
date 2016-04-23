@@ -236,7 +236,7 @@ public class Controller extends AbstractController implements Initializable {
     }
 
     @Override
-    public void prepareToDisplay() {
+    public void prepareToDisplay(Scenetype prevSceneType) {
 
     }
 
