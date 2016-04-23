@@ -53,8 +53,7 @@
             <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0"/>
             <HBox alignment="CENTER" prefHeight="0.0" prefWidth="355.0">
                 <Region prefHeight="71.0" prefWidth="161.0"/>
-                <Button fx:id="removeRow" onAction="#removeRowAction" mnemonicParsing="false" styleClass="buttonRound"
-                        text="-"/>
+                <Button fx:id="removeRow" onAction="#removeRowAction" mnemonicParsing="false" styleClass="buttonRound" text="-"/>
                 <Region maxWidth="20.0" minWidth="20.0" prefHeight="0.0" prefWidth="20.0"/>
                 <VBox alignment="CENTER">
                     <Text fx:id="rowCountText" text="0" styleClass="text35" textAlignment="CENTER" wrappingWidth="50.0">
@@ -63,8 +62,7 @@
                     </Text>
                 </VBox>
                 <Region maxWidth="20.0" minWidth="20.0" prefHeight="200.0" prefWidth="20.0"/>
-                <Button fx:id="addRow" onAction="#addRowAction" mnemonicParsing="false" styleClass="buttonRound"
-                        text="ò">
+                <Button fx:id="addRow" onAction="#addRowAction" mnemonicParsing="false" styleClass="buttonRound" text="ò">
                     <HBox.margin>
                         <Insets right="40.0"/>
                     </HBox.margin>
@@ -73,9 +71,7 @@
             <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="463.0"/>
             <HBox alignment="CENTER" prefHeight="8.0" prefWidth="355.0">
                 <Region prefHeight="73.0" prefWidth="166.0"/>
-                <Button fx:id="removeSeat" onAction="#removeColumnAction" mnemonicParsing="false"
-                        styleClass="buttonRound"
-                        text="-"/>
+                <Button fx:id="removeSeat" onAction="#removeColumnAction" mnemonicParsing="false" styleClass="buttonRound" text="-"/>
                 <Region maxWidth="20.0" minWidth="20.0" prefWidth="20.0"/>
                 <VBox alignment="CENTER">
                     <Text fx:id="columnCountText" text="0" styleClass="text35" textAlignment="CENTER"
@@ -85,8 +81,7 @@
                     </Text>
                 </VBox>
                 <Region maxWidth="20.0" minWidth="20.0" prefHeight="200.0" prefWidth="20.0"/>
-                <Button fx:id="addSeat" onAction="#addColumnAction" mnemonicParsing="false" styleClass="buttonRound"
-                        text="ò">
+                <Button fx:id="addSeat" onAction="#addColumnAction" mnemonicParsing="false" styleClass="buttonRound" text="ò">
                     <HBox.margin>
                         <Insets right="40.0"/>
                     </HBox.margin>

@@ -20,7 +20,7 @@
                 </BorderPane.margin>
             </Text>
             <Button maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0" text="add"
-                    onAction="#doTest" styleClass="buttonSmall">
+                    onAction="#doTest" styleClass="bottomButton">
             </Button>
         </HBox>
 
@@ -28,7 +28,7 @@
     </top>
     <bottom>
         <Button maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0" text="back"
-                onAction="#doBack" styleClass="buttonSmall"
+                onAction="#doBack" styleClass="bottomButton"
                 BorderPane.alignment="BOTTOM_RIGHT">
             <BorderPane.margin>
                 <Insets bottom="40.0" right="40.0" top="40"/>

@@ -136,16 +136,10 @@
 
 .bottomButton:hover {
     -fx-background-color: #5b5c5c;
-    -fx-text-fill: #f05455;
-    -fx-font-smoothing-type: gray;
-    -fx-background-radius: 0;
 }
 
 .bottomButton:armed {
     -fx-background-color: #333333;
-    -fx-text-fill: #f05455;
-    -fx-font-smoothing-type: gray;
-    -fx-background-radius: 0;
 }
 
 .context-menu {
@@ -303,6 +297,8 @@ Seat:hover {
     -fx-pref-height: 70;
     -fx-max-height: 70;
     -fx-max-width: 70;
+    -fx-min-width: 70;
+    -fx-min-height: 70;
     -fx-font-family: 'TicketFont';
     -fx-font-size: 30;
     -fx-font-smoothing-type: gray;
@@ -310,28 +306,10 @@ Seat:hover {
 
 .buttonRound:hover {
     -fx-background-color: #5b5c5c;
-    -fx-text-fill: #f05455;
-    -fx-font-smoothing-type: gray;
-    -fx-background-radius: 35;
-    -fx-pref-width: 70;
-    -fx-pref-height: 70;
-    -fx-max-height: 70;
-    -fx-max-width: 70;
-    -fx-font-family: 'TicketFont';
-    -fx-font-size: 30;
 }
 
 .buttonRound:armed {
     -fx-background-color: #333333;
-    -fx-text-fill: #f05455;
-    -fx-font-smoothing-type: gray;
-    -fx-background-radius: 35;
-    -fx-pref-width: 70;
-    -fx-pref-height: 70;
-    -fx-max-height: 70;
-    -fx-max-width: 70;
-    -fx-font-family: 'TicketFont';
-    -fx-font-size: 30;
 }
 
 /*###################################CALENDAR##################### */
