@@ -34,6 +34,7 @@ public class Event extends HBox {
 
     private void initChildren(String name, String date, String time) {
         this.deleteButton = new Button("ó");
+        this.deleteButton.getStyleClass().add("buttonSmall");
         this.deleteButton.setMinSize(70.5, 70.5);
         this.deleteButton.setMaxSize(70.5, 70.5);
         this.deleteButton.setPrefSize(70.5, 70.5);

@@ -31,6 +31,7 @@ public class Ticket extends HBox {
         this.deleteTicket.setPrefSize(70.5, 70.5);
         this.deleteTicket.setTextAlignment(TextAlignment.CENTER);
         this.deleteTicket.setMnemonicParsing(false);
+        this.deleteTicket.getStyleClass().add("buttonSmall");
         this.deleteTicket.setOnMouseClicked(event -> this.parentNode.getChildren().remove(this));
         this.getChildren().add(this.deleteTicket);
 

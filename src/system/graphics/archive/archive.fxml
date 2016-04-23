@@ -22,7 +22,7 @@
     </top>
     <bottom>
         <Button maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0" text="back"
-                onAction="#doBack" BorderPane.alignment="BOTTOM_RIGHT" styleClass="bottomButton">
+                onAction="#doBack" BorderPane.alignment="BOTTOM_RIGHT" styleClass="buttonSmall">
             <BorderPane.margin>
                 <Insets bottom="40.0" right="40.0" top="40" />
             </BorderPane.margin>
