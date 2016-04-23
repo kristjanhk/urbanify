@@ -49,19 +49,22 @@ public class Controller extends AbstractController implements Initializable {
             double groupOrigWidth = this.getFloorGroup().getBoundsInLocal().getWidth();
             double groupHeight = this.getFloorGroup().getBoundsInParent().getHeight();
             double groupOrigHeight = this.getFloorGroup().getBoundsInLocal().getHeight();
-            System.out.println(String.valueOf(paneWidth - groupWidth > 60) + ", " +
-                    String.valueOf(groupWidth < groupOrigWidth) + ", " +
-                    String.valueOf(groupHeight < groupOrigHeight) + ", " +
-                    String.valueOf(groupHeight < this.floorPlan.getHeight()));
             double suhe = paneWidth / groupWidth;
-                if (groupWidth > paneWidth) {
-                    checkResize(getGroupMaxY(), true, suhe);
-                } else if (paneWidth - groupWidth > 120 && //laiuses vähemalt 2x istet ruumi
-                        groupWidth < groupOrigWidth && // ollakse laiuselt väiksem kui orig
-                        groupHeight < groupOrigHeight && // ollakse pikkuselt väiksem kui orig
-                        groupHeight < this.floorPlan.getHeight()) { //ollakse pikkuselt väiksem kui pane
-                    checkResize(getGroupMaxY(), true, suhe);
-                }
+            if (suhe > 1) {
+                System.out.println(paneWidth + ", " +
+                        groupWidth + ", " +
+                        groupOrigWidth + ", " +
+                        groupHeight + ", " +
+                        groupOrigHeight + ", " +
+                        this.floorPlan.getHeight());
+            }
+            if (groupWidth > paneWidth) {
+                checkResize(getGroupMaxY(), true, suhe);
+            } else if (groupWidth < groupOrigWidth && // ollakse laiuselt väiksem kui orig
+                    groupHeight < groupOrigHeight && // ollakse pikkuselt väiksem kui orig
+                    groupHeight < this.floorPlan.getHeight() - 20) { //ollakse pikkuselt väiksem kui pane
+                checkResize(getGroupMaxY(), true, suhe);
+            }
         });
         this.floorPlan.heightProperty().addListener((observable, oldValue, newValue) -> {
             double paneHeight = newValue.doubleValue() - 20;
@@ -72,10 +75,9 @@ public class Controller extends AbstractController implements Initializable {
             double suhe = paneHeight / groupHeight;
             if (groupHeight > paneHeight) {
                 checkResize(getGroupMaxY(), true, suhe);
-            } else if (paneHeight - groupHeight > 60 + 10 && //pikkuses vähemalt 1x iste + padding ruumi
-                    groupHeight < groupOrigHeight && //ollakse pikkuselt väiksem kui orig
+            } else if (groupHeight < groupOrigHeight && //ollakse pikkuselt väiksem kui orig
                     groupWidth < groupOrigWidth && // ollakse laiuselt väiksem kui orig
-                    groupWidth < this.floorPlan.getWidth()) { // ollakse laiuselt väiksem kui pane
+                    groupWidth < this.floorPlan.getWidth() - 20) { // ollakse laiuselt väiksem kui pane
                 checkResize(getGroupMaxY(), true, suhe);
             }
         });
@@ -94,7 +96,7 @@ public class Controller extends AbstractController implements Initializable {
             } else if (propertyValue - groupWidth > 60) {
 
             }
-        } else if (propertyType.equals(this.floorPlan.heightProperty())){
+        } else if (propertyType.equals(this.floorPlan.heightProperty())) {
             double ratio = propertyValue / groupHeight;
             if (groupHeight > propertyValue) {
                 checkResize(getGroupMaxY(), true, ratio);
