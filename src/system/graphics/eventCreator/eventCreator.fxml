@@ -35,7 +35,7 @@
     <right>
         <VBox alignment="TOP_RIGHT" prefHeight="595.0" prefWidth="404.0" BorderPane.alignment="CENTER">
             <DatePicker fx:id="calendar" maxHeight="70.5" maxWidth="304.0" minHeight="70.5" minWidth="304.0"
-                        prefHeight="70.5" prefWidth="304.0" promptText="dd.mm.yyyy">
+                        prefHeight="70.5" prefWidth="304.0" showWeekNumbers="false" promptText="dd.mm.yyyy">
                 <VBox.margin>
                     <Insets right="40.0"/>
                 </VBox.margin>
@@ -125,50 +125,11 @@
     <left>
         <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true"
                     BorderPane.alignment="CENTER">
-            <VBox fx:id="ticketVBox" styleClass="background">
-                <!--
-                <HBox prefHeight="12.0" prefWidth="506.0">
-                    <VBox.margin>
-                        <Insets left="40.0" right="40.0"/>
-                    </VBox.margin>
-                    <VBox>
-                        <Button maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5"
-                                mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="Button"/>
-                    </VBox>
-                    <VBox>
-                        <HBox.margin>
-                            <Insets left="40.0"/>
-                        </HBox.margin>
-                        <TextField maxHeight="70.5" maxWidth="110.0" minHeight="70.5" minWidth="110.0"
-                                   prefHeight="70.5" prefWidth="110.0" promptText="price"/>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="price">
-                            <VBox.margin>
-                                <Insets left="20.0" top="6.0"/>
-                            </VBox.margin>
-                        </Text>
-                    </VBox>
-                    <VBox>
-                        <HBox.margin>
-                            <Insets left="40.0"/>
-                        </HBox.margin>
-                        <TextField maxHeight="70.5" maxWidth="300.0" minHeight="70.5" minWidth="300.0"
-                                   prefHeight="70.5" prefWidth="300.0" promptText="ticket type">
-                            <VBox.margin>
-                                <Insets/>
-                            </VBox.margin>
-                        </TextField>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ticket type">
-                            <VBox.margin>
-                                <Insets left="20.0" top="6.0"/>
-                            </VBox.margin>
-                        </Text>
-                    </VBox>
-                </HBox>
-                -->
+            <VBox fx:id="ticketVBox" styleClass="background" minWidth="0.0">
                 <Button fx:id="addTicketButton" maxWidth="70.5" minWidth="70.5" mnemonicParsing="false"
                         onAction="#addTicket" prefWidth="70.5" styleClass="button" text="ò" textAlignment="CENTER">
                     <VBox.margin>
-                        <Insets left="40.0" top="20.0"/>
+                        <Insets left="40.0"/>
                     </VBox.margin>
                 </Button>
             </VBox>

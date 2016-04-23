@@ -20,7 +20,7 @@ public class Ticket extends HBox {
         super();
         this.parentNode = parentNode;
         this.setPrefSize(506.0, 12.0);
-        VBox.setMargin(this, new Insets(20.0, 40.0, 0.0, 40.0));
+        VBox.setMargin(this, new Insets(0, 75.0, 20.0, 40.0));
         this.initChildren();
     }
 
@@ -53,6 +53,7 @@ public class Ticket extends HBox {
 
     private static Text createText(String string) {
         Text text = new Text(string);
+        text.getStyleClass().add("text19");
         text.setStrokeType(StrokeType.OUTSIDE);
         text.setStrokeWidth(0.0);
         VBox.setMargin(text, new Insets(6.0, 0.0, 0.0, 20.0));
