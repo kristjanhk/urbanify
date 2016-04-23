@@ -2,22 +2,25 @@ package system.graphics.eventCreator;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import system.MainHandler;
 import system.graphics.AbstractController;
 import system.graphics.Scenetype;
-import system.graphics.common.Csstype;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller extends AbstractController implements Initializable {
     public TextField eventText;
-    public TextField dateText;
-    public TextField timeText;
+    public DatePicker calendar;
+    public TextField timeText; // TODO: 23.04.2016 picker
+    public CheckBox openSeating;
+    public CheckBox assignedSeating;
     public Button cancel;
     public Button next;
+    public Button create;
     public Button addTicketButton;
     public VBox ticketVBox;
 
@@ -50,6 +53,10 @@ public class Controller extends AbstractController implements Initializable {
     public void doNext() {
         // FIXME: 21.04.2016
         this.scene.getStageHandler().switchSceneTo(Scenetype.FLOORPLANNER);
+    }
+
+    public void doCreate() {
+
     }
 
     @Override
