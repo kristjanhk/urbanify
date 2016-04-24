@@ -3,7 +3,7 @@ package system.graphics.mainMenu;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import system.MainHandler;
+import system.JsonFile;
 import system.graphics.AbstractController;
 import system.graphics.Scenetype;
 
@@ -35,16 +35,15 @@ public class Controller extends AbstractController implements Initializable {
 
     public void openSettings() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.SETTINGS);
-        MainHandler.getFileHandler().loadFile();
+        //MainHandler.getFileHandler().loadData();
     }
 
-    @SuppressWarnings("unchecked")
     public void openArchive() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.ARCHIVE);
-        MainHandler.getFileHandler().saveFile();
+        //MainHandler.getFileHandler().saveData();
+        System.out.println(this.getData().getWord(JsonFile.Word.CANCEL, JsonFile.Lang.ESTONIAN));
     }
 
     @Override
-    public void prepareToDisplay(Scenetype prevSceneType) {
-    }
+    public void prepareToDisplay(Scenetype prevSceneType) {}
 }

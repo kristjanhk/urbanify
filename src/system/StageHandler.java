@@ -1,7 +1,9 @@
 package system;
 
 import javafx.fxml.FXMLLoader;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import system.graphics.CustomScene;
 import system.graphics.Scenetype;
 
@@ -18,6 +20,8 @@ public class StageHandler {
 
     public StageHandler(Stage primaryStage) {
         this.stage = primaryStage;
+        //primaryStage.initStyle(StageStyle.UNDECORATED);
+        //primaryStage.setResizable(false);
         this.initScenes();
         this.switchSceneTo(Scenetype.MAINMENU);
         // TODO: 11.04.2016 moditavad argumendid

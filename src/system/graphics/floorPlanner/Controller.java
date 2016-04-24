@@ -213,7 +213,7 @@ public class Controller extends AbstractController implements Initializable {
         }
     }
 
-    private void resetY() {
+    private void resetY() { // FIXME: 24.04.2016 ei toimi
         this.maxY = 0.0;
         this.getFloorGroup().setTranslateY(this.maxY);
     }
