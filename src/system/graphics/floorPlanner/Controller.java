@@ -145,6 +145,7 @@ public class Controller extends AbstractController implements Initializable {
             if (this.getFloor().size() == 1) {
                 this.columnCount = 0;
                 this.setColumnCountText();
+                this.resetY();
             }
             this.getFloor().remove(this.getFloor().size() - 1);
             this.setRowCountText();
@@ -168,6 +169,7 @@ public class Controller extends AbstractController implements Initializable {
             if (this.columnCount == 0) {
                 this.getFloor().clear();
                 this.setRowCountText();
+                this.resetY();
             } else {
                 for (Node group : this.getFloor()) {
                     ((Group) group).getChildren().remove(this.columnCount);
@@ -209,6 +211,11 @@ public class Controller extends AbstractController implements Initializable {
             this.maxY += prevY - newY;
             this.getFloorGroup().setTranslateY(this.maxY);
         }
+    }
+
+    private void resetY() {
+        this.maxY = 0.0;
+        this.getFloorGroup().setTranslateY(this.maxY);
     }
 
     // TODO: 14.04.2016 to be changed
