@@ -18,12 +18,16 @@ public class StageHandler {
 
     public StageHandler(Stage primaryStage) {
         this.stage = primaryStage;
+        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        //primaryStage.setResizable(false);
         this.initScenes();
         this.switchSceneTo(Scenetype.MAINMENU);
         // TODO: 11.04.2016 moditavad argumendid
         primaryStage.setTitle("Superpilet 3000");
-        primaryStage.setMinHeight(670);
-        primaryStage.setMinWidth(1000);
+        primaryStage.setHeight(840);
+        primaryStage.setWidth(1220);
+        primaryStage.setMinHeight(840);
+        primaryStage.setMinWidth(1220);
         primaryStage.show();
         //primaryStage.setFullScreen(true);
     }
@@ -40,7 +44,6 @@ public class StageHandler {
         for (Scenetype scenetype : Scenetype.values()) {
             this.scenes.put(scenetype, createScene(scenetype));
         }
-
     }
     
     private CustomScene createScene(Scenetype scenetype) {
@@ -61,8 +64,13 @@ public class StageHandler {
         return "graphics/" + type.toPackageString() + "/" + type.toSceneString();
     }
 
+    // TODO: 23.04.2016 remove?
     public void switchSceneTo(Scenetype scenetype) {
-        this.scenes.get(scenetype).getController().prepareToDisplay();
+        this.stage.setScene(this.scenes.get(scenetype));
+    }
+
+    public void switchSceneTo(Scenetype scenetype, Scenetype prevSceneType) {
+        this.scenes.get(scenetype).getController().prepareToDisplay(prevSceneType);
         this.stage.setScene(this.scenes.get(scenetype));
     }
 }

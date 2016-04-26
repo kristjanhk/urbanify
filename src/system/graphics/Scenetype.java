@@ -7,7 +7,8 @@ public enum Scenetype {
     EVENTMANAGER("eventManager", "eventManager.fxml"),
     FLOORPLANNER("floorPlanner", "floorPlanner.fxml"),
     POINTOFSALE("pointOfSale", "pointOfSale.fxml"),
-    ARCHIVE("archive", "archive.fxml");
+    ARCHIVE("archive", "archive.fxml"),
+    SETTINGS("settings", "settings.fxml");
 
     private String packageString;
     private String sceneString;

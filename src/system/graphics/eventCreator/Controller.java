@@ -2,63 +2,71 @@ package system.graphics.eventCreator;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import system.MainHandler;
+import javafx.scene.layout.VBox;
 import system.graphics.AbstractController;
 import system.graphics.Scenetype;
-import system.graphics.common.Csstype;
 
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class Controller extends AbstractController implements Initializable{
-    public TextField nameYourEvent;
-    public TextField setDate;
-    public TextField setTime;
+public class Controller extends AbstractController implements Initializable {
+    public TextField eventText;
+    public DatePicker calendar;
+    public TextField timeText; // TODO: 23.04.2016 picker
+    public CheckBox openSeating;
+    public CheckBox assignedSeating;
     public Button cancel;
     public Button next;
-    public Button deleteTicketField;
-    public TextField priceField;
-    public TextField ticketField;
-    public Button addTicketField;
+    public Button create;
+    public Button addTicketButton;
+    public VBox ticketVBox;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //siia saab controlleri käivitumisel asjadega tegeleda
-        //ja ka failidega tegeleda?
+        //Locale l = new Locale.Builder().setLanguage("et").setScript("Latn").setRegion("EE").build();
+        //Locale.setDefault(l);
+        this.eventText.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) { //when focus lost
+                if (!this.eventText.getText().equals("tere")) { // TODO: 23.04.2016 pattern matching
+                    this.eventText.setText("");
+                }
+            }
+        });
+        // TODO: 23.04.2016 add pattern listeners
     }
 
-    public void vaheta() {
-        // FIXME: 14.04.2016
-        MainHandler.changeSceneThemeTo(this.scene, Csstype.toggleTheme());
-        MainHandler.changeSceneThemeTo(this.scene.getStageHandler().getScenes().get(Scenetype.MAINMENU), Csstype.getActiveTheme());
+    // TODO: 14.04.2016 to be changed
+    public void addTicket() {
+        this.ticketVBox.getChildren().add(this.ticketVBox.getChildren().size() - 1, new Ticket(this.ticketVBox));
+    }
+
+    public void openFloorPlanner() {
+
     }
 
     public void doCancel() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
-        // TODO: 14.04.2016 reset current scene
-    }
-
-
-    // TODO: 14.04.2016 to be changed
-    public void addTicket() {
-        //store id-s ?
-    }
-
-    public void removeTicket(int id) {
-
-    }
-
-    public void openFloorPlanner() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.FLOORPLANNER);
+        this.scene.getStageHandler().replaceScene(this.scene.getScenetype());
     }
 
     public void doNext() {
+        // FIXME: 21.04.2016
+        this.scene.getStageHandler().switchSceneTo(Scenetype.FLOORPLANNER);
+    }
+
+    public void doCreate() {
 
     }
 
     @Override
-    public void prepareToDisplay() {
+    public void prepareToDisplay(Scenetype prevSceneType) {}
+
+    @Override
+    public void setLanguage() {
 
     }
 }
