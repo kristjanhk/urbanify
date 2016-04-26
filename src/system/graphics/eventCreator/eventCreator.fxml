@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane minHeight="600.0" minWidth="1000.0" prefHeight="900.0" prefWidth="1600.0" styleClass="background"
+            xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="system.graphics.eventCreator.Controller">
+    <top>
+        <VBox prefHeight="123.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText" text="event creator">
+                <VBox.margin>
+                    <Insets left="40.0" top="40.0"/>
+                </VBox.margin>
+            </Text>
+            <TextField fx:id="eventText" maxHeight="70.5" minHeight="70.5" minWidth="40.0" prefHeight="70.5"
+                       promptText="name your event">
+                <VBox.margin>
+                    <Insets left="40.0" right="40.0" top="40.0"/>
+                </VBox.margin>
+            </TextField>
+            <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="200.0"/>
+        </VBox>
+    </top>
+    <right>
+        <VBox alignment="TOP_RIGHT" prefHeight="595.0" prefWidth="404.0" BorderPane.alignment="CENTER">
+            <DatePicker fx:id="calendar" maxHeight="70.5" maxWidth="304.0" minHeight="70.5" minWidth="304.0"
+                        prefHeight="70.5" prefWidth="304.0" showWeekNumbers="false" promptText="dd.mm.yyyy">
+            </DatePicker>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="set date" wrappingWidth="284.0">
+                <VBox.margin>
+                    <Insets left="20.0" top="6.0"/>
+                </VBox.margin>
+            </Text>
+            <TextField fx:id="timeText" maxHeight="70.5" maxWidth="304.0" minHeight="70.5" minWidth="304.0"
+                       prefHeight="70.5" prefWidth="304.0" promptText="mm:hh">
+                <VBox.margin>
+                    <Insets top="20.0"/>
+                </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="set time" wrappingWidth="284.0">
+                <VBox.margin>
+                    <Insets left="20.0" top="6.0"/>
+                </VBox.margin>
+            </Text>
+            <HBox alignment="CENTER_RIGHT">
+                <CheckBox alignment="CENTER" contentDisplay="TOP" maxHeight="70.5" maxWidth="304.0" minHeight="70.5"
+                          minWidth="304.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="70.5"
+                          prefWidth="304.0" text="open seating" textAlignment="RIGHT">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets right="40.0"/>
+                    </HBox.margin>
+                </CheckBox>
+                <VBox alignment="CENTER">
+                    <TextField alignment="CENTER" maxHeight="70.5" maxWidth="121.0" minHeight="70.5"
+                               minWidth="121.0" prefHeight="70.5" prefWidth="121.0"/>
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="max nr of seats" textAlignment="CENTER"
+                          wrappingWidth="83.13671875">
+                        <VBox.margin>
+                            <Insets top="6.0"/>
+                        </VBox.margin>
+                    </Text>
+                </VBox>
+            </HBox>
+            <CheckBox alignment="CENTER" contentDisplay="TOP" maxHeight="71.0" maxWidth="366.0" minHeight="70.5"
+                      minWidth="304.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="71.0"
+                      prefWidth="366.0" text="assigned seating" textAlignment="RIGHT">
+                <font>
+                    <Font size="36.0"/>
+                </font>
+                <VBox.margin>
+                    <Insets top="40.0"/>
+                </VBox.margin>
+            </CheckBox>
+            <BorderPane.margin>
+                <Insets right="40.0"/>
+            </BorderPane.margin>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </VBox>
+    </right>
+    <bottom>
+        <BorderPane id="bottom" BorderPane.alignment="CENTER">
+            <right>
+                <HBox BorderPane.alignment="CENTER">
+                    <Button fx:id="cancel" alignment="CENTER" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false"
+                            onMousePressed="#doCancel" prefWidth="121.0" styleClass="bottomButton" text="cancel">
+                        <HBox.margin>
+                            <Insets bottom="40.0" right="40.0" top="40.0"/>
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="next" alignment="CENTER" maxWidth="92.3" minWidth="92.3" mnemonicParsing="false"
+                            onMousePressed="#doNext" prefWidth="92.3" styleClass="bottomButton" text="next">
+                        <HBox.margin>
+                            <Insets bottom="40.0" right="40.0" top="40.0"/>
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="create" alignment="CENTER" maxWidth="92.3" minWidth="92.3" mnemonicParsing="false"
+                            onMousePressed="#doNext" prefWidth="92.3" styleClass="bottomButton" text="create">
+                        <HBox.margin>
+                            <Insets bottom="40.0" right="40.0" top="40.0"/>
+                        </HBox.margin>
+                    </Button>
+                </HBox>
+            </right>
+        </BorderPane>
+    </bottom>
+    <left>
+        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true"
+                    BorderPane.alignment="CENTER">
+            <VBox fx:id="ticketVBox" styleClass="background" minWidth="0.0">
+                <Button fx:id="addTicketButton" maxWidth="70.5" minWidth="70.5" mnemonicParsing="false"
+                        onAction="#addTicket" prefWidth="70.5" styleClass="buttonSmall" text="ò" textAlignment="CENTER">
+                    <VBox.margin>
+                        <Insets left="40.0"/>
+                    </VBox.margin>
+                </Button>
+            </VBox>
+        </ScrollPane>
+    </left>
+</BorderPane>

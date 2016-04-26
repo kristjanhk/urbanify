@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Region?>
+<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.65"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.eventManager.Controller">
+    <top>
+        <Text styleClass="topText" strokeType="OUTSIDE" strokeWidth="0.0" text="archive" BorderPane.alignment="TOP_LEFT">
+            <BorderPane.margin>
+                <Insets bottom="40.0" left="40.0" top="40.0" />
+            </BorderPane.margin>
+        </Text>
+    </top>
+    <bottom>
+        <Button maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0" text="back"
+                onAction="#doBack" BorderPane.alignment="BOTTOM_RIGHT" styleClass="bottomButton">
+            <BorderPane.margin>
+                <Insets bottom="40.0" right="40.0" top="40" />
+            </BorderPane.margin>
+        </Button>
+    </bottom>
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" fx:id="scrollPane" pannable="true" vbarPolicy="AS_NEEDED" BorderPane.alignment="CENTER">
+            <content>
+                <VBox styleClass="background" prefHeight="739.0" prefWidth="1520.0">
+                    <children>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                        <HBox maxHeight="70.5" minHeight="110.5" prefHeight="70.5" prefWidth="200.0" styleClass="background">
+                            <children>
+                                <Button styleClass="buttonSmall" maxHeight="70.5" maxWidth="70.5" minHeight="70.5" minWidth="70.5" mnemonicParsing="false" prefHeight="70.5" prefWidth="70.5" text="ó">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <TextFlow  styleClass="textFlowNimi" maxHeight="71.5" minHeight="71.5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="71.5" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER" minWidth="180">
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="1/4/2016" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
+                                <TextFlow styleClass="textFlowInfo" maxHeight="71.5" minHeight="71.5" prefHeight="71.5" prefWidth="200.0" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="40.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text styleClass="textEvent" strokeType="OUTSIDE" strokeWidth="0.0" text="13:05" wrappingWidth="200.13671875">
+                                            <font>
+                                                <Font size="36.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </TextFlow>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </content>
+            <BorderPane.margin>
+                <Insets left="40.0" right="40.0" />
+            </BorderPane.margin>
+        </ScrollPane>
+    </center>
+</BorderPane>
