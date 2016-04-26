@@ -3,8 +3,8 @@ package system.graphics.mainMenu;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import system.graphics.AbstractController;
-import system.graphics.Scenetype;
+import system.graphics.common.AbstractController;
+import system.graphics.common.Scenetype;
 import system.settings.Lang;
 import system.settings.Word;
 

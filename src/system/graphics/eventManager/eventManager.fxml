@@ -13,7 +13,7 @@
 
 
         <HBox> <!-- todo hbox and button remove -->
-            <Text styleClass="topText" strokeType="OUTSIDE" strokeWidth="0.0" text="events"
+            <Text fx:id="eventsText" styleClass="topText" strokeType="OUTSIDE" strokeWidth="0.0"
                   BorderPane.alignment="TOP_LEFT">
                 <BorderPane.margin>
                     <Insets bottom="40.0" left="40.0" top="40.0"/>
@@ -27,16 +27,15 @@
 
     </top>
     <bottom>
-        <Button maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0" text="back"
-                onAction="#doBack" styleClass="bottomButton"
-                BorderPane.alignment="BOTTOM_RIGHT">
+        <Button fx:id="backButton" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0"
+                onAction="#doBack" styleClass="bottomButton" BorderPane.alignment="BOTTOM_RIGHT">
             <BorderPane.margin>
                 <Insets bottom="40.0" right="40.0" top="40"/>
             </BorderPane.margin>
         </Button>
     </bottom>
     <center>
-        <ScrollPane fitToHeight="true" fitToWidth="true" fx:id="scrollPane" pannable="true" vbarPolicy="AS_NEEDED"
+        <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" vbarPolicy="AS_NEEDED"
                     BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets left="40.0" right="40.0"/>

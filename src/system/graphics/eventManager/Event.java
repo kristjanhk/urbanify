@@ -14,7 +14,6 @@ import javafx.scene.text.TextFlow;
 
 public class Event extends HBox {
     private VBox parentNode;
-    private Button deleteButton;
     private TextFlow textFlowName;
     private TextFlow textFlowDate;
     private TextFlow textFlowTime;
@@ -33,14 +32,14 @@ public class Event extends HBox {
     }
 
     private void initChildren(String name, String date, String time) {
-        this.deleteButton = new Button("ó");
-        this.deleteButton.getStyleClass().add("buttonSmall");
-        this.deleteButton.setMinSize(70.5, 70.5);
-        this.deleteButton.setMaxSize(70.5, 70.5);
-        this.deleteButton.setPrefSize(70.5, 70.5);
-        this.deleteButton.setMnemonicParsing(false);
-        this.deleteButton.setOnMouseClicked(event -> this.parentNode.getChildren().remove(this));
-        HBox.setMargin(this.deleteButton, new Insets(0.0, 40.0, 0.0, 0.0));
+        Button deleteButton = new Button("ó");
+        deleteButton.getStyleClass().add("buttonSmall");
+        deleteButton.setMinSize(70.5, 70.5);
+        deleteButton.setMaxSize(70.5, 70.5);
+        deleteButton.setPrefSize(70.5, 70.5);
+        deleteButton.setMnemonicParsing(false);
+        deleteButton.setOnMouseClicked(event -> this.parentNode.getChildren().remove(this));
+        HBox.setMargin(deleteButton, new Insets(0.0, 40.0, 0.0, 0.0));
 
         this.textFlowName = new TextFlow();
         this.textFlowName.getStyleClass().add("textFlowNimi");
@@ -75,7 +74,7 @@ public class Event extends HBox {
         this.textFlowTime.getChildren().add(this.time);
 
         this.getChildren().addAll(
-                this.deleteButton,
+                deleteButton,
                 this.textFlowName,
                 createRegion(),
                 this.textFlowDate,

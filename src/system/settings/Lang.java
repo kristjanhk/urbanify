@@ -3,19 +3,21 @@ package system.settings;
 import system.MainHandler;
 import system.StageHandler;
 
+import java.util.Locale;
+
 public enum Lang {
-    ENGLISH(0),
-    ESTONIAN(1),
-    VÕRO(2),
-    GERMAN(3),
-    RUSSIAN(4);
+    ENGLISH(0, Locale.ENGLISH),
+    ESTONIAN(1, new Locale.Builder().setLanguage("et").setScript("Latn").setRegion("EE").build()),
+    VÕRO(2, new Locale.Builder().setLanguage("et").setScript("Latn").setRegion("EE").build()),
+    GERMAN(3, Locale.GERMAN),
+    RUSSIAN(4, new Locale.Builder().setLanguage("ru").setScript("Cyrl").setRegion("RU").build());
     private int index;
+    private Locale locale;
     private static Lang activeLang;
 
-    // TODO: 25.04.2016 set active language
-
-    Lang(int i) {
+    Lang(int i, Locale locale) {
         this.index = i;
+        this.locale = locale;
     }
 
     public static Lang getActiveLang() {
@@ -24,6 +26,7 @@ public enum Lang {
 
     public static void setActiveLang(Lang lang) {
         activeLang = lang;
+        Locale.setDefault(lang.locale);
         for (StageHandler stageHandler : MainHandler.getStageHandlers()) {
             stageHandler.getScenes().forEach((scenetype, customScene) -> customScene.getController().setLanguage());
         }

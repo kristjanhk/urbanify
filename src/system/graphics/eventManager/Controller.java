@@ -1,12 +1,17 @@
 package system.graphics.eventManager;
 
 
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import system.graphics.AbstractController;
-import system.graphics.Scenetype;
+import javafx.scene.text.Text;
+import system.graphics.common.AbstractController;
+import system.graphics.common.Scenetype;
+import system.settings.Word;
 
 public class Controller extends AbstractController {
+    public Text eventsText;
     public VBox eventsVBox;
+    public Button backButton;
     private int testint = 0;
 
 
@@ -42,6 +47,7 @@ public class Controller extends AbstractController {
 
     @Override
     public void setLanguage() {
-
+        this.eventsText.setText(Word.EVENTS.toString());
+        this.backButton.setText(Word.BACK.toString());
     }
 }

@@ -1,4 +1,4 @@
-package system.graphics;
+package system.graphics.common;
 
 import javafx.beans.NamedArg;
 import javafx.fxml.FXMLLoader;
@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import system.MainHandler;
 import system.StageHandler;
-import system.graphics.common.Csstype;
 
 public class CustomScene extends Scene {
     private StageHandler stageHandler;

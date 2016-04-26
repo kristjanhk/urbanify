@@ -1,8 +1,8 @@
 package system.graphics.archive;
 
 
-import system.graphics.AbstractController;
-import system.graphics.Scenetype;
+import system.graphics.common.AbstractController;
+import system.graphics.common.Scenetype;
 
 public class Controller extends AbstractController {
 

@@ -18,13 +18,12 @@
             fx:controller="system.graphics.eventCreator.Controller">
     <top>
         <VBox prefHeight="123.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText" text="event creator">
+            <Text fx:id="eventCreator" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText">
                 <VBox.margin>
                     <Insets left="40.0" top="40.0" />
                 </VBox.margin>
             </Text>
-            <TextField fx:id="eventText" maxHeight="70.5" minHeight="70.5" minWidth="40.0" prefHeight="70.5"
-                       promptText="name your event">
+            <TextField fx:id="eventText" maxHeight="70.5" minHeight="70.5" minWidth="40.0" prefHeight="70.5">
                 <VBox.margin>
                     <Insets left="40.0" right="40.0" top="40.0" />
                 </VBox.margin>
@@ -35,20 +34,21 @@
     <right>
         <VBox alignment="TOP_RIGHT" prefHeight="595.0" prefWidth="404.0" BorderPane.alignment="CENTER">
             <DatePicker fx:id="calendar" maxHeight="70.5" maxWidth="304.0" minHeight="70.5" minWidth="304.0"
-                        prefHeight="70.5" prefWidth="304.0" promptText="dd.mm.yyyy" showWeekNumbers="false">
+                        prefHeight="70.5" prefWidth="304.0" showWeekNumbers="false">
             </DatePicker>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" text="set date" wrappingWidth="284.0">
+            <Text fx:id="calendarLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19"
+                  wrappingWidth="284.0">
                 <VBox.margin>
                     <Insets left="20.0" top="6.0" />
                 </VBox.margin>
             </Text>
             <TextField fx:id="timeText" maxHeight="70.5" maxWidth="304.0" minHeight="70.5" minWidth="304.0"
-                       prefHeight="70.5" prefWidth="304.0" promptText="hh:mm">
+                       prefHeight="70.5" prefWidth="304.0">
                 <VBox.margin>
                     <Insets top="20.0" />
                 </VBox.margin>
             </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" text="set time" wrappingWidth="284.0">
+            <Text fx:id="timeLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" wrappingWidth="284.0">
                 <VBox.margin>
                     <Insets left="20.0" top="6.0" />
                 </VBox.margin>
@@ -89,19 +89,19 @@
                     prefWidth="9999.0" />
             <HBox alignment="TOP_RIGHT">
                 <Button fx:id="cancel" alignment="CENTER" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false"
-                        onMousePressed="#doCancel" prefWidth="121.0" styleClass="bottomButton" text="cancel">
+                        onMousePressed="#doCancel" prefWidth="121.0" styleClass="bottomButton">
                     <HBox.margin>
                         <Insets right="40.0" top="40.0" />
                     </HBox.margin>
                 </Button>
                 <Button fx:id="next" alignment="CENTER" maxWidth="92.3" minWidth="92.3" mnemonicParsing="false"
-                        onMousePressed="#doNext" prefWidth="92.3" styleClass="bottomButton" text="next">
+                        onMousePressed="#doNext" prefWidth="92.3" styleClass="bottomButton">
                     <HBox.margin>
                         <Insets right="40.0" top="40.0" />
                     </HBox.margin>
                 </Button>
                 <Button fx:id="create" alignment="CENTER" maxWidth="92.3" minWidth="92.3" mnemonicParsing="false"
-                        onMousePressed="#doNext" prefWidth="92.3" styleClass="bottomButton" text="create">
+                        onMousePressed="#doNext" prefWidth="92.3" styleClass="bottomButton">
                     <HBox.margin>
                         <Insets top="40.0" />
                     </HBox.margin>

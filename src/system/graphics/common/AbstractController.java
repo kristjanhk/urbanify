@@ -1,4 +1,4 @@
-package system.graphics;
+package system.graphics.common;
 
 import system.FileHandler;
 import system.settings.JsonFile;

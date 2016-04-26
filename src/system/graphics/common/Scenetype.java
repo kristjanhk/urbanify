@@ -1,4 +1,4 @@
-package system.graphics;
+package system.graphics.common;
 
 public enum Scenetype {
     //foldername, fxml name

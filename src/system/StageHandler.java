@@ -2,8 +2,8 @@ package system;
 
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import system.graphics.CustomScene;
-import system.graphics.Scenetype;
+import system.graphics.common.CustomScene;
+import system.graphics.common.Scenetype;
 
 import java.io.IOException;
 import java.util.HashMap;

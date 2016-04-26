@@ -2,7 +2,7 @@ package system;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import system.graphics.CustomScene;
+import system.graphics.common.CustomScene;
 import system.graphics.common.Csstype;
 
 import java.util.ArrayList;

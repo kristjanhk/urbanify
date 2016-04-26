@@ -7,18 +7,23 @@ import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import system.MainHandler;
-import system.graphics.AbstractController;
-import system.graphics.Scenetype;
+import system.graphics.common.AbstractController;
+import system.graphics.common.Scenetype;
 import system.graphics.common.Csstype;
+import system.settings.Word;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller extends AbstractController implements Initializable {
+    public Text floorPlanText;
+    public MenuButton floorPlans;
+    public MenuButton floorTypes;
     public Button removeRow;
     public Button addRow;
     public Button removeSeat;
@@ -29,7 +34,9 @@ public class Controller extends AbstractController implements Initializable {
     public BorderPane borderPane;
     public StackPane floorPlan;
     public Text rowCountText;
+    public Text rowText;
     public Text columnCountText;
+    public Text columnText;
 
     private int columnCount = 0;
     private double maxY = 0.0;
@@ -38,6 +45,7 @@ public class Controller extends AbstractController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.floorPlan.getChildren().add(new Group());
         StackPane.setMargin(this.getFloorGroup(), new Insets(10));
+        this.setLanguage();
         this.floorPlan.widthProperty().addListener((observable, oldValue, newValue) -> {
             this.checkPaneWidthResize(newValue);
         });
@@ -249,6 +257,16 @@ public class Controller extends AbstractController implements Initializable {
 
     @Override
     public void setLanguage() {
-
+        this.floorPlanText.setText(Word.NEWFLOORPLAN.toString());
+        this.floorPlans.setText(Word.FLOORPLANS.toString());
+        // TODO: 27.04.2016 rename plans 
+        this.floorTypes.setText(Word.FLOORTYPE.toString());
+        this.floorTypes.getItems().get(0).setText(Word.STAGE.toString());
+        this.floorTypes.getItems().get(1).setText(Word.SCREEN.toString());
+        this.rowText.setText(Word.ROWS.toString());
+        this.columnText.setText(Word.SEATSINROW.toString());
+        this.cancel.setText(Word.CANCEL.toString());
+        this.save.setText(Word.SAVE.toString());
+        this.create.setText(Word.CREATE.toString());
     }
 }
