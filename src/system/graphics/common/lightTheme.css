@@ -286,3 +286,134 @@ Seat:hover {
     -fx-font-family: 'TicketFont';
     -fx-font-size: 30;
 }
+
+/*###################################CALENDAR##################### */
+
+.date-picker {
+    -fx-background-radius: 0;
+    -fx-background-color: #dddddd;
+}
+
+.date-picker .arrow-button {
+    -fx-background-radius: 0;
+    -fx-background-color: #929291;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-radius: 0;
+    -fx-background-color: #c5c5c4;
+}
+
+.date-picker .arrow-button:pressed {
+    -fx-background-radius: 0;
+    -fx-background-color: #949493;
+}
+
+.date-picker .arrow {
+    -fx-background-color: #babab9;
+}
+
+.date-picker-popup .button{
+    -fx-background-color: #ffffff;
+    -fx-pref-height: 20;
+}
+
+.date-picker-popup .button .right-arrow,
+.date-picker-popup .button .left-arrow{
+    -fx-background-color: #babab9;
+}
+
+.date-picker-popup .month-year-pane{
+    -fx-background-color: #ffffff;
+}
+
+.date-picker-popup .calendar-grid {
+    -fx-background-color: #ffffff;
+}
+
+.date-picker-popup .calendar-grid .text{
+    -fx-fill: #babab9;
+}
+
+.date-picker-popup .day-cell {
+    -fx-background-color: #ffffff;
+}
+
+.date-picker-popup {
+    -fx-background-color: #ffffff;
+    -fx-stroke-width: 0;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 0;
+}
+
+.date-picker-popup .day-name-cell {
+    -fx-fill: #babab9;
+}
+
+.date-picker-popup .month-year-pane .text {
+    -fx-font-size: 19;
+    -fx-font-family: 'TicketFont';
+    -fx-fill: #babab9;
+}
+
+.date-picker-popup .date-cell {
+    -fx-background-color: transparent;
+    -fx-background-insets: 1, 2;
+    -fx-padding: 0;
+    -fx-alignment: BASELINE_CENTER;
+    -fx-opacity: 1.0;
+}
+
+.date-picker-popup .day-name-cell {
+    -fx-font-size: 19;
+    -fx-font-family: 'TicketFont';
+}
+
+
+.date-picker-popup .week-number-cell {
+    -fx-font-size: 13;
+    -fx-font-family: 'TicketFont';
+}
+
+.date-picker-popup .day-cell {
+    -fx-padding: 4 7 4 7;
+    -fx-border-width: 0;
+    -fx-font-size: 19;
+    -fx-font-family: 'TicketFont';
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #babab9;
+}
+
+.date-picker-popup .today {
+    -fx-background-color: #ffffff;
+    -fx-background-insets: 1, 2, 3;
+}
+
+.date-picker-popup .day-cell:hover,
+.date-picker-popup .selected,
+.date-picker-popup .previous-month.selected,
+.date-picker-popup .next-month.selected {
+    -fx-background: -fx-selection-bar;
+}
+
+.date-picker-popup .today:hover,
+.date-picker-popup .today.selected {
+    -fx-background-color: #5b5d5d;
+}
+
+.date-picker-popup .day-cell:focused,
+.date-picker-popup .today:focused {
+    -fx-background-color: #5b5d5d;
+    -fx-background-insets: 1, 2, 3;
+}
+
+.date-picker-popup .day-cell:hover,
+.date-picker-popup .today:hover,
+.date-picker-popup .today.selected:focused {
+    -fx-background-color: #5b5d5d;
+}
+
+.date-picker-popup .previous-month,
+.date-picker-popup .next-month {
+    visibility: hidden;
+}

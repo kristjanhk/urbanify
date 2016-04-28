@@ -17,6 +17,7 @@
 
 .bottomButton {
     -fx-fill: red;
+    -fx-padding: 0 0 0 0;
     -fx-background-color: #151515;
     -fx-text-fill: #f05455;
     -fx-max-height: 70.5;
@@ -343,6 +344,11 @@ Seat:hover {
     -fx-pref-height: 20;
 }
 
+.date-picker-popup .button .right-arrow,
+.date-picker-popup .button .left-arrow{
+    -fx-background-color: #f05455;
+}
+
 .date-picker-popup .month-year-pane{
     -fx-background-color: #151515;
 }
@@ -401,7 +407,7 @@ Seat:hover {
     -fx-font-size: 19;
     -fx-font-family: 'TicketFont';
     -fx-background-color: #151515;
-    -fx-text-fill: #f3622d;
+    -fx-text-fill: #f05455;
 }
 
 .date-picker-popup .today {
@@ -436,4 +442,14 @@ Seat:hover {
 .date-picker-popup .previous-month,
 .date-picker-popup .next-month {
     visibility: hidden;
+}
+
+.check-box .text {
+    -fx-fill: #f05455;
+    -fx-font-size: 35;
+    -fx-font-family: "ticketFont";
+}
+
+.check-box .box {
+    -fx-fill: #151515;
 }
