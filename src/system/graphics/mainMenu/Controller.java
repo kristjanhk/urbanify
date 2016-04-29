@@ -2,12 +2,11 @@ package system.graphics.mainMenu;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.stage.DirectoryChooser;
+import org.controlsfx.control.PopOver;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
 import system.settings.Word;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,9 +20,14 @@ public class Controller extends AbstractController {
     public Text settingsText;
     public Text archiveText;
 
+    private PopOver popOver = new PopOver();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.setLanguage();
+        this.archiveImage.setOnMouseEntered(event -> {
+            popOver.show(this.archiveImage);
+        });
     }
 
     public void openNewEvent() {
@@ -40,15 +44,7 @@ public class Controller extends AbstractController {
 
     public void openArchive() {
         //this.scene.getStageHandler().switchSceneTo(Scenetype.ARCHIVE);
-        //Lang.setActiveLang(Lang.values()[new Random().nextInt(Lang.values().length)]);
-        DirectoryChooser dc = new DirectoryChooser();
-        File selecteddirectory = dc.showDialog(this.scene.getStageHandler().getStage());
-
-        if (selecteddirectory == null) {
-            System.out.println("Selected dir is null!");
-        } else {
-            System.out.println(selecteddirectory.getAbsolutePath());
-        }
+        this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE);
     }
 
     @Override

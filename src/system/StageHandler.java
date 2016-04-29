@@ -24,7 +24,7 @@ public class StageHandler {
         this.switchSceneTo(Scenetype.MAINMENU);
         // TODO: 11.04.2016 moditavad argumendid
         primaryStage.setTitle("Superpilet 3000");
-        primaryStage.setHeight(840);
+        primaryStage.setHeight(880);
         primaryStage.setWidth(1220);
         primaryStage.setMinHeight(840);
         primaryStage.setMinWidth(1220);

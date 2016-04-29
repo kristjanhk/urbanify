@@ -7,45 +7,53 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
+import javafx.stage.DirectoryChooser;
 import system.MainHandler;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Csstype;
 import system.graphics.common.Scenetype;
+import system.settings.Lang;
 import system.settings.Word;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller extends AbstractController {
     public Text settingsText;
     public Button back;
-    public Button apply;
-    public Button ok;
     public Text pathText;
     public Text filepath;
     public MenuButton language;
     public MenuButton theme;
     public CheckBox fullscreen;
-    // TODO: 29.04.2016 remove ok button??
-    // TODO: 29.04.2016 keep only back button??
     // TODO: 29.04.2016 location path  textflow peale või labeliks
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.setLanguage();
+        //this.filepath.setText(this.getData().getPath());
     }
 
     @FXML
-    public void handleThemeSwitch(ActionEvent event) {
+    protected void handleDirectoryChange() {
+        DirectoryChooser dc = new DirectoryChooser();
+        File sd = dc.showDialog(this.scene.getStageHandler().getStage());
+        if (sd != null) {
+            this.getFileHandler().setPath(sd.getAbsolutePath());
+            this.filepath.setText(sd.getAbsolutePath());
+        }
+    }
+
+    @FXML
+    protected void handleThemeSwitch(ActionEvent event) {
         switch (((MenuItem) event.getSource()).getId()) {
             case "light":
-                // FIXME: 29.04.2016 global change
-                MainHandler.changeSceneThemeTo(this.scene, Csstype.LIGHT);
+                MainHandler.changeGlobalThemeTo(Csstype.LIGHT);
                 break;
             case "dark":
-                // FIXME: 29.04.2016 global change
-                MainHandler.changeSceneThemeTo(this.scene, Csstype.DARK);
+                MainHandler.changeGlobalThemeTo(Csstype.DARK);
                 break;
             case "warm":
                 //MainHandler.changeGlobalThemeTo(Csstype.WARM);
@@ -55,34 +63,42 @@ public class Controller extends AbstractController {
 
     }
 
-    public void doBack() {
-        // TODO: 29.04.2016 reset scene??
-        this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
+    @FXML
+    protected void handleLangSwitch(ActionEvent event) {
+        switch (((MenuItem) event.getTarget()).getText()) {
+            case "english":
+                Lang.setActiveLang(Lang.ENGLISH);
+                break;
+            case "eesti keel":
+                Lang.setActiveLang(Lang.ESTONIAN);
+                break;
+            case "deutsch":
+                Lang.setActiveLang(Lang.GERMAN);
+                break;
+            case "pусский язык":
+                Lang.setActiveLang(Lang.RUSSIAN);
+                break;
+            case "võro kiil":
+                Lang.setActiveLang(Lang.VÕRO);
+                break;
+        }
     }
 
-    public void doApply() {
-        // TODO: 29.04.2016 save scene??
-        this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
-    }
-
-    public void doOk() {
+    @FXML
+    protected void doBack() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
     }
 
     @Override
     public void prepareToDisplay(Scenetype prevSceneType) {
-        // TODO: 29.04.2016 save current scene state???
+
     }
 
     @Override
     public void setLanguage() {
         this.settingsText.setText(Word.SETTINGS.toString());
         this.back.setText(Word.BACK.toString());
-        this.apply.setText(Word.APPLY.toString());
-        this.ok.setText(Word.OK.toString());
         this.pathText.setText(Word.PATH.toString());
-        // FIXME: 29.04.2016 insert default path if not in jsonfile
-        this.filepath.setText("C:\\Users\\Kristen\\Google Drive\\Projects\\kassa3000\\graafika\\icons");
         this.language.setText(Word.LANGUAGE.toString());
         this.theme.setText(Word.THEME.toString());
         this.theme.getItems().get(0).setText(Word.LIGHT.toString());
