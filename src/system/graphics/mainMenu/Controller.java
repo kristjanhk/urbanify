@@ -1,18 +1,17 @@
 package system.graphics.mainMenu;
 
-import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.DirectoryChooser;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
-import system.settings.Lang;
 import system.settings.Word;
 
+import java.io.File;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 
-public class Controller extends AbstractController implements Initializable {
+public class Controller extends AbstractController {
     public ImageView newEventImage;
     public ImageView eventsImage;
     public ImageView settingsImage;
@@ -41,7 +40,15 @@ public class Controller extends AbstractController implements Initializable {
 
     public void openArchive() {
         //this.scene.getStageHandler().switchSceneTo(Scenetype.ARCHIVE);
-        Lang.setActiveLang(Lang.values()[new Random().nextInt(Lang.values().length)]);
+        //Lang.setActiveLang(Lang.values()[new Random().nextInt(Lang.values().length)]);
+        DirectoryChooser dc = new DirectoryChooser();
+        File selecteddirectory = dc.showDialog(this.scene.getStageHandler().getStage());
+
+        if (selecteddirectory == null) {
+            System.out.println("Selected dir is null!");
+        } else {
+            System.out.println(selecteddirectory.getAbsolutePath());
+        }
     }
 
     @Override

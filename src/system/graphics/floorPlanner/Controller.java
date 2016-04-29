@@ -2,7 +2,6 @@ package system.graphics.floorPlanner;
 
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.collections.ObservableList;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -20,7 +19,7 @@ import system.settings.Word;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller extends AbstractController implements Initializable {
+public class Controller extends AbstractController {
     public Text floorPlanText;
     public MenuButton floorPlans;
     public MenuButton floorTypes;

@@ -12,10 +12,11 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 
-<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.65"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.settings.Controller">
+<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="system.graphics.settings.Controller">
     <top>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="settings" BorderPane.alignment="TOP_LEFT" styleClass="topText">
+        <Text fx:id="settingsText" strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="TOP_LEFT"
+              styleClass="topText">
             <BorderPane.margin>
                 <Insets left="40.0" top="40.0" />
             </BorderPane.margin>
@@ -23,91 +24,81 @@
     </top>
     <bottom>
         <HBox alignment="BOTTOM_RIGHT" BorderPane.alignment="BOTTOM_RIGHT">
-            <children>
-                <Button mnemonicParsing="false" text="back" styleClass="bottomButton">
-                    <HBox.margin>
-                        <Insets left="40.0" />
-                    </HBox.margin>
-                </Button>
-                <Button mnemonicParsing="false" text="apply" styleClass="bottomButton">
-                    <HBox.margin>
-                        <Insets left="40.0" />
-                    </HBox.margin>
-                </Button>
-                <Button mnemonicParsing="false" text="ok" styleClass="bottomButton">
-                    <HBox.margin>
-                        <Insets left="40.0" />
-                    </HBox.margin>
-                </Button>
-            </children>
             <BorderPane.margin>
-                <Insets bottom="40.0" right="40.0" />
+                <Insets bottom="40.0" right="40.0"/>
             </BorderPane.margin>
+            <Button fx:id="back" onMouseClicked="#doBack" mnemonicParsing="false" styleClass="bottomButton">
+                <HBox.margin>
+                    <Insets left="40.0"/>
+                </HBox.margin>
+            </Button>
+            <Button fx:id="apply" onMouseClicked="#doApply" mnemonicParsing="false" styleClass="bottomButton">
+                <HBox.margin>
+                    <Insets left="40.0"/>
+                </HBox.margin>
+            </Button>
+            <Button fx:id="ok" onMouseClicked="#doOk" mnemonicParsing="false" styleClass="bottomButton">
+                <HBox.margin>
+                    <Insets left="40.0"/>
+                </HBox.margin>
+            </Button>
         </HBox>
     </bottom>
     <center>
         <VBox BorderPane.alignment="TOP_RIGHT">
             <BorderPane.margin>
-                <Insets left="40.0" top="40.0" />
+                <Insets left="40.0" top="40.0"/>
             </BorderPane.margin>
-            <children>
-                <HBox alignment="CENTER_LEFT">
-                    <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="location path" styleClass="text35">
-                            <font>
-                                <Font size="36.0" />
-                            </font>
-                            <HBox.margin>
-                                <Insets right="40.0" />
-                            </HBox.margin>
-                        </Text>
-                        <TextFlow maxHeight="70.5" minHeight="70.5" prefHeight="70.5" styleClass="textFlowNimi  " HBox.hgrow="ALWAYS">
-                            <HBox.margin>
-                                <Insets right="40.0" />
-                            </HBox.margin>
-                            <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0"
-                                      text="C:\Users\Kristen\Google Drive\Projects\kassa3000\graafika\icons" styleClass="text35">
-                                    <font>
-                                        <Font size="35.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                        </TextFlow>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER_LEFT">
-                    <VBox.margin>
-                        <Insets bottom="40.0" top="40.0" />
-                    </VBox.margin>
-                    <children>
-                        <MenuButton mnemonicParsing="false" text="language">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="english" />
-                                <MenuItem mnemonicParsing="false" text="eesti keel" />
-                                <MenuItem mnemonicParsing="false" text="deutsch" />
-                                <MenuItem mnemonicParsing="false" text="pусский язык" />
-                                <MenuItem mnemonicParsing="false" text="võro kiil" />
-                            </items>
-                            <HBox.margin>
-                                <Insets right="40.0" />
-                            </HBox.margin>
-                        </MenuButton>
-                        <MenuButton mnemonicParsing="false" text="theme">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="light" />
-                                <MenuItem mnemonicParsing="false" text="dark" />
-                                <MenuItem mnemonicParsing="false" text="warm" />
-                            </items>
-                        </MenuButton>
-                    </children>
-                </HBox>
-                <CheckBox maxHeight="70.5" minHeight="70.5" mnemonicParsing="false" prefHeight="70.5" text="full screen">
+            <HBox alignment="CENTER_LEFT">
+                <Text fx:id="pathText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35">
                     <font>
-                        <Font size="35.0" />
+                        <Font size="36.0"/>
                     </font>
-                </CheckBox>
-            </children>
+                    <HBox.margin>
+                        <Insets right="40.0"/>
+                    </HBox.margin>
+                </Text>
+                <TextFlow maxHeight="70.5" minHeight="70.5" prefHeight="70.5" styleClass="textFlowNimi"
+                          HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets right="40.0"/>
+                    </HBox.margin>
+                    <Text fx:id="filepath" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35">
+                        <font>
+                            <Font size="35.0"/>
+                        </font>
+                    </Text>
+                </TextFlow>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+                <VBox.margin>
+                    <Insets bottom="40.0" top="40.0"/>
+                </VBox.margin>
+                <MenuButton fx:id="language" mnemonicParsing="false">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="english"/>
+                        <MenuItem mnemonicParsing="false" text="eesti keel"/>
+                        <MenuItem mnemonicParsing="false" text="deutsch"/>
+                        <MenuItem mnemonicParsing="false" text="pусский язык"/>
+                        <MenuItem mnemonicParsing="false" text="võro kiil"/>
+                    </items>
+                    <HBox.margin>
+                        <Insets right="40.0"/>
+                    </HBox.margin>
+                </MenuButton>
+                <MenuButton fx:id="theme" mnemonicParsing="false">
+                    <items>
+                        <MenuItem mnemonicParsing="false" id="light" onAction="#handleThemeSwitch"/>
+                        <MenuItem mnemonicParsing="false" id="dark" onAction="#handleThemeSwitch"/>
+                        <MenuItem mnemonicParsing="false" id="warm" onAction="#handleThemeSwitch"/>
+                    </items>
+                </MenuButton>
+            </HBox>
+            <CheckBox fx:id="fullscreen" maxHeight="70.5" minHeight="70.5" mnemonicParsing="false" prefHeight="70.5">
+                <font>
+                    <Font size="35.0"/>
+                </font>
+            </CheckBox>
         </VBox>
     </center>
 </BorderPane>

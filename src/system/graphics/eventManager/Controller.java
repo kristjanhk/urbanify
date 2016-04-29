@@ -1,6 +1,5 @@
 package system.graphics.eventManager;
 
-
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -8,11 +7,19 @@ import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
 import system.settings.Word;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class Controller extends AbstractController {
     public Text eventsText;
     public VBox eventsVBox;
     public Button backButton;
     private int testint = 0;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.setLanguage();
+    }
 
 
     // TODO: 14.04.2016 to be changed

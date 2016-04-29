@@ -1,6 +1,5 @@
 package system.graphics.eventCreator;
 
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
@@ -14,7 +13,7 @@ import system.settings.Word;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller extends AbstractController implements Initializable {
+public class Controller extends AbstractController {
     public Text eventCreator;
     public TextField eventText;
     public DatePicker calendar;

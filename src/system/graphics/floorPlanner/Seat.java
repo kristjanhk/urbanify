@@ -1,6 +1,5 @@
 package system.graphics.floorPlanner;
 
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class Seat extends Circle {
@@ -9,7 +8,7 @@ public class Seat extends Circle {
     private int y;
 
     public Seat() {
-        super(25, Color.GRAY);
+        super(25);
         this.seattype = Seattype.AVAILABLE;
         this.setOnMouseClicked(event -> this.handleClick());
     }
@@ -30,10 +29,17 @@ public class Seat extends Circle {
     public Seattype getSeattype() {
         return this.seattype;
     }
-    
+
     private void handleClick() {
         System.out.println("Clicked: (" + this.x + "," + this.y + ")");
-        // TODO: 20.04.2016 toggle colors / seattypes 
+        if (this.seattype.equals(Seattype.AVAILABLE)) {
+            this.seattype = Seattype.UNAVAILABLE;
+            //this.setStyle("-fx-fill: #5b5c5c");
+            // TODO: 27.04.2016 set from css?, or use togglebutton 
+        } else {
+            this.seattype = Seattype.AVAILABLE;
+            //this.setStyle("-fx-fill: #7e2b2c");
+        }
     }
 
     @Override
