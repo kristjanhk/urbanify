@@ -18,7 +18,7 @@
     <top>
         <Text fx:id="floorPlanText" styleClass="topText" BorderPane.alignment="TOP_LEFT">
             <BorderPane.margin>
-                <Insets left="40.0" top="40.0"/>
+                <Insets left="70.0" top="40.0"/>
             </BorderPane.margin>
         </Text>
     </top>

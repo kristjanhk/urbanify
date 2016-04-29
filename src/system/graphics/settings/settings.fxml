@@ -18,7 +18,7 @@
         <Text fx:id="settingsText" strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="TOP_LEFT"
               styleClass="topText">
             <BorderPane.margin>
-                <Insets left="40.0" top="40.0" />
+                <Insets left="70.0" top="40.0" />
             </BorderPane.margin>
         </Text>
     </top>

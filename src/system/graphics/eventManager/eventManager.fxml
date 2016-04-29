@@ -16,7 +16,7 @@
             <Text fx:id="eventsText" styleClass="topText" strokeType="OUTSIDE" strokeWidth="0.0"
                   BorderPane.alignment="TOP_LEFT">
                 <BorderPane.margin>
-                    <Insets bottom="40.0" left="40.0" top="40.0"/>
+                    <Insets bottom="40.0" left="70.0" top="40.0"/>
                 </BorderPane.margin>
             </Text>
             <Button maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0" text="add"

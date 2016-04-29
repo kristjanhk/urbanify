@@ -20,7 +20,7 @@
         <VBox prefHeight="123.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
             <Text fx:id="eventCreator" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText">
                 <VBox.margin>
-                    <Insets left="40.0" top="40.0" />
+                    <Insets left="70.0" top="40.0" />
                 </VBox.margin>
             </Text>
             <TextField fx:id="eventText" maxHeight="70.5" minHeight="70.5" minWidth="40.0" prefHeight="70.5">

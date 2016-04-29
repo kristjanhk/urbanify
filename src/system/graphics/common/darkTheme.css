@@ -78,6 +78,7 @@
 
 
 .menu-button {
+    -fx-pref-height: 70.5;
     -fx-background-color: #151515;
     -fx-font-family: 'TicketFont';
     -fx-font-size: 26;
@@ -290,6 +291,29 @@ Seat:hover {
     -fx-background-color: #151515;
 }
 
+
+.textFlow30 {
+    -fx-padding: 8 0 0 20;
+    -fx-background-color: #151515;
+}
+
+.textFlow20 {
+    -fx-padding: 8 0 0 20;
+    -fx-background-color: #151515;
+}
+
+.textFlow20txt {
+    -fx-font-size: 20;
+    -fx-fill: #f05455;
+    -fx-font-family: "ticketFont";
+}
+
+.textFlow30txt {
+    -fx-font-size: 30;
+    -fx-fill: #f05455;
+    -fx-font-family: "ticketFont";
+}
+
 .buttonRound {
     -fx-background-color: #151515;
     -fx-text-fill: #f05455;
@@ -451,5 +475,16 @@ Seat:hover {
 }
 
 .check-box .box {
-    -fx-fill: #151515;
+    -fx-background-color: #151515;
+    -fx-background-radius: 0;
+    -fx-pref-height: 70.5;
+    -fx-pref-width: 70.5;
+}
+
+.check-box .box:hover {
+    -fx-background-color: #5b5c5c;
+}
+
+.check-box .box:pressed {
+    -fx-background-color: #333333;
 }
