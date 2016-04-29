@@ -1,9 +1,23 @@
 package system.settings;
 
-public class JsonFile {
+import system.graphics.common.Csstype;
 
-    public JsonFile() {
-        Lang.setActiveLang(Lang.ESTONIAN);
-        // TODO: 26.04.2016 save settings
+public class JsonFile {
+    private Lang activeLanguage;
+    private Csstype activeTheme;
+
+    public JsonFile() {}
+
+    public Lang getActiveLanguage() {
+        return this.activeLanguage;
+    }
+
+    public Csstype getActiveTheme() {
+        return this.activeTheme;
+    }
+
+    public void saveCurrentData() {
+        this.activeLanguage = Lang.getActiveLang();
+        this.activeTheme = Csstype.getActiveTheme();
     }
 }

@@ -33,7 +33,7 @@ public class Controller extends AbstractController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.setLanguage();
-        //this.filepath.setText(this.getData().getPath());
+        this.filepath.setText(this.getFileHandler().getPath());
     }
 
     @FXML

@@ -30,6 +30,7 @@ public class StageHandler {
         primaryStage.setMinWidth(1220);
         primaryStage.show();
         //primaryStage.setFullScreen(true);
+        primaryStage.setOnCloseRequest(event -> MainHandler.getFileHandler().saveData());
     }
 
     public Stage getStage() {
