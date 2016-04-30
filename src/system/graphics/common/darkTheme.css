@@ -1,5 +1,5 @@
 @font-face {
-    src: url("TicketFont2.ttf");
+    src: url("TicketFont.ttf");
 }
 
 .text-field {
@@ -487,4 +487,9 @@ Seat:hover {
 
 .check-box .box:pressed {
     -fx-background-color: #333333;
+}
+
+.popover {
+    -fx-background-color: #151515;
+    -fx-background-radius: 0;
 }
