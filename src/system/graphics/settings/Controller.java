@@ -27,13 +27,14 @@ public class Controller extends AbstractController {
     public MenuButton language;
     public MenuButton theme;
     public CheckBox fullscreen;
-    // TODO: 29.04.2016 location path  textflow peale või labeliks
+    // TODO: 29.04.2016 location path textflow peale või labeliks
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.setLanguage();
         this.filepath.setText(this.getFileHandler().getPath());
+        this.language.setText(Word.valueOf(Lang.getActiveLang().toString()).inLang(Lang.getActiveLang()));
     }
 
     @FXML
@@ -48,39 +49,34 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void handleThemeSwitch(ActionEvent event) {
-        switch (((MenuItem) event.getSource()).getId()) {
-            case "light":
-                MainHandler.changeGlobalThemeTo(Csstype.LIGHT);
-                break;
-            case "dark":
-                MainHandler.changeGlobalThemeTo(Csstype.DARK);
-                break;
-            case "warm":
-                //MainHandler.changeGlobalThemeTo(Csstype.WARM);
-                // TODO: 29.04.2016 warm theme
-                break;
-        }
-
+        MainHandler.changeGlobalThemeTo(Csstype.valueOf(((MenuItem) event.getSource()).getId()));
+        // TODO: 29.04.2016 warm theme
+        this.theme.setText(Word.valueOf(Csstype.getActiveTheme().toString()).toString());
     }
 
     @FXML
     protected void handleLangSwitch(ActionEvent event) {
-        switch (((MenuItem) event.getTarget()).getText()) {
+        Lang lang = null;
+        switch (((MenuItem) event.getSource()).getText()) {
             case "english":
-                Lang.setActiveLang(Lang.ENGLISH);
+                lang = Lang.ENGLISH;
                 break;
             case "eesti keel":
-                Lang.setActiveLang(Lang.ESTONIAN);
-                break;
-            case "deutsch":
-                Lang.setActiveLang(Lang.GERMAN);
-                break;
-            case "pусский язык":
-                Lang.setActiveLang(Lang.RUSSIAN);
+                lang = Lang.ESTONIAN;
                 break;
             case "võro kiil":
-                Lang.setActiveLang(Lang.VÕRO);
+                lang = Lang.VÕRO;
                 break;
+            case "deutsch":
+                lang = Lang.GERMAN;
+                break;
+            case "pусский язык":
+                lang = Lang.RUSSIAN;
+                break;
+        }
+        if (lang != null) {
+            Lang.setActiveLang(lang);
+            this.language.setText(Word.valueOf(lang.toString()).inLang(lang));
         }
     }
 
@@ -90,17 +86,11 @@ public class Controller extends AbstractController {
     }
 
     @Override
-    public void prepareToDisplay(Scenetype prevSceneType) {
-
-    }
-
-    @Override
     public void setLanguage() {
         this.settingsText.setText(Word.SETTINGS.toString());
         this.back.setText(Word.BACK.toString());
         this.pathText.setText(Word.PATH.toString());
-        this.language.setText(Word.LANGUAGE.toString());
-        this.theme.setText(Word.THEME.toString());
+        this.theme.setText(Word.valueOf(Csstype.getActiveTheme().toString()).toString());
         this.theme.getItems().get(0).setText(Word.LIGHT.toString());
         this.theme.getItems().get(1).setText(Word.DARK.toString());
         this.theme.getItems().get(2).setText(Word.WARM.toString());

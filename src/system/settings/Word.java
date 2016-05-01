@@ -5,8 +5,8 @@ import java.util.HashMap;
 public enum Word {
     NEWEVENT, OPENEVENT, SETTINGS, ARCHIVE, EVENTCREATOR, NAMEYOUREVENT, PRICE, TICKETYPE, OPENSEATING, ASSIGNEDSEATING,
     NEXT, CANCEL, BACK, CREATE, SAVE, NEWFLOORPLAN, FLOORPLANS, FLOORTYPE, ROWS, SEATSINROW, STAGE, SCREEN, EVENTS,
-    SETDATE, SETTIME, MAXNROFSEATS, DATEFORMAT, TIMEFORMAT, APPLY, OK, PATH, FULLSCREEN, LANGUAGE, THEME, LIGHT, DARK,
-    WARM;
+    SETDATE, SETTIME, MAXNROFSEATS, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, APPLY, OK, PATH, FULLSCREEN, LANGUAGE,
+    THEME, LIGHT, DARK, WARM, SETSEATINGTYPE, SEATINGTYPE, ENGLISH, ESTONIAN, VÕRO, GERMAN, RUSSIAN;
     private static HashMap<Word, String[]> words = createLanguages();
 
     private static HashMap<Word, String[]> createLanguages() {
@@ -35,8 +35,10 @@ public enum Word {
                 "Datum einstellen", "TODO"});
         wordsMap.put(Word.SETTIME, new String[]{"set time", "määra aeg", "määrä aig",
                 "Zeit einstellen", "TODO"});
-        wordsMap.put(Word.MAXNROFSEATS, new String[]{"max nr of seats", "ülim arv kohti", "kõgõ suurõmb nummõr kotosõ",
-                "maximale Anzahl der Sitze", "TODO"});
+        wordsMap.put(Word.MAXNROFSEATS, new String[]{"max nr of seats", "ülim arv kohti",
+                "kõgõ suurõmb nummõr kotosõ", "maximale Anzahl der Sitze", "TODO"});
+        wordsMap.put(Word.SETMAXNROFSEATS, new String[]{"set max nr of seats", "määra ülim arv kohti",
+                "TODO kõgõ suurõmb nummõr kotosõ", "TODO maximale Anzahl der Sitze", "TODO"});
         wordsMap.put(Word.NEXT, new String[]{"next", "edasi", "edesi",
                 "weiter", "TODO"});
         wordsMap.put(Word.CANCEL, new String[]{"cancel", "katkesta", "TODO",
@@ -85,6 +87,20 @@ public enum Word {
                 "TODO", "TODO"});
         wordsMap.put(Word.WARM, new String[]{"warm", "soe", "TODO",
                 "TODO", "TODO"});
+        wordsMap.put(Word.SETSEATINGTYPE, new String[]{"set seating type", "määra kohtade tüüp", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.SEATINGTYPE, new String[]{"seating type", "kohtade tüüp", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.ENGLISH, new String[]{"english", "inglise keel", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.ESTONIAN, new String[]{"estonian", "eesti keel", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.VÕRO, new String[]{"võro", "võro kiil", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.GERMAN, new String[]{"german", "saksa keel", "TODO",
+                "deutsch", "TODO"});
+        wordsMap.put(Word.RUSSIAN, new String[]{"russian", "vene keel", "TODO",
+                "TODO", "pусский язык"});
         return wordsMap;
     }
 

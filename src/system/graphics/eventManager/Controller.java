@@ -42,14 +42,8 @@ public class Controller extends AbstractController {
 
     public void doTest() {
         this.testint += 1;
-        this.eventsVBox.getChildren().add(new Event(this.eventsVBox,
+        this.eventsVBox.getChildren().add(new EventLine(this.eventsVBox,
                 "Kogu küla lõõtsafest " + testint, "1/4/201" + testint, "13:0" + testint));
-    }
-
-
-    @Override
-    public void prepareToDisplay(Scenetype prevSceneType) {
-
     }
 
     @Override

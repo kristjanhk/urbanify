@@ -265,7 +265,7 @@ Seat:hover {
 .scroll-bar .increment-button,
 .scroll-bar .decrement-button {
     -fx-background-color:transparent;
-    -fx-background-radius: 0em;
+    -fx-background-radius: 0;
     -fx-padding:0 10 0 10;
 }
 
@@ -492,4 +492,9 @@ Seat:hover {
 .popover {
     -fx-background-color: #151515;
     -fx-background-radius: 0;
+}
+
+.validationError {
+    -fx-effect: dropshadow(three-pass-box, rgba(139,0,0,0.8), 10, 0, 0, 0);
+    /* intellij ei tunne innershadowit?? */
 }

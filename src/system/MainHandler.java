@@ -15,6 +15,7 @@ public class MainHandler extends Application{
 
     public static void main(String[] args) {
         fileHandler = new FileHandler();
+        eventHandler = new EventHandler();
         launch(args);
     }
 

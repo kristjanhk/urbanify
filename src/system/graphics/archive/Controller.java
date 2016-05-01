@@ -24,12 +24,6 @@ public class Controller extends AbstractController {
         this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
     }
 
-
-    @Override
-    public void prepareToDisplay(Scenetype prevSceneType) {
-
-    }
-
     @Override
     public void setLanguage() {
 

@@ -25,9 +25,6 @@ public class Controller extends AbstractController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.setLanguage();
-        this.archiveImage.setOnMouseEntered(event -> {
-            popOver.show(this.archiveImage);
-        });
     }
 
     public void openNewEvent() {
@@ -46,9 +43,6 @@ public class Controller extends AbstractController {
         //this.scene.getStageHandler().switchSceneTo(Scenetype.ARCHIVE);
         this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE);
     }
-
-    @Override
-    public void prepareToDisplay(Scenetype prevSceneType) {}
 
     @Override
     public void setLanguage() {

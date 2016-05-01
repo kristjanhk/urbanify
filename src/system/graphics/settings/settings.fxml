@@ -68,9 +68,9 @@
                     <items>
                         <MenuItem mnemonicParsing="false" text="english" onAction="#handleLangSwitch"/>
                         <MenuItem mnemonicParsing="false" text="eesti keel" onAction="#handleLangSwitch"/>
+                        <MenuItem mnemonicParsing="false" text="võro kiil" onAction="#handleLangSwitch"/>
                         <MenuItem mnemonicParsing="false" text="deutsch" onAction="#handleLangSwitch"/>
                         <MenuItem mnemonicParsing="false" text="pусский язык" onAction="#handleLangSwitch"/>
-                        <MenuItem mnemonicParsing="false" text="võro kiil" onAction="#handleLangSwitch"/>
                     </items>
                     <HBox.margin>
                         <Insets right="40.0"/>
@@ -78,9 +78,9 @@
                 </MenuButton>
                 <MenuButton fx:id="theme" mnemonicParsing="false">
                     <items>
-                        <MenuItem mnemonicParsing="false" id="light" onAction="#handleThemeSwitch"/>
-                        <MenuItem mnemonicParsing="false" id="dark" onAction="#handleThemeSwitch"/>
-                        <MenuItem mnemonicParsing="false" id="warm" onAction="#handleThemeSwitch"/>
+                        <MenuItem mnemonicParsing="false" id="LIGHT" onAction="#handleThemeSwitch"/>
+                        <MenuItem mnemonicParsing="false" id="DARK" onAction="#handleThemeSwitch"/>
+                        <MenuItem mnemonicParsing="false" id="WARM" onAction="#handleThemeSwitch"/>
                     </items>
                 </MenuButton>
             </HBox>

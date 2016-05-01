@@ -12,7 +12,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 
-public class Event extends HBox {
+public class EventLine extends HBox {
     private VBox parentNode;
     private TextFlow textFlowName;
     private TextFlow textFlowDate;
@@ -21,7 +21,7 @@ public class Event extends HBox {
     private Text date;
     private Text time;
 
-    public Event(VBox parentNode, String name, String date, String time) {
+    public EventLine(VBox parentNode, String name, String date, String time) {
         super();
         this.parentNode = parentNode;
         this.setMinHeight(110.5);

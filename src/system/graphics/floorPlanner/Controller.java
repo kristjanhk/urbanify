@@ -250,11 +250,6 @@ public class Controller extends AbstractController {
     }
 
     @Override
-    public void prepareToDisplay(Scenetype prevSceneType) {
-
-    }
-
-    @Override
     public void setLanguage() {
         this.floorPlanText.setText(Word.NEWFLOORPLAN.toString());
         this.floorPlans.setText(Word.FLOORPLANS.toString());

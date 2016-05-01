@@ -20,7 +20,9 @@ public abstract class AbstractController implements Initializable {
         return this.getFileHandler().getData();
     }
 
-    public abstract void prepareToDisplay(Scenetype prevSceneType);
+    public void prepareToDisplay(Scenetype prevSceneType) {
+
+    }
 
     public abstract void setLanguage();
 }
