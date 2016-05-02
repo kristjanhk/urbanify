@@ -1,4 +1,4 @@
-package system.settings;
+package system.data;
 
 import java.util.HashMap;
 

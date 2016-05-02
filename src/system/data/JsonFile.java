@@ -1,4 +1,4 @@
-package system.settings;
+package system.data;
 
 import system.graphics.common.Csstype;
 

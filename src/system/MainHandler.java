@@ -1,7 +1,14 @@
 package system;
 
 import javafx.application.Application;
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.scene.Node;
+import javafx.scene.control.Control;
 import javafx.stage.Stage;
+import org.controlsfx.validation.Severity;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
+import org.controlsfx.validation.decoration.StyleClassValidationDecoration;
 import system.graphics.common.CustomScene;
 import system.graphics.common.Csstype;
 
@@ -57,6 +64,16 @@ public class MainHandler extends Application{
         // TODO: 21.04.2016 hoida alles mingit põhi css faili, vahetada aind theme 
         scene.getStylesheets().clear();
         scene.getStylesheets().add("system/graphics/common/" + csstype.toString(true));
+    }
+
+    //http://stackoverflow.com/questions/29607080/textfield-component-validation-with-controls-fx
+    public static ReadOnlyBooleanProperty setValidationFor(Node node, String validation) {
+        ValidationSupport validationSupport = new ValidationSupport();
+        validationSupport.setValidationDecorator(
+                new StyleClassValidationDecoration("validationError", "validationWarning"));
+        validationSupport.registerValidator((Control) node, true,
+                Validator.createRegexValidator("error", validation, Severity.ERROR));
+        return validationSupport.invalidProperty();
     }
 }
 

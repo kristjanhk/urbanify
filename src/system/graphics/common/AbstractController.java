@@ -2,7 +2,7 @@ package system.graphics.common;
 
 import javafx.fxml.Initializable;
 import system.FileHandler;
-import system.settings.JsonFile;
+import system.data.JsonFile;
 import system.MainHandler;
 
 public abstract class AbstractController implements Initializable {

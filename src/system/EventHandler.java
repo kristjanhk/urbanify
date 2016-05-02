@@ -1,6 +1,6 @@
 package system;
 
-import system.settings.JsonFile;
+import system.data.JsonFile;
 
 public class EventHandler {
     private JsonFile data;

@@ -5,7 +5,7 @@ import javafx.scene.text.Text;
 import org.controlsfx.control.PopOver;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
-import system.settings.Word;
+import system.data.Word;
 
 import java.net.URL;
 import java.util.ResourceBundle;

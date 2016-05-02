@@ -3,8 +3,8 @@ package system;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import system.graphics.common.Csstype;
-import system.settings.JsonFile;
-import system.settings.Lang;
+import system.data.JsonFile;
+import system.data.Lang;
 
 import java.io.*;
 

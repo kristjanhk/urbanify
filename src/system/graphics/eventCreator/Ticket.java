@@ -9,22 +9,28 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import system.settings.Word;
+import system.MainHandler;
+import system.data.Word;
 
 public class Ticket extends HBox {
+    private Controller parentController;
     private VBox parentNode;
     private TextField priceText;
     private Text priceLabel;
+    private boolean priceTextValidated;
     private TextField ticketText;
     private Text ticketLabel;
+    private boolean ticketTextValidated;
 
-    public Ticket(VBox parentNode) {
+    public Ticket(Controller parentController, VBox parentNode) {
         super();
+        this.parentController = parentController;
         this.parentNode = parentNode;
         this.setPrefSize(506.0, 12.0);
         VBox.setMargin(this, new Insets(0, 75.0, 20.0, 40.0));
         this.initChildren();
         this.setLanguage();
+        this.addValidation();
     }
 
     private void initChildren() {
@@ -38,8 +44,6 @@ public class Ticket extends HBox {
         deleteTicket.setOnMouseClicked(event -> this.parentNode.getChildren().remove(this));
         this.getChildren().add(deleteTicket);
 
-        // TODO: 23.04.2016 add pattern listeners 
-        
         this.priceText = new TextField();
         this.priceText.setMinSize(110.0, 70.5);
         this.priceText.setMaxSize(110.0, 70.5);
@@ -77,11 +81,28 @@ public class Ticket extends HBox {
         this.ticketLabel.setText(Word.TICKETYPE.toString());
     }
 
-    public TextField getPriceText() {
-        return priceText;
+    private void addValidation() {
+        MainHandler.setValidationFor(this.priceText, "\\d+([\\.\\,]\\d+)?").addListener(
+                (observable, oldValue, newValue) -> {
+                    this.priceTextValidated = !newValue;
+                    this.parentController.checkNextButtonValidation();
+                });
+        MainHandler.setValidationFor(this.ticketText, "^(?=\\s*\\S).*$").addListener(
+                (observable, oldValue, newValue) -> {
+                    this.ticketTextValidated = !newValue;
+                    this.parentController.checkNextButtonValidation();
+                });
     }
 
-    public TextField getTicketText() {
-        return ticketText;
+    public boolean isValid() {
+        return this.priceTextValidated && this.ticketTextValidated;
+    }
+
+    public String getType() {
+        return this.ticketText.getText();
+    }
+
+    public double getPrice() {
+        return Double.parseDouble(this.priceText.getText());
     }
 }

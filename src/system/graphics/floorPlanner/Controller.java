@@ -14,7 +14,7 @@ import system.MainHandler;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
 import system.graphics.common.Csstype;
-import system.settings.Word;
+import system.data.Word;
 
 import java.net.URL;
 import java.util.ResourceBundle;

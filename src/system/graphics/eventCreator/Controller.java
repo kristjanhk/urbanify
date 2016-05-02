@@ -7,14 +7,11 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import org.controlsfx.control.PopOver;
-import org.controlsfx.validation.ValidationResult;
-import org.controlsfx.validation.ValidationSupport;
-import org.controlsfx.validation.Validator;
-import org.controlsfx.validation.decoration.StyleClassValidationDecoration;
+import system.MainHandler;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
-import system.settings.Event;
-import system.settings.Word;
+import system.data.Event;
+import system.data.Word;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,44 +31,32 @@ public class Controller extends AbstractController {
     public Button next;
     public Button addTicketButton;
     public VBox ticketVBox;
+    private String seatingType = "";
     private PopOver maxSeatsPopOver;
     private Event event = new Event();
-    private ValidationSupport validationSupport = new ValidationSupport();
+    private boolean eventTextValidated = false;
+    private boolean calendarValidated = false;
+    private boolean timeTextValidated = false;
+    private boolean seatingValidated = false;
+    private boolean maxSeatsValidated = false;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.setLanguage();
         this.createMaxSeatsHelper();
-        validationSupport.setValidationDecorator(
-                new StyleClassValidationDecoration("validationError", "validationWarning"));
-        this.addValidationTo(this.eventText, "\\d+([\\.\\,]\\d+)?"); //validate integer and double
-        /*this.eventText.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue) { //when focus lost
-                if (!this.eventText.getText().equals("tere")) { // TODO: 23.04.2016 pattern matching
-                    this.eventText.setText("");
-                }
-            }
-        });*/
-        // TODO: 23.04.2016 add pattern listeners
-    }
-
-    //http://stackoverflow.com/questions/29607080/textfield-component-validation-with-controls-fx
-    private void addValidationTo(Node node, String validation) {
-        Validator<String> validator = (control, value) -> ValidationResult.fromErrorIf(control, "error msg",
-                (value == null || !value.matches(validation)));
-        this.validationSupport.registerValidator((Control) node, true, validator);
+        this.addValidation();
     }
 
     @FXML
     protected void addTicket() {
-        this.ticketVBox.getChildren().add(this.ticketVBox.getChildren().size() - 1, new Ticket(this.ticketVBox));
+        this.ticketVBox.getChildren().add(this.ticketVBox.getChildren().size() - 1,
+                new Ticket(this, this.ticketVBox));
     }
 
     @FXML
     protected void handleSeatingSwitch(ActionEvent event) {
-        String seatingType = ((MenuItem) event.getSource()).getId();
-        this.seating.setText(Word.valueOf(seatingType).toString());
-        this.event.setSeatingType(seatingType);
+        this.seatingType = ((MenuItem) event.getSource()).getId();
+        this.seating.setText(Word.valueOf(this.seatingType).toString());
         this.setNextText();
     }
 
@@ -86,6 +71,8 @@ public class Controller extends AbstractController {
     protected void doNext() {
         // FIXME: 21.04.2016
         this.scene.getStageHandler().switchSceneTo(Scenetype.FLOORPLANNER);
+        this.event.readyCreator(this.eventText.getText(), this.ticketVBox.getChildren(), this.calendar.getValue(),
+                this.timeText.getText(), this.seating.getText(), this.maxSeats.getText());
     }
 
     @Override
@@ -110,20 +97,22 @@ public class Controller extends AbstractController {
     }
 
     private void setNextText() {
-        String seatingType = this.event.getSeatingType();
-        if (seatingType == null || seatingType.equals("OPENSEATING")) {
+        if (this.seatingType.equals("")) {
             this.next.setText("next");
-            if (seatingType == null) {
-                this.maxSeats.setVisible(false);
-                this.maxSeatsLabel.setVisible(false);
-            } else {
-                this.maxSeats.setVisible(true);
-                this.maxSeatsLabel.setVisible(true);
-            }
-        } else if (seatingType.equals("ASSIGNEDSEATING")) {
-            this.next.setText("create");
             this.maxSeats.setVisible(false);
             this.maxSeatsLabel.setVisible(false);
+        } else {
+            if (this.seatingType.equals("OPENSEATING")) {
+                this.next.setText("next");
+                this.maxSeats.setVisible(true);
+                this.maxSeatsLabel.setVisible(true);
+            } else if (this.seatingType.equals("ASSIGNEDSEATING")) {
+                this.next.setText("create");
+                this.maxSeats.setVisible(false);
+                this.maxSeatsLabel.setVisible(false);
+            }
+            this.seatingValidated = true;
+            this.checkNextButtonValidation();
         }
     }
 
@@ -132,5 +121,45 @@ public class Controller extends AbstractController {
         this.maxSeatsPopOver.setArrowLocation(PopOver.ArrowLocation.RIGHT_CENTER);
         this.maxSeats.setOnMouseEntered(event -> this.maxSeatsPopOver.show(this.maxSeats));
         this.maxSeats.setOnMouseExited(event -> this.maxSeatsPopOver.hide());
+    }
+
+    private void addValidation() {
+        MainHandler.setValidationFor(this.eventText, "^(?=\\s*\\S).*$").addListener(
+                (observable, oldValue, newValue) -> {
+                    this.eventTextValidated = !newValue;
+                    this.checkNextButtonValidation();
+                });
+        MainHandler.setValidationFor(this.calendar.getEditor(), "^(?=\\s*\\S).*$").addListener(
+                (observable, oldValue, newValue) -> {
+                    this.calendarValidated = !newValue;
+                    this.checkNextButtonValidation();
+                });
+        MainHandler.setValidationFor(this.timeText, "^[0-2][0-9]:[0-5][0-9]$").addListener(
+                (observable, oldValue, newValue) -> {
+                    this.timeTextValidated = !newValue;
+                    this.checkNextButtonValidation();
+                });
+        MainHandler.setValidationFor(this.maxSeats, "^\\d+$").addListener(
+                (observable, oldValue, newValue) -> {
+                    this.maxSeatsValidated = !newValue;
+                    this.checkNextButtonValidation();
+                });
+    }
+
+    public void checkNextButtonValidation() {
+        boolean valid = this.eventTextValidated && this.calendarValidated && this.timeTextValidated &&
+                this.seatingValidated;
+        if (!this.seatingType.equals("ASSIGNEDSEATING") && !this.maxSeatsValidated) {
+            valid = false;
+        } else if (this.ticketVBox.getChildren().size() < 2) {
+            valid = false;
+        }
+        for (Node node : this.ticketVBox.getChildren()) {
+            if (node instanceof Ticket && !((Ticket) node).isValid()) {
+                valid = false;
+                break;
+            }
+        }
+        this.next.setDisable(!valid);
     }
 }
