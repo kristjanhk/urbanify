@@ -16,7 +16,8 @@
 <BorderPane minHeight="600.0" minWidth="1000.0" prefHeight="900.0" prefWidth="1600.0" styleClass="background"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.eventCreator.Controller">
     <top>
-        <VBox prefHeight="123.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
+        <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset"
+              prefHeight="123.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
             <Text fx:id="eventCreator" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText">
                 <VBox.margin>
                     <Insets left="70.0" top="40.0"/>

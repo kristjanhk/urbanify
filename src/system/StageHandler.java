@@ -11,7 +11,10 @@ import java.util.HashMap;
 
 public class StageHandler {
     private Stage stage;
+    private ResizeHandler resizeHandler;
     private HashMap<Scenetype, CustomScene> scenes = new HashMap<>();
+    private double stageXOffset = 0.0;
+    private double stageYOffset = 0.0;
 
     public StageHandler() {
         this(new Stage());
@@ -20,27 +23,38 @@ public class StageHandler {
     public StageHandler(Stage primaryStage) {
         this.stage = primaryStage;
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        //primaryStage.setResizable(false);
-        this.initScenes();
-        this.switchSceneTo(Scenetype.MAINMENU);
-        // TODO: 11.04.2016 moditavad argumendid
+        this.resizeHandler = new ResizeHandler(primaryStage);
         primaryStage.setTitle("Superpilet 3000");
         primaryStage.setHeight(880);
         primaryStage.setWidth(1220);
         primaryStage.setMinHeight(840);
         primaryStage.setMinWidth(1220);
-        ResizeHandler.addResizeListener(primaryStage);
+        this.initScenes();
+        this.switchSceneTo(Scenetype.MAINMENU);
         primaryStage.show();
-        //primaryStage.setFullScreen(true);
         primaryStage.setOnCloseRequest(event -> MainHandler.getFileHandler().saveData());
     }
 
     public Stage getStage() {
-        return stage;
+        return this.stage;
     }
 
     public HashMap<Scenetype, CustomScene> getScenes() {
-        return scenes;
+        return this.scenes;
+    }
+
+    public ResizeHandler getResizeHandler() {
+        return this.resizeHandler;
+    }
+
+    public void setStageOffsets(double eventX, double eventY) {
+        this.stageXOffset = this.stage.getX() - eventX;
+        this.stageYOffset = this.stage.getY() - eventY;
+    }
+
+    public void setStageXY(double eventX, double eventY) {
+        this.stage.setX(eventX + this.stageXOffset);
+        this.stage.setY(eventY + this.stageYOffset);
     }
 
     private void initScenes() {
