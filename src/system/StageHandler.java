@@ -2,6 +2,7 @@ package system;
 
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import system.graphics.common.CustomScene;
 import system.graphics.common.Scenetype;
 
@@ -18,7 +19,7 @@ public class StageHandler {
 
     public StageHandler(Stage primaryStage) {
         this.stage = primaryStage;
-        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         //primaryStage.setResizable(false);
         this.initScenes();
         this.switchSceneTo(Scenetype.MAINMENU);
@@ -28,6 +29,7 @@ public class StageHandler {
         primaryStage.setWidth(1220);
         primaryStage.setMinHeight(840);
         primaryStage.setMinWidth(1220);
+        ResizeHandler.addResizeListener(primaryStage);
         primaryStage.show();
         //primaryStage.setFullScreen(true);
         primaryStage.setOnCloseRequest(event -> MainHandler.getFileHandler().saveData());
