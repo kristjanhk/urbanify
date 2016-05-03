@@ -1,5 +1,5 @@
 @font-face {
-    src: url("TicketFont.ttf");
+    src: url("TicketFont2.ttf");
 }
 
 .text-field {
@@ -13,10 +13,10 @@
     -fx-font-size: 35;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
+    -fx-padding: 1 20 1 20;
 }
 
 .bottomButton {
-    -fx-fill: red;
     -fx-padding: 0 0 0 0;
     -fx-background-color: #151515;
     -fx-text-fill: #f05455;
@@ -494,7 +494,29 @@ Seat:hover {
     -fx-background-radius: 0;
 }
 
-.validationError {
-    -fx-effect: dropshadow(three-pass-box, rgba(139,0,0,0.8), 10, 0, 0, 0);
-    /* intellij ei tunne innershadowit?? */
+.validationError{
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-border-width: 2;
+    -fx-border-color: #f05455;
+}
+
+.barButton {
+    -fx-background-color: #151515;
+    -fx-background-radius: 0;
+    -fx-padding: 0 0 0 0;
+    -fx-max-height: 28;
+    -fx-min-height: 28;
+    -fx-pref-height: 28;
+    -fx-max-width: 51;
+    -fx-min-width: 51;
+    -fx-pref-width: 51;
+    -fx-text-fill: #b1afb0;
+}
+
+.barButton:hover {
+    -fx-background-color: #5b5c5c;
+}
+
+.barButton:armed {
+    -fx-background-color: #333333;
 }
