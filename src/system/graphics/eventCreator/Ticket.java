@@ -41,7 +41,10 @@ public class Ticket extends HBox {
         deleteTicket.setTextAlignment(TextAlignment.CENTER);
         deleteTicket.setMnemonicParsing(false);
         deleteTicket.getStyleClass().add("buttonSmall");
-        deleteTicket.setOnMouseClicked(event -> this.parentNode.getChildren().remove(this));
+        deleteTicket.setOnMouseClicked(event -> {
+            this.parentNode.getChildren().remove(this);
+            this.parentController.checkNextButtonValidation();
+        });
         this.getChildren().add(deleteTicket);
 
         this.priceText = new TextField();

@@ -134,7 +134,7 @@ public class Controller extends AbstractController {
                     this.calendarValidated = !newValue;
                     this.checkNextButtonValidation();
                 });
-        MainHandler.setValidationFor(this.timeText, "^[0-2][0-9]:[0-5][0-9]$").addListener(
+        MainHandler.setValidationFor(this.timeText, "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$").addListener(
                 (observable, oldValue, newValue) -> {
                     this.timeTextValidated = !newValue;
                     this.checkNextButtonValidation();
