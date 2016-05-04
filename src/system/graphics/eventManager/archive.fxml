@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="system.graphics.archive.Controller">
+            fx:controller="system.graphics.eventManager.Controller">
     <top>
         <Text fx:id="eventsText" styleClass="topText" strokeType="OUTSIDE" strokeWidth="0.0"
               BorderPane.alignment="TOP_LEFT">

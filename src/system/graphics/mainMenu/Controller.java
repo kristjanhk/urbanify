@@ -25,11 +25,11 @@ public class Controller extends AbstractController {
     }
 
     public void openNewEvent() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR);
+        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR, null);
     }
 
     public void openEvents() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
+        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, null);
     }
 
     public void openSettings() {
@@ -37,8 +37,7 @@ public class Controller extends AbstractController {
     }
 
     public void openArchive() {
-        //this.scene.getStageHandler().switchSceneTo(Scenetype.ARCHIVE);
-        this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE);
+        this.scene.getStageHandler().switchSceneTo(Scenetype.ARCHIVE, null);
     }
 
     @Override

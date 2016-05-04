@@ -54,10 +54,12 @@ public class Controller extends AbstractController {
     @Override
     public <T> void prepareToDisplay(T object) {
         if (object instanceof Event) {
-            if (this.event != null && !this.event.equals(object)) {
-                this.scene.getStageHandler().replaceScene(Scenetype.POINTOFSALE);
-                this.scene.getStageHandler().getScene(Scenetype.POINTOFSALE).
-                        getController().prepareToDisplay(this.event);
+            if (this.event != null) {
+                if (!this.event.equals(object)) {
+                    this.scene.getStageHandler().replaceScene(Scenetype.POINTOFSALE);
+                    this.scene.getStageHandler().getScene(Scenetype.POINTOFSALE).
+                            getController().prepareToDisplay(object);
+                }
             } else {
                 this.event = ((Event) object);
                 this.init();

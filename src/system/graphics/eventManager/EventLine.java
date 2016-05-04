@@ -28,6 +28,10 @@ public class EventLine extends HBox {
         this.initChildren(this.event.getName(), this.event.getDate().toString(), this.event.getTime());
     }
 
+    public Event getEvent() {
+        return this.event;
+    }
+
     private void initChildren(String name, String date, String time) {
         Button deleteButton = new Button("ó");
         deleteButton.getStyleClass().add("buttonSmall");
@@ -35,7 +39,13 @@ public class EventLine extends HBox {
         deleteButton.setMaxSize(70.5, 70.5);
         deleteButton.setPrefSize(70.5, 70.5);
         deleteButton.setMnemonicParsing(false);
-        deleteButton.setOnMouseClicked(event -> this.parentController.getEventsVBox().getChildren().remove(this));
+        deleteButton.setOnMouseClicked(event -> {
+            this.parentController.getEventsVBox().getChildren().remove(this);
+            if (this.parentController.getScene().getScenetype() == Scenetype.EVENTMANAGER) {
+                ((Controller) this.parentController.getScene().getStageHandler().
+                        getScene(Scenetype.ARCHIVE).getController()).addEventLine(this.event);
+            }
+        });
         HBox.setMargin(deleteButton, new Insets(0.0, 40.0, 0.0, 0.0));
 
         TextFlow textFlowName = new TextFlow();
@@ -44,8 +54,14 @@ public class EventLine extends HBox {
         textFlowName.setMaxHeight(71.5);
         textFlowName.setPrefSize(429.0, 71.5);
         textFlowName.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-        textFlowName.setOnMouseClicked(event ->
-                this.parentController.getScene().getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event));
+        textFlowName.setOnMouseClicked(event -> {
+            if (this.parentController.getScene().getScenetype() == Scenetype.EVENTMANAGER) {
+                this.parentController.getScene().getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
+            } else {
+                // TODO: 5.05.2016 aruande ekraan vms
+                System.out.println("TODO aruande ekraan");
+            }
+        });
         HBox.setHgrow(textFlowName, Priority.ALWAYS);
 
         Text name1 = createText(name);

@@ -63,8 +63,6 @@ public class Controller extends AbstractController {
     @FXML
     protected void doCancel() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
-        // TODO: 26.04.2016 remove procedure? // TODO: 1.05.2016 for floorplan too 
-        this.scene.getStageHandler().replaceScene(this.scene.getScenetype());
     }
 
     @FXML
@@ -76,6 +74,12 @@ public class Controller extends AbstractController {
         } else {
             this.scene.getStageHandler().switchSceneTo(Scenetype.FLOORPLANNER);
         }
+    }
+
+    @Override
+    public <T> void prepareToDisplay(T object) {
+        // TODO: 5.05.2016 check for object type? 
+        this.scene.getStageHandler().replaceScene(Scenetype.EVENTCREATOR);
     }
 
     @Override
