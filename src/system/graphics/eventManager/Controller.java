@@ -1,5 +1,6 @@
 package system.graphics.eventManager;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -23,7 +24,8 @@ public class Controller extends AbstractController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
 
-    public void doBack() {
+    @FXML
+    protected void doBack() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
     }
 
@@ -36,6 +38,7 @@ public class Controller extends AbstractController {
     }
 
     public HashSet<Event> getEvents() {
+        this.checkInitialization();
         // TODO: 5.05.2016 eventide järjekord
         return this.eventsVBox.getChildren().stream().filter(node -> node instanceof EventLine).
                 map(node -> ((EventLine) node).getEvent()).collect(Collectors.toCollection(HashSet::new));
@@ -43,6 +46,16 @@ public class Controller extends AbstractController {
 
     public void addEventLine(Event event) {
         this.eventsVBox.getChildren().add(new EventLine(this, event));
+    }
+
+    private void checkInitialization() {
+        if (!this.initialized) {
+            this.setLanguage();
+            for (Event event : this.getData().getEvents(this.getScene().getScenetype())) {
+                this.eventsVBox.getChildren().add(new EventLine(this, event));
+            }
+            this.initialized = true;
+        }
     }
 
     @Override
@@ -57,13 +70,7 @@ public class Controller extends AbstractController {
 
     @Override
     public <T> void prepareToDisplay(T object) {
-        if (!this.initialized) {
-            this.initialized = true;
-            this.setLanguage();
-            for (Event event : this.getData().getEvents(this.getScene().getScenetype())) {
-                this.eventsVBox.getChildren().add(new EventLine(this, event));
-            }
-        }
+        this.checkInitialization();
         if (object instanceof Event) {
             this.eventsVBox.getChildren().add(new EventLine(this, ((Event) object)));
         }

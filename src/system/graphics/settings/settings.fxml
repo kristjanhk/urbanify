@@ -15,12 +15,15 @@
 <BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="system.graphics.settings.Controller">
     <top>
+        <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0"
+              prefWidth="1600.0" BorderPane.alignment="CENTER">
         <Text fx:id="settingsText" strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="TOP_LEFT"
               styleClass="topText">
-            <BorderPane.margin>
+            <VBox.margin>
                 <Insets left="70.0" top="40.0"/>
-            </BorderPane.margin>
+            </VBox.margin>
         </Text>
+        </VBox>
     </top>
     <bottom>
         <HBox alignment="BOTTOM_RIGHT" BorderPane.alignment="BOTTOM_RIGHT">
