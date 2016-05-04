@@ -1,6 +1,12 @@
 package system.graphics.pointOfSale;
 
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import system.data.Event;
+import system.data.Word;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
 
@@ -8,45 +14,62 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller extends AbstractController {
+    public Text pointofsale;
+    public VBox eventsVBox;
+    public Text total;
+    public Button back;
+    public Button checkout;
+
+    private Event event;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        this.setLanguage();
     }
 
-    // TODO: 14.04.2016 to be changed
-
-    public void doNext() {
-
-    }
-
-    public void doBack() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
-    }
-
-    public void doCheckout() {
-
-    }
-
-    public void addTicketCount(int id) {
-
-    }
-
-    public void removeTicketCount(int id) {
-
+    private void init() {
+        for (String ticket : this.event.getTickets().keySet()) {
+            this.eventsVBox.getChildren().add(new Ticket(this, ticket));
+        }
     }
 
     public void selectSeat(int id) {
 
     }
 
-    @Override
-    public void prepareToDisplay(Scenetype prevSceneType) {
+    @FXML
+    protected void doBack() {
+        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
+    }
 
+    @FXML
+    protected void doCheckout() {
+        System.out.println(this.event);
+    }
+
+    public Event getEvent() {
+        return this.event;
+    }
+
+    @Override
+    public <T> void prepareToDisplay(T object) {
+        if (object instanceof Event) {
+            if (this.event != null && !this.event.equals(object)) {
+                this.scene.getStageHandler().replaceScene(Scenetype.POINTOFSALE);
+                this.scene.getStageHandler().getScene(Scenetype.POINTOFSALE).
+                        getController().prepareToDisplay(this.event);
+            } else {
+                this.event = ((Event) object);
+                this.init();
+            }
+        }
     }
 
     @Override
     public void setLanguage() {
-
+        this.pointofsale.setText(Word.POINTOFSALE.toString());
+        this.total.setText(Word.TOTAL.toString());
+        this.back.setText(Word.BACK.toString());
+        this.checkout.setText(Word.CHECKOUT.toString());
     }
 }

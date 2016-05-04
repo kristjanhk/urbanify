@@ -6,25 +6,16 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
-<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.65"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.eventManager.Controller">
+
+<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="system.graphics.eventManager.Controller">
     <top>
-
-
-        <HBox> <!-- todo hbox and button remove -->
-            <Text fx:id="eventsText" styleClass="topText" strokeType="OUTSIDE" strokeWidth="0.0"
-                  BorderPane.alignment="TOP_LEFT">
-                <BorderPane.margin>
-                    <Insets bottom="40.0" left="70.0" top="40.0"/>
-                </BorderPane.margin>
-            </Text>
-            <Button maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0" text="add"
-                    onAction="#doTest" styleClass="bottomButton">
-            </Button>
-        </HBox>
-
-
+        <Text fx:id="eventsText" styleClass="topText" strokeType="OUTSIDE" strokeWidth="0.0"
+              BorderPane.alignment="TOP_LEFT">
+            <BorderPane.margin>
+                <Insets bottom="40.0" left="70.0" top="40.0"/>
+            </BorderPane.margin>
+        </Text>
     </top>
     <bottom>
         <Button fx:id="backButton" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" prefWidth="121.0"

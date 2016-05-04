@@ -3,10 +3,11 @@ package system.data;
 import java.util.HashMap;
 
 public enum Word {
-    NEWEVENT, OPENEVENT, SETTINGS, ARCHIVE, EVENTCREATOR, NAMEYOUREVENT, PRICE, TICKETYPE, OPENSEATING, ASSIGNEDSEATING,
-    NEXT, CANCEL, BACK, CREATE, SAVE, NEWFLOORPLAN, FLOORPLANS, FLOORTYPE, ROWS, SEATSINROW, STAGE, SCREEN, EVENTS,
-    SETDATE, SETTIME, MAXNROFSEATS, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, APPLY, OK, PATH, FULLSCREEN, LANGUAGE,
-    THEME, LIGHT, DARK, WARM, SETSEATINGTYPE, SEATINGTYPE, ENGLISH, ESTONIAN, VÕRO, GERMAN, RUSSIAN;
+    NEWEVENT, OPENEVENT, SETTINGS, ARCHIVE, EVENTCREATOR, POINTOFSALE, NAMEYOUREVENT, PRICE, TICKETYPE, OPENSEATING,
+    ASSIGNEDSEATING, NEXT, CANCEL, BACK, CREATE, SAVE, NEWFLOORPLAN, FLOORPLANS, FLOORTYPE, ROWS, SEATSINROW, STAGE,
+    SCREEN, EVENTS, SETDATE, SETTIME, MAXNROFSEATS, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, APPLY, OK, PATH,
+    FULLSCREEN, LANGUAGE, THEME, LIGHT, DARK, WARM, SETSEATINGTYPE, SEATINGTYPE, ENGLISH, ESTONIAN, VÕRO, GERMAN,
+    RUSSIAN, CHECKOUT, TOTAL;
     private static HashMap<Word, String[]> words = createLanguages();
 
     private static HashMap<Word, String[]> createLanguages() {
@@ -21,6 +22,8 @@ public enum Word {
                 "Archiv", "TODO"});
         wordsMap.put(Word.EVENTCREATOR, new String[]{"event creator", "ürituse looja", "ettevõtminõsõ luuja?",
                 "Ereigniserzeuger??", "TODO"});
+        wordsMap.put(Word.POINTOFSALE, new String[]{"point of sale", "müügipunkt", "TODO",
+                "TODO", "TODO"});
         wordsMap.put(Word.NAMEYOUREVENT, new String[]{"name your event", "nimeta üritus", "TODO",
                 "nennen Sie Ihre Ereignis", "TODO"});
         wordsMap.put(Word.PRICE, new String[]{"price", "hind", "hind",
@@ -101,6 +104,10 @@ public enum Word {
                 "deutsch", "TODO"});
         wordsMap.put(Word.RUSSIAN, new String[]{"russian", "vene keel", "TODO",
                 "TODO", "pусский язык"});
+        wordsMap.put(Word.CHECKOUT, new String[]{"checkout", "lõpeta?", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.TOTAL, new String[]{"total", "kokku", "TODO",
+                "TODO", "TODO"});
         return wordsMap;
     }
 

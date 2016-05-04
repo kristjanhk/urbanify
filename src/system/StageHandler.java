@@ -43,6 +43,10 @@ public class StageHandler {
         return this.scenes;
     }
 
+    public CustomScene getScene(Scenetype scenetype) {
+        return this.scenes.get(scenetype);
+    }
+
     public ResizeHandler getResizeHandler() {
         return this.resizeHandler;
     }
@@ -81,13 +85,12 @@ public class StageHandler {
         return "graphics/" + type.toPackageString() + "/" + type.toSceneString();
     }
 
-    // TODO: 23.04.2016 remove?
     public void switchSceneTo(Scenetype scenetype) {
         this.stage.setScene(this.scenes.get(scenetype));
     }
 
-    public void switchSceneTo(Scenetype scenetype, Scenetype prevSceneType) {
-        this.scenes.get(scenetype).getController().prepareToDisplay(prevSceneType);
+    public <T> void switchSceneTo(Scenetype scenetype, T object) {
+        this.scenes.get(scenetype).getController().prepareToDisplay(object);
         this.stage.setScene(this.scenes.get(scenetype));
     }
 }

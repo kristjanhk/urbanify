@@ -2,7 +2,6 @@ package system.graphics.mainMenu;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import org.controlsfx.control.PopOver;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
 import system.data.Word;
@@ -19,8 +18,6 @@ public class Controller extends AbstractController {
     public Text eventsText;
     public Text settingsText;
     public Text archiveText;
-
-    private PopOver popOver = new PopOver();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

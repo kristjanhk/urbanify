@@ -38,9 +38,7 @@ public abstract class AbstractController implements Initializable {
         }
     }
 
-    public void prepareToDisplay(Scenetype prevSceneType) {
-
-    }
+    public <T> void prepareToDisplay(T object) {}
 
     public abstract void setLanguage();
 }

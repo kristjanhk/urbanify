@@ -10,226 +10,75 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.pointOfSale.Controller">
+<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="system.graphics.pointOfSale.Controller">
     <top>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText" text="point of sale" BorderPane.alignment="TOP_LEFT">
+        <Text fx:id="pointofsale" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText"
+              BorderPane.alignment="TOP_LEFT">
             <BorderPane.margin>
-                <Insets left="70.0" top="40.0" />
+                <Insets left="70.0" top="40.0"/>
             </BorderPane.margin>
         </Text>
     </top>
     <center>
         <VBox BorderPane.alignment="CENTER">
-            <children>
-                <TextFlow maxHeight="42.0" minHeight="42.0" minWidth="0.0" prefHeight="42.0" prefWidth="9999.0" styleClass="textFlow30">
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                    <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFlow30txt" text="яшеёртътыуопющэасдфгчйкльжзхцвбнм" wrappingWidth="22.13671875">
-                        </Text>
-                    </children>
-                </TextFlow>
-                <TextFlow maxHeight="30.0" maxWidth="190.0" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" styleClass="textFlow20">
-                    <VBox.margin>
-                        <Insets top="15.0" />
-                    </VBox.margin>
-                    <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFlow20txt" text="29/4/2016 16:15">
-                        </Text>
-                    </children>
-                </TextFlow>
-                <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="620.0" pannable="true" prefHeight="9999.0" prefWidth="650.0">
-                    <VBox.margin>
-                        <Insets top="40.0" right="40"/>
-                    </VBox.margin>
-                    <content>
-                        <VBox styleClass="background">
-                            <children>
-                                <HBox alignment="CENTER_LEFT">
-                                    <children>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="täispilet" wrappingWidth="150">
-                                        </Text>
-                                        <Button mnemonicParsing="false" styleClass="buttonRound" text="-">
-                                            <HBox.margin>
-                                                <Insets left="20.0" />
-                                            </HBox.margin>
-                                        </Button>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="1" textAlignment="CENTER" wrappingWidth="57.8671875">
-                                            <HBox.margin>
-                                                <Insets left="20.0" right="20.0" />
-                                            </HBox.margin>
-                                        </Text>
-                                        <Button mnemonicParsing="false" styleClass="buttonRound" text="ò" />
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="20 €" textAlignment="CENTER" wrappingWidth="96.8671875">
-                                            <HBox.margin>
-                                                <Insets left="40.0" />
-                                            </HBox.margin>
-                                        </Text>
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets bottom="25.0" right="40"/>
-                                    </VBox.margin>
-                                </HBox>
-                                <HBox alignment="CENTER_LEFT">
-                                    <children>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="täispilet" wrappingWidth="150">
-                                        </Text>
-                                        <Button mnemonicParsing="false" styleClass="buttonRound" text="-">
-                                            <HBox.margin>
-                                                <Insets left="20.0" />
-                                            </HBox.margin>
-                                        </Button>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="1" textAlignment="CENTER" wrappingWidth="57.8671875">
-                                            <HBox.margin>
-                                                <Insets left="20.0" right="20.0" />
-                                            </HBox.margin>
-                                        </Text>
-                                        <Button mnemonicParsing="false" styleClass="buttonRound" text="ò" />
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="20 €" textAlignment="CENTER" wrappingWidth="96.8671875">
-                                            <HBox.margin>
-                                                <Insets left="40.0" />
-                                            </HBox.margin>
-                                        </Text>
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets bottom="25.0" right="40"/>
-                                    </VBox.margin>
-                                </HBox>
-                                <HBox alignment="CENTER_LEFT">
-                                    <children>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="täispilet" wrappingWidth="150">
-                                        </Text>
-                                        <Button mnemonicParsing="false" styleClass="buttonRound" text="-">
-                                            <HBox.margin>
-                                                <Insets left="20.0" />
-                                            </HBox.margin>
-                                        </Button>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="1" textAlignment="CENTER" wrappingWidth="57.8671875">
-                                            <HBox.margin>
-                                                <Insets left="20.0" right="20.0" />
-                                            </HBox.margin>
-                                        </Text>
-                                        <Button mnemonicParsing="false" styleClass="buttonRound" text="ò" />
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="20 €" textAlignment="CENTER" wrappingWidth="96.8671875">
-                                            <HBox.margin>
-                                                <Insets left="40.0" />
-                                            </HBox.margin>
-                                        </Text>
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets bottom="25.0" right="40"/>
-                                    </VBox.margin>
-                                </HBox>
-                                <HBox alignment="CENTER_LEFT">
-                                    <children>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="täispilet" wrappingWidth="150">
-                                        </Text>
-                                        <Button mnemonicParsing="false" styleClass="buttonRound" text="-">
-                                            <HBox.margin>
-                                                <Insets left="20.0" />
-                                            </HBox.margin>
-                                        </Button>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="1" textAlignment="CENTER" wrappingWidth="57.8671875">
-                                            <HBox.margin>
-                                                <Insets left="20.0" right="20.0" />
-                                            </HBox.margin>
-                                        </Text>
-                                        <Button mnemonicParsing="false" styleClass="buttonRound" text="ò" />
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="20 €" textAlignment="CENTER" wrappingWidth="96.8671875">
-                                            <HBox.margin>
-                                                <Insets left="40.0" />
-                                            </HBox.margin>
-                                        </Text>
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets bottom="25.0" right="40"/>
-                                    </VBox.margin>
-                                </HBox>
-                                <HBox alignment="CENTER_LEFT">
-                                    <children>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="täispilet" wrappingWidth="150">
-                                        </Text>
-                                        <Button mnemonicParsing="false" styleClass="buttonRound" text="-">
-                                            <HBox.margin>
-                                                <Insets left="20.0" />
-                                            </HBox.margin>
-                                        </Button>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="1" textAlignment="CENTER" wrappingWidth="57.8671875">
-                                            <HBox.margin>
-                                                <Insets left="20.0" right="20.0" />
-                                            </HBox.margin>
-                                        </Text>
-                                        <Button mnemonicParsing="false" styleClass="buttonRound" text="ò" />
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="20 €" textAlignment="CENTER" wrappingWidth="96.8671875">
-                                            <HBox.margin>
-                                                <Insets left="40.0" />
-                                            </HBox.margin>
-                                        </Text>
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets bottom="25.0" right="40"/>
-                                    </VBox.margin>
-                                </HBox>
-                                <HBox alignment="CENTER_LEFT">
-                                    <children>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="täispilet" wrappingWidth="150">
-                                        </Text>
-                                        <Button mnemonicParsing="false" styleClass="buttonRound" text="-">
-                                            <HBox.margin>
-                                                <Insets left="20.0" />
-                                            </HBox.margin>
-                                        </Button>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="1" textAlignment="CENTER" wrappingWidth="57.8671875">
-                                            <HBox.margin>
-                                                <Insets left="20.0" right="20.0" />
-                                            </HBox.margin>
-                                        </Text>
-                                        <Button mnemonicParsing="false" styleClass="buttonRound" text="ò" />
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="20 €" textAlignment="CENTER" wrappingWidth="96.8671875">
-                                            <HBox.margin>
-                                                <Insets left="40.0" />
-                                            </HBox.margin>
-                                        </Text>
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets bottom="25.0" right="40"/>
-                                    </VBox.margin>
-                                </HBox>
-                            </children>
-                        </VBox>
-                    </content>
-                </ScrollPane>
-                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
-                <HBox alignment="CENTER_LEFT">
-                    <children>
-                        <Button maxHeight="70.5" maxWidth="121.0" minHeight="70.5" minWidth="121.0" mnemonicParsing="false" prefHeight="70.5" prefWidth="121.0" styleClass="bottomButton" text="back" />
-                        <Region minHeight="0.0" minWidth="0.0" prefHeight="10.0" prefWidth="9999.0" HBox.hgrow="NEVER" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="total" textAlignment="RIGHT" wrappingWidth="224.0">
-                        </Text>
-                        <TextFlow maxHeight="70.5" maxWidth="200.0" minHeight="70.5" minWidth="200.0" prefHeight="70.5" prefWidth="200.0" styleClass="textFlowNimi" textAlignment="CENTER">
-                            <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="50 €" textAlignment="CENTER" wrappingWidth="200.0">
-                                </Text>
-                            </children>
-                            <HBox.margin>
-                                <Insets left="40.0" />
-                            </HBox.margin>
-                        </TextFlow>
-                        <Button maxHeight="70.5" maxWidth="121.0" minHeight="70.5" minWidth="121.0" mnemonicParsing="false" prefHeight="70.5" prefWidth="121.0" styleClass="bottomButton" text="checkout">
-                            <HBox.margin>
-                                <Insets left="40.0" />
-                            </HBox.margin>
-                        </Button>
-                    </children>
-                    <VBox.margin>
-                        <Insets bottom="40.0" />
-                    </VBox.margin>
-                </HBox>
-            </children>
             <BorderPane.margin>
-                <Insets left="40.0" right="40.0" top="40.0" />
+                <Insets left="40.0" right="40.0" top="40.0"/>
             </BorderPane.margin>
+            <TextFlow maxHeight="42.0" minHeight="42.0" minWidth="0.0" prefHeight="42.0" prefWidth="9999.0"
+                      styleClass="textFlow30">
+                <VBox.margin>
+                    <Insets/>
+                </VBox.margin>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFlow30txt"
+                      text="яшеёртътыуопющэасдфгчйкльжзхцвбнм" wrappingWidth="22.13671875">
+                </Text>
+            </TextFlow>
+            <TextFlow maxHeight="30.0" maxWidth="190.0" minHeight="30.0" minWidth="190.0" prefHeight="30.0"
+                      prefWidth="190.0" styleClass="textFlow20">
+                <VBox.margin>
+                    <Insets top="15.0"/>
+                </VBox.margin>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFlow20txt" text="29/4/2016 16:15">
+                </Text>
+            </TextFlow>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="620.0" pannable="true"
+                        prefHeight="9999.0" prefWidth="650.0">
+                <VBox.margin>
+                    <Insets top="40.0" right="40"/>
+                </VBox.margin>
+                <VBox fx:id="eventsVBox" styleClass="background"/>
+            </ScrollPane>
+            <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0"
+                    prefWidth="40.0"/>
+            <HBox alignment="CENTER_LEFT">
+                <VBox.margin>
+                    <Insets bottom="40.0"/>
+                </VBox.margin>
+                <Button fx:id="back" onMouseClicked="#doBack" maxHeight="70.5" maxWidth="121.0" minHeight="70.5"
+                        minWidth="121.0" mnemonicParsing="false" prefHeight="70.5" prefWidth="121.0"
+                        styleClass="bottomButton"/>
+                <Region minHeight="0.0" minWidth="0.0" prefHeight="10.0" prefWidth="9999.0" HBox.hgrow="NEVER"/>
+                <Text fx:id="total" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" textAlignment="RIGHT"
+                      wrappingWidth="224.0">
+                </Text>
+                <TextFlow maxHeight="70.5" maxWidth="200.0" minHeight="70.5" minWidth="200.0" prefHeight="70.5"
+                          prefWidth="200.0" styleClass="textFlowNimi" textAlignment="CENTER">
+                    <HBox.margin>
+                        <Insets left="40.0"/>
+                    </HBox.margin>
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="50 €"
+                          textAlignment="CENTER" wrappingWidth="200.0">
+                    </Text>
+                </TextFlow>
+                <Button fx:id="checkout" onMouseClicked="#doCheckout" maxHeight="70.5" maxWidth="121.0" minHeight="70.5"
+                        minWidth="121.0" mnemonicParsing="false" prefHeight="70.5" prefWidth="121.0"
+                        styleClass="bottomButton">
+                    <HBox.margin>
+                        <Insets left="40.0"/>
+                    </HBox.margin>
+                </Button>
+            </HBox>
         </VBox>
     </center>
 </BorderPane>

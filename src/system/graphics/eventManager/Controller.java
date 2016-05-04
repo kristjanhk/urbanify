@@ -3,7 +3,9 @@ package system.graphics.eventManager;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import system.data.Event;
 import system.graphics.common.AbstractController;
+import system.graphics.common.CustomScene;
 import system.graphics.common.Scenetype;
 import system.data.Word;
 
@@ -14,41 +16,34 @@ public class Controller extends AbstractController {
     public Text eventsText;
     public VBox eventsVBox;
     public Button backButton;
-    private int testint = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.setLanguage();
     }
 
-
-    // TODO: 14.04.2016 to be changed
-
-    public void openEvent(int id) {
-
-    }
-
-    public void removeEvent(int id) {
-
-    }
-
     public void doBack() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
     }
 
-    public void doNext() {
-
+    public CustomScene getScene() {
+        return this.scene;
     }
 
-    public void doTest() {
-        this.testint += 1;
-        this.eventsVBox.getChildren().add(new EventLine(this.eventsVBox,
-                "Kogu küla lõõtsafest " + testint, "1/4/201" + testint, "13:0" + testint));
+    public VBox getEventsVBox() {
+        return this.eventsVBox;
     }
 
     @Override
     public void setLanguage() {
         this.eventsText.setText(Word.EVENTS.toString());
         this.backButton.setText(Word.BACK.toString());
+    }
+
+    @Override
+    public <T> void prepareToDisplay(T object) {
+        if (object instanceof Event) {
+            this.eventsVBox.getChildren().add(new EventLine(this, ((Event) object)));
+        }
     }
 }

@@ -27,7 +27,7 @@ public class Ticket extends HBox {
         this.parentController = parentController;
         this.parentNode = parentNode;
         this.setPrefSize(506.0, 12.0);
-        VBox.setMargin(this, new Insets(0, 75.0, 20.0, 40.0));
+        VBox.setMargin(this, new Insets(0, 75.0, 20.0, 0));
         this.initChildren();
         this.setLanguage();
         this.addValidation();

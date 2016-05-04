@@ -31,15 +31,11 @@ public class Event {
         this.time = time;
         this.seatingType = seatingType;
         this.maxSeats = maxSeats;
-        System.out.println(this.toString());
+        System.out.println(this.toString()); // TODO: 4.05.2016 remove
     }
     
     public boolean isFloorPlanReady() {
         return true; // FIXME: 2.05.2016 
-    }
-    
-    public void readyEvent() {
-        // TODO: 1.05.2016 pass event to eventmanager etc.. 
     }
 
     private void resetCreator() {
@@ -49,6 +45,26 @@ public class Event {
         this.time = null;
         this.seatingType = null;
         this.maxSeats = null;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public LocalDate getDate() {
+        return this.date;
+    }
+
+    public String getTime() {
+        return this.time;
+    }
+
+    public HashMap<String, Double> getTickets() {
+        return this.tickets;
+    }
+
+    public double getTicketPrice(String ticketName) {
+        return this.tickets.get(ticketName);
     }
 
     @Override

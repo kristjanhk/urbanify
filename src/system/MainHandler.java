@@ -29,7 +29,6 @@ public class MainHandler extends Application{
     @Override
     public void start(Stage primaryStage) {
         stageHandlers.add(new StageHandler(primaryStage));
-        //todo init all handlers
     }
 
     public static FileHandler getFileHandler() {
@@ -59,9 +58,6 @@ public class MainHandler extends Application{
     }
 
     public static void changeSceneThemeTo(CustomScene scene, Csstype csstype) {
-        //http://stackoverflow.com/questions/17769388/javafx-change-css-at-runtime
-        //https://community.oracle.com/thread/2566519?start=0&tstart=0
-        // TODO: 21.04.2016 hoida alles mingit põhi css faili, vahetada aind theme 
         scene.getStylesheets().clear();
         scene.getStylesheets().add("system/graphics/common/" + csstype.toString(true));
     }

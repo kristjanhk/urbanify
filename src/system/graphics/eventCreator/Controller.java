@@ -2,10 +2,8 @@ package system.graphics.eventCreator;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import org.controlsfx.control.PopOver;
@@ -71,10 +69,13 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void doNext() {
-        // FIXME: 21.04.2016
-        this.scene.getStageHandler().switchSceneTo(Scenetype.FLOORPLANNER);
         this.event.readyCreator(this.eventText.getText(), this.ticketVBox.getChildren(), this.calendar.getValue(),
                 this.timeText.getText(), this.seating.getText(), this.maxSeats.getText());
+        if (seatingType.equals("OPENSEATING")) {
+            this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, this.event);
+        } else {
+            this.scene.getStageHandler().switchSceneTo(Scenetype.FLOORPLANNER);
+        }
     }
 
     @Override
@@ -162,6 +163,7 @@ public class Controller extends AbstractController {
                 break;
             }
         }
-        this.next.setDisable(!valid);
+        //this.next.setDisable(!valid);
+        this.next.setDisable(false);
     }
 }

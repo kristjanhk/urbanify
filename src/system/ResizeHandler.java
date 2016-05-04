@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class ResizeHandler implements javafx.event.EventHandler<MouseEvent> {
     private Stage stage;
     private Cursor cursorEvent = Cursor.DEFAULT;
-    private int border = 4;
+    private int border = 10;
     private double startX = 0;
     private double startY = 0;
 
@@ -84,7 +84,6 @@ public class ResizeHandler implements javafx.event.EventHandler<MouseEvent> {
             startY = stage.getHeight() - mouseEventY;
         } else if (MouseEvent.MOUSE_DRAGGED.equals(mouseEventType)) {
             if (!Cursor.DEFAULT.equals(cursorEvent)) {
-                mouseEvent.consume();
                 if (!Cursor.W_RESIZE.equals(cursorEvent) && !Cursor.E_RESIZE.equals(cursorEvent)) {
                     double minHeight = stage.getMinHeight() > (border * 2) ? stage.getMinHeight() : (border * 2);
                     if (Cursor.NW_RESIZE.equals(cursorEvent) || Cursor.N_RESIZE.equals(cursorEvent) ||
