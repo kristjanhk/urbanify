@@ -2,6 +2,13 @@ package system.data;
 
 import java.util.HashMap;
 
+/**
+ * Sõnad
+ * Hoiab endas sõnu kui konstante
+ * Iga sõna on Word klassi isend
+ * Igas isendis on temale vastavad sõnad erinevates keeltes
+ * Keele määrab ära Lang klassi activeLanguage
+ */
 public enum Word {
     NEWEVENT, OPENEVENT, SETTINGS, ARCHIVE, EVENTCREATOR, POINTOFSALE, NAMEYOUREVENT, PRICE, TICKETYPE, OPENSEATING,
     ASSIGNEDSEATING, NEXT, CANCEL, BACK, CREATE, SAVE, NEWFLOORPLAN, FLOORPLANS, FLOORTYPE, ROWS, SEATSINROW, STAGE,

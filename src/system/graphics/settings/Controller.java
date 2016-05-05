@@ -19,6 +19,9 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Seadete controller
+ */
 public class Controller extends AbstractController {
     public Text settingsText;
     public Button back;

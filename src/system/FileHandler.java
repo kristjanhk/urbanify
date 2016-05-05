@@ -8,6 +8,13 @@ import system.data.Lang;
 
 import java.io.*;
 
+/**
+ * Failihaldaja
+ * Tegeleb failist laadimisega ja salvestamisega
+ * andmed.bin faili salvestatakse andmed.json faili asukoht, seda kuvatakse ka seadete all
+ * andmed.json faili salvestatakse vajalikud andmed
+ * Kasutatakse Google Gson teeki https://github.com/google/gson
+ */
 public class FileHandler {
     private Gson gson;
     private JsonFile jsonFile;

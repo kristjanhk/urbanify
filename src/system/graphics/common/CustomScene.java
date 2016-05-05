@@ -7,6 +7,10 @@ import javafx.scene.Scene;
 import system.MainHandler;
 import system.StageHandler;
 
+/**
+ * Kohandatud stseen
+ * Töö lihtsustamiseks loodud mähisklass
+ */
 public class CustomScene extends Scene {
     private StageHandler stageHandler;
     private Scenetype scenetype;

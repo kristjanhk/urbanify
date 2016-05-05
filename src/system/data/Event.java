@@ -7,6 +7,12 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Üritus
+ * Hoiab endas andmeid ühe ürituse kohta
+ *
+ * Konstruktor on tühi, et oleks võimalik isendivälju lähtestada ilma uut isendit loomata
+ */
 public class Event {
     private String name;
     private HashMap<String, Double> tickets = new HashMap<>();

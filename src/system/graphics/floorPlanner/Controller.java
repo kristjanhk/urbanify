@@ -19,6 +19,9 @@ import system.data.Word;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Saaliplaani looja controller
+ */
 public class Controller extends AbstractController {
     public Text floorPlanText;
     public MenuButton floorPlans;
@@ -58,6 +61,14 @@ public class Controller extends AbstractController {
     // selle asemel get ratio, korrutada oma kõrguse laiusega läbi ja saada teada uus scaletud suurus
     // kontrollida seda kõrguse/laiusega või ymaxga??
 
+    /**
+     * Saaliplaani laiuse kontroll
+     *
+     * Vähendame suurust kui istmetegrupi laius on suurem kui saaliplaani laius
+     * Suurendame suurust kui istmetegrupi laius on väiksem kui istmegrupi scalemata laius,
+     *                        istmetegrupi kõrgus on väiksem kui istmegrupi scalemata kõrgus,
+     *                        istmetegrupi kõrgus on väiksem kui saaliplaani kõrgus - 30,
+     */
     private void checkPaneWidthResize(Number width) {
         double paneWidth = width.doubleValue() - 20;
         double groupWidth = this.getFloorGroup().getBoundsInParent().getWidth();
@@ -74,6 +85,14 @@ public class Controller extends AbstractController {
         }
     }
 
+    /**
+     * Saaliplaani kõrguse kontroll
+     *
+     * Vähendame suurust kui istmetegrupi kõrgus on suurem kui saaliplaani kõrgus
+     * Suurendame suurust kui istmetegrupi kõrgus on väiksem kui istmegrupi scalemata kõrgus,
+     *                        istmetegrupi laius on väiksem kui istmegrupi scalemata laius,
+     *                        istmetegrupi laius on väiksem kui saaliplaani laius - 30,
+     */
     private void checkPaneHeightResize(Number height) {
         double paneHeight = height.doubleValue() - 20;
         double groupHeight = this.getFloorGroup().getBoundsInParent().getHeight();

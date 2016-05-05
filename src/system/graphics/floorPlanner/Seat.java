@@ -2,6 +2,11 @@ package system.graphics.floorPlanner;
 
 import javafx.scene.shape.Circle;
 
+/**
+ * Iste saaliplaanis (ja müügipunktis)
+ * On Circle mähisklass
+ * Luuakse programmi töö käigus, seega ei saa FXMLis ette valmistada
+ */
 public class Seat extends Circle {
     private Seattype seattype;
     private int x;

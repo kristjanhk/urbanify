@@ -1,6 +1,5 @@
 package system.graphics.pointOfSale;
 
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -13,6 +12,9 @@ import system.graphics.common.Scenetype;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Müügipunkti controller
+ */
 public class Controller extends AbstractController {
     public Text pointofsale;
     public VBox eventsVBox;
@@ -51,6 +53,13 @@ public class Controller extends AbstractController {
         return this.event;
     }
 
+
+    /**
+     * Meetod, mis valmistab stseeni ette enne selle kuvamist
+     * Kontrollib, kas vastava üritusega stseen on valmis, vastasel juhul loob uue stseeni antud üritusega
+     *
+     * @param object suvaline object, kontrollitakse, kas see on üritus
+     */
     @Override
     public <T> void prepareToDisplay(T object) {
         if (object instanceof Event) {

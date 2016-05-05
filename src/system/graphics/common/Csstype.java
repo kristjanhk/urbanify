@@ -1,5 +1,11 @@
 package system.graphics.common;
 
+/**
+ * CSS tüüp
+ * Hoiab endas CSSi tüüpe kui konstante
+ * Iga tüüp on Csstype isend
+ * Igale tüübile vastab Cssi failinimi
+ */
 public enum Csstype {
     LIGHT("lightTheme.css"),
     DARK("darkTheme.css");

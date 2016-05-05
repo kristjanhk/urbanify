@@ -9,11 +9,15 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-//http://stackoverflow.com/questions/19455059/allow-user-to-resize-an-undecorated-stage
+/**
+ * Suuruste muutmise haldaja
+ * Lisab kõikidele antud lava tippudele kuulajad, mille järgi otsustab lava suuruse muutmise üle
+ * (abimaterjal http://stackoverflow.com/questions/19455059/allow-user-to-resize-an-undecorated-stage)
+ */
 public class ResizeHandler implements javafx.event.EventHandler<MouseEvent> {
     private Stage stage;
     private Cursor cursorEvent = Cursor.DEFAULT;
-    private int border = 10;
+    private int border = 10; // hiire kuju muutev ala laius ääres
     private double startX = 0;
     private double startY = 0;
 
@@ -48,6 +52,12 @@ public class ResizeHandler implements javafx.event.EventHandler<MouseEvent> {
         }
     }
 
+    /**
+     * Selle meetodiga kuulaja on lisatud igale tipule
+     * Kontrollib, kas hiir asub stseeni äärel ning muudab hiire kuju
+     * Kui hiir on äärel ja kasutaja proovib lohistada, siis suurendatakse akent
+     * todo min suurused paigast?
+     */
     @Override
     public void handle(MouseEvent mouseEvent) {
         EventType<? extends MouseEvent> mouseEventType = mouseEvent.getEventType();

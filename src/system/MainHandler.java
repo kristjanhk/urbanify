@@ -14,7 +14,13 @@ import system.graphics.common.Csstype;
 
 import java.util.ArrayList;
 
-public class MainHandler extends Application{
+/**
+ * Peaklass
+ * Hoiab ning võimaldab ligipääsu kõikidele handleritele
+ * Võimaldab stseeni stiilide vahetuse
+ * Võimaldab lisada tippudele valideerimist
+ */
+public class MainHandler extends Application {
     private static ArrayList<StageHandler> stageHandlers = new ArrayList<>();
     private static EventHandler eventHandler;
     private static FileHandler fileHandler;
@@ -62,7 +68,14 @@ public class MainHandler extends Application{
         scene.getStylesheets().add("system/graphics/common/" + csstype.toString(true));
     }
 
-    //http://stackoverflow.com/questions/29607080/textfield-component-validation-with-controls-fx
+    /**
+     * Lisab antud tipule antud valideerimise
+     * (abimaterjal http://stackoverflow.com/questions/29607080/textfield-component-validation-with-controls-fx)
+     *
+     * @param node       tipp, millele valideerimist vaja
+     * @param validation regulaaravaldis
+     * @return ReadOnlyBooleanProperty isInvalid
+     */
     public static ReadOnlyBooleanProperty setValidationFor(Node node, String validation) {
         ValidationSupport validationSupport = new ValidationSupport();
         validationSupport.setValidationDecorator(

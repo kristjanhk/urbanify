@@ -15,6 +15,9 @@ import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+/**
+ * Ürituste haldaja controller
+ */
 public class Controller extends AbstractController {
     private boolean initialized = false;
     public Text eventsText;

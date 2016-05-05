@@ -16,6 +16,9 @@ import system.data.Word;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Ürituse looja controller
+ */
 public class Controller extends AbstractController {
     public Text eventCreator;
     public TextField eventText;

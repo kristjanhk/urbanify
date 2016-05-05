@@ -12,6 +12,11 @@ import javafx.scene.text.TextAlignment;
 import system.MainHandler;
 import system.data.Word;
 
+/**
+ * Pilet
+ * On HBoxi mähisklass
+ * Luuakse programmi töö käigus, seega ei saa FXMLis ette valmistada
+ */
 public class Ticket extends HBox {
     private Controller parentController;
     private VBox parentNode;

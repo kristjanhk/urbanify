@@ -1,7 +1,6 @@
 package system;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import system.graphics.common.CustomScene;
@@ -10,6 +9,11 @@ import system.graphics.common.Scenetype;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Lavahaldaja
+ * Hoiab endas lava, stseene
+ * Tegeleb stseenide loomisega, nende vahetamisega, lava asukoha muutmisega
+ */
 public class StageHandler {
     private Stage stage;
     private ResizeHandler resizeHandler;
@@ -67,7 +71,14 @@ public class StageHandler {
             this.scenes.put(scenetype, createScene(scenetype));
         }
     }
-    
+
+    /**
+     * Loob uue stseeni antud stseenitüübi kohale
+     * (igat stseenitüüi saab korraga olla vaid üks)
+     *
+     * @param scenetype stseenitüüp, mida vaja luua
+     * @return new Customscene
+     */
     private CustomScene createScene(Scenetype scenetype) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(getResourceFile(scenetype)));
         try {
@@ -86,12 +97,19 @@ public class StageHandler {
         return "graphics/" + type.toPackageString() + "/" + type.toSceneString();
     }
 
-    public void switchSceneTo(Scenetype scenetype) {
-        this.switchSceneTo(scenetype, null);
-    }
-
+    /**
+     * Vahetab laval oleva stseeni antud stseenitüübi vastu
+     * Võimaldab anda kaasa suvalist objekti, mille järgi stseeni controller saab stseeni ette valmistada
+     *
+     * @param scenetype stseenitüüp, millele vaja vahetada
+     * @param object    suvaline objekt, selle määratlemisega tegeleb stseeni controller ise
+     */
     public <T> void switchSceneTo(Scenetype scenetype, T object) {
         this.scenes.get(scenetype).getController().prepareToDisplay(object);
         this.stage.setScene(this.scenes.get(scenetype));
+    }
+
+    public void switchSceneTo(Scenetype scenetype) {
+        this.switchSceneTo(scenetype, null);
     }
 }

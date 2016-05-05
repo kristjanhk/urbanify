@@ -9,6 +9,9 @@ import system.data.Word;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Peamenüü controller
+ */
 public class Controller extends AbstractController {
     public ImageView newEventImage;
     public ImageView eventsImage;

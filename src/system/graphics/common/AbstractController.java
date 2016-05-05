@@ -9,6 +9,11 @@ import system.FileHandler;
 import system.data.JsonFile;
 import system.MainHandler;
 
+/**
+ * Controllerite abstrakte ülemklass
+ * Iga controller saab ligi oma stseenile
+ * Iga controller tegeleb minimize, maximize, close nuppudega ja lava asukoha liigutamisega
+ */
 public abstract class AbstractController implements Initializable {
     protected CustomScene scene;
 
@@ -58,6 +63,13 @@ public abstract class AbstractController implements Initializable {
         Platform.exit();
     }
 
+    /**
+     * Meetod, mida kutsutakse enne controlleri stseenile vahetamist
+     * Võimaldab stseeni ette valmistada (nt uue üritusega müügipunkti stseen (seljuhul on objektiks Event))
+     *
+     * @param object suvaline objekt, selle määratlemisega tegeleb alamklassi controller ise
+     *               NB: objekt peab olemas olema, võib olla null fixme
+     */
     public <T> void prepareToDisplay(T object) {}
 
     public abstract void setLanguage();

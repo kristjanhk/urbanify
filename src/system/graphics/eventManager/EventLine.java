@@ -13,6 +13,11 @@ import javafx.scene.text.TextFlow;
 import system.data.Event;
 import system.graphics.common.Scenetype;
 
+/**
+ * Ürituse rida ürituste haldajas ja arhiivis
+ * On HBoxi mähisklass
+ * Luuakse programmi töö käigus, seega ei saa FXMLis ette valmistada
+ */
 public class EventLine extends HBox {
     private Controller parentController;
     private Event event;

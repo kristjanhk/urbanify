@@ -7,6 +7,18 @@ import system.graphics.eventManager.Controller;
 
 import java.util.HashSet;
 
+/**
+ * Jsoni fail
+ * (JSON - JavaScript Object Notation)
+ * Hoiab endas vajalikke andmeid isendiväljadel
+ *
+ * Eeliseks tavalise Data(Input|Output)Streami ees on see, et
+ * ei pea muretsema lugemise/salvestamise järjekordade üle ja
+ * fail on tavalise tekstiredaktoriga loetav ning muudetav.
+ *
+ * NB: Gsoni teek loeb ise salvestades klassi isendivälju (ka privaatseid) ja
+ * sisselaadides loob uue JsonFile objekti ning väärtustab isendiväljad (ilma kontsruktori abita!)
+ */
 public class JsonFile {
     private Lang activeLanguage;
     private Csstype activeTheme;
