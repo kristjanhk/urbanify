@@ -1,6 +1,7 @@
 package system;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import system.graphics.common.CustomScene;
@@ -86,7 +87,7 @@ public class StageHandler {
     }
 
     public void switchSceneTo(Scenetype scenetype) {
-        this.stage.setScene(this.scenes.get(scenetype));
+        this.switchSceneTo(scenetype, null);
     }
 
     public <T> void switchSceneTo(Scenetype scenetype, T object) {

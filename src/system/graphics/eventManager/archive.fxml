@@ -7,11 +7,29 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.layout.HBox?>
 <BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="system.graphics.eventManager.Controller">
     <top>
         <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0"
               prefWidth="1600.0" BorderPane.alignment="CENTER">
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="100.0">
+                <Button mnemonicParsing="false" text="-" textAlignment="CENTER" styleClass="barButton">
+                    <HBox.margin>
+                        <Insets right="1.0" top="1.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" text="m" textAlignment="CENTER" styleClass="barButton">
+                    <HBox.margin>
+                        <Insets right="1.0" top="1.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" text="x" styleClass="barButton">
+                    <HBox.margin>
+                        <Insets right="1.0" top="1.0"/>
+                    </HBox.margin>
+                </Button>
+            </HBox>
             <Text fx:id="eventsText" styleClass="topText" strokeType="OUTSIDE" strokeWidth="0.0"
                   BorderPane.alignment="TOP_LEFT">
                 <VBox.margin>

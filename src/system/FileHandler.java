@@ -33,7 +33,6 @@ public class FileHandler {
     private void setActiveConstants(Csstype csstype, Lang lang) {
         Csstype.setActiveTheme(csstype);
         Lang.setActiveLang(lang);
-        //this.jsonFile.saveCurrentData();
     }
 
     public void saveData() {
@@ -59,7 +58,6 @@ public class FileHandler {
 
     private void resetData() {
         this.jsonFile = new JsonFile();
-        this.jsonFile.init();
         this.setActiveConstants(Csstype.DARK, Lang.ENGLISH);
     }
 

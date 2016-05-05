@@ -19,17 +19,19 @@
         <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset"
               prefHeight="123.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="100.0">
-                <Button mnemonicParsing="false" text="-" textAlignment="CENTER" styleClass="barButton">
+                <Button onMouseClicked="#handleStageMinimize" mnemonicParsing="false" text="-" textAlignment="CENTER"
+                        styleClass="barButton">
                     <HBox.margin>
                         <Insets right="1.0" top="1.0"/>
                     </HBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" text="m" textAlignment="CENTER" styleClass="barButton">
+                <Button onMouseClicked="#handleStageMaximize" mnemonicParsing="false" text="m" textAlignment="CENTER"
+                        styleClass="barButton">
                     <HBox.margin>
                         <Insets right="1.0" top="1.0"/>
                     </HBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" text="x" styleClass="barButton">
+                <Button onMouseClicked="#handleStageClose" mnemonicParsing="false" text="x" styleClass="barButton">
                     <HBox.margin>
                         <Insets right="1.0" top="1.0"/>
                     </HBox.margin>
@@ -101,13 +103,13 @@
                     prefWidth="9999.0"/>
             <HBox alignment="TOP_RIGHT">
                 <Button fx:id="cancel" alignment="CENTER" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false"
-                        onMousePressed="#doCancel" prefWidth="121.0" styleClass="bottomButton">
+                        onMouseClicked="#doCancel" prefWidth="121.0" styleClass="bottomButton">
                     <HBox.margin>
                         <Insets right="40.0" top="40.0"/>
                     </HBox.margin>
                 </Button>
                 <Button fx:id="next" alignment="CENTER" maxWidth="92.3" minWidth="92.3" mnemonicParsing="false"
-                        onMousePressed="#doNext" prefWidth="92.3" styleClass="bottomButton">
+                        onMouseClicked="#doNext" prefWidth="92.3" styleClass="bottomButton">
                     <HBox.margin>
                         <Insets top="40.0"/>
                     </HBox.margin>

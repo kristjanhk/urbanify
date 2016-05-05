@@ -15,10 +15,6 @@ public class JsonFile {
 
     public JsonFile() {}
 
-    public void init(){
-        this.events = new HashSet<>();
-    }
-
     public Lang getActiveLanguage() {
         return this.activeLanguage;
     }
