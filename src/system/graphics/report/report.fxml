@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="system.graphics.report.Controller">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kogu küla lõõtsafest">
+               <VBox.margin>
+                  <Insets left="70.0" top="40.0" />
+               </VBox.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3/4/2016 16:15">
+               <VBox.margin>
+                  <Insets left="70.0" top="20.0" />
+               </VBox.margin>
+            </Text>
+            <HBox alignment="CENTER_LEFT" maxHeight="50.0" maxWidth="715.0" minHeight="50.0" minWidth="715.0" prefHeight="50.0" prefWidth="715.0" style="-fx-background-color: white;">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ticket type" wrappingWidth="180.0">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="cost" textAlignment="CENTER" wrappingWidth="134.0">
+                     <HBox.margin>
+                        <Insets left="3.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="quantity" textAlignment="CENTER" wrappingWidth="188.0">
+                     <HBox.margin>
+                        <Insets left="44.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="total" textAlignment="CENTER" wrappingWidth="136.0">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets left="40.0" top="50.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <HBox alignment="BOTTOM_RIGHT" minHeight="0.0" minWidth="0.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" text="back">
+               <HBox.margin>
+                  <Insets bottom="40.0" right="40.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" text="end event">
+               <HBox.margin>
+                  <Insets bottom="40.0" right="40.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" text="pos?">
+               <HBox.margin>
+                  <Insets bottom="40.0" right="40.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <left>
+      <VBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="40.0" top="40.0" />
+         </BorderPane.margin>
+         <children>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="9999.0" maxWidth="755.0" minHeight="0.0" minWidth="755.0" pannable="true" prefHeight="9999.0" prefWidth="755.0">
+               <content>
+                  <VBox prefHeight="50.0" prefWidth="755.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" maxHeight="50.0" maxWidth="715.0" minHeight="50.0" minWidth="715.0" prefHeight="50.0" prefWidth="715.0" style="-fx-background-color: white;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="täispilet" wrappingWidth="180.0">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4 €" textAlignment="CENTER" wrappingWidth="134.0">
+                                 <HBox.margin>
+                                    <Insets left="3.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="8" textAlignment="CENTER" wrappingWidth="188.0">
+                                 <HBox.margin>
+                                    <Insets left="44.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="32 €" textAlignment="CENTER" wrappingWidth="136.0">
+                                 <HBox.margin>
+                                    <Insets left="12.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <HBox alignment="CENTER_RIGHT" maxHeight="50.0" maxWidth="547.0" minHeight="50.0" minWidth="547.0" prefHeight="50.0" prefWidth="547.0" style="-fx-background-color: white;">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="total" textAlignment="CENTER" wrappingWidth="134.0">
+                     <HBox.margin>
+                        <Insets left="3.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="50" textAlignment="CENTER" wrappingWidth="188.0">
+                     <HBox.margin>
+                        <Insets left="44.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="64 €" textAlignment="CENTER" wrappingWidth="136.0">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Text>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets right="40.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <Region minHeight="50.0" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <PieChart minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="40.0" right="40.0" />
+         </BorderPane.margin>
+      </PieChart>
+   </right>
+</BorderPane>
