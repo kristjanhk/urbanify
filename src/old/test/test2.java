@@ -1,9 +1,7 @@
-package test;
+package old.test;
 
 import javafx.application.Application;
-import javafx.beans.value.*;
 import javafx.event.*;
-import javafx.geometry.Bounds;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;

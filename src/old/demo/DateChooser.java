@@ -1,4 +1,4 @@
-package demo;
+package old.demo;
 
 import java.util.Date;
 import javafx.scene.control.Control;
@@ -19,7 +19,7 @@ public class DateChooser extends Control{
 
     @Override
     public String getUserAgentStylesheet() {
-        return "demo/calendar.css";
+        return "old/demo/calendar.css";
     }
 
     public Date getDate() {

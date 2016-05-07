@@ -1,5 +1,5 @@
 /*
-package test;
+package old.test;
         import javafx.application.Application;
         import javafx.application.Platform;
         import javafx.beans.value.ChangeListener;

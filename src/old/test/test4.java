@@ -1,4 +1,4 @@
-package test;
+package old.test;
 
 import javafx.application.Application;
 import javafx.beans.value.*;
@@ -12,17 +12,17 @@ import javafx.scene.text.Text;
 import javafx.scene.transform.*;
 import javafx.stage.Stage;
 
-// demonstrates scaling a test pane with content in it.
+// demonstrates scaling a old.test pane with content in it.
 // slide the slider at the bottom of the scene around to shrink and grow the content.
 public class test4 extends Application {
     public static void main(String[] args) { launch(); }
     @Override public void start(Stage stage) throws Exception {
-        // create a test pane for scaling.
+        // create a old.test pane for scaling.
         Pane testPane = new Pane();
-        // make the test pane background a different color if you want to see the extent of the pane.
+        // make the old.test pane background a different color if you want to see the extent of the pane.
         testPane.setStyle("-fx-background-color: blue;");
 
-        // create some text content to place in the test pane.
+        // create some text content to place in the old.test pane.
         Text text = new Text("Upper left corner");
         text.setStyle("-fx-font-size: 30px;");
         text.setFill(Color.WHITE);
@@ -31,7 +31,7 @@ public class test4 extends Application {
         Scale scaleTransform = new Scale();
         testPane.getTransforms().addAll(scaleTransform, new Translate(0, 0));
 
-        // slider to scale the test pane.
+        // slider to scale the old.test pane.
         final Slider scaler = new Slider(.25, 3, 1);
         scaleTransform.xProperty().bind(scaler.valueProperty());
         scaleTransform.yProperty().bind(scaler.valueProperty());

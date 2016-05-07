@@ -1,4 +1,4 @@
-package test;
+package old.test;
 import javafx.application.Application;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;

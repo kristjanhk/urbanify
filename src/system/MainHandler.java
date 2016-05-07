@@ -24,7 +24,7 @@ public class MainHandler extends Application {
     private static ArrayList<StageHandler> stageHandlers = new ArrayList<>();
     private static EventHandler eventHandler;
     private static FileHandler fileHandler;
-    private static ReportHandler reportHandler;
+    //private static ReportHandler reportHandler;
 
     public static void main(String[] args) {
         fileHandler = new FileHandler();
@@ -45,9 +45,9 @@ public class MainHandler extends Application {
         return eventHandler;
     }
 
-    public static ReportHandler getReportHandler() {
+    /*public static ReportHandler getReportHandler() {
         return reportHandler;
-    }
+    }*/
 
     public static ArrayList<StageHandler> getStageHandlers() {
         return stageHandlers;
@@ -70,6 +70,7 @@ public class MainHandler extends Application {
 
     /**
      * Lisab antud tipule antud valideerimise
+     * Kasutab controlsfx teeki http://fxexperience.com/controlsfx/
      * (abimaterjal http://stackoverflow.com/questions/29607080/textfield-component-validation-with-controls-fx)
      *
      * @param node       tipp, millele valideerimist vaja

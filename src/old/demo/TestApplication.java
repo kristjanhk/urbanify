@@ -1,4 +1,4 @@
-package demo;
+package old.demo;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
