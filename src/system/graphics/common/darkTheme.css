@@ -81,30 +81,32 @@
     -fx-pref-height: 70.5;
     -fx-background-color: #151515;
     -fx-font-family: 'TicketFont';
-    -fx-font-size: 26;
+    -fx-font-size: 35;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
+    -fx-padding: 0 0 0 10;
 }
 
 .menu-button:hover {
     -fx-background-color: #5b5c5c;
     -fx-text-fill: #f05455;
-    -fx-font-family: 'TicketFont';
-    -fx-font-size: 26;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
+    -fx-padding: 0 0 0 10;
 }
 
 .menu-button .label{
     -fx-text-fill: #f05455;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
+    -fx-padding: 0 0 0 10;
 }
 
 .menu-button .label:hover{
     -fx-text-fill: #f05455;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
+    -fx-padding: 0 0 0 10;
 }
 
 .menu-button:openvertically .arrow-button {
@@ -125,6 +127,13 @@
 .text35 {
     -fx-fill: #f05455;
     -fx-font-size: 35;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
+}
+
+.text30 {
+    -fx-fill: #f05455;
+    -fx-font-size: 30;
     -fx-font-family: 'TicketFont';
     -fx-font-smoothing-type: gray;
 }
@@ -489,10 +498,6 @@ Seat:hover {
     -fx-background-color: #333333;
 }
 
-.popover {
-    -fx-background-color: #151515;
-    -fx-background-radius: 0;
-}
 
 .validationError{
     -fx-background-color: rgba(255,255,255,0.05);
