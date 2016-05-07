@@ -8,7 +8,6 @@
 <?import javafx.scene.text.TextFlow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 
@@ -106,11 +105,6 @@
                     </items>
                 </MenuButton>
             </HBox>
-            <CheckBox fx:id="fullscreen" maxHeight="70.5" minHeight="70.5" mnemonicParsing="false" prefHeight="70.5">
-                <font>
-                    <Font size="35.0"/>
-                </font>
-            </CheckBox>
         </VBox>
     </center>
 </BorderPane>

@@ -20,6 +20,7 @@ public class Event {
     private String time;
     private String seatingType;
     private String maxSeats;
+    private boolean active = false;
     
     public Event() {}
 
@@ -37,6 +38,7 @@ public class Event {
         this.time = time;
         this.seatingType = seatingType;
         this.maxSeats = maxSeats;
+        this.active = true;
         System.out.println(this.toString()); // TODO: 4.05.2016 remove
     }
     
@@ -51,6 +53,7 @@ public class Event {
         this.time = null;
         this.seatingType = null;
         this.maxSeats = null;
+        this.active = false;
     }
 
     public String getName() {
@@ -73,6 +76,10 @@ public class Event {
         return this.tickets.get(ticketName);
     }
 
+    public boolean isActive() {
+        return this.active;
+    }
+
     @Override
     public String toString() {
         return "Event{" +
@@ -81,7 +88,8 @@ public class Event {
                 ", date=" + date +
                 ", time='" + time + '\'' +
                 ", seatingType='" + seatingType + '\'' +
-                ", maxSeats=" + maxSeats +
+                ", maxSeats='" + maxSeats + '\'' +
+                ", active=" + active +
                 '}';
     }
 }

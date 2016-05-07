@@ -3,7 +3,6 @@ package system.graphics.settings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
@@ -29,7 +28,6 @@ public class Controller extends AbstractController {
     public Text filepath;
     public MenuButton language;
     public MenuButton theme;
-    public CheckBox fullscreen;
     // TODO: 29.04.2016 location path textflow peale või labeliks
 
 
@@ -97,6 +95,5 @@ public class Controller extends AbstractController {
         this.theme.getItems().get(0).setText(Word.LIGHT.toString());
         this.theme.getItems().get(1).setText(Word.DARK.toString());
         this.theme.getItems().get(2).setText(Word.WARM.toString());
-        this.fullscreen.setText(Word.FULLSCREEN.toString());
     }
 }
