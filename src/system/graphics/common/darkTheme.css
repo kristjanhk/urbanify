@@ -567,3 +567,7 @@ Seat:hover {
 .default-color4.chart-pie { -fx-pie-color: #c8c8c8; }
 .default-color4.chart-pie { -fx-pie-color: #e2e2e2; }
 .default-color4.chart-pie { -fx-pie-color: #ffffff; }
+
+.testpopover {
+    -fx-background-color: #7e2b2c;
+}

@@ -3,6 +3,7 @@ package system.graphics.common;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -18,9 +19,16 @@ import system.MainHandler;
 public abstract class AbstractController implements Initializable {
     protected CustomScene scene;
 
+    @FXML
+    protected Button maximizeButton;
+
     public void initData(CustomScene scene) {
         this.scene = scene;
         this.scene.getStageHandler().getResizeHandler().addResizeListener(this.scene);
+    }
+
+    public void setMaximizeButton() {
+        this.maximizeButton.setText(this.getStage().isMaximized() ? "↓" : "↑");
     }
 
     protected FileHandler getFileHandler() {
@@ -59,6 +67,7 @@ public abstract class AbstractController implements Initializable {
     @FXML
     protected void handleStageMaximize() {
         this.getStage().setMaximized(!this.getStage().isMaximized());
+        this.setMaximizeButton();
     }
 
     @FXML

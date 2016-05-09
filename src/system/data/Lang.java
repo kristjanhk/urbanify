@@ -2,6 +2,7 @@ package system.data;
 
 import system.MainHandler;
 
+import java.util.Currency;
 import java.util.Locale;
 
 /**
@@ -11,10 +12,10 @@ import java.util.Locale;
  * Iga isend määrab ära Word klassis isendite sõna, samuti määra ära lokaali (kalendri jaoks)
  */
 public enum Lang {
-    ENGLISH(0, Locale.ENGLISH),
+    ENGLISH(0, Locale.UK),
     ESTONIAN(1, new Locale.Builder().setLanguage("et").setScript("Latn").setRegion("EE").build()),
     VÕRO(2, new Locale.Builder().setLanguage("et").setScript("Latn").setRegion("EE").build()),
-    GERMAN(3, Locale.GERMAN),
+    GERMAN(3, new Locale.Builder().setLanguage("de").setScript("Latn").setRegion("GR").build()),
     RUSSIAN(4, new Locale.Builder().setLanguage("ru").setScript("Cyrl").setRegion("RU").build());
 
     private int index;
@@ -37,6 +38,14 @@ public enum Lang {
             MainHandler.getStageHandler().getScenes().forEach(
                     (scenetype, customScene) -> customScene.getController().setLanguage());
         }
+    }
+
+    public String getCurrency() {
+        return this.getCurrencyIn(this);
+    }
+
+    public String getCurrencyIn(Lang language) {
+        return Currency.getInstance(language.locale).getSymbol();
     }
 
     public int getIndex() {

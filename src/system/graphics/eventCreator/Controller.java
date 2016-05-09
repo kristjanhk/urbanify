@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import org.controlsfx.control.PopOver;
 import system.MainHandler;
 import system.graphics.common.AbstractController;
@@ -81,7 +82,6 @@ public class Controller extends AbstractController {
 
     @Override
     public <T> void prepareToDisplay(T object) {
-        // TODO: 5.05.2016 check for object type? 
         this.scene.getStageHandler().replaceScene(Scenetype.EVENTCREATOR);
     }
 
@@ -108,16 +108,16 @@ public class Controller extends AbstractController {
 
     private void setNextText() {
         if (this.seatingType.equals("")) {
-            this.next.setText("next");
+            this.next.setText(Word.NEXT.toString());
             this.maxSeats.setVisible(false);
             this.maxSeatsLabel.setVisible(false);
         } else {
             if (this.seatingType.equals("OPENSEATING")) {
-                this.next.setText("next");
+                this.next.setText(Word.CREATE.toString());
                 this.maxSeats.setVisible(true);
                 this.maxSeatsLabel.setVisible(true);
             } else if (this.seatingType.equals("ASSIGNEDSEATING")) {
-                this.next.setText("create");
+                this.next.setText(Word.NEXT.toString());
                 this.maxSeats.setVisible(false);
                 this.maxSeatsLabel.setVisible(false);
             }
@@ -127,7 +127,9 @@ public class Controller extends AbstractController {
     }
 
     private void createMaxSeatsHelper() {
-        this.maxSeatsPopOver = new PopOver(new Text("enter 0 for no limit"));
+        TextFlow text = new TextFlow(new Text("tere"));
+        text.setStyle("-fx-background-color: #7e2b2c");
+        this.maxSeatsPopOver = new PopOver(text);
         this.maxSeatsPopOver.setArrowLocation(PopOver.ArrowLocation.RIGHT_CENTER);
         this.maxSeats.setOnMouseEntered(event -> this.maxSeatsPopOver.show(this.maxSeats));
         this.maxSeats.setOnMouseExited(event -> this.maxSeatsPopOver.hide());

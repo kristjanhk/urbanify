@@ -10,6 +10,7 @@ import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import system.MainHandler;
+import system.data.Lang;
 import system.data.Word;
 
 /**
@@ -83,7 +84,7 @@ public class Ticket extends HBox {
     }
 
     public void setLanguage() {
-        this.priceText.setPromptText(Word.PRICE.toString());
+        this.priceText.setPromptText(Lang.getActiveLang().getCurrency());
         this.priceLabel.setText(Word.PRICE.toString());
         this.ticketText.setPromptText(Word.TICKETYPE.toString());
         this.ticketLabel.setText(Word.TICKETYPE.toString());

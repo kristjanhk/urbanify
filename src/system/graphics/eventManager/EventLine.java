@@ -62,15 +62,8 @@ public class EventLine extends HBox {
         textFlowName.setMaxHeight(71.5);
         textFlowName.setPrefSize(429.0, 71.5);
         textFlowName.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-        textFlowName.setOnMouseClicked(event -> {
-            this.parentController.getScene().getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
-            /*if (this.parentController.getScene().getScenetype() == Scenetype.EVENTMANAGER) {
-                this.parentController.getScene().getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
-            } else {
-                // TODO: 5.05.2016 aruande ekraan vms
-                System.out.println("TODO aruande ekraan");
-            }*/
-        });
+        textFlowName.setOnMouseClicked(event ->
+                this.parentController.getScene().getStageHandler().switchSceneTo(Scenetype.REPORT, this.event));
         HBox.setHgrow(textFlowName, Priority.ALWAYS);
 
         Text name1 = createText(name);

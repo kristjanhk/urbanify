@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import system.MainHandler;
 import system.data.Event;
 import system.data.Word;
@@ -18,6 +19,11 @@ import java.util.ResourceBundle;
  * Aruande controller
  */
 public class Controller extends AbstractController {
+    public Text title;
+    public Text datetime;
+    public Text tickettype;
+    public Text cost;
+    public Text quantity;
     public PieChart pieChart;
     public Button back;
     public Button endEvent;
@@ -74,8 +80,7 @@ public class Controller extends AbstractController {
     @Override
     public void setLanguage() {
         this.back.setText(Word.BACK.toString());
-        // FIXME: 07/05/2016
-        this.endEvent.setText("end event");
-        this.pos.setText("pos");
+        this.endEvent.setText(Word.FINISH.toString());
+        this.pos.setText(Word.POS.toString());
     }
 }

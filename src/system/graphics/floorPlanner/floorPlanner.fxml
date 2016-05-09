@@ -24,8 +24,8 @@
                         <Insets right="1.0" top="1.0"/>
                     </HBox.margin>
                 </Button>
-                <Button onMouseClicked="#handleStageMaximize" mnemonicParsing="false" text="↑" textAlignment="CENTER"
-                        styleClass="barButton">
+                <Button fx:id="maximizeButton" onMouseClicked="#handleStageMaximize" mnemonicParsing="false"
+                        textAlignment="CENTER" styleClass="barButton">
                     <HBox.margin>
                         <Insets right="1.0" top="1.0"/>
                     </HBox.margin>

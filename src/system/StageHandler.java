@@ -102,6 +102,7 @@ public class StageHandler {
      */
     public <T> void switchSceneTo(Scenetype scenetype, T object) {
         this.scenes.get(scenetype).getController().prepareToDisplay(object);
+        this.scenes.get(scenetype).getController().setMaximizeButton();
         this.stage.setScene(this.scenes.get(scenetype));
     }
 
