@@ -528,7 +528,8 @@ Seat:hover {
     -fx-max-width: 51;
     -fx-min-width: 51;
     -fx-pref-width: 51;
-    -fx-text-fill: #b1afb0;
+    -fx-text-fill: #f05455;
+    -fx-font-family: "ticketFont";
 }
 
 .barButton:hover {
