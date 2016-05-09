@@ -14,7 +14,7 @@ public enum Word {
     ASSIGNEDSEATING, NEXT, CANCEL, BACK, CREATE, SAVE, NEWFLOORPLAN, FLOORPLANS, FLOORTYPE, ROWS, SEATSINROW, STAGE,
     SCREEN, EVENTS, SETDATE, SETTIME, MAXNROFSEATS, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, APPLY, OK, PATH,
     FULLSCREEN, LANGUAGE, THEME, LIGHT, DARK, WARM, SETSEATINGTYPE, SEATINGTYPE, ENGLISH, ESTONIAN, VÕRO, GERMAN,
-    RUSSIAN, CHECKOUT, TOTAL, POS, FINISH;
+    RUSSIAN, CHECKOUT, TOTAL, POS, FINISH, COST, QUANTITY;
     private static HashMap<Word, String[]> words = createLanguages();
 
     private static HashMap<Word, String[]> createLanguages() {
@@ -118,6 +118,10 @@ public enum Word {
         wordsMap.put(Word.POS, new String[]{"pos", "müük", "TODO",
                 "TODO", "TODO"});
         wordsMap.put(Word.FINISH, new String[]{"finish", "lõpeta", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.COST, new String[]{"cost", "hind", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.QUANTITY, new String[]{"quantity", "kogus", "TODO",
                 "TODO", "TODO"});
         return wordsMap;
     }

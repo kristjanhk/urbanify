@@ -11,7 +11,12 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import system.data.Event;
+import system.data.Lang;
 import system.graphics.common.Scenetype;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 /**
  * Ürituse rida ürituste haldajas ja arhiivis
@@ -30,7 +35,7 @@ public class EventLine extends HBox {
         this.setMaxHeight(70.5);
         this.setPrefSize(200.0, 70.5);
         this.getStyleClass().add("background");
-        this.initChildren(this.event.getName(), this.event.getDate().toString(), this.event.getTime());
+        this.initChildren(this.event.getName(), this.getFormatedDate(this.event.getDate()), this.event.getTime());
     }
 
     public Event getEvent() {
@@ -111,5 +116,10 @@ public class EventLine extends HBox {
         region.setMaxSize(40.0, 40.0);
         region.setPrefSize(40.0, 40.0);
         return region;
+    }
+
+    private String getFormatedDate(LocalDate date) {
+        return date.format(
+                DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).withLocale(Lang.getActiveLang().getLocale()));
     }
 }

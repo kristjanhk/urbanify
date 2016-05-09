@@ -41,7 +41,7 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void doBack() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT);
+        this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
     }
 
     @FXML

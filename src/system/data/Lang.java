@@ -40,6 +40,10 @@ public enum Lang {
         }
     }
 
+    public Locale getLocale() {
+        return this.locale;
+    }
+
     public String getCurrency() {
         return this.getCurrencyIn(this);
     }

@@ -14,7 +14,7 @@ import system.data.Lang;
 import system.data.Word;
 
 /**
- * Pilet
+ * Pilet ürituse looja stseenis
  * On HBoxi mähisklass
  * Luuakse programmi töö käigus, seega ei saa FXMLis ette valmistada
  */

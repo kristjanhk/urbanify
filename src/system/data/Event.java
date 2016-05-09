@@ -4,36 +4,42 @@ import javafx.scene.Node;
 import system.graphics.eventCreator.Ticket;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 /**
  * Üritus
  * Hoiab endas andmeid ühe ürituse kohta
- *
+ * <p>
  * Konstruktor on tühi, et oleks võimalik isendivälju lähtestada ilma uut isendit loomata
  */
 public class Event {
     private String name;
-    private HashMap<String, Double> tickets = new HashMap<>();
+    private HashMap<String, ArrayList<Double>> tickets = new HashMap<>();
     private LocalDate date;
     private String time;
     private String seatingType;
     private String maxSeats;
     private boolean active = false;
-    
-    public Event() {}
+
+    public Event() {
+    }
 
     public void setDate(LocalDate date) {
         this.date = date;
     }
-    
+
     public void readyCreator(String name, List<Node> tickets, LocalDate date, String time,
                              String seatingType, String maxSeats) {
         this.resetCreator();
         this.name = name;
-        tickets.stream().filter(node -> node instanceof Ticket).
-                forEach(node -> this.tickets.put(((Ticket) node).getType(), ((Ticket) node).getPrice()));
+        tickets.stream().filter(node -> node instanceof Ticket).forEach(node -> {
+            ArrayList<Double> ticketdata = new ArrayList<>();
+            ticketdata.add(((Ticket) node).getPrice());
+            ticketdata.add(0.0);
+            this.tickets.put(((Ticket) node).getType(), ticketdata);
+        });
         this.date = date;
         this.time = time;
         this.seatingType = seatingType;
@@ -41,7 +47,7 @@ public class Event {
         this.active = true;
         System.out.println(this.toString()); // TODO: 4.05.2016 remove
     }
-    
+
     public boolean isFloorPlanReady() {
         return true; // FIXME: 2.05.2016 
     }
@@ -68,16 +74,24 @@ public class Event {
         return this.time;
     }
 
-    public HashMap<String, Double> getTickets() {
+    public HashMap<String, ArrayList<Double>> getTickets() {
         return this.tickets;
     }
 
     public double getTicketPrice(String ticketName) {
-        return this.tickets.get(ticketName);
+        return this.tickets.get(ticketName).get(0);
+    }
+
+    public double getTicketAmount(String ticketName) {
+        return this.tickets.get(ticketName).get(1);
     }
 
     public boolean isActive() {
         return this.active;
+    }
+
+    public void archive() {
+        this.active = false;
     }
 
     @Override

@@ -69,7 +69,9 @@ public class ResizeHandler implements javafx.event.EventHandler<MouseEvent> {
         double sceneHeight = scene.getHeight();
 
         if (MouseEvent.MOUSE_MOVED.equals(mouseEventType)) {
-            if (mouseEventX < border && mouseEventY < border) {
+            if (this.stage.isMaximized()) {
+                cursorEvent = Cursor.DEFAULT;
+            } else if (mouseEventX < border && mouseEventY < border) {
                 cursorEvent = Cursor.NW_RESIZE;
             } else if (mouseEventX < border && mouseEventY > sceneHeight - border) {
                 cursorEvent = Cursor.SW_RESIZE;
