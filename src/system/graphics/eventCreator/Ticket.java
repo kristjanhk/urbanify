@@ -54,9 +54,9 @@ public class Ticket extends HBox {
         this.getChildren().add(deleteTicket);
 
         this.priceText = new TextField();
-        this.priceText.setMinSize(110.0, 70.5);
-        this.priceText.setMaxSize(110.0, 70.5);
-        this.priceText.setPrefSize(110.0, 70.5);
+        this.priceText.setMinSize(140, 70.5);
+        this.priceText.setMaxSize(140, 70.5);
+        this.priceText.setPrefSize(140, 70.5);
         this.priceLabel = createText();
         this.getChildren().add(createVBox(this.priceText, this.priceLabel));
 
