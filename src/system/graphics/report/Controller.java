@@ -1,5 +1,7 @@
 package system.graphics.report;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
@@ -29,7 +31,13 @@ public class Controller extends AbstractController {
     }
 
     private void init() {
-
+        PieChart.Data data1 = new PieChart.Data("tavapilet", 5);
+        PieChart.Data data2 = new PieChart.Data("lapsepilet", 10);
+        PieChart.Data data3 = new PieChart.Data("pensionär", 12);
+        pieChart.setLegendVisible(false);
+        ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
+        data.addAll(data1,data2,data3);
+        pieChart.setData(data);
     }
 
     @FXML

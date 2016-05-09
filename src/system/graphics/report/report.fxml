@@ -103,40 +103,10 @@
             <BorderPane.margin>
                 <Insets left="40.0" top="40.0"/>
             </BorderPane.margin>
-            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="9999.0" maxWidth="755.0"
-                        minHeight="0.0" minWidth="755.0" pannable="true" prefHeight="9999.0" prefWidth="755.0"
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="9999.0" maxWidth="780.0"
+                        minHeight="0.0" minWidth="780.0" pannable="true" prefHeight="9999.0" prefWidth="780.0"
                         styleClass="background">
                 <VBox prefHeight="50.0" prefWidth="755.0" styleClass="background">
-                    <HBox alignment="CENTER_LEFT" maxHeight="50.0" maxWidth="715.0" minHeight="50.0" minWidth="715.0"
-                          prefHeight="50.0" prefWidth="715.0" styleClass="textFlow30">
-                        <VBox.margin>
-                            <Insets bottom="20.0"/>
-                        </VBox.margin>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="täispilet" wrappingWidth="180.0"
-                              styleClass="text35">
-                            <HBox.margin>
-                                <Insets left="20.0"/>
-                            </HBox.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4 €" textAlignment="CENTER"
-                              wrappingWidth="134.0" styleClass="text35">
-                            <HBox.margin>
-                                <Insets left="3.0"/>
-                            </HBox.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="8" textAlignment="CENTER"
-                              wrappingWidth="188.0" styleClass="text35">
-                            <HBox.margin>
-                                <Insets left="44.0"/>
-                            </HBox.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="32 €" textAlignment="CENTER"
-                              wrappingWidth="136.0" styleClass="text35">
-                            <HBox.margin>
-                                <Insets left="12.0"/>
-                            </HBox.margin>
-                        </Text>
-                    </HBox>
                     <HBox alignment="CENTER_LEFT" maxHeight="50.0" maxWidth="715.0" minHeight="50.0" minWidth="715.0"
                           prefHeight="50.0" prefWidth="715.0" styleClass="textFlow30">
                         <VBox.margin>
@@ -321,11 +291,8 @@
             </ScrollPane>
             <HBox alignment="CENTER_RIGHT" maxHeight="50.0" maxWidth="547.0" minHeight="50.0" minWidth="547.0"
                   prefHeight="50.0" prefWidth="547.0" styleClass="textFlow30">
-                <opaqueInsets>
-                    <Insets/>
-                </opaqueInsets>
                 <VBox.margin>
-                    <Insets right="40.0" top="20.0"/>
+                    <Insets right="60.0" top="40.0"/>
                 </VBox.margin>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="total" textAlignment="CENTER" wrappingWidth="134.0"
                       styleClass="text35">
@@ -339,10 +306,10 @@
                         <Insets left="44.0"/>
                     </HBox.margin>
                 </Text>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="64 €" textAlignment="CENTER" wrappingWidth="136.0"
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="64 €" textAlignment="RIGHT" wrappingWidth="136.0"
                       styleClass="text35">
                     <HBox.margin>
-                        <Insets left="12.0"/>
+                        <Insets left="12.0" right="20"/>
                     </HBox.margin>
                 </Text>
             </HBox>

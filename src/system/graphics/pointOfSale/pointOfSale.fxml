@@ -85,7 +85,7 @@
                       wrappingWidth="224.0">
                 </Text>
                 <TextFlow maxHeight="70.5" maxWidth="200.0" minHeight="70.5" minWidth="200.0" prefHeight="70.5"
-                          prefWidth="200.0" styleClass="textFlowNimi" textAlignment="CENTER">
+                          prefWidth="200.0" styleClass="textFlowPos" textAlignment="CENTER">
                     <HBox.margin>
                         <Insets left="40.0"/>
                     </HBox.margin>

@@ -290,16 +290,29 @@ Seat:hover {
     -fx-font-family: 'TicketFont';
     -fx-font-smoothing-type: gray;
 }
+
 .textFlowNimi {
     -fx-padding: 25 25 26 25;
     -fx-background-color: #151515;
+}
+
+.textFlowPos {
+    -fx-padding: 25 25 26 25;
+    -fx-background-color: #151515;
+}
+
+.textFlowNimi:hover {
+    -fx-background-color: #5b5c5c;
+}
+
+.textFlowNimi:pressed {
+    -fx-background-color: #333333;
 }
 
 .textFlowInfo {
     -fx-padding: 25 0 26 0;
     -fx-background-color: #151515;
 }
-
 
 .textFlow30 {
     -fx-padding: 8 0 0 20;
