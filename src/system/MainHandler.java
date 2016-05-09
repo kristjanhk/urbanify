@@ -12,8 +12,6 @@ import org.controlsfx.validation.decoration.StyleClassValidationDecoration;
 import system.graphics.common.CustomScene;
 import system.graphics.common.Csstype;
 
-import java.util.ArrayList;
-
 /**
  * Peaklass
  * Hoiab ning võimaldab ligipääsu kõikidele handleritele
@@ -21,20 +19,25 @@ import java.util.ArrayList;
  * Võimaldab lisada tippudele valideerimist
  */
 public class MainHandler extends Application {
-    private static ArrayList<StageHandler> stageHandlers = new ArrayList<>();
+    private static StageHandler stageHandler;
     private static EventHandler eventHandler;
     private static FileHandler fileHandler;
-    //private static ReportHandler reportHandler;
+    private static ReportHandler reportHandler;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         fileHandler = new FileHandler();
-        eventHandler = new EventHandler();
+        //eventHandler = new EventHandler();
+        reportHandler = new ReportHandler();
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) {
-        stageHandlers.add(new StageHandler(primaryStage));
+        stageHandler = new StageHandler(primaryStage);
+    }
+
+    public static StageHandler getStageHandler() {
+        return stageHandler;
     }
 
     public static FileHandler getFileHandler() {
@@ -45,22 +48,13 @@ public class MainHandler extends Application {
         return eventHandler;
     }
 
-    /*public static ReportHandler getReportHandler() {
+    public static ReportHandler getReportHandler() {
         return reportHandler;
-    }*/
-
-    public static ArrayList<StageHandler> getStageHandlers() {
-        return stageHandlers;
     }
 
-    public static void createNewStage() {
-        stageHandlers.add(new StageHandler());
-    }
 
     public static void changeGlobalThemeTo(Csstype csstype) {
-        for (StageHandler stageHandler : stageHandlers) {
-            stageHandler.getScenes().forEach((type, scene) -> changeSceneThemeTo(scene, csstype));
-        }
+        stageHandler.getScenes().forEach((type, scene) -> changeSceneThemeTo(scene, csstype));
     }
 
     public static void changeSceneThemeTo(CustomScene scene, Csstype csstype) {

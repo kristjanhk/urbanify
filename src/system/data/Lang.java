@@ -1,7 +1,6 @@
 package system.data;
 
 import system.MainHandler;
-import system.StageHandler;
 
 import java.util.Locale;
 
@@ -34,8 +33,9 @@ public enum Lang {
     public static void setActiveLang(Lang lang) {
         activeLang = lang;
         Locale.setDefault(lang.locale);
-        for (StageHandler stageHandler : MainHandler.getStageHandlers()) {
-            stageHandler.getScenes().forEach((scenetype, customScene) -> customScene.getController().setLanguage());
+        if (MainHandler.getStageHandler() != null) {
+            MainHandler.getStageHandler().getScenes().forEach(
+                    (scenetype, customScene) -> customScene.getController().setLanguage());
         }
     }
 

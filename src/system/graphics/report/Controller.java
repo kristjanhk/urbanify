@@ -1,7 +1,9 @@
 package system.graphics.report;
 
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import system.MainHandler;
 import system.data.Event;
 import system.data.Word;
 import system.graphics.common.AbstractController;
@@ -14,6 +16,7 @@ import java.util.ResourceBundle;
  * Aruande controller
  */
 public class Controller extends AbstractController {
+    public PieChart pieChart;
     public Button back;
     public Button endEvent;
     public Button pos;
@@ -32,6 +35,16 @@ public class Controller extends AbstractController {
     @FXML
     protected void doBack() {
         this.scene.getStageHandler().switchSceneTo(this.event.isActive() ? Scenetype.EVENTMANAGER : Scenetype.ARCHIVE);
+    }
+
+    @FXML
+    protected void doEndEvent() throws Exception {
+        MainHandler.getReportHandler().generatePdf(this.event);
+    }
+
+    @FXML
+    protected void doPos() {
+        this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
     }
 
     @Override

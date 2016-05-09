@@ -1,10 +1,11 @@
 package system.graphics.common;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import system.FileHandler;
 import system.data.JsonFile;
 import system.MainHandler;
@@ -30,10 +31,14 @@ public abstract class AbstractController implements Initializable {
         return this.getFileHandler().getData();
     }
 
+    protected Stage getStage() {
+        return this.scene.getStageHandler().getStage();
+    }
+
     @FXML
     protected void handleStageLocationOffset(MouseEvent event) {
         if (Cursor.DEFAULT.equals(this.scene.getStageHandler().getResizeHandler().getCursor()) &&
-                !this.scene.getStageHandler().getStage().isMaximized()) {
+                !this.getStage().isMaximized()) {
             this.scene.getStageHandler().setStageOffsets(event.getScreenX(), event.getScreenY());
         }
     }
@@ -41,26 +46,24 @@ public abstract class AbstractController implements Initializable {
     @FXML
     protected void handleStageLocationDrag(MouseEvent event) {
         if (Cursor.DEFAULT.equals(this.scene.getStageHandler().getResizeHandler().getCursor()) &&
-                !this.scene.getStageHandler().getStage().isMaximized()) {
+                !this.getStage().isMaximized()) {
             this.scene.getStageHandler().setStageXY(event.getScreenX(), event.getScreenY());
         }
     }
 
     @FXML
     protected void handleStageMinimize() {
-        this.scene.getStageHandler().getStage().setIconified(true);
+        this.getStage().setIconified(true);
     }
 
     @FXML
     protected void handleStageMaximize() {
-        this.scene.getStageHandler().getStage().setMaximized(
-                !this.scene.getStageHandler().getStage().isMaximized());
-
+        this.getStage().setMaximized(!this.getStage().isMaximized());
     }
 
     @FXML
     protected void handleStageClose() {
-        Platform.exit();
+        this.getStage().fireEvent(new WindowEvent(this.getStage(), WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 
     /**

@@ -1,3 +1,4 @@
+/*
 package old;
 
 import com.itextpdf.text.Document;
@@ -35,3 +36,4 @@ public class Aruanne {
         //kohalikku meiliserverit ajutiselt luua ei ole mõtet
     }
 }
+*/

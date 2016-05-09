@@ -21,10 +21,6 @@ public class StageHandler {
     private double stageXOffset = 0.0;
     private double stageYOffset = 0.0;
 
-    public StageHandler() {
-        this(new Stage());
-    }
-
     public StageHandler(Stage primaryStage) {
         this.stage = primaryStage;
         primaryStage.initStyle(StageStyle.UNDECORATED);

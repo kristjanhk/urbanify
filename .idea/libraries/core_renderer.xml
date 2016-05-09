@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="itextpdf-5.5.8">
+  <library name="core-renderer">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/itextpdf-5.5.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/core-renderer.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

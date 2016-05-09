@@ -47,9 +47,9 @@ public class JsonFile {
     public void saveCurrentData() {
         this.activeLanguage = Lang.getActiveLang();
         this.activeTheme = Csstype.getActiveTheme();
-        this.events = ((Controller) MainHandler.getStageHandlers().get(0).
+        this.events = ((Controller) MainHandler.getStageHandler().
                 getScene(Scenetype.EVENTMANAGER).getController()).getEvents();
-        this.archivedEvents = ((Controller) MainHandler.getStageHandlers().get(0).
+        this.archivedEvents = ((Controller) MainHandler.getStageHandler().
                 getScene(Scenetype.ARCHIVE).getController()).getEvents();
     }
 }

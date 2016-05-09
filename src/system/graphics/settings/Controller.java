@@ -41,7 +41,7 @@ public class Controller extends AbstractController {
     @FXML
     protected void handleDirectoryChange() {
         DirectoryChooser dc = new DirectoryChooser();
-        File sd = dc.showDialog(this.scene.getStageHandler().getStage());
+        File sd = dc.showDialog(this.getStage());
         if (sd != null) {
             this.getFileHandler().setPath(sd.getAbsolutePath());
             this.filepath.setText(sd.getAbsolutePath());
