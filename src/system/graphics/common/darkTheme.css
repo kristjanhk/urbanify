@@ -525,3 +525,31 @@ Seat:hover {
 .barButton:armed {
     -fx-background-color: #333333;
 }
+
+.chart-pie-label-line {
+    -fx-stroke: transparent;
+    -fx-fill: transparent;
+}
+
+.chart-pie-label {
+    -fx-fill: #f05455;
+    -fx-font-family: "ticketFont";
+    -fx-font-size: 34;
+}
+
+.chart-pie {
+    -fx-border-width: 10;
+    -fx-border-color: transparent;
+}
+
+
+.default-color0.chart-pie { -fx-pie-color: #121212; }
+.default-color1.chart-pie { -fx-pie-color: #2d2d2d; }
+.default-color2.chart-pie { -fx-pie-color: #464646; }
+.default-color3.chart-pie { -fx-pie-color: #606060; }
+.default-color4.chart-pie { -fx-pie-color: #7a7a7a; }
+.default-color4.chart-pie { -fx-pie-color: #949494; }
+.default-color4.chart-pie { -fx-pie-color: #aeaeae; }
+.default-color4.chart-pie { -fx-pie-color: #c8c8c8; }
+.default-color4.chart-pie { -fx-pie-color: #e2e2e2; }
+.default-color4.chart-pie { -fx-pie-color: #ffffff; }
