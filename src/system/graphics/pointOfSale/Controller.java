@@ -40,6 +40,7 @@ public class Controller extends AbstractController {
         this.name.setText(this.event.getName());
         this.setDatetime();
         this.seatsLeft = this.event.getMaxSeats();
+        this.updateSeatsLeft();
         for (String ticket : this.event.getTickets().keySet()) {
             this.eventsVBox.getChildren().add(new Ticket(this, ticket, this.event));
         }
@@ -51,15 +52,23 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void doBack() {
-
         this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
     }
 
     @FXML
     protected void doCheckout() {
-        // TODO: 10.05.2016 generate qr code
-
-        System.out.println(this.event);
+        if (this.checkout.getText().equals(Word.CHECKOUT.toString())) {
+            // TODO: 10.05.2016 generate qr code
+            this.event.setMaxSeats(this.seatsLeft);
+            this.eventsVBox.getChildren().forEach(node -> {
+                ((Ticket) node).save();
+                ((Ticket) node).disableButtons();
+            });
+            this.checkout.setText(Word.NEW.toString());
+            System.out.println(this.event);
+        } else {
+            this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
+        }
     }
 
     public Event getEvent() {
@@ -69,6 +78,7 @@ public class Controller extends AbstractController {
     public boolean occupySeat() {
         if (this.seatsLeft == -1 || this.seatsLeft > 0) {
             this.seatsLeft--;
+            this.updateSeatsLeft();
             return true;
         }
         return false;
@@ -77,9 +87,9 @@ public class Controller extends AbstractController {
     public void freeSeat() {
         if (this.seatsLeft != -1) {
             this.seatsLeft++;
+            this.updateSeatsLeft();
         }
     }
-
 
     /**
      * Meetod, mis valmistab stseeni ette enne selle kuvamist
@@ -91,11 +101,9 @@ public class Controller extends AbstractController {
     public <T> void prepareToDisplay(T object) {
         if (object instanceof Event) {
             if (this.event != null) {
-                if (!this.event.equals(object)) {
-                    this.scene.getStageHandler().replaceScene(Scenetype.POINTOFSALE);
-                    this.scene.getStageHandler().getScene(Scenetype.POINTOFSALE).
-                            getController().prepareToDisplay(object);
-                }
+                this.scene.getStageHandler().replaceScene(Scenetype.POINTOFSALE);
+                this.scene.getStageHandler().getScene(Scenetype.POINTOFSALE).
+                        getController().prepareToDisplay(object);
             } else {
                 this.event = ((Event) object);
                 this.init();
@@ -107,6 +115,10 @@ public class Controller extends AbstractController {
         this.datetime.setText(this.event.getDate().format(
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).withLocale(Lang.getActiveLang().getLocale())) +
                 " " + this.event.getTime());
+    }
+
+    private void updateSeatsLeft() {
+        this.seats.setText("seats left: " + this.seatsLeft);
     }
 
     @Override

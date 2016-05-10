@@ -22,8 +22,7 @@ public class Event {
     private int maxSeats;
     private boolean active = false;
 
-    public Event() {
-    }
+    public Event() {}
 
     public void setDate(LocalDate date) {
         this.date = date;
@@ -86,6 +85,10 @@ public class Event {
 
     public double getTicketAmount(String ticketName) {
         return this.tickets.get(ticketName).get(1);
+    }
+
+    public void addTicketAmount(String tickettype, double amount) {
+        this.tickets.get(tickettype).set(1, this.tickets.get(tickettype).get(1) + amount);
     }
 
     public int getMaxSeats() {

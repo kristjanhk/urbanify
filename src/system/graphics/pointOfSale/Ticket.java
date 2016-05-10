@@ -21,21 +21,29 @@ public class Ticket extends HBox {
     private Button addTicket;
     private Text ticketCost;
 
+    private String tickettype;
+
     public Ticket(Controller parentController, String ticketName, Event event) {
         super();
         this.parentController = parentController;
+        this.tickettype = ticketName;
         this.event = event;
         this.setAlignment(Pos.CENTER_LEFT);
         VBox.setMargin(this, new Insets(0, 40.0, 25.0, 0));
-        this.initChildren(ticketName);
+        this.initChildren();
+    }
+
+    public void save() {
+        this.event.addTicketAmount(this.tickettype, this.ticketAmount.doubleValue());
     }
 
     public void disableButtons() {
-
+        this.removeTicket.setDisable(true);
+        this.addTicket.setDisable(true);
     }
 
-    private void initChildren(String ticketName) {
-        this.ticketName = new Text(ticketName);
+    private void initChildren() {
+        this.ticketName = new Text(this.tickettype);
         this.ticketName.getStyleClass().add("text35");
         this.ticketName.setStrokeType(StrokeType.OUTSIDE);
         this.ticketName.setStrokeWidth(0.0);
@@ -51,7 +59,6 @@ public class Ticket extends HBox {
                 this.ticketAmount.set(this.ticketAmount.getValue() - 1);
                 this.parentController.freeSeat();
             }
-            System.out.println(this.event.getMaxSeats());
         });
         this.getChildren().add(this.removeTicket);
 
@@ -72,15 +79,12 @@ public class Ticket extends HBox {
             if (this.parentController.occupySeat()) {
                 this.ticketAmount.set(this.ticketAmount.getValue() + 1);
             }
-            System.out.println(this.event.getMaxSeats());
         });
-        // TODO: 4.05.2016 dont sell more tickets than seats
         this.getChildren().add(this.addTicket);
 
         this.ticketCost = new Text();
-        this.ticketCost.setText(String.format("%.2f", this.parentController.getEvent().getTicketPrice(ticketName)) +
-                " " + Lang.getActiveLang().getCurrency());
-        // TODO: 4.05.2016 store currency in eventobject 
+        this.ticketCost.setText(String.format("%.2f", this.parentController.getEvent().
+                getTicketPrice(this.tickettype)) + " " + Lang.getActiveLang().getCurrency());
         this.ticketCost.getStyleClass().add("text35");
         this.ticketCost.setTextAlignment(TextAlignment.CENTER);
         this.ticketCost.setStrokeType(StrokeType.OUTSIDE);
