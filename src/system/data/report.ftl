@@ -27,8 +27,6 @@
         }
 
         .toc a::after {
-            /* FIXME */
-            /*noinspection CssInvalidFunction*/
             content: leader('.') target-counter(attr(href), page);
         }
     </style>

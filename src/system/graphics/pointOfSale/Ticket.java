@@ -9,17 +9,20 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import system.data.Event;
 
 public class Ticket extends HBox {
     private Controller parentController;
+    private Event event;
     private Text ticketName;
     private SimpleIntegerProperty ticketAmount = new SimpleIntegerProperty(0);
     private Text ticketCost;
 
 
-    public Ticket(Controller parentController, String ticketName) {
+    public Ticket(Controller parentController, String ticketName, Event event) {
         super();
         this.parentController = parentController;
+        this.event = event;
         this.setAlignment(Pos.CENTER_LEFT);
         VBox.setMargin(this, new Insets(0, 40.0, 25.0, 0));
         this.initChildren(ticketName);
@@ -38,6 +41,9 @@ public class Ticket extends HBox {
         removeTicket.setMnemonicParsing(false);
         HBox.setMargin(removeTicket, new Insets(0.0, 0.0, 0.0, 20.0));
         removeTicket.setOnMouseClicked(event -> {
+            if (this.event.getTicketAmount(ticketName) > 0) {
+                this.event.getTicketAmount(ticketName);
+            }
             if (this.ticketAmount.getValue() > 0) {
                 this.ticketAmount.set(this.ticketAmount.getValue() - 1);
             }

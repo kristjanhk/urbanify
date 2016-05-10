@@ -31,7 +31,7 @@ public class Controller extends AbstractController {
 
     private void init() {
         for (String ticket : this.event.getTickets().keySet()) {
-            this.eventsVBox.getChildren().add(new Ticket(this, ticket));
+            this.eventsVBox.getChildren().add(new Ticket(this, ticket, this.event));
         }
     }
 

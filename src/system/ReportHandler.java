@@ -22,7 +22,7 @@ import system.data.Event;
 public class ReportHandler {
     //https://github.com/xiang-lee/pdf-generator
     private Map<String, Object> variables = new HashMap<>();
-    private String report_template = "src\\system\\data\\report.html";
+    private String report_template = "src\\system\\data\\report.ftl";
 
     public ReportHandler() throws Exception {
         variables.put("users", createUserList());
