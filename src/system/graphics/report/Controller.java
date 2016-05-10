@@ -74,9 +74,7 @@ public class Controller extends AbstractController {
     }
 
     private void setDatetime() {
-        this.datetime.setText(this.event.getDate().format(
-                DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).withLocale(Lang.getActiveLang().getLocale())) +
-                " " + this.event.getTime());
+        this.datetime.setText(this.event.getFormattedDate() + " " + this.event.getTime());
     }
 
     private void createTickets() {

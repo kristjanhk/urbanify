@@ -4,11 +4,13 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import system.data.Event;
 import system.data.Lang;
@@ -16,11 +18,8 @@ import system.data.Word;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.net.URL;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -58,10 +57,6 @@ public class Controller extends AbstractController {
         }
     }
 
-    public void selectSeat(int id) {
-
-    }
-
     @FXML
     protected void doBack() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
@@ -71,11 +66,13 @@ public class Controller extends AbstractController {
     protected void doCheckout() {
         if (this.checkout.getText().equals(Word.CHECKOUT.toString())) {
             this.event.setMaxSeats(this.seatsLeft);
+            ArrayList<String> ticketdata = new ArrayList<>();
             this.eventsVBox.getChildren().forEach(node -> {
+                ticketdata.add(((Ticket) node).getCurrentData());
                 ((Ticket) node).save();
                 ((Ticket) node).disableButtons();
             });
-            this.createQrCode();
+            this.createQrCode(ticketdata);
             this.checkout.setText(Word.NEW.toString());
             System.out.println(this.event);
         } else {
@@ -128,9 +125,7 @@ public class Controller extends AbstractController {
     }
 
     private void setDatetime() {
-        this.datetime.setText(this.event.getDate().format(
-                DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).withLocale(Lang.getActiveLang().getLocale())) +
-                " " + this.event.getTime());
+        this.datetime.setText(this.event.getFormattedDate() + " " + this.event.getTime());
     }
 
     private void updateSeatsLeft() {
@@ -141,29 +136,29 @@ public class Controller extends AbstractController {
         this.totalcost.setText(String.format("%.2f", this.cost) + " " + Lang.getActiveLang().getCurrency());
     }
 
-    private void createQrCode() {
-        String tekst = this.event.getName() + " " + this.event.getTime();
-        QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        int width = (int) this.qrcode.getFitWidth();
-        int height = (int) this.qrcode.getFitHeight();
+    private void createQrCode(ArrayList<String> ticketdata) {
+        StringBuilder tekst = new StringBuilder(this.event.getName() + "; " + this.event.getFormattedDate() + " " +
+                this.event.getTime() + "; ");
+        ticketdata.forEach(tekst::append);
+        tekst.append(this.totalcost.getText()); // FIXME: 11.05.2016 currency symbol bugged?
         try {
-            BitMatrix bytematrix = qrCodeWriter.encode(tekst, BarcodeFormat.QR_CODE, width, height);
-            BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-            bufferedImage.createGraphics();
-            Graphics2D graphics2D = (Graphics2D) bufferedImage.getGraphics();
-            graphics2D.setColor(Color.WHITE);
-            graphics2D.fillRect(0, 0, width, height);
-            graphics2D.setColor(Color.black);
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
+            BitMatrix bytematrix = new QRCodeWriter().encode(tekst.toString(),
+                    BarcodeFormat.QR_CODE, (int) this.qrcode.getFitWidth(), (int) this.qrcode.getFitHeight());
+            Canvas canvas = new Canvas((int) this.qrcode.getFitWidth(), (int) this.qrcode.getFitHeight());
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setFill(Color.WHITE);
+            gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+            gc.setFill(Color.BLACK);
+            for (int i = 0; i < canvas.getHeight(); i++) {
+                for (int j = 0; j < canvas.getWidth(); j++) {
                     if (bytematrix.get(i, j)) {
-                        graphics2D.fillRect(i, j, 1, 1);
+                        gc.fillRect(i, j, 1, 1);
                     }
                 }
             }
-            this.qrcode.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
+            this.qrcode.setImage(canvas.snapshot(null, null));
         } catch (WriterException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: 11.05.2016 handle
         }
     }
 

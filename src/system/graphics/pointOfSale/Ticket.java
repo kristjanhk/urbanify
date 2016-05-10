@@ -33,6 +33,13 @@ public class Ticket extends HBox {
         this.initChildren();
     }
 
+    public String getCurrentData() {
+        if (this.ticketAmount.intValue() > 0) {
+            return this.tickettype + ": " + this.ticketAmount.intValue() + "; ";
+        }
+        return "";
+    }
+
     public void save() {
         this.event.addTicketAmount(this.tickettype, this.ticketAmount.doubleValue());
     }

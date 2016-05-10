@@ -4,6 +4,8 @@ import javafx.scene.Node;
 import system.graphics.eventCreator.Ticket;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -67,8 +69,9 @@ public class Event {
         return this.name;
     }
 
-    public LocalDate getDate() {
-        return this.date;
+    public String getFormattedDate() {
+        return this.date.format(
+                DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).withLocale(Lang.getActiveLang().getLocale()));
     }
 
     public String getTime() {
