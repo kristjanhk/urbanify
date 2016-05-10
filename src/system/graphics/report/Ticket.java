@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Ticket extends HBox{
 
     public Ticket(String ticketname, ArrayList<Double> ticketdata) {
-        this.setAlignment(Pos.CENTER_LEFT);
+        this.setAlignment(Pos.CENTER_RIGHT);
         this.setMaxSize(715.0, 50.0);
         this.setMinSize(715.0, 50.0);
         this.setPrefSize(715.0, 50.0);
