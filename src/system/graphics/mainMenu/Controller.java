@@ -1,5 +1,6 @@
 package system.graphics.mainMenu;
 
+import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import system.graphics.common.AbstractController;
@@ -13,14 +14,14 @@ import java.util.ResourceBundle;
  * Peamenüü controller
  */
 public class Controller extends AbstractController {
-    public ImageView newEventImage;
-    public ImageView eventsImage;
-    public ImageView settingsImage;
-    public ImageView archiveImage;
-    public Text newEventText;
-    public Text eventsText;
-    public Text settingsText;
-    public Text archiveText;
+    @FXML protected ImageView newEventImage;
+    @FXML protected ImageView eventsImage;
+    @FXML protected ImageView settingsImage;
+    @FXML protected ImageView archiveImage;
+    @FXML protected Text newEventText;
+    @FXML protected Text eventsText;
+    @FXML protected Text settingsText;
+    @FXML protected Text archiveText;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

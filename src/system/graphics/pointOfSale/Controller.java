@@ -1,7 +1,13 @@
 package system.graphics.pointOfSale;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import system.data.Event;
@@ -10,6 +16,8 @@ import system.data.Word;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -19,15 +27,16 @@ import java.util.ResourceBundle;
  * Müügipunkti controller
  */
 public class Controller extends AbstractController {
-    public Text pointofsale;
-    public Text name;
-    public Text datetime;
-    public Text seats;
-    public VBox eventsVBox;
-    public Text total;
-    public Text totalcost;
-    public Button back;
-    public Button checkout;
+    @FXML protected Text pointofsale;
+    @FXML protected Text name;
+    @FXML protected Text datetime;
+    @FXML protected Text seats;
+    @FXML protected VBox eventsVBox;
+    @FXML protected ImageView qrcode;
+    @FXML protected Text total;
+    @FXML protected Text totalcost;
+    @FXML protected Button back;
+    @FXML protected Button checkout;
 
     private Event event;
     private int seatsLeft;
@@ -61,12 +70,12 @@ public class Controller extends AbstractController {
     @FXML
     protected void doCheckout() {
         if (this.checkout.getText().equals(Word.CHECKOUT.toString())) {
-            // TODO: 10.05.2016 generate qr code
             this.event.setMaxSeats(this.seatsLeft);
             this.eventsVBox.getChildren().forEach(node -> {
                 ((Ticket) node).save();
                 ((Ticket) node).disableButtons();
             });
+            this.createQrCode();
             this.checkout.setText(Word.NEW.toString());
             System.out.println(this.event);
         } else {
@@ -130,6 +139,32 @@ public class Controller extends AbstractController {
 
     private void updateTotal() {
         this.totalcost.setText(String.format("%.2f", this.cost) + " " + Lang.getActiveLang().getCurrency());
+    }
+
+    private void createQrCode() {
+        String tekst = this.event.getName() + " " + this.event.getTime();
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        int width = (int) this.qrcode.getFitWidth();
+        int height = (int) this.qrcode.getFitHeight();
+        try {
+            BitMatrix bytematrix = qrCodeWriter.encode(tekst, BarcodeFormat.QR_CODE, width, height);
+            BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            bufferedImage.createGraphics();
+            Graphics2D graphics2D = (Graphics2D) bufferedImage.getGraphics();
+            graphics2D.setColor(Color.WHITE);
+            graphics2D.fillRect(0, 0, width, height);
+            graphics2D.setColor(Color.black);
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    if (bytematrix.get(i, j)) {
+                        graphics2D.fillRect(i, j, 1, 1);
+                    }
+                }
+            }
+            this.qrcode.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -22,12 +22,12 @@ import java.util.ResourceBundle;
  * Seadete controller
  */
 public class Controller extends AbstractController {
-    public Text settingsText;
-    public Button back;
-    public Text pathText;
-    public Text filepath;
-    public MenuButton language;
-    public MenuButton theme;
+    @FXML protected Text settingsText;
+    @FXML protected Button back;
+    @FXML protected Text pathText;
+    @FXML protected Text filepath;
+    @FXML protected MenuButton language;
+    @FXML protected MenuButton theme;
     // TODO: 29.04.2016 location path textflow peale või labeliks
 
 

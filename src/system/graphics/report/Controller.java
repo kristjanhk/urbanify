@@ -23,20 +23,20 @@ import java.util.ResourceBundle;
  * Aruande controller
  */
 public class Controller extends AbstractController {
-    public Text title;
-    public Text datetime;
-    public Text tickettype;
-    public Text cost;
-    public Text quantity;
-    public Text total;
-    public VBox ticketVBox;
-    public Text total2;
-    public Text quantityTotal;
-    public Text soldTotal;
-    public PieChart pieChart;
-    public Button back;
-    public Button endEvent;
-    public Button pos;
+    @FXML protected Text title;
+    @FXML protected Text datetime;
+    @FXML protected Text tickettype;
+    @FXML protected Text cost;
+    @FXML protected Text quantity;
+    @FXML protected Text total;
+    @FXML protected VBox ticketVBox;
+    @FXML protected Text total2;
+    @FXML protected Text quantityTotal;
+    @FXML protected Text soldTotal;
+    @FXML protected PieChart pieChart;
+    @FXML protected Button back;
+    @FXML protected Button endEvent;
+    @FXML protected Button pos;
 
     private Event event;
 

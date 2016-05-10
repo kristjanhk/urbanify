@@ -2,6 +2,7 @@ package system.graphics.floorPlanner;
 
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -23,22 +24,22 @@ import java.util.ResourceBundle;
  * Saaliplaani looja controller
  */
 public class Controller extends AbstractController {
-    public Text floorPlanText;
-    public MenuButton floorPlans;
-    public MenuButton floorTypes;
-    public Button removeRow;
-    public Button addRow;
-    public Button removeSeat;
-    public Button addSeat;
-    public Button cancel;
-    public Button save;
-    public Button create;
-    public BorderPane borderPane;
-    public StackPane floorPlan;
-    public Text rowCountText;
-    public Text rowText;
-    public Text columnCountText;
-    public Text columnText;
+    @FXML protected Text floorPlanText;
+    @FXML protected MenuButton floorPlans;
+    @FXML protected MenuButton floorTypes;
+    @FXML protected Button removeRow;
+    @FXML protected Button addRow;
+    @FXML protected Button removeSeat;
+    @FXML protected Button addSeat;
+    @FXML protected Button cancel;
+    @FXML protected Button save;
+    @FXML protected Button create;
+    @FXML protected BorderPane borderPane;
+    @FXML protected StackPane floorPlan;
+    @FXML protected Text rowCountText;
+    @FXML protected Text rowText;
+    @FXML protected Text columnCountText;
+    @FXML protected Text columnText;
 
     private int columnCount = 0;
     private double maxY = 0.0;

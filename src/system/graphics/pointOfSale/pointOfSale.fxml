@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
+<?import javafx.scene.image.ImageView?>
 <BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="system.graphics.pointOfSale.Controller">
     <top>
@@ -77,14 +78,21 @@
             </HBox>
 
 
-
-            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="620.0" pannable="true"
-                        prefHeight="9999.0" prefWidth="650.0">
+            <HBox>
                 <VBox.margin>
                     <Insets top="40.0" right="40"/>
                 </VBox.margin>
-                <VBox fx:id="eventsVBox" styleClass="background"/>
-            </ScrollPane>
+                <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="620.0" pannable="true"
+                            prefHeight="9999.0" prefWidth="650.0">
+                    <VBox fx:id="eventsVBox" styleClass="background"/>
+                </ScrollPane>
+                <ImageView fx:id="qrcode" fitHeight="400.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true"
+                           HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+
+
+
             <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0"
                     prefWidth="40.0"/>
             <HBox alignment="CENTER_LEFT">

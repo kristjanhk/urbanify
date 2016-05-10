@@ -12,5 +12,6 @@
     <orderEntry type="library" name="freemarker" level="project" />
     <orderEntry type="library" name="iText-2.0.8" level="project" />
     <orderEntry type="library" name="core-renderer" level="project" />
+    <orderEntry type="library" name="com.google.zxing:javase:3.2.1" level="project" />
   </component>
 </module>

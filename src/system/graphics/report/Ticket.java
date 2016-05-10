@@ -4,7 +4,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Text;
@@ -26,7 +25,7 @@ public class Ticket extends GridPane{
         this.setMinSize(750, 50.0);
         this.setPrefSize(750, 50.0);
         this.getStyleClass().add("textFlow30");
-        GridPane.setMargin(this, new Insets(0.0, 0.0, 20.0, 0.0));
+        VBox.setMargin(this, new Insets(0.0, 0.0, 20.0, 0.0));
         this.initChildren(ticketname, ticketdata);
     }
 

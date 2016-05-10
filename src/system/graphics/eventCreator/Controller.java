@@ -21,20 +21,21 @@ import java.util.ResourceBundle;
  * Ürituse looja controller
  */
 public class Controller extends AbstractController {
-    public Text eventCreator;
-    public TextField eventText;
-    public DatePicker calendar;
-    public Text calendarLabel;
-    public TextField timeText; // TODO: 23.04.2016 picker
-    public Text timeLabel;
-    public MenuButton seating;
-    public Text seatingLabel;
-    public TextField maxSeats;
-    public Text maxSeatsLabel;
-    public Button cancel;
-    public Button next;
-    public Button addTicketButton;
-    public VBox ticketVBox;
+    @FXML protected Text eventCreator;
+    @FXML protected TextField eventText;
+    @FXML protected DatePicker calendar;
+    @FXML protected Text calendarLabel;
+    @FXML protected TextField timeText; //TODO: 23.04.2016 picker
+    @FXML protected Text timeLabel;
+    @FXML protected MenuButton seating;
+    @FXML protected Text seatingLabel;
+    @FXML protected TextField maxSeats;
+    @FXML protected Text maxSeatsLabel;
+    @FXML protected Button cancel;
+    @FXML protected Button next;
+    @FXML protected Button addTicketButton;
+    @FXML protected VBox ticketVBox;
+
     private String seatingType = "";
     private PopOver maxSeatsPopOver;
     private Event event = new Event();

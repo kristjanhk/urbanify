@@ -19,10 +19,11 @@ import java.util.stream.Collectors;
  * Ürituste haldaja controller
  */
 public class Controller extends AbstractController {
+    @FXML protected Text eventsText;
+    @FXML protected VBox eventsVBox;
+    @FXML protected Button backButton;
+
     private boolean initialized = false;
-    public Text eventsText;
-    public VBox eventsVBox;
-    public Button backButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
