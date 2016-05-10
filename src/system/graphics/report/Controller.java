@@ -114,13 +114,9 @@ public class Controller extends AbstractController {
     public <T> void prepareToDisplay(T object) {
         if (object instanceof Event) {
             if (this.event != null) {
-                if (!this.event.equals(object)) {
-                    this.scene.getStageHandler().replaceScene(Scenetype.REPORT);
-                    this.scene.getStageHandler().getScene(Scenetype.REPORT).
-                            getController().prepareToDisplay(object);
-                } else {
-                    this.setDatetime();
-                }
+                this.scene.getStageHandler().replaceScene(Scenetype.REPORT);
+                this.scene.getStageHandler().getScene(Scenetype.REPORT).
+                        getController().prepareToDisplay(object);
             } else {
                 this.event = ((Event) object);
                 this.init();
