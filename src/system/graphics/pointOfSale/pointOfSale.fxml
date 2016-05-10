@@ -52,18 +52,33 @@
                 <VBox.margin>
                     <Insets/>
                 </VBox.margin>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFlow30txt"
-                      text="яшеёртътыуопющэасдфгчйкльжзхцвбнм" wrappingWidth="22.13671875">
+                <Text fx:id="name" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFlow30txt"
+                      wrappingWidth="22.13671875">
                 </Text>
             </TextFlow>
-            <TextFlow maxHeight="30.0" maxWidth="190.0" minHeight="30.0" minWidth="190.0" prefHeight="30.0"
-                      prefWidth="190.0" styleClass="textFlow20">
+
+
+            <!-- todo change? -->
+            <HBox>
+                <TextFlow maxHeight="30.0" maxWidth="190.0" minHeight="30.0" minWidth="190.0" prefHeight="30.0"
+                          prefWidth="190.0" styleClass="textFlow20">
+                    <Text fx:id="datetime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFlow20txt"/>
+                </TextFlow>
+                <TextFlow maxHeight="30.0" maxWidth="190.0" minHeight="30.0" minWidth="190.0" prefHeight="30.0"
+                          prefWidth="190.0" styleClass="textFlow20">
+                    <HBox.margin>
+                        <Insets left="15.0"/>
+                    </HBox.margin>
+                    <Text fx:id="seats" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFlow20txt"
+                          text="seats left: 100"/>
+                </TextFlow>
                 <VBox.margin>
                     <Insets top="15.0"/>
                 </VBox.margin>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFlow20txt" text="29/4/2016 16:15">
-                </Text>
-            </TextFlow>
+            </HBox>
+
+
+
             <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="620.0" pannable="true"
                         prefHeight="9999.0" prefWidth="650.0">
                 <VBox.margin>
@@ -89,8 +104,8 @@
                     <HBox.margin>
                         <Insets left="40.0"/>
                     </HBox.margin>
-                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="50 €"
-                          textAlignment="CENTER" wrappingWidth="200.0">
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" textAlignment="CENTER"
+                          wrappingWidth="200.0">
                     </Text>
                 </TextFlow>
                 <Button fx:id="checkout" onMouseClicked="#doCheckout" maxHeight="70.5" maxWidth="121.0" minHeight="70.5"

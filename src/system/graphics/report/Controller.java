@@ -69,20 +69,6 @@ public class Controller extends AbstractController {
         this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
     }
 
-    @Override
-    public <T> void prepareToDisplay(T object) {
-        if (object instanceof Event) {
-            if (this.event != null && !this.event.equals(object)) {
-                this.scene.getStageHandler().replaceScene(Scenetype.REPORT);
-                this.scene.getStageHandler().getScene(Scenetype.REPORT).
-                        getController().prepareToDisplay(object);
-            } else {
-                this.event = ((Event) object);
-                this.init();
-            }
-        }
-    }
-
     private void setTitle() {
         this.title.setText(this.event.getName());
     }
@@ -102,14 +88,15 @@ public class Controller extends AbstractController {
     }
 
     private void createTotal() {
-        double totalQuantity = 0.0;
-        int  totalSold = 0;
+        int totalQuantity = 0;
+        double totalSold = 0.0;
         for (String tickettype : this.event.getTickets().keySet()) {
             totalQuantity += this.event.getTicketAmount(tickettype);
-            totalSold += Math.round(this.event.getTicketAmount(tickettype) * this.event.getTicketPrice(tickettype));
+            totalSold += this.event.getTicketAmount(tickettype) * this.event.getTicketPrice(tickettype);
         }
         this.quantityTotal.setText(String.valueOf(totalQuantity));
-        this.soldTotal.setText(String.valueOf(totalSold) + " " + Lang.getActiveLang().getCurrency());
+        this.soldTotal.setText(String.format("%.2f", totalSold) +
+                " " + Lang.getActiveLang().getCurrency());
     }
 
     private void createPieChart() {
@@ -121,6 +108,24 @@ public class Controller extends AbstractController {
         });
         pieChart.setLegendVisible(false);
         pieChart.setData(FXCollections.observableArrayList(data));
+    }
+
+    @Override
+    public <T> void prepareToDisplay(T object) {
+        if (object instanceof Event) {
+            if (this.event != null) {
+                if (!this.event.equals(object)) {
+                    this.scene.getStageHandler().replaceScene(Scenetype.REPORT);
+                    this.scene.getStageHandler().getScene(Scenetype.REPORT).
+                            getController().prepareToDisplay(object);
+                } else {
+                    this.setDatetime();
+                }
+            } else {
+                this.event = ((Event) object);
+                this.init();
+            }
+        }
     }
 
     @Override

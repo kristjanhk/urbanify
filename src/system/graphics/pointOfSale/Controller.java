@@ -5,11 +5,14 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import system.data.Event;
+import system.data.Lang;
 import system.data.Word;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
 
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ResourceBundle;
 
 /**
@@ -17,12 +20,16 @@ import java.util.ResourceBundle;
  */
 public class Controller extends AbstractController {
     public Text pointofsale;
+    public Text name;
+    public Text datetime;
+    public Text seats;
     public VBox eventsVBox;
     public Text total;
     public Button back;
     public Button checkout;
 
     private Event event;
+    private int seatsLeft;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -30,6 +37,9 @@ public class Controller extends AbstractController {
     }
 
     private void init() {
+        this.name.setText(this.event.getName());
+        this.setDatetime();
+        this.seatsLeft = this.event.getMaxSeats();
         for (String ticket : this.event.getTickets().keySet()) {
             this.eventsVBox.getChildren().add(new Ticket(this, ticket, this.event));
         }
@@ -41,16 +51,33 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void doBack() {
+
         this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
     }
 
     @FXML
     protected void doCheckout() {
+        // TODO: 10.05.2016 generate qr code
+
         System.out.println(this.event);
     }
 
     public Event getEvent() {
         return this.event;
+    }
+
+    public boolean occupySeat() {
+        if (this.seatsLeft == -1 || this.seatsLeft > 0) {
+            this.seatsLeft--;
+            return true;
+        }
+        return false;
+    }
+
+    public void freeSeat() {
+        if (this.seatsLeft != -1) {
+            this.seatsLeft++;
+        }
     }
 
 
@@ -74,6 +101,12 @@ public class Controller extends AbstractController {
                 this.init();
             }
         }
+    }
+
+    private void setDatetime() {
+        this.datetime.setText(this.event.getDate().format(
+                DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).withLocale(Lang.getActiveLang().getLocale())) +
+                " " + this.event.getTime());
     }
 
     @Override

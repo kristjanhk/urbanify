@@ -37,7 +37,7 @@ public class Ticket extends HBox{
         HBox.setMargin(ticket, new Insets(0.0, 0.0, 0.0, 20.0));
         this.getChildren().add(ticket);
 
-        Text cost = new Text(String.valueOf(ticketdata.get(0)) + " " + Lang.getActiveLang().getCurrency());
+        Text cost = new Text(String.format("%.2f", ticketdata.get(0)) + " " + Lang.getActiveLang().getCurrency());
         cost.getStyleClass().add("text35");
         cost.setStrokeType(StrokeType.OUTSIDE);
         cost.setStrokeWidth(0.0);
@@ -46,7 +46,7 @@ public class Ticket extends HBox{
         HBox.setMargin(cost, new Insets(0.0, 0.0, 0.0, 3.0));
         this.getChildren().add(cost);
 
-        Text quantity = new Text(String.valueOf(ticketdata.get(1)));
+        Text quantity = new Text(String.valueOf(ticketdata.get(1).intValue()));
         quantity.getStyleClass().add("text35");
         quantity.setStrokeType(StrokeType.OUTSIDE);
         quantity.setStrokeWidth(0.0);
@@ -55,8 +55,8 @@ public class Ticket extends HBox{
         HBox.setMargin(quantity, new Insets(0.0, 0.0, 0.0, 44.0));
         this.getChildren().add(quantity);
 
-        Text total = new Text(String.valueOf(Math.round(ticketdata.get(0) * ticketdata.get(1))) +
-                " " + Lang.getActiveLang().getCurrency());
+        Text total = new Text(String.format("%.2f", ticketdata.get(0) * ticketdata.get(1)) + " " +
+                Lang.getActiveLang().getCurrency());
         total.getStyleClass().add("text35");
         total.setStrokeType(StrokeType.OUTSIDE);
         total.setStrokeWidth(0.0);

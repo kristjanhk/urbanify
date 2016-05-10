@@ -11,7 +11,6 @@ import java.util.List;
 /**
  * Üritus
  * Hoiab endas andmeid ühe ürituse kohta
- * <p>
  * Konstruktor on tühi, et oleks võimalik isendivälju lähtestada ilma uut isendit loomata
  */
 public class Event {
@@ -20,7 +19,7 @@ public class Event {
     private LocalDate date;
     private String time;
     private String seatingType;
-    private String maxSeats;
+    private int maxSeats;
     private boolean active = false;
 
     public Event() {
@@ -43,7 +42,10 @@ public class Event {
         this.date = date;
         this.time = time;
         this.seatingType = seatingType;
-        this.maxSeats = maxSeats;
+        this.maxSeats = Integer.parseInt(maxSeats);
+        if (this.maxSeats == 0) {
+            this.maxSeats = -1;
+        }
         this.active = true;
         System.out.println(this.toString()); // TODO: 4.05.2016 remove
     }
@@ -58,7 +60,7 @@ public class Event {
         this.date = null;
         this.time = null;
         this.seatingType = null;
-        this.maxSeats = null;
+        this.maxSeats = -1;
         this.active = false;
     }
 
@@ -84,6 +86,14 @@ public class Event {
 
     public double getTicketAmount(String ticketName) {
         return this.tickets.get(ticketName).get(1);
+    }
+
+    public int getMaxSeats() {
+        return this.maxSeats;
+    }
+
+    public void setMaxSeats(int maxSeats) {
+        this.maxSeats = maxSeats;
     }
 
     public boolean isActive() {

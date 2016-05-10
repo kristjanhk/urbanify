@@ -75,7 +75,7 @@ public enum Word {
                 "Bildschrim", "TODO"});
         wordsMap.put(Word.EVENTS, new String[]{"events", "üritused", "ettevõtmõsõ",
                 "Ereignisse", "TODO"});
-        wordsMap.put(Word.DATEFORMAT, new String[]{"mm/dd/yyyy", "pp.kk.aaaa", "pp.kk.aaaa",
+        wordsMap.put(Word.DATEFORMAT, new String[]{"dd/mm/yyyy", "pp.kk.aaaa", "pp.kk.aaaa",
                 "tt.mm.jj??", "TODO"});
         wordsMap.put(Word.TIMEFORMAT, new String[]{"hh:mm", "hh:mm", "hh:mm",
                 "ss:mm??", "TODO"});

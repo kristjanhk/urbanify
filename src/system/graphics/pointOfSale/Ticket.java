@@ -10,14 +10,16 @@ import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import system.data.Event;
+import system.data.Lang;
 
 public class Ticket extends HBox {
     private Controller parentController;
     private Event event;
     private Text ticketName;
+    private Button removeTicket;
     private SimpleIntegerProperty ticketAmount = new SimpleIntegerProperty(0);
+    private Button addTicket;
     private Text ticketCost;
-
 
     public Ticket(Controller parentController, String ticketName, Event event) {
         super();
@@ -28,6 +30,10 @@ public class Ticket extends HBox {
         this.initChildren(ticketName);
     }
 
+    public void disableButtons() {
+
+    }
+
     private void initChildren(String ticketName) {
         this.ticketName = new Text(ticketName);
         this.ticketName.getStyleClass().add("text35");
@@ -36,20 +42,18 @@ public class Ticket extends HBox {
         this.ticketName.setWrappingWidth(150.0);
         this.getChildren().add(this.ticketName);
 
-        Button removeTicket = new Button("-");
-        removeTicket.getStyleClass().add("buttonRound");
-        removeTicket.setMnemonicParsing(false);
-        HBox.setMargin(removeTicket, new Insets(0.0, 0.0, 0.0, 20.0));
-        removeTicket.setOnMouseClicked(event -> {
-            if (this.event.getTicketAmount(ticketName) > 0) {
-                this.event.getTicketAmount(ticketName);
-            }
+        this.removeTicket = new Button("-");
+        this.removeTicket.getStyleClass().add("buttonRound");
+        this.removeTicket.setMnemonicParsing(false);
+        HBox.setMargin(this.removeTicket, new Insets(0.0, 0.0, 0.0, 20.0));
+        this.removeTicket.setOnMouseClicked(event -> {
             if (this.ticketAmount.getValue() > 0) {
                 this.ticketAmount.set(this.ticketAmount.getValue() - 1);
+                this.parentController.freeSeat();
             }
-            System.out.println(this.ticketAmount.getValue());
+            System.out.println(this.event.getMaxSeats());
         });
-        this.getChildren().add(removeTicket);
+        this.getChildren().add(this.removeTicket);
 
         Text ticketAmountText = new Text("0");
         ticketAmountText.getStyleClass().add("text35");
@@ -61,18 +65,21 @@ public class Ticket extends HBox {
         ticketAmountText.textProperty().bind(this.ticketAmount.asString());
         this.getChildren().add(ticketAmountText);
 
-        Button addTicket = new Button("ò");
-        addTicket.getStyleClass().add("buttonRound");
-        addTicket.setMnemonicParsing(false);
-        addTicket.setOnMouseClicked(event -> {
-            this.ticketAmount.set(this.ticketAmount.getValue() + 1);
-            System.out.println(this.ticketAmount.getValue());
+        this.addTicket = new Button("ò");
+        this.addTicket.getStyleClass().add("buttonRound");
+        this.addTicket.setMnemonicParsing(false);
+        this.addTicket.setOnMouseClicked(event -> {
+            if (this.parentController.occupySeat()) {
+                this.ticketAmount.set(this.ticketAmount.getValue() + 1);
+            }
+            System.out.println(this.event.getMaxSeats());
         });
         // TODO: 4.05.2016 dont sell more tickets than seats
-        this.getChildren().add(addTicket);
+        this.getChildren().add(this.addTicket);
 
         this.ticketCost = new Text();
-        this.ticketCost.setText(String.valueOf(this.parentController.getEvent().getTicketPrice(ticketName)) + " €");
+        this.ticketCost.setText(String.format("%.2f", this.parentController.getEvent().getTicketPrice(ticketName)) +
+                " " + Lang.getActiveLang().getCurrency());
         // TODO: 4.05.2016 store currency in eventobject 
         this.ticketCost.getStyleClass().add("text35");
         this.ticketCost.setTextAlignment(TextAlignment.CENTER);
