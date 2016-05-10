@@ -25,11 +25,13 @@ public class Controller extends AbstractController {
     public Text seats;
     public VBox eventsVBox;
     public Text total;
+    public Text totalcost;
     public Button back;
     public Button checkout;
 
     private Event event;
     private int seatsLeft;
+    private double cost = 0.0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -41,6 +43,7 @@ public class Controller extends AbstractController {
         this.setDatetime();
         this.seatsLeft = this.event.getMaxSeats();
         this.updateSeatsLeft();
+        this.updateTotal();
         for (String ticket : this.event.getTickets().keySet()) {
             this.eventsVBox.getChildren().add(new Ticket(this, ticket, this.event));
         }
@@ -75,19 +78,23 @@ public class Controller extends AbstractController {
         return this.event;
     }
 
-    public boolean occupySeat() {
+    public boolean occupySeat(double ticketprice) {
         if (this.seatsLeft == -1 || this.seatsLeft > 0) {
             this.seatsLeft--;
             this.updateSeatsLeft();
+            this.cost += ticketprice;
+            this.updateTotal();
             return true;
         }
         return false;
     }
 
-    public void freeSeat() {
+    public void freeSeat(double ticketprice) {
         if (this.seatsLeft != -1) {
             this.seatsLeft++;
             this.updateSeatsLeft();
+            this.cost -= ticketprice;
+            this.updateTotal();
         }
     }
 
@@ -119,6 +126,10 @@ public class Controller extends AbstractController {
 
     private void updateSeatsLeft() {
         this.seats.setText("seats left: " + this.seatsLeft);
+    }
+
+    private void updateTotal() {
+        this.totalcost.setText(String.format("%.2f", this.cost) + " " + Lang.getActiveLang().getCurrency());
     }
 
     @Override

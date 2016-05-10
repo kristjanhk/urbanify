@@ -57,7 +57,7 @@ public class Ticket extends HBox {
         this.removeTicket.setOnMouseClicked(event -> {
             if (this.ticketAmount.getValue() > 0) {
                 this.ticketAmount.set(this.ticketAmount.getValue() - 1);
-                this.parentController.freeSeat();
+                this.parentController.freeSeat(this.event.getTicketPrice(this.tickettype));
             }
         });
         this.getChildren().add(this.removeTicket);
@@ -76,7 +76,7 @@ public class Ticket extends HBox {
         this.addTicket.getStyleClass().add("buttonRound");
         this.addTicket.setMnemonicParsing(false);
         this.addTicket.setOnMouseClicked(event -> {
-            if (this.parentController.occupySeat()) {
+            if (this.parentController.occupySeat(this.event.getTicketPrice(this.tickettype))) {
                 this.ticketAmount.set(this.ticketAmount.getValue() + 1);
             }
         });

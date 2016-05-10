@@ -103,8 +103,8 @@
                     <HBox.margin>
                         <Insets left="40.0"/>
                     </HBox.margin>
-                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" textAlignment="CENTER"
-                          wrappingWidth="200.0">
+                    <Text fx:id="totalcost" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35"
+                          textAlignment="CENTER" wrappingWidth="200.0">
                     </Text>
                 </TextFlow>
                 <Button fx:id="checkout" onMouseClicked="#doCheckout" maxHeight="70.5" maxWidth="121.0" minHeight="70.5"
