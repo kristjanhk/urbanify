@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import javafx.stage.FileChooser;
 import org.w3c.dom.Document;
 import org.xhtmlrenderer.pdf.ITextRenderer;
@@ -21,8 +22,11 @@ import system.data.Event;
  */
 public class ReportHandler {
     //https://github.com/xiang-lee/pdf-generator
+    //http://freemarker.org/docs/dgui.html
+    //http://freemarker.org/docs/pgui_quickstart.html
     private Map<String, Object> variables = new HashMap<>();
-    private String report_template = "src\\system\\data\\report.ftl";
+    private String templates_location = "src\\system\\data";
+    private String report_template = "report.ftl";
 
     public ReportHandler() throws Exception {
         variables.put("users", createUserList());
@@ -58,16 +62,18 @@ public class ReportHandler {
     }
 
     public String generateTemplate(Event event) throws Exception {
-        // TODO: 9.05.2016 parse event 
-        Configuration config = new Configuration();
-        Template tp = config.getTemplate(report_template);
+        // TODO: 9.05.2016 parse event into variables
+        Configuration config = new Configuration(Configuration.VERSION_2_3_24);
+        config.setDirectoryForTemplateLoading(new File(this.templates_location));
+        config.setDefaultEncoding("UTF-8");
+        Template tp = config.getTemplate(this.report_template);
         StringWriter stringWriter = new StringWriter();
         BufferedWriter writer = new BufferedWriter(stringWriter);
-        tp.setEncoding("UTF-8");
         tp.process(variables, writer);
         String htmlStr = stringWriter.toString();
         writer.flush();
         writer.close();
+        stringWriter.close();
         return htmlStr;
     }
 
