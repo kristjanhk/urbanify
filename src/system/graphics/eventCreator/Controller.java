@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -16,6 +17,9 @@ import system.data.Word;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static javafx.geometry.Pos.CENTER;
+import static javafx.geometry.Pos.CENTER_LEFT;
 
 /**
  * Ürituse looja controller
@@ -128,10 +132,17 @@ public class Controller extends AbstractController {
     }
 
     private void createMaxSeatsHelper() {
-        TextFlow text = new TextFlow(new Text("tere"));
-        text.setStyle("-fx-background-color: #7e2b2c");
-        this.maxSeatsPopOver = new PopOver(text);
+        Text text = new Text("set 0 for unlimited");
+        text.getStyleClass().add("popOver");
+        HBox box = new HBox(text);
+        box.setPrefHeight(60);
+        box.setMinHeight(60);
+        box.setAlignment(CENTER);
+        box.getStyleClass().add("popOver");
+        this.maxSeatsPopOver = new PopOver(box);
+        maxSeatsPopOver.setCornerRadius(0);
         this.maxSeatsPopOver.setArrowLocation(PopOver.ArrowLocation.RIGHT_CENTER);
+        this.maxSeatsPopOver.setArrowSize(0);
         this.maxSeats.setOnMouseEntered(event -> this.maxSeatsPopOver.show(this.maxSeats));
         this.maxSeats.setOnMouseExited(event -> this.maxSeatsPopOver.hide());
     }
