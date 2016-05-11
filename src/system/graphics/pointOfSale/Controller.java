@@ -143,7 +143,8 @@ public class Controller extends AbstractController {
     }
 
     private void updateSeatsLeft() {
-        this.seats.setText(Word.SEATSLEFT.toString() + ": " + (this.seatsLeft == -1 ? "∞" : this.seatsLeft));
+        this.seats.setText(Word.SEATSLEFT.toString() + ": " +
+                (this.seatsLeft == -1 ? Word.UNLIMITED.toString() : this.seatsLeft));
     }
 
     private void updateTotal() {
@@ -153,10 +154,9 @@ public class Controller extends AbstractController {
     private void createQrCode(ArrayList<String> ticketdata) {
         StringBuilder tekst = new StringBuilder(
                 this.event.getName() + "\n" +
-                        this.event.getFormattedDate() + "\n" +
-                        this.event.getTime() + "\n");
+                        this.event.getFormattedDate() + " " + this.event.getTime() + "\n");
         ticketdata.forEach(tekst::append);
-        tekst.append(this.totalcost.getText()); // FIXME: 11.05.2016 currency symbol bugged?
+        tekst.append(this.totalcost.getText()); // FIXME: 11.05.2016 currency symbol bugine?
         try {
             BitMatrix bytematrix = new QRCodeWriter().encode(tekst.toString(),
                     BarcodeFormat.QR_CODE, (int) this.qrcode.getFitWidth(), (int) this.qrcode.getFitHeight());

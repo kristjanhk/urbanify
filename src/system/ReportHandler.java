@@ -30,7 +30,8 @@ public class ReportHandler {
     public boolean generatePdf(Event event) {
         try {
             this.generatePdf(generateTemplate(this.getFormattedData(event)),
-                    new FileOutputStream(this.getFileLocation(event.getName())));
+                    new FileOutputStream(this.getFileLocation(event.getName() + "_" + event.getFormattedDate() + "_" +
+                            event.getTime())));
             return true;
         } catch (Exception ignored) {}
         return false;
@@ -57,7 +58,6 @@ public class ReportHandler {
     }
 
     public String generateTemplate(Map<String, Object> variables) throws Exception {
-        // TODO: 9.05.2016 parse event into variables
         Configuration config = new Configuration(Configuration.VERSION_2_3_24);
         config.setDirectoryForTemplateLoading(new File("src\\system\\data"));
         config.setDefaultEncoding("UTF-8");
@@ -85,7 +85,6 @@ public class ReportHandler {
         variables.put("totalamount", dataobject.getTotalamount());
         return variables;
     }
-
 
     public class DataObject {
         private String name;
