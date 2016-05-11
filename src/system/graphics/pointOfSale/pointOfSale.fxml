@@ -48,24 +48,24 @@
             <BorderPane.margin>
                 <Insets left="40.0" right="40.0" top="40.0" />
             </BorderPane.margin>
-            <TextFlow maxHeight="42.0" minHeight="42.0" minWidth="0.0" prefHeight="42.0" prefWidth="9999.0"
-                      styleClass="textFlow30">
-                <Text fx:id="name" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFlow30txt"
-                      wrappingWidth="22.13671875">
+            <HBox maxHeight="42.0" minHeight="50.0" minWidth="0.0" prefHeight="50.0" prefWidth="9999.0"
+                      styleClass="textFlow30" alignment="CENTER_LEFT">
+                <Text fx:id="name" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35"
+                      wrappingWidth="700">
                 </Text>
-            </TextFlow>
+            </HBox>
             <HBox>
-                <TextFlow maxHeight="30.0" maxWidth="190.0" minHeight="30.0" minWidth="190.0" prefHeight="30.0"
-                          prefWidth="190.0" styleClass="textFlow20">
-                    <Text fx:id="datetime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFlow20txt" />
-                </TextFlow>
-                <TextFlow maxHeight="30.0" maxWidth="190.0" minHeight="30.0" minWidth="190.0" prefHeight="30.0"
-                          prefWidth="190.0" styleClass="textFlow20">
+                <HBox maxHeight="40.0" maxWidth="250.0" minHeight="40.0" minWidth="250.0" prefHeight="40.0"
+                          prefWidth="250.0" styleClass="textFlow20" alignment="CENTER_LEFT">
+                    <Text fx:id="datetime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text25" />
+                </HBox>
+                <HBox maxHeight="40.0" maxWidth="250.0" minHeight="40.0" minWidth="250.0" prefHeight="40.0"
+                          prefWidth="250.0" styleClass="textFlow20" alignment="CENTER_LEFT">
                     <HBox.margin>
                         <Insets left="15.0" />
                     </HBox.margin>
-                    <Text fx:id="seats" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFlow20txt" />
-                </TextFlow>
+                    <Text fx:id="seats" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text25" />
+                </HBox>
                 <VBox.margin>
                     <Insets top="15.0" />
                 </VBox.margin>
