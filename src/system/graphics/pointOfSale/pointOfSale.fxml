@@ -74,12 +74,12 @@
                 <VBox.margin>
                     <Insets right="40" top="40.0" />
                 </VBox.margin>
-                <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="620.0" pannable="true"
-                            prefHeight="9999.0" prefWidth="650.0">
+                <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="750.0" pannable="true"
+                            prefHeight="9999.0" prefWidth="750.0" minWidth="750.0">
                     <VBox fx:id="eventsVBox" styleClass="background" />
                 </ScrollPane>
                 <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                    <ImageView fx:id="qrcode" fitHeight="400.0" fitWidth="400.0" pickOnBounds="true"
+                    <ImageView fx:id="qrcode" fitHeight="350.0" fitWidth="350.0" pickOnBounds="true"
                                preserveRatio="true">
                     </ImageView>
                 </HBox>
