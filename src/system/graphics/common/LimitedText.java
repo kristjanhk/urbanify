@@ -6,8 +6,7 @@ public class LimitedText extends Text {
     private int lengthLimit;
     private String originalText;
 
-    public LimitedText() {
-    }
+    public LimitedText() {}
 
     public LimitedText(String text) {
         super(text);

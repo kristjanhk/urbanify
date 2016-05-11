@@ -6,6 +6,7 @@
         .name {
             color: #496192;
             font-size: x-large;
+
         }
 
         .head2 {

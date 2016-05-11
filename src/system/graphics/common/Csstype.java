@@ -26,17 +26,6 @@ public enum Csstype {
         return activeTheme;
     }
 
-    public static Csstype toggleTheme() {
-        switch (activeTheme) {
-            case LIGHT:
-                return DARK;
-            case DARK:
-                return LIGHT;
-            default:
-                return LIGHT;
-        }
-    }
-
     public String toString(boolean setActive) {
         if (setActive) {
             setActiveTheme(this);
