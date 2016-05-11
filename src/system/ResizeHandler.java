@@ -2,6 +2,7 @@ package system;
 
 import javafx.collections.ObservableList;
 import javafx.event.*;
+import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -14,7 +15,7 @@ import javafx.stage.Stage;
  * Lisab kõikidele antud lava tippudele kuulajad, mille järgi otsustab lava suuruse muutmise üle
  * (abimaterjal http://stackoverflow.com/questions/19455059/allow-user-to-resize-an-undecorated-stage)
  */
-public class ResizeHandler implements javafx.event.EventHandler<MouseEvent> {
+public class ResizeHandler implements EventHandler<MouseEvent> {
     private Stage stage;
     private Cursor cursorEvent = Cursor.DEFAULT;
     private int border = 10; // hiire kuju muutev ala laius ääres
@@ -39,7 +40,7 @@ public class ResizeHandler implements javafx.event.EventHandler<MouseEvent> {
         return this.cursorEvent;
     }
 
-    private static void addListenerDeeply(Node node, javafx.event.EventHandler<MouseEvent> listener) {
+    private static void addListenerDeeply(Node node, EventHandler<MouseEvent> listener) {
         node.addEventHandler(MouseEvent.MOUSE_MOVED, listener);
         node.addEventHandler(MouseEvent.MOUSE_PRESSED, listener);
         node.addEventHandler(MouseEvent.MOUSE_DRAGGED, listener);
@@ -97,7 +98,7 @@ public class ResizeHandler implements javafx.event.EventHandler<MouseEvent> {
         } else if (MouseEvent.MOUSE_DRAGGED.equals(mouseEventType)) {
             if (!Cursor.DEFAULT.equals(cursorEvent) && !stage.isMaximized()) {
                 if (!Cursor.W_RESIZE.equals(cursorEvent) && !Cursor.E_RESIZE.equals(cursorEvent)) {
-                    double minHeight = stage.getMinHeight() > (border * 2) ? stage.getMinHeight() : (border * 2);
+                    double minHeight = stage.getMinHeight();
                     if (Cursor.NW_RESIZE.equals(cursorEvent) || Cursor.N_RESIZE.equals(cursorEvent) ||
                             Cursor.NE_RESIZE.equals(cursorEvent)) {
                         if (stage.getHeight() > minHeight || mouseEventY < 0) {
@@ -112,7 +113,7 @@ public class ResizeHandler implements javafx.event.EventHandler<MouseEvent> {
                 }
 
                 if (!Cursor.N_RESIZE.equals(cursorEvent) && !Cursor.S_RESIZE.equals(cursorEvent)) {
-                    double minWidth = stage.getMinWidth() > (border * 2) ? stage.getMinWidth() : (border * 2);
+                    double minWidth = stage.getMinWidth();
                     if (Cursor.NW_RESIZE.equals(cursorEvent) || Cursor.W_RESIZE.equals(cursorEvent) ||
                             Cursor.SW_RESIZE.equals(cursorEvent)) {
                         if (stage.getWidth() > minWidth || mouseEventX < 0) {

@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * On GridPane mähisklass
  * Luuakse programmi töö käigus, seega ei saa FXMLis ette valmistada
  */
-public class Ticket extends GridPane{
+public class Ticket extends GridPane {
 
     public Ticket(String ticketname, ArrayList<Double> ticketdata) {
         this.setAlignment(Pos.CENTER_RIGHT);

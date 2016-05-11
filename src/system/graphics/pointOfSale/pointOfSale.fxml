@@ -12,7 +12,7 @@
 <?import javafx.scene.text.TextFlow?>
 
 <BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/8.0.65" fx:controller="system.graphics.pointOfSale.Controller">
+            fx:controller="system.graphics.pointOfSale.Controller">
     <top>
         <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0"
               prefWidth="1600.0" BorderPane.alignment="CENTER">
@@ -50,16 +50,10 @@
             </BorderPane.margin>
             <TextFlow maxHeight="42.0" minHeight="42.0" minWidth="0.0" prefHeight="42.0" prefWidth="9999.0"
                       styleClass="textFlow30">
-                <VBox.margin>
-                    <Insets />
-                </VBox.margin>
                 <Text fx:id="name" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFlow30txt"
                       wrappingWidth="22.13671875">
                 </Text>
             </TextFlow>
-
-
-            <!-- todo change? -->
             <HBox>
                 <TextFlow maxHeight="30.0" maxWidth="190.0" minHeight="30.0" minWidth="190.0" prefHeight="30.0"
                           prefWidth="190.0" styleClass="textFlow20">
@@ -76,8 +70,6 @@
                     <Insets top="15.0" />
                 </VBox.margin>
             </HBox>
-
-
             <HBox alignment="CENTER_LEFT">
                 <VBox.margin>
                     <Insets right="40" top="40.0" />
@@ -87,23 +79,11 @@
                     <VBox fx:id="eventsVBox" styleClass="background" />
                 </ScrollPane>
                 <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                    <children>
-                        <ImageView fx:id="qrcode" fitHeight="400.0" fitWidth="400.0" pickOnBounds="true"
-                                   preserveRatio="true">
-                            <HBox.margin>
-                                <Insets />
-                            </HBox.margin>
-                        </ImageView>
-                    </children>
-                    <HBox.margin>
-                        <Insets />
-                    </HBox.margin>
+                    <ImageView fx:id="qrcode" fitHeight="400.0" fitWidth="400.0" pickOnBounds="true"
+                               preserveRatio="true">
+                    </ImageView>
                 </HBox>
             </HBox>
-
-
-
-
             <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0"
                     prefWidth="40.0" />
             <HBox alignment="CENTER_LEFT">

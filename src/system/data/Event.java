@@ -1,7 +1,10 @@
 package system.data;
 
 import javafx.scene.Node;
+import system.MainHandler;
+import system.graphics.common.Scenetype;
 import system.graphics.eventCreator.Ticket;
+import system.graphics.eventManager.Controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -24,12 +27,6 @@ public class Event {
     private int maxSeats;
     private boolean active = false;
 
-    public Event() {}
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
     public void readyCreator(String name, List<Node> tickets, LocalDate date, String time,
                              String seatingType, String maxSeats) {
         this.resetCreator();
@@ -48,11 +45,6 @@ public class Event {
             this.maxSeats = -1;
         }
         this.active = true;
-        System.out.println(this.toString()); // TODO: 4.05.2016 remove
-    }
-
-    public boolean isFloorPlanReady() {
-        return true; // FIXME: 2.05.2016 
     }
 
     private void resetCreator() {
@@ -106,8 +98,11 @@ public class Event {
         return this.active;
     }
 
-    public void archive() {
+    public void sendToArchive() {
         this.active = false;
+        ((Controller) MainHandler.getStageHandler().
+                getScene(Scenetype.EVENTMANAGER).getController()).removeEventLine(this);
+        ((Controller) MainHandler.getStageHandler().getScene(Scenetype.ARCHIVE).getController()).addEventLine(this);
     }
 
     @Override

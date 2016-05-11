@@ -28,8 +28,6 @@ public class Controller extends AbstractController {
     @FXML protected Text filepath;
     @FXML protected MenuButton language;
     @FXML protected MenuButton theme;
-    // TODO: 29.04.2016 location path textflow peale või labeliks
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

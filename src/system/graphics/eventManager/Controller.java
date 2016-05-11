@@ -1,6 +1,7 @@
 package system.graphics.eventManager;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -50,6 +51,15 @@ public class Controller extends AbstractController {
 
     public void addEventLine(Event event) {
         this.eventsVBox.getChildren().add(new EventLine(this, event));
+    }
+
+    public void removeEventLine(Event event) {
+        for (Node node : this.eventsVBox.getChildren()) {
+            if (((EventLine) node).getEvent().equals(event)) {
+                this.eventsVBox.getChildren().remove(node);
+                break;
+            }
+        }
     }
 
     private void checkInitialization() {

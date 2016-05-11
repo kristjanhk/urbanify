@@ -14,8 +14,6 @@ import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
 
 import java.net.URL;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -51,6 +49,10 @@ public class Controller extends AbstractController {
         this.createTickets();
         this.createTotal();
         this.createPieChart();
+        if (!this.event.isActive()) {
+            this.endEvent.setDisable(true);
+            this.pos.setDisable(true);
+        }
     }
 
     @FXML
@@ -60,8 +62,10 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void doEndEvent() throws Exception {
-        // TODO: 10.05.2016 archive/deactivate event
-        MainHandler.getReportHandler().generatePdf(this.event);
+        if (MainHandler.getReportHandler().generatePdf(this.event)) {
+            this.event.sendToArchive();
+            this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
+        }
     }
 
     @FXML

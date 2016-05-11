@@ -16,7 +16,6 @@ public class CustomScene extends Scene {
     private Scenetype scenetype;
     private AbstractController controller;
 
-    // TODO: 9.04.2016 themes, list, settings file
     public CustomScene(@NamedArg("root") Parent root, FXMLLoader fxmlLoader,
                        StageHandler stageHandler, Scenetype scenetype) {
         super(root);

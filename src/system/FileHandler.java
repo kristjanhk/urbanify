@@ -47,10 +47,7 @@ public class FileHandler {
         this.jsonFile.saveCurrentData();
         try (FileWriter fileWriter = new FileWriter(this.jsonPath + "\\andmed.json")) {
             fileWriter.write(this.gson.toJson(this.jsonFile));
-        } catch (IOException e) {
-            e.printStackTrace();
-            // TODO: 24.04.2016 catch incorrect path, etc??
-        }
+        } catch (IOException ignored) {}
     }
 
     private void loadData() {
@@ -81,7 +78,6 @@ public class FileHandler {
             dos.writeUTF(this.jsonPath);
         } catch (IOException e) {
             System.exit(1);
-            // TODO: 29.04.2016 handle unable to write file
         }
     }
 }

@@ -85,7 +85,11 @@ public class Controller extends AbstractController {
     }
 
     public boolean occupySeat(double ticketprice) {
-        if (this.seatsLeft == -1 || this.seatsLeft > 0) {
+        if (this.seatsLeft == -1) {
+            this.cost += ticketprice;
+            this.updateTotal();
+            return true;
+        } else if (this.seatsLeft > 0) {
             this.seatsLeft--;
             this.updateSeatsLeft();
             this.cost += ticketprice;
@@ -99,9 +103,9 @@ public class Controller extends AbstractController {
         if (this.seatsLeft != -1) {
             this.seatsLeft++;
             this.updateSeatsLeft();
-            this.cost -= ticketprice;
-            this.updateTotal();
         }
+        this.cost -= ticketprice;
+        this.updateTotal();
     }
 
     /**
@@ -129,7 +133,7 @@ public class Controller extends AbstractController {
     }
 
     private void updateSeatsLeft() {
-        this.seats.setText("seats left: " + this.seatsLeft);
+        this.seats.setText(Word.SEATSLEFT.toString() + ": " + (this.seatsLeft == -1 ? "∞" : this.seatsLeft));
     }
 
     private void updateTotal() {
@@ -137,8 +141,8 @@ public class Controller extends AbstractController {
     }
 
     private void createQrCode(ArrayList<String> ticketdata) {
-        StringBuilder tekst = new StringBuilder(this.event.getName() + "; " + this.event.getFormattedDate() + " " +
-                this.event.getTime() + "; ");
+        StringBuilder tekst = new StringBuilder(this.event.getName() + "; \n" + this.event.getFormattedDate() + " " +
+                this.event.getTime() + "; "); // TODO: 11/05/2016 reavahetusmärgid 
         ticketdata.forEach(tekst::append);
         tekst.append(this.totalcost.getText()); // FIXME: 11.05.2016 currency symbol bugged?
         try {
@@ -146,7 +150,7 @@ public class Controller extends AbstractController {
                     BarcodeFormat.QR_CODE, (int) this.qrcode.getFitWidth(), (int) this.qrcode.getFitHeight());
             Canvas canvas = new Canvas((int) this.qrcode.getFitWidth(), (int) this.qrcode.getFitHeight());
             GraphicsContext gc = canvas.getGraphicsContext2D();
-            gc.setFill(Color.WHITE);
+            gc.setFill(Color.valueOf("262626"));
             gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
             gc.setFill(Color.BLACK);
             for (int i = 0; i < canvas.getHeight(); i++) {
@@ -157,9 +161,7 @@ public class Controller extends AbstractController {
                 }
             }
             this.qrcode.setImage(canvas.snapshot(null, null));
-        } catch (WriterException e) {
-            e.printStackTrace(); // TODO: 11.05.2016 handle
-        }
+        } catch (WriterException ignored) {}
     }
 
     @Override

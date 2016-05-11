@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import org.controlsfx.control.PopOver;
 import system.MainHandler;
 import system.graphics.common.AbstractController;
@@ -19,7 +18,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static javafx.geometry.Pos.CENTER;
-import static javafx.geometry.Pos.CENTER_LEFT;
 
 /**
  * Ürituse looja controller
@@ -40,6 +38,7 @@ public class Controller extends AbstractController {
     @FXML protected Button addTicketButton;
     @FXML protected VBox ticketVBox;
 
+    private Text popoverText;
     private String seatingType = "";
     private PopOver maxSeatsPopOver;
     private Event event = new Event();
@@ -51,8 +50,8 @@ public class Controller extends AbstractController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.setLanguage();
         this.createMaxSeatsHelper();
+        this.setLanguage();
         this.addValidation();
     }
 
@@ -102,7 +101,8 @@ public class Controller extends AbstractController {
         this.seating.getItems().get(0).setText(Word.ASSIGNEDSEATING.toString());
         this.seating.getItems().get(1).setText(Word.OPENSEATING.toString());
         this.seatingLabel.setText(Word.SETSEATINGTYPE.toString());
-        this.maxSeats.setPromptText(Word.MAXNROFSEATS.toString()); // TODO: 1.05.2016 font size 
+        this.popoverText.setText(Word.POPOVERTEXT.toString());
+        this.maxSeats.setPromptText(Word.MAXNROFSEATS.toString());
         this.maxSeatsLabel.setText(Word.SETMAXNROFSEATS.toString());
         this.cancel.setText(Word.CANCEL.toString());
         this.ticketVBox.getChildren().stream()
@@ -132,9 +132,9 @@ public class Controller extends AbstractController {
     }
 
     private void createMaxSeatsHelper() {
-        Text text = new Text("set 0 for unlimited");
-        text.getStyleClass().add("popOver");
-        HBox box = new HBox(text);
+        this.popoverText = new Text();
+        this.popoverText.getStyleClass().add("popOver");
+        HBox box = new HBox(this.popoverText);
         box.setPrefHeight(60);
         box.setMinHeight(60);
         box.setAlignment(CENTER);
@@ -184,7 +184,6 @@ public class Controller extends AbstractController {
                 break;
             }
         }
-        //this.next.setDisable(!valid);
-        this.next.setDisable(false);
+        this.next.setDisable(!valid);
     }
 }

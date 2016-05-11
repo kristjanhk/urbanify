@@ -28,20 +28,20 @@ public class Controller extends AbstractController {
         this.setLanguage();
     }
 
-    public void openNewEvent() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR, null);
+    @FXML protected void openNewEvent() {
+        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR);
     }
 
-    public void openEvents() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, null);
+    @FXML protected void openEvents() {
+        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
     }
 
-    public void openSettings() {
+    @FXML protected void openSettings() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.SETTINGS);
     }
 
-    public void openArchive() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.ARCHIVE, null);
+    @FXML protected void openArchive() {
+        this.scene.getStageHandler().switchSceneTo(Scenetype.ARCHIVE);
     }
 
     @Override

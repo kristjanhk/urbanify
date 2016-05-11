@@ -80,7 +80,7 @@ public abstract class AbstractController implements Initializable {
      * Võimaldab stseeni ette valmistada (nt uue üritusega müügipunkti stseen (seljuhul on objektiks Event))
      *
      * @param object suvaline objekt, selle määratlemisega tegeleb alamklassi controller ise
-     *               NB: objekt peab olemas olema, võib olla null fixme
+     *               NB: objekt peab olemas olema, võib olla null
      */
     public <T> void prepareToDisplay(T object) {}
 

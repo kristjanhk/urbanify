@@ -32,19 +32,18 @@ public class ReportHandler {
         variables.put("users", createUserList());
     }
 
-    public void generatePdf(Event event) {
+    public boolean generatePdf(Event event) {
         try {
             generatePdf(generateTemplate(event), new FileOutputStream(getFileLocation(event.getName())));
-        } catch (Exception e) {
-            // TODO: 9.05.2016 ignore filenotfoundexception, fixme else 
-            e.printStackTrace();
-        }
+            return true;
+        } catch (Exception ignored) {}
+        return false;
     }
 
     private File getFileLocation(String name) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save pdf file");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.setInitialDirectory(new File(MainHandler.getFileHandler().getPath()));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF", "*.pdf"));
         fileChooser.setInitialFileName(name);
         return fileChooser.showSaveDialog(MainHandler.getStageHandler().getStage());

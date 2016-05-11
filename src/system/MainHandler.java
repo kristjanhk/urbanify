@@ -20,13 +20,11 @@ import system.graphics.common.Csstype;
  */
 public class MainHandler extends Application {
     private static StageHandler stageHandler;
-    private static EventHandler eventHandler;
     private static FileHandler fileHandler;
     private static ReportHandler reportHandler;
 
     public static void main(String[] args) throws Exception {
         fileHandler = new FileHandler();
-        //eventHandler = new EventHandler();
         reportHandler = new ReportHandler();
         launch(args);
     }
@@ -44,14 +42,9 @@ public class MainHandler extends Application {
         return fileHandler;
     }
 
-    public static EventHandler getEventHandler() {
-        return eventHandler;
-    }
-
     public static ReportHandler getReportHandler() {
         return reportHandler;
     }
-
 
     public static void changeGlobalThemeTo(Csstype csstype) {
         stageHandler.getScenes().forEach((type, scene) -> changeSceneThemeTo(scene, csstype));
@@ -85,17 +78,13 @@ public class MainHandler extends Application {
 //default caspian.css < API settings < user's Scene css < user's Parent css < setStyle()
 
 /*
-mainhandler - hoiab handlereid
+mainhandler - staatiline main meetod
     |
-Arraylist<StageHandler>
-   /|\
-StageHandler - hoiab ühte lava ja selle jaoks scenesid, nende loogika
+StageHandler - haldab lava
     |
 Hashmap<Scenetype, CustomScene>
    /|\
-CustomScene
+CustomScene - mähisklass, haldab stseeni
     |
-fxml + controller - controller saab läbi scenei eelmistele asjadele ligi
-    |
-css
+fxml + controller - fxml määrab üldjoontes stseeni sisu, controller loogikat
 */
