@@ -43,21 +43,21 @@ public class Ticket extends GridPane {
         cost.getStyleClass().add("text35");
         cost.setStrokeType(StrokeType.OUTSIDE);
         cost.setStrokeWidth(0.0);
-        cost.setWrappingWidth(125.0);
+        cost.setWrappingWidth(200);
         cost.setTextAlignment(TextAlignment.CENTER);
         GridPane.setMargin(cost, new Insets(0.0, 0.0, 0.0, 0));
         this.add(cost,1,0);
-        this.getColumnConstraints().add(new ColumnConstraints(125,125,125));
+        this.getColumnConstraints().add(new ColumnConstraints(200,200,200));
 
         Text quantity = new Text(String.valueOf(ticketdata.get(1).intValue()));
         quantity.getStyleClass().add("text35");
         quantity.setStrokeType(StrokeType.OUTSIDE);
         quantity.setStrokeWidth(0.0);
-        quantity.setWrappingWidth(200.0);
+        quantity.setWrappingWidth(125);
         quantity.setTextAlignment(TextAlignment.CENTER);
         GridPane.setMargin(quantity, new Insets(0.0, 0.0, 0.0, 0));
         this.add(quantity,2,0);
-        this.getColumnConstraints().add(new ColumnConstraints(200,200,200));
+        this.getColumnConstraints().add(new ColumnConstraints(125,125,125));
 
         Text total = new Text(String.format("%.2f", ticketdata.get(0) * ticketdata.get(1)) + " " +
                 Lang.getActiveLang().getCurrency());
