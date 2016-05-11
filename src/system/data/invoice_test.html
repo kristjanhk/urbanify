@@ -1,479 +1,486 @@
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<!--
-[#comment]
-DO NOT EDIT THIS SECTION. FOR INTERNAL USE ONLY.
-//START-SETTINGS
-{"showClientStatementColumnDueDate":true,"showInvoiceTaxRate":false,"pageSize":"A4","expensesHeaderName":"Expenses","showRegularItemsHeader":false,"columnTaxExempt":"Tax","clientStatementColumnGrandTotal":"Grand Total","tableBorderColor":"#505050","clientStatementColumnDate":"Date","useHourTimeFormat":true,"tableBackgroundColor":"#ffffff","showSubtotalInvoice":true,"paidStampLeft":"100","invoiceTitle":"Invoice","showColumnMeasure":false,"subtotalInvoiceName":"Total","showColumnTax":false,"totalInvoiceName":"Grand Total","useCharacterEncoding":false,"showSubtotalProject":false,"clientStatementColumnBalance":"Balance","pageBackgroundFileName":"background.pdf","showClientStatementColumnNumber":true,"columnTotal":"Total","paidStampTop":"100","showPaidStamp":false,"invoiceFooter":"<center>Thank you for your business!<\/center>","showSubtotalMileage":false,"showBusinessLogo":false,"useDecimalTimeFormat":false,"showColumnTotal":true,"pageFooter":"<p style=\"text-align: right;\">\n<span class=\"page-number\"\/> \/ <span class=\"page-count\"\/>\n<\/p>","showClientStatementColumnAge":true,"showColumnQuantity":true,"showColumnCatalogItem":false,"showClientStatementColumnPayments":true,"showColumnName":true,"columnDate":"Date","depositsBalanceName":"Deposits Balance","productsHeaderName":"Products","mileageHeaderName":"Mileage","invoiceBalanceName":"Balance","showServiceTime":false,"showTaxExempt":false,"showItemTaxRate":false,"showItemDescription":false,"showClientStatementColumnGrandTotal":true,"clientStatementHeader":"<b>Statement<\/b>","showColumnDate":false,"servicesHeaderName":"Services","columnName":"Name","showInvoiceBalance":false,"showSubtotalTax":false,"clientStatementColumnNumber":"Number","showMileageHeader":false,"showColumnTaxExempt":false,"showProductsHeader":false,"clientStatementFooter":"","clientStatementColumnDueDate":"Due Date","showSubtotalExpenses":false,"clientStatementColumnPayments":"Payments","paidStampFileName":"stamp.png","showTotalInvoice":true,"showClientStatementColumnBalance":true,"showClientStatementColumnDate":true,"businessLogoHeight":"100","showDepositsBalance":false,"showPageBackground":false,"pageFooterHeight":"0.5","taxExempt":"-","showColumnTime":false,"clientStatementColumnAge":"Age","tableHeaderForegroundColor":"#ffffff","showSubtotalTaxes":false,"showServicesHeader":false,"pageOrientation":"Portrait","showColumnPrice":true,"showSubtotalPayment":false,"characterEncoding":"Cp1252","columnTime":"Time","businessLogoName":"logo.png","subtotalTaxesName":"Taxes","columnCatalogItem":"Catalog Item","regularItemsHeaderName":"Regular","pageHeaderHeight":"0.5","columnMeasure":"U.M.","groupServiceTimeByDate":false,"tableHeaderBackgroundColor":"#505050","pageHeader":"","showClientStatement":true,"pageCSS":"","subtotalPaymentsName":"Payments","invoiceHeader":"<div id=\"page-content-header-left\">\n\t<b>${client.name}<\/b><br\/>\n      <b>Date:<\/b> ${invoice.date?date}<br\/>\n      <b>Time:<\/b> ${invoice.date?date}<br\/>\n<\/div>","showExpensesHeader":false,"showSubtotalPayments":false,"showMileageTrips":false,"columnPrice":"Price","columnQuantity":"Quantity","showSubtotalServices":false,"showSubtotalProducts":false}
-//END-SETTINGS
-[/#comment]
--->
+<!DOCTYPE html>
+<html>
 <head>
-	<title>Invoice ${invoice.number}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style>
+        /* Global */
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 10pt;
+            font-family: SansSerif, Helvetica, Arial,serif;
+        }
 
-	<meta name="generator" content="Fanurio 3.1.1"/>
+        /* Page */
+        @page {
+            size: A4 Portrait;
+            padding: 0.0in;
+            margin-left: 0.6in;
+            margin-right: 0.6in;
+            margin-top: 0.5in;
+            margin-bottom: 0.5in;
 
-		
-	<style>
-		/* Global */
-		* {
-			margin: 0;
-			padding: 0;
-			font-size: 10pt;
-			font-family: SansSerif, Helvetica, Arial;
-		}
-		
-		/* Page */
-		@page {
-			size: A4 Portrait;
-			padding: 0.0in;
-			margin-left: 0.6in;
-			margin-right: 0.6in;
-			margin-top: 0.5in;
-			margin-bottom: 0.5in;
-			
-			@bottom-center {
-				content: element(footer);
-			}
-			
-			@top-center {
-				content: element(header);
-				padding-top: 0.5in;
-				padding-bottom: 0.1in;
-			}
-		}
-			
-		#page-header {
-			display: block;
-			position: running(header);
-		}
-		
-		#page-footer {
-			display: block;
-			position: running(footer);
-		}
-		
-		.page-number:before {
-			content: counter(page); 
-		}
+            @bottom-center {
+                content: element(footer);
+            }
 
-		.page-count:before {
-			content: counter(pages);  
-		}
+            @top-center {
+                content: element(header);
+                padding-top: 0.5in;
+                padding-bottom: 0.1in;
+            }
+        }
 
-		/* Content */
-		#page-content {
-			page-break-inside: avoid;
-		}
-		
-		#page-content-header {
-			overflow: hidden;
-			margin-top: 5px;
-			margin-bottom: 15px;
-		}
+        #page-header {
+            display: block;
+            position: running(header);
+        }
 
-		#page-content-title {
-			text-align: center; 
-			font-size: 26pt; 
-			font-weight: bold;
-		}
-		
-		#page-content-header-left {
-			float: left;
-			text-align: left;
-		}
-		
-		#page-content-header-right {
-			float: right;
-			text-align: right;
-		}
+        #page-footer {
+            display: block;
+            position: running(footer);
+        }
 
-		.table {
-			border-collapse: separate;
-			border-spacing: 0px; 
-			width: 100%;
-			-fs-table-paginate: paginate;
-			margin-top: 0.1in;
-			margin-bottom: 0.1in;
-			page-break-inside: auto; 
+        .page-number:before {
+            content: counter(page);
+        }
 
-			border: 1px solid #505050;
-			background: #ffffff;
-		}
-		
-		.table thead {
-			background: #505050; 
-			color: #ffffff;
-		}
+        .page-count:before {
+            content: counter(pages);
+        }
 
-		.table tr * {
-			vertical-align: top;
-		}
+        /* Content */
+        #page-content {
+            page-break-inside: avoid;
+        }
 
-		.table th, .table td {
-			padding: 5px;
-		}
-		
-		th.table-column-date, th.table-column-name, th.table-column-catalogItem, th.table-column-measure {
-			text-align: left;
-		}
-		
-		.table-column {
-			width: 10px;
-			white-space: nowrap;
-			text-align: right;
-		}
+        #page-content-header {
+            overflow: hidden;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
 
-		.table-column-name {
-			width: auto;
-			white-space: normal;
-			text-align: left;
-		}
-	
-		.table-column-catalogItem, .table-column-measure {
-			text-align: left;
-		}
-		
-		.table-row-time td, .table-row-mileage td {
-			color: #666;
-			padding-top: 3px!important;
-			padding-bottom: 0px!important;
-		}
-		
-		.table-total {
- 			font-weight: bold;
- 		}
- 		
- 		#statement {
- 			page-break-after: avoid;
- 			margin-top: 10px;
- 		}
- 		
- 		.discount {
- 			font-size: 8pt!important; 
- 			color: #666; 
- 			text-decoration: line-through;
- 		}
- 		
- 		#page-header-content {
- 			float: left;
- 			text-align: left;
- 		}
- 		
-		
-	</style>
+        #page-content-title {
+            text-align: center;
+            font-size: 26pt;
+            font-weight: bold;
+        }
+
+        #page-content-header-left {
+            float: left;
+            text-align: left;
+        }
+
+        #page-content-header-right {
+            float: right;
+            text-align: right;
+        }
+
+        .table {
+            border-collapse: separate;
+            border-spacing: 0px;
+            width: 100%;
+            -fs-table-paginate: paginate;
+            margin-top: 0.1in;
+            margin-bottom: 0.1in;
+            page-break-inside: auto;
+
+            border: 1px solid #505050;
+            background: #ffffff;
+        }
+
+        .table thead {
+            background: #505050;
+            color: #ffffff;
+        }
+
+        .table tr * {
+            vertical-align: top;
+        }
+
+        .table th, .table td {
+            padding: 5px;
+        }
+
+        th.table-column-date, th.table-column-name, th.table-column-catalogItem, th.table-column-measure {
+            text-align: left;
+        }
+
+        .table-column {
+            width: 10px;
+            white-space: nowrap;
+            text-align: right;
+        }
+
+        .table-column-name {
+            width: auto;
+            white-space: normal;
+            text-align: left;
+        }
+
+        .table-column-catalogItem, .table-column-measure {
+            text-align: left;
+        }
+
+        .table-row-time td, .table-row-mileage td {
+            color: #666;
+            padding-top: 3px !important;
+            padding-bottom: 0px !important;
+        }
+
+        .table-total {
+            font-weight: bold;
+        }
+
+        #statement {
+            page-break-after: avoid;
+            margin-top: 10px;
+        }
+
+        .discount {
+            font-size: 8pt !important;
+            color: #666;
+            text-decoration: line-through;
+        }
+
+        #page-header-content {
+            float: left;
+            text-align: left;
+        }
+
+
+    </style>
 </head>
 <body>
-	<div id="page-header">
-	
-			<div id="page-header-content">
-				
-			</div>
-	</div>
-	
-	<div id="page-footer">
-		<p style="text-align: right;">
-<span class="page-number"/> / <span class="page-count"/>
-</p>
-	</div>
+<div id="page-header">
 
-	<div id="page-content">
-		<p id="page-content-title">Invoice</p>
-			
-		<div id="page-content-header">
-			<div id="page-content-header-left">
-	<b>${client.name}</b><br/>
-      <b>Date:</b> ${invoice.date?date}<br/>
-      <b>Time:</b> ${invoice.date?date}<br/>
+    <div id="page-header-content">
+
+    </div>
 </div>
-		</div>
-	
-		<table class="table">
-			<thead>
-	<tr>
-		<th class="table-column table-column-name"><p>Name</p></th>
-		<th class="table-column table-column-quantity"><p>Quantity</p></th>
-		<th class="table-column table-column-price"><p>Price</p></th>		
-		<th class="table-column table-column-total"><p>Total</p></th>
-	</tr>
-			</thead>
-	
-			<tbody>
-			<tr>
-				<td>[#list invoice.projects?sort_by("name") as project]</td>
-			</tr>
-		
-			<tr class="table-row-project">
-				<td colspan="2"><p style="font-weight: bold;">${project.name}</p></td>
-			</tr>
-			
-			<tr>
-				<td>[#if project.serviceItems?size != 0]</td>
-			</tr>
-			
-		
-		<tr>
-			<td>[#list project.serviceItems?sort_by("date") as item]</td>
-		</tr>
 
-		<tr class="table-row-item">
-			<td class="table-column table-column-name">
-				<p>${item.name}</p>
-			</td>
-			<td class="table-column table-column-quantity">
-				<p>${item.quantity}</p>
-				<p>[#if item.quantityDiscounted]</p>
-				<p class="discount">${item.regularQuantity}</p>
-				<p>[/#if]</p>
-			</td>
-			<td class="table-column table-column-price">
-				<p>${item.price}</p>
-				<p>[#if item.priceDiscounted]</p>
-				<p class="discount">${item.regularPrice}</p>
-				<p>[/#if]</p>
-			</td>
-			<td class="table-column table-column-total"><p>${item.total}</p></td>
-		</tr>
+<div id="page-footer">
+    <p style="text-align: right;">
+        <span class="page-number"/> / <span class="page-count"/>
+    </p>
+</div>
+
+<div id="page-content">
+    <p id="page-content-title">Invoice</p>
+
+    <div id="page-content-header">
+        <div id="page-content-header-left">
+            <b>${client.name}</b><br/>
+            <b>Date:</b> ${invoice.date?date}<br/>
+            <b>Time:</b> ${invoice.date?date}<br/>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="table-column table-column-name"><p>Name</p></th>
+            <th class="table-column table-column-quantity"><p>Quantity</p></th>
+            <th class="table-column table-column-price"><p>Price</p></th>
+            <th class="table-column table-column-total"><p>Total</p></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>[#list invoice.projects?sort_by("name") as project]</td>
+        </tr>
+
+        <tr class="table-row-project">
+            <td colspan="2"><p style="font-weight: bold;">${project.name}</p></td>
+        </tr>
+
+        <tr>
+            <td>[#if project.serviceItems?size != 0]</td>
+        </tr>
 
 
-		<tr>
-			<td>[/#list]</td>
-		</tr>
-			
-	
-			<tr>
-				<td>[/#if]</td>
-			</tr>
-			
-			<tr>
-				<td>[#if project.productItems?size != 0]</td>
-			</tr>
-			
-	
-		<tr>
-			<td>[#list project.productItems?sort_by("date") as item]</td>
-		</tr>
+        <tr>
+            <td>[#list project.serviceItems?sort_by("date") as item]</td>
+        </tr>
 
-		<tr class="table-row-item">
-			<td class="table-column table-column-name">
-				<p>${item.name}</p>
-			</td>
-			<td class="table-column table-column-quantity">
-				<p>${item.quantity}</p>
-				<p>[#if item.quantityDiscounted]</p>
-				<p class="discount">${item.regularQuantity}</p>
-				<p>[/#if]</p>
-			</td>
-			<td class="table-column table-column-price">
-				<p>${item.price}</p>
-				<p>[#if item.priceDiscounted]</p>
-				<p class="discount">${item.regularPrice}</p>
-				<p>[/#if]</p>
-			</td>
-			<td class="table-column table-column-total"><p>${item.total}</p></td>
-		</tr>
+        <tr class="table-row-item">
+            <td class="table-column table-column-name">
+                <p>${item.name}</p>
+            </td>
+            <td class="table-column table-column-quantity">
+                <p>${item.quantity}</p>
 
-		<tr>
-			<td>[/#list]</td>
-		</tr>
-			
+                <p>[#if item.quantityDiscounted]</p>
 
-			<tr>
-				<td>[/#if]</td>
-			</tr>
-			
-			<tr>
-				<td>[#if project.expenseItems?size != 0]</td>
-			</tr>
-			
-	
-		<tr>
-			<td>[#list project.expenseItems?sort_by("date") as item]</td>
-		</tr>
+                <p class="discount">${item.regularQuantity}</p>
 
-		<tr class="table-row-item">
-			<td class="table-column table-column-name">
-				<p>${item.name}</p>
-			</td>
-			<td class="table-column table-column-quantity"><p>${item.quantity}</p></td>
-			<td class="table-column table-column-price"><p>${item.price}</p></td>
-			<td class="table-column table-column-total"><p>${item.total}</p></td>
-		</tr>
+                <p>[/#if]</p>
+            </td>
+            <td class="table-column table-column-price">
+                <p>${item.price}</p>
 
-		<tr>
-			<td>[/#list]</td>
-		</tr>
-			
+                <p>[#if item.priceDiscounted]</p>
 
-			<tr>
-				<td>[/#if]</td>
-			</tr>
-			
-			<tr>
-				<td>[#if project.mileageItems?size != 0]</td>
-			</tr>
-			
-	
-		<tr>
-			<td>[#list project.mileageItems?sort_by("name") as item]</td>
-		</tr>
+                <p class="discount">${item.regularPrice}</p>
 
-		<tr class="table-row-item">
-			<td class="table-column table-column-name">
-				<p>${item.name}</p>
-			</td>
-			<td class="table-column table-column-quantity"><p>${item.quantity}</p></td>
-			<td class="table-column table-column-price"><p>${item.price}</p></td>
-			<td class="table-column table-column-total"><p>${item.total}</p></td>
-		</tr>
+                <p>[/#if]</p>
+            </td>
+            <td class="table-column table-column-total"><p>${item.total}</p></td>
+        </tr>
 
 
-		<tr>
-			<td>[/#list]</td>
-		</tr>
-			
+        <tr>
+            <td>[/#list]</td>
+        </tr>
 
-			<tr>
-				<td>[/#if]</td>
-			</tr>
-			
 
-			<tr>
-				<td>[/#list]</td>
-			</tr>
-			
-			<tr>
-				<td>[#if invoice.regularItems?size != 0]</td>
-			</tr>
-			
-	
-		<tr>
-			<td>[#list invoice.regularItems?sort_by("date") as item]</td>
-		</tr>
+        <tr>
+            <td>[/#if]</td>
+        </tr>
 
-		<tr class="table-row-item">
-			<td class="table-column table-column-name">
-				<p>${item.name}</p>
-			</td>
-			<td class="table-column table-column-quantity">
-				<p>${item.quantity}</p>
-				<p>[#if item.quantityDiscounted]</p>
-				<p class="discount">${item.regularQuantity}</p>
-				<p>[/#if]</p>
-			</td>
-			<td class="table-column table-column-price">
-				<p>${item.price}</p>
-				<p>[#if item.priceDiscounted]</p>
-				<p class="discount">${item.regularPrice}</p>
-				<p>[/#if]</p>
-			</td>
-			<td class="table-column table-column-total"><p>${item.total}</p></td>
-		</tr>
+        <tr>
+            <td>[#if project.productItems?size != 0]</td>
+        </tr>
 
-		<tr>
-			<td>[/#list]</td>
-		</tr>
 
-			<tr>
-				<td>[/#if]</td>
-			</tr>
-			</tbody>
+        <tr>
+            <td>[#list project.productItems?sort_by("date") as item]</td>
+        </tr>
 
-			<tfoot>
-	<tr class="table-total">
-		<td class="table-column table-column-name" colspan="1"><p>Total</p></td>
-		<td class="table-column table-column-quantity"/>
-		<td class="table-column table-column-price"/>
-		<td class="table-column table-column-total">
-			<p>${invoice.total}</p>
-			<p>[#if invoice.totalDiscounted]</p>
-			<p class="discount">${invoice.regularTotal}</p>
-			<p>[/#if]</p>
-		</td>
-	</tr>
-				
-				<tr>
-					<td>[#if invoice.taxable]</td>
-				</tr>
-				
-	<tr class="table-total">
-		<td class="table-column table-column-name" colspan="1"><p>Grand Total</p></td>
-		<td class="table-column table-column-quantity"/>
-		<td class="table-column table-column-price"/>
-		<td class="table-column table-column-total">
-			<p>${invoice.grandTotal}</p>
-		</td>
-	</tr>
-				
-				<tr>
-					<td>[/#if]</td>
-				</tr>
-				
+        <tr class="table-row-item">
+            <td class="table-column table-column-name">
+                <p>${item.name}</p>
+            </td>
+            <td class="table-column table-column-quantity">
+                <p>${item.quantity}</p>
 
-				
-				
-			</tfoot>
-		</table>
+                <p>[#if item.quantityDiscounted]</p>
 
-			
-		<p>[#if client.openInvoices?size != 0]</p>
-		
-		<div id="statement">
-				<b>Statement</b>
-				
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Number</th>
-					<th>Date</th>
-					<th>Due Date</th>
-					<th>Age</th>
-					<th style="text-align: right;">Grand Total</th>
-					<th style="text-align: right;">Payments</th>
-					<th style="text-align: right;">Balance</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>[#list client.openInvoices?sort_by("ageInDays") as invoice]</td>
-				</tr>
-				<tr>
-					<td>${invoice.number}</td>
-					<td>${invoice.date?date?string.short}</td>
-					<td>${invoice.dueDate?date?string.short}</td>
-					<td style="text-align: right; width: 30px; white-space: nowrap;">${invoice.ageInDays?string("#0")}</td>
-					<td style="text-align: right;">${invoice.grandTotal}</td>
-					<td style="text-align: right;">${invoice.paymentsTotal}</td>
-					<td style="text-align: right;">${invoice.balance}</td>
-				</tr>
-				<tr>
-					<td>[/#list]</td>
-				</tr>
-			</tbody>
-			<tfoot>
-				<tr>
-					<th/>
-					<th/>
-					<th/>
-					<th/>
-					<th/>
-					<th/>
-					<th style="text-align: right;">${client.balance}</th>
-				</tr>
-			</tfoot>
-		</table>
-		
-				
-			</div>
-			
-		<p>[/#if]</p>
-		
-		<br/>
-		
-		<div id="page-content-footer">
-		<center>Thank you for your business!</center>
-		</div>
-	</div>
+                <p class="discount">${item.regularQuantity}</p>
+
+                <p>[/#if]</p>
+            </td>
+            <td class="table-column table-column-price">
+                <p>${item.price}</p>
+
+                <p>[#if item.priceDiscounted]</p>
+
+                <p class="discount">${item.regularPrice}</p>
+
+                <p>[/#if]</p>
+            </td>
+            <td class="table-column table-column-total"><p>${item.total}</p></td>
+        </tr>
+
+        <tr>
+            <td>[/#list]</td>
+        </tr>
+
+
+        <tr>
+            <td>[/#if]</td>
+        </tr>
+
+        <tr>
+            <td>[#if project.expenseItems?size != 0]</td>
+        </tr>
+
+
+        <tr>
+            <td>[#list project.expenseItems?sort_by("date") as item]</td>
+        </tr>
+
+        <tr class="table-row-item">
+            <td class="table-column table-column-name">
+                <p>${item.name}</p>
+            </td>
+            <td class="table-column table-column-quantity"><p>${item.quantity}</p></td>
+            <td class="table-column table-column-price"><p>${item.price}</p></td>
+            <td class="table-column table-column-total"><p>${item.total}</p></td>
+        </tr>
+
+        <tr>
+            <td>[/#list]</td>
+        </tr>
+
+
+        <tr>
+            <td>[/#if]</td>
+        </tr>
+
+        <tr>
+            <td>[#if project.mileageItems?size != 0]</td>
+        </tr>
+
+
+        <tr>
+            <td>[#list project.mileageItems?sort_by("name") as item]</td>
+        </tr>
+
+        <tr class="table-row-item">
+            <td class="table-column table-column-name">
+                <p>${item.name}</p>
+            </td>
+            <td class="table-column table-column-quantity"><p>${item.quantity}</p></td>
+            <td class="table-column table-column-price"><p>${item.price}</p></td>
+            <td class="table-column table-column-total"><p>${item.total}</p></td>
+        </tr>
+
+
+        <tr>
+            <td>[/#list]</td>
+        </tr>
+
+
+        <tr>
+            <td>[/#if]</td>
+        </tr>
+
+
+        <tr>
+            <td>[/#list]</td>
+        </tr>
+
+        <tr>
+            <td>[#if invoice.regularItems?size != 0]</td>
+        </tr>
+
+
+        <tr>
+            <td>[#list invoice.regularItems?sort_by("date") as item]</td>
+        </tr>
+
+        <tr class="table-row-item">
+            <td class="table-column table-column-name">
+                <p>${item.name}</p>
+            </td>
+            <td class="table-column table-column-quantity">
+                <p>${item.quantity}</p>
+
+                <p>[#if item.quantityDiscounted]</p>
+
+                <p class="discount">${item.regularQuantity}</p>
+
+                <p>[/#if]</p>
+            </td>
+            <td class="table-column table-column-price">
+                <p>${item.price}</p>
+
+                <p>[#if item.priceDiscounted]</p>
+
+                <p class="discount">${item.regularPrice}</p>
+
+                <p>[/#if]</p>
+            </td>
+            <td class="table-column table-column-total"><p>${item.total}</p></td>
+        </tr>
+
+        <tr>
+            <td>[/#list]</td>
+        </tr>
+
+        <tr>
+            <td>[/#if]</td>
+        </tr>
+        </tbody>
+
+        <tfoot>
+        <tr class="table-total">
+            <td class="table-column table-column-name" colspan="1"><p>Total</p></td>
+            <td class="table-column table-column-quantity"/>
+            <td class="table-column table-column-price"/>
+            <td class="table-column table-column-total">
+                <p>${invoice.total}</p>
+
+                <p>[#if invoice.totalDiscounted]</p>
+
+                <p class="discount">${invoice.regularTotal}</p>
+
+                <p>[/#if]</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>[#if invoice.taxable]</td>
+        </tr>
+
+        <tr class="table-total">
+            <td class="table-column table-column-name" colspan="1"><p>Grand Total</p></td>
+            <td class="table-column table-column-quantity"/>
+            <td class="table-column table-column-price"/>
+            <td class="table-column table-column-total">
+                <p>${invoice.grandTotal}</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>[/#if]</td>
+        </tr>
+
+
+        </tfoot>
+    </table>
+
+
+    <p>[#if client.openInvoices?size != 0]</p>
+
+    <div id="statement">
+        <b>Statement</b>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Number</th>
+                <th>Date</th>
+                <th>Due Date</th>
+                <th>Age</th>
+                <th style="text-align: right;">Grand Total</th>
+                <th style="text-align: right;">Payments</th>
+                <th style="text-align: right;">Balance</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>[#list client.openInvoices?sort_by("ageInDays") as invoice]</td>
+            </tr>
+            <tr>
+                <td>${invoice.number}</td>
+                <td>${invoice.date?date?string.short}</td>
+                <td>${invoice.dueDate?date?string.short}</td>
+                <td style="text-align: right; width: 30px; white-space: nowrap;">${invoice.ageInDays?string("#0")}</td>
+                <td style="text-align: right;">${invoice.grandTotal}</td>
+                <td style="text-align: right;">${invoice.paymentsTotal}</td>
+                <td style="text-align: right;">${invoice.balance}</td>
+            </tr>
+            <tr>
+                <td>[/#list]</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th/>
+                <th/>
+                <th/>
+                <th/>
+                <th/>
+                <th/>
+                <th style="text-align: right;">${client.balance}</th>
+            </tr>
+            </tfoot>
+        </table>
+
+
+    </div>
+
+    <p>[/#if]</p>
+
+    <br/>
+
+    <div id="page-content-footer">
+        <center>Thank you for your business!</center>
+    </div>
+</div>
 </body>
 </html>
 
