@@ -26,16 +26,26 @@ import java.util.ResourceBundle;
  * Müügipunkti controller
  */
 public class Controller extends AbstractController {
-    @FXML protected Text pointofsale;
-    @FXML protected Text name;
-    @FXML protected Text datetime;
-    @FXML protected Text seats;
-    @FXML protected VBox eventsVBox;
-    @FXML protected ImageView qrcode;
-    @FXML protected Text total;
-    @FXML protected Text totalcost;
-    @FXML protected Button back;
-    @FXML protected Button checkout;
+    @FXML
+    protected Text pointofsale;
+    @FXML
+    protected Text name;
+    @FXML
+    protected Text datetime;
+    @FXML
+    protected Text seats;
+    @FXML
+    protected VBox eventsVBox;
+    @FXML
+    protected ImageView qrcode;
+    @FXML
+    protected Text total;
+    @FXML
+    protected Text totalcost;
+    @FXML
+    protected Button back;
+    @FXML
+    protected Button checkout;
 
     private Event event;
     private int seatsLeft;
@@ -141,8 +151,10 @@ public class Controller extends AbstractController {
     }
 
     private void createQrCode(ArrayList<String> ticketdata) {
-        StringBuilder tekst = new StringBuilder(this.event.getName() + "; \n" + this.event.getFormattedDate() + " " +
-                this.event.getTime() + "; "); // TODO: 11/05/2016 reavahetusmärgid 
+        StringBuilder tekst = new StringBuilder(
+                this.event.getName() + "\n" +
+                        this.event.getFormattedDate() + "\n" +
+                        this.event.getTime() + "\n");
         ticketdata.forEach(tekst::append);
         tekst.append(this.totalcost.getText()); // FIXME: 11.05.2016 currency symbol bugged?
         try {
@@ -161,7 +173,8 @@ public class Controller extends AbstractController {
                 }
             }
             this.qrcode.setImage(canvas.snapshot(null, null));
-        } catch (WriterException ignored) {}
+        } catch (WriterException ignored) {
+        }
     }
 
     @Override

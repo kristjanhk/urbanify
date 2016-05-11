@@ -13,7 +13,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.HBox?>
 
-<?import system.graphics.common.LimitedText?>
 <BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="system.graphics.mainMenu.Controller">
     <top>
@@ -112,14 +111,14 @@
                     </VBox.margin>
                 </Text>
 
-
+                <!-- todo implement
                 <LimitedText lengthLimit="6" originalText="megapikktekst" strokeType="OUTSIDE"
                              strokeWidth="0.0" styleClass="text35" textAlignment="CENTER">
                     <VBox.margin>
                         <Insets left="16.5" top="15.0"/>
                     </VBox.margin>
                 </LimitedText>
-
+                -->
 
             </VBox>
         </GridPane>

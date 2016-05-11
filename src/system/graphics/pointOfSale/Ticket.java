@@ -37,7 +37,7 @@ public class Ticket extends GridPane {
 
     public String getCurrentData() {
         if (this.ticketAmount.intValue() > 0) {
-            return this.tickettype + ": " + this.ticketAmount.intValue() + "; ";
+            return this.tickettype + ": " + this.ticketAmount.intValue() + "\n";
         }
         return "";
     }

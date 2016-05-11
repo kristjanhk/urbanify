@@ -17,6 +17,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import system.data.Event;
 import system.data.Lang;
+import system.data.Word;
 
 /**
  * Aruande genereerija
@@ -73,7 +74,15 @@ public class ReportHandler {
 
     private Map<String, Object> getFormattedData(Event event) {
         Map<String, Object> variables = new HashMap<>();
-        variables.put("event", new DataObject(event));
+        variables.put("tickettype", Word.TICKETYPE.toString());
+        variables.put("ticketprice", Word.PRICE.toString());
+        variables.put("ticketamount", Word.QUANTITY.toString());
+        variables.put("tickettotal", Word.TOTAL.toString());
+        DataObject dataobject = new DataObject(event);
+        variables.put("event", dataobject);
+        variables.put("totalprice", String.format("%.2f", dataobject.getTotalprice()) +
+                " " + Lang.getActiveLang().getCurrency());
+        variables.put("totalamount", dataobject.getTotalamount());
         return variables;
     }
 
@@ -85,6 +94,9 @@ public class ReportHandler {
         private List<String> tickettypes = new ArrayList<>();
         private List<String> ticketprices = new ArrayList<>();
         private List<String> ticketamounts = new ArrayList<>();
+        private List<String> tickettotals = new ArrayList<>();
+        private double totalprice;
+        private int totalamount;
 
         public DataObject(Event event) {
             this.name = event.getName();
@@ -92,34 +104,51 @@ public class ReportHandler {
             this.time = event.getTime();
             for (String tickettype : event.getTickets().keySet()) {
                 this.tickettypes.add(tickettype);
-                this.ticketprices.add(String.format("%.2f", event.getTicketPrice(tickettype)) + " " +
+                double ticketprice = event.getTicketPrice(tickettype);
+                int ticketamount = event.getTicketAmount(tickettype).intValue();
+                this.ticketprices.add(String.format("%.2f", ticketprice) + " " + Lang.getActiveLang().getCurrency());
+                this.ticketamounts.add(String.valueOf(ticketamount));
+                this.tickettotals.add(String.format("%.2f", ticketprice * ticketamount) + " " +
                         Lang.getActiveLang().getCurrency());
-                this.ticketamounts.add(String.valueOf(event.getTicketAmount(tickettype).intValue()));
+                this.totalprice += ticketprice * ticketamount;
+                this.totalamount += ticketamount;
             }
         }
 
         public String getName() {
-            return name;
+            return this.name;
         }
 
         public String getDate() {
-            return date;
+            return this.date;
         }
 
         public String getTime() {
-            return time;
+            return this.time;
         }
 
         public List<String> getTickettypes() {
-            return tickettypes;
+            return this.tickettypes;
         }
 
         public List<String> getTicketprices() {
-            return ticketprices;
+            return this.ticketprices;
         }
 
         public List<String> getTicketamounts() {
-            return ticketamounts;
+            return this.ticketamounts;
+        }
+
+        public List<String> getTickettotals() {
+            return this.tickettotals;
+        }
+
+        public double getTotalprice() {
+            return this.totalprice;
+        }
+
+        public double getTotalamount() {
+            return this.totalamount;
         }
     }
 }

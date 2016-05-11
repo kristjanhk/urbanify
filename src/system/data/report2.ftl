@@ -39,9 +39,10 @@
 <table border="1" cellspacing="0" cellpadding="0" align="center">
     <thead>
     <tr style="background:#CCC0DA">
-        <th align="center">Id</th>
-        <th align="center">Username</th>
-        <th align="center">Age</th>
+        <th align="center">${tickettype}</th>
+        <th align="center">${ticketprice}</th>
+        <th align="center">${ticketamount}</th>
+        <th align="center">${tickettotal}</th>
     </tr>
     </thead>
     <tbody>
@@ -54,9 +55,12 @@
         <td width="189" align="center"><p align="center">${event.tickettypes[i - 1]}</p></td>
         <td width="189" align="center"><p align="center">${event.ticketprices[i - 1]}</p></td>
         <td width="189" align="center"><p align="center">${event.ticketamounts[i - 1]}</p></td>
+        <td width="189" align="center"><p align="center">${event.tickettotals[i - 1]}</p></td>
     </tr>
     </#list>
     </tbody>
 </table>
+<h2 class="name">${totalprice}</h2>
+<h2 class="name">${totalamount}</h2>
 </body>
 </html>
