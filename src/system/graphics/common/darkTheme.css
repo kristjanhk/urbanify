@@ -324,6 +324,12 @@ Seat:hover {
     -fx-background-color: #151515;
 }
 
+.text25 {
+    -fx-font-size: 25;
+    -fx-fill: #f05455;
+    -fx-font-family: "ticketFont";
+}
+
 .textFlow20txt {
     -fx-font-size: 20;
     -fx-fill: #f05455;
