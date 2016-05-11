@@ -51,8 +51,8 @@
                       prefHeight="50.0" prefWidth="750.0" styleClass="textFlow30">
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="242.0" minWidth="242.0" prefWidth="242.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="122005.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="125" minWidth="125.0" prefWidth="125.0"/>
                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="175.0" prefWidth="175.0"/>
                 </columnConstraints>
                 <rowConstraints>
@@ -68,10 +68,10 @@
                     </GridPane.margin>
                 </Text>
                 <Text fx:id="cost" strokeType="OUTSIDE" strokeWidth="0.0" text="cost" textAlignment="CENTER"
-                      wrappingWidth="125.0" GridPane.columnIndex="1" styleClass="text35">
+                      wrappingWidth="200.0" GridPane.columnIndex="1" styleClass="text35">
                 </Text>
                 <Text fx:id="quantity" strokeType="OUTSIDE" strokeWidth="0.0" text="quantity" textAlignment="CENTER"
-                      wrappingWidth="200.0" GridPane.columnIndex="2" styleClass="text35">
+                      wrappingWidth="125.0" GridPane.columnIndex="2" styleClass="text35">
                 </Text>
                 <Text fx:id="total" strokeType="OUTSIDE" strokeWidth="0.0" text="total" textAlignment="CENTER"
                       wrappingWidth="175.0" GridPane.columnIndex="3" styleClass="text35">
