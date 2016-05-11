@@ -19,14 +19,13 @@ import system.data.Event;
 
 /**
  * Aruande genereerija
+ *
+ * //http://freemarker.org/docs/dgui.html
+ * //http://freemarker.org/docs/pgui_quickstart.html
  */
 public class ReportHandler {
-    //https://github.com/xiang-lee/pdf-generator
-    //http://freemarker.org/docs/dgui.html
-    //http://freemarker.org/docs/pgui_quickstart.html
+
     private Map<String, Object> variables = new HashMap<>();
-    private String templates_location = "src\\system\\data";
-    private String report_template = "report.ftl";
 
     public ReportHandler() throws Exception {
         variables.put("users", createUserList());
@@ -63,9 +62,9 @@ public class ReportHandler {
     public String generateTemplate(Event event) throws Exception {
         // TODO: 9.05.2016 parse event into variables
         Configuration config = new Configuration(Configuration.VERSION_2_3_24);
-        config.setDirectoryForTemplateLoading(new File(this.templates_location));
+        config.setDirectoryForTemplateLoading(new File("src\\system\\data"));
         config.setDefaultEncoding("UTF-8");
-        Template tp = config.getTemplate(this.report_template);
+        Template tp = config.getTemplate("report.ftl");
         StringWriter stringWriter = new StringWriter();
         BufferedWriter writer = new BufferedWriter(stringWriter);
         tp.process(variables, writer);
@@ -96,7 +95,7 @@ public class ReportHandler {
         return user;
     }
 
-    public class User {
+    private class User {
         private long id;
         private String username;
         private int age;

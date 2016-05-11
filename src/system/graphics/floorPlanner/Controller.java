@@ -68,7 +68,7 @@ public class Controller extends AbstractController {
      * Vähendame suurust kui istmetegrupi laius on suurem kui saaliplaani laius
      * Suurendame suurust kui istmetegrupi laius on väiksem kui istmegrupi scalemata laius,
      *                        istmetegrupi kõrgus on väiksem kui istmegrupi scalemata kõrgus,
-     *                        istmetegrupi kõrgus on väiksem kui saaliplaani kõrgus - 30,
+     *                        istmetegrupi kõrgus on väiksem kui saaliplaani kõrgus - 30 fixme
      */
     private void checkPaneWidthResize(Number width) {
         double paneWidth = width.doubleValue() - 20;
@@ -92,7 +92,7 @@ public class Controller extends AbstractController {
      * Vähendame suurust kui istmetegrupi kõrgus on suurem kui saaliplaani kõrgus
      * Suurendame suurust kui istmetegrupi kõrgus on väiksem kui istmegrupi scalemata kõrgus,
      *                        istmetegrupi laius on väiksem kui istmegrupi scalemata laius,
-     *                        istmetegrupi laius on väiksem kui saaliplaani laius - 30,
+     *                        istmetegrupi laius on väiksem kui saaliplaani laius - 30 fixme
      */
     private void checkPaneHeightResize(Number height) {
         double paneHeight = height.doubleValue() - 20;
