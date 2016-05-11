@@ -144,7 +144,7 @@
             <Region minWidth="40.0" prefHeight="40.0" prefWidth="40.0"/>
             <VBox alignment="BOTTOM_CENTER" prefHeight="9998" prefWidth="9999">
                 <StackPane styleClass="background" fx:id="floorPlan" prefHeight="9999" prefWidth="9999"
-                           alignment="BOTTOM_CENTER" minWidth="0" minHeight="0" style="-fx-background-color: #e6e6e5"/>
+                           alignment="BOTTOM_CENTER" minWidth="0" minHeight="0"/>
                 <ImageView fitHeight="82.0" fitWidth="443.0" styleClass="stage">
                     <VBox.margin>
                         <Insets bottom="20.0"/>

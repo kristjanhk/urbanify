@@ -11,10 +11,9 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-import system.MainHandler;
+import system.data.Event;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
-import system.graphics.common.Csstype;
 import system.data.Word;
 
 import java.net.URL;
@@ -40,6 +39,8 @@ public class Controller extends AbstractController {
     @FXML protected Text rowText;
     @FXML protected Text columnCountText;
     @FXML protected Text columnText;
+
+    private Event event;
 
     private int columnCount = 0;
     private double maxY = 0.0;
@@ -131,26 +132,30 @@ public class Controller extends AbstractController {
         }*/
     }
 
-    public void addRowAction() {
+    @FXML
+    protected void addRowAction() {
         double prevY = getGroupMaxY();
         this.addNewRow();
         this.checkPaneHeightResize(this.floorPlan.getHeight());
         this.correctY(prevY);
     }
 
-    public void removeRowAction() {
+    @FXML
+    protected void removeRowAction() {
         double prevY = getGroupMaxY();
         this.removeFirstRow();
         this.checkPaneHeightResize(this.floorPlan.getHeight());
         this.correctY(prevY);
     }
 
-    public void addColumnAction() {
+    @FXML
+    protected void addColumnAction() {
         this.addNewColumn();
         this.checkPaneWidthResize(this.floorPlan.getWidth());
     }
 
-    public void removeColumnAction() {
+    @FXML
+    protected void removeColumnAction() {
         this.removeLastColumn();
         this.checkPaneWidthResize(this.floorPlan.getWidth());
     }
@@ -245,8 +250,6 @@ public class Controller extends AbstractController {
         this.getFloorGroup().setTranslateY(this.maxY);
     }
 
-    // TODO: 14.04.2016 to be changed
-
     public void doCancel() {
         // TODO: 14.04.2016 reset current scene?
         this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR);
@@ -258,7 +261,8 @@ public class Controller extends AbstractController {
     }
 
     public void doCreate() {
-        MainHandler.changeGlobalThemeTo(Csstype.toggleTheme());
+        // TODO: 12.05.2016 change
+        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, this.event);
     }
 
     public void selectPlan(int id) {
@@ -267,6 +271,13 @@ public class Controller extends AbstractController {
 
     public void selectType(int id) {
 
+    }
+
+    @Override
+    public <T> void prepareToDisplay(T object) {
+        if (object instanceof Event) {
+            this.event = ((Event) object);
+        }
     }
 
     @Override

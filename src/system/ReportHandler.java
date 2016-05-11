@@ -30,8 +30,9 @@ public class ReportHandler {
     public boolean generatePdf(Event event) {
         try {
             this.generatePdf(generateTemplate(this.getFormattedData(event)),
-                    new FileOutputStream(this.getFileLocation(event.getName() + "_" + event.getFormattedDate() + "_" +
-                            event.getTime())));
+                    new FileOutputStream(this.getFileLocation(event.getName() + "_" +
+                            event.getFormattedDate().replaceAll("/", ".") + "_" +
+                            event.getTime().replaceAll(":", "."))));
             return true;
         } catch (Exception ignored) {}
         return false;

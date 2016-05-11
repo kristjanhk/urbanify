@@ -40,8 +40,12 @@ public class Event {
         this.date = date;
         this.time = time;
         this.seatingType = seatingType;
-        this.maxSeats = Integer.parseInt(maxSeats);
-        if (this.maxSeats == 0) {
+        if (!maxSeats.equals("")) {
+            this.maxSeats = Integer.parseInt(maxSeats);
+            if (this.maxSeats == 0) {
+                this.maxSeats = -1;
+            }
+        } else {
             this.maxSeats = -1;
         }
         this.active = true;
