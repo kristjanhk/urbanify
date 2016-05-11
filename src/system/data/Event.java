@@ -78,7 +78,7 @@ public class Event {
         return this.tickets.get(ticketName).get(0);
     }
 
-    public double getTicketAmount(String ticketName) {
+    public Double getTicketAmount(String ticketName) {
         return this.tickets.get(ticketName).get(1);
     }
 
