@@ -142,6 +142,13 @@ public class Controller extends AbstractController {
         this.totalcost.setText(String.format("%.2f", this.cost) + " " + Lang.getActiveLang().getCurrency());
     }
 
+    /**
+     * Meetod, mis loob Zxing teegiga qr koodi
+     * https://github.com/zxing/zxing
+     * Genereerib maatriksi andmetest, mis joonistatakse canvasega pildile
+     *
+     * @param ticketdata list piletite andmetest, mis on juba vajalikul kujul
+     */
     private void createQrCode(ArrayList<String> ticketdata) {
         StringBuilder tekst = new StringBuilder(
                 this.event.getName() + "\n" +

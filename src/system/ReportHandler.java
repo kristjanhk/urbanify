@@ -22,9 +22,10 @@ import system.data.Word;
 
 /**
  * Aruande genereerija
- *
- * //http://freemarker.org/docs/dgui.html
- * //http://freemarker.org/docs/pgui_quickstart.html
+ * Kasutab Apache FreeMarker, Flying-saucer ja iText teeke
+ * http://freemarker.org/
+ * https://code.google.com/archive/p/flying-saucer/
+ * https://sourceforge.net/projects/itext/
  */
 public class ReportHandler {
 
