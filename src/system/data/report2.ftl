@@ -6,7 +6,7 @@
         .name {
             color: #496192;
             font-size: x-large;
-
+            font-family: 'TicketFont', serif;
         }
 
         .head2 {

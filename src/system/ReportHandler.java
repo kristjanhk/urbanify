@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import com.lowagie.text.pdf.BaseFont;
 import javafx.stage.FileChooser;
 import org.w3c.dom.Document;
 import org.xhtmlrenderer.pdf.ITextRenderer;
@@ -34,7 +35,9 @@ public class ReportHandler {
                             event.getFormattedDate().replaceAll("/", ".") + "_" +
                             event.getTime().replaceAll(":", "."))));
             return true;
-        } catch (Exception ignored) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
@@ -51,6 +54,8 @@ public class ReportHandler {
         DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document doc = builder.parse(new ByteArrayInputStream(htmlStr.getBytes()));
         ITextRenderer renderer = new ITextRenderer();
+        renderer.getFontResolver().addFont(System.getProperty("user.dir") +
+                "\\src\\system\\graphics\\common\\ticketfont2.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
         renderer.setDocument(doc, null);
         renderer.layout();
         renderer.createPDF(out);
