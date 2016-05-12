@@ -63,8 +63,8 @@ public class Controller extends AbstractController {
     @FXML
     protected void doEndEvent() throws Exception {
         if (MainHandler.getReportHandler().generatePdf(this.event)) {
-            //this.event.sendToArchive();
-            //this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
+            this.event.sendToArchive();
+            this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
         }
     }
 

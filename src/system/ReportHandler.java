@@ -67,7 +67,7 @@ public class ReportHandler {
         Configuration config = new Configuration(Configuration.VERSION_2_3_24);
         config.setDirectoryForTemplateLoading(new File("src\\system\\data"));
         config.setDefaultEncoding("UTF-8");
-        Template tp = config.getTemplate("report2.ftl");
+        Template tp = config.getTemplate("report.ftl");
         StringWriter stringWriter = new StringWriter();
         BufferedWriter writer = new BufferedWriter(stringWriter);
         tp.process(variables, writer);

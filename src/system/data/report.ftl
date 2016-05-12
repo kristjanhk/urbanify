@@ -3,89 +3,98 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <style>
-        .head1 {
-            color: #496192;
-            font-size: x-large;
+        @page {background-color: #F2F2F2;}
+        /*html {
+            margin: 0;
+            min-height: 100%;
+            min-width: 100%;
+            background: #EFEFEF;
         }
 
-        .head2 {
-            color: #496192;
-            font-size: large;
+        body {
+            margin: 0;
+            min-height: 100%;
+            min-width: 100;
+            background: #EFEFEF;
+        }*/
+
+        .name {
+            color: #262626;
+            font-size: 30pt;
+            font-family: 'TicketFont', serif;
+            line-height: 25%;
         }
 
-        .head3 {
-            color: #000;
-            font-size: medium
+        .date {
+            color: #5b5c5c;
+            font-size: 20pt;
+            font-family: 'TicketFont', serif;
         }
 
-        .paragraph {
-            text-align: justify;
+        .bottom {
+            color: #262626;
+            font-size: 22pt;
+            text-align: right;
+            background: #C6C6C5;
+            line-height: 10%;
+            font-family: 'TicketFont', serif;
         }
 
-        .toc {
-            list-style-type: none;
+        .tablehead {
+            color: #262626;
+            font-size: 18pt;
+            font-style: normal;
+            text-align: right;
+            background: #C6C6C5;
+            font-family: 'TicketFont', serif;
+            line-height: 30pt;
+        }
+
+        .content {
+            color: #262626;
+            font-size: 14pt;
+            text-align: right;
+            font-family: 'TicketFont', serif;
         }
 
         .toc a::after {
             content: leader('.') target-counter(attr(href), page);
         }
     </style>
-    <bookmarks>
-        <bookmark name="1 Introduction" href="#_introduction">
-            <bookmark name="1.1 Intoduction Sub" href="#_introduction_sub"></bookmark>
-        </bookmark>
-        <bookmark name="2 User" href="#_user">
-            <bookmark name="2.1 User Detail" href="#_user_detail"></bookmark>
-        </bookmark>
-    </bookmarks>
 </head>
 <body>
-<p class="head1">PDF Generator</p>
+<h1 class="name">${event.name}</h1>
+<h2 class="date">${event.date} ${event.time}</h2>
 
-<div style="page-break-after: always;"></div>
-<p class="head2">Contents</p>
-<ol class="toc">
-    <li><a href="#_introduction">1 Introduction</a></li>
-    <li>
-        <ol class="toc">
-            <li><a href="#_introduction_sub">1.1 Intoduction Sub</a></li>
-        </ol>
-    </li>
-    <li><a href="#_user">2 User</a></li>
-    <li>
-        <ol class="toc">
-            <li><a href="#_user_detail">2.1 User Detail</a></li>
-        </ol>
-    </li>
-</ol>
-<div style="page-break-after: always;"></div>
-<h1><a class="head1" name="_introduction">1 Introduction</a></h1>
-
-<h2><a name="_introduction_sub" class="head2">1.1 Introduction Sub</a></h2>
-This is the example of PDF Generator
-<div style="page-break-after: always;"></div>
-<h1><a class="head1" name="_user">2 User</a></h1>
-
-<h2><a name="_user_detail" class="head2">2.1 User Detail</a></h2>
-<table border="1" cellspacing="0" cellpadding="0" align="center">
+<table border="0" cellspacing="0" align="center">
     <thead>
-    <tr style="background:#CCC0DA">
-        <th align="center">Id</th>
-        <th align="center">Username</th>
-        <th align="center">Age</th>
+    <tr class="tablehead">
+        <th align="center">${tickettype}</th>
+        <th align="center">${ticketprice}</th>
+        <th align="center">${ticketamount}</th>
+        <th align="center">${tickettotal}</th>
     </tr>
     </thead>
-    <#list 1..users?size as i>
+    <tbody>
+    <#list 1..event.tickettypes?size as i>
         <#if i%2==0>
-            <tr style="background:#FABF8F">
-                <#else>
-            <tr style="background:#C4D79B">
+        <tr class="content" style="background:#EAEAEA">
+        <#else>
+        <tr class="content" style="background:#D8D8D8">
         </#if>
-        <td width="189" align="center"><p align="center">${users[i-1].id}</p></td>
-        <td width="189" align="center"><p align="center">${users[i-1].username}</p></td>
-        <td width="189" align="center"><p align="center">${users[i-1].age}</p></td>
-        </tr>
+        <td width="189" align="center"><p style="content" align="center">${event.tickettypes[i - 1]}</p></td>
+        <td width="189" align="center"><p style="content" align="center">${event.ticketprices[i - 1]}</p></td>
+        <td width="189" align="center"><p style="content" align="center">${event.ticketamounts[i - 1]}</p></td>
+        <td width="189" align="center"><p style="content" align="center">${event.tickettotals[i - 1]}</p></td>
+    </tr>
     </#list>
+    <tr >
+        <td class="bottom" height="2" width="189" align="center"><p align="center"></p></td>
+        <td class="bottom" height="2" width="189" align="center"><p align="center">${tickettotal}</p></td>
+        <td class="bottom" height="2" width="189" align="center"><p align="center">${totalamount}</p></td>
+        <td class="bottom" height="2" width="189" align="center"><p align="center">${totalprice}</p></td>
+    </tr>
+    </tbody>
 </table>
 </body>
 </html>

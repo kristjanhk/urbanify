@@ -16,6 +16,7 @@ import system.data.Event;
 import system.data.Lang;
 import system.data.Word;
 import system.graphics.common.AbstractController;
+import system.graphics.common.Csstype;
 import system.graphics.common.Scenetype;
 
 import java.net.URL;
@@ -162,9 +163,15 @@ public class Controller extends AbstractController {
                     BarcodeFormat.QR_CODE, (int) this.qrcode.getFitWidth(), (int) this.qrcode.getFitHeight());
             Canvas canvas = new Canvas((int) this.qrcode.getFitWidth(), (int) this.qrcode.getFitHeight());
             GraphicsContext gc = canvas.getGraphicsContext2D();
-            gc.setFill(Color.valueOf("262626"));
-            gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-            gc.setFill(Color.BLACK);
+            if (Csstype.getActiveTheme().equals(Csstype.DARK)) {
+                gc.setFill(Color.valueOf("262626"));
+                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+                gc.setFill(Color.BLACK);
+            } else {
+                gc.setFill(Color.valueOf("e6e6e5"));
+                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+                gc.setFill(Color.valueOf("5b5c5c"));
+            }
             for (int i = 0; i < canvas.getHeight(); i++) {
                 for (int j = 0; j < canvas.getWidth(); j++) {
                     if (bytematrix.get(i, j)) {
