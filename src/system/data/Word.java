@@ -111,7 +111,7 @@ public enum Word {
                 "deutsch", "TODO"});
         wordsMap.put(Word.RUSSIAN, new String[]{"russian", "vene keel", "TODO",
                 "TODO", "pусский язык"});
-        wordsMap.put(Word.CHECKOUT, new String[]{"checkout", "lõpeta?", "TODO",
+        wordsMap.put(Word.CHECKOUT, new String[]{"checkout", "lõpeta", "TODO",
                 "TODO", "TODO"});
         wordsMap.put(Word.TOTAL, new String[]{"total", "kokku", "TODO",
                 "TODO", "TODO"});

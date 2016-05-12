@@ -27,26 +27,16 @@ import java.util.ResourceBundle;
  * Müügipunkti controller
  */
 public class Controller extends AbstractController {
-    @FXML
-    protected Text pointofsale;
-    @FXML
-    protected Text name;
-    @FXML
-    protected Text datetime;
-    @FXML
-    protected Text seats;
-    @FXML
-    protected VBox eventsVBox;
-    @FXML
-    protected ImageView qrcode;
-    @FXML
-    protected Text total;
-    @FXML
-    protected Text totalcost;
-    @FXML
-    protected Button back;
-    @FXML
-    protected Button checkout;
+    @FXML protected Text pointofsale;
+    @FXML protected Text name;
+    @FXML protected Text datetime;
+    @FXML protected Text seats;
+    @FXML protected VBox eventsVBox;
+    @FXML protected ImageView qrcode;
+    @FXML protected Text total;
+    @FXML protected Text totalcost;
+    @FXML protected Button back;
+    @FXML protected Button checkout;
 
     private Event event;
     private int seatsLeft;
@@ -180,8 +170,7 @@ public class Controller extends AbstractController {
                 }
             }
             this.qrcode.setImage(canvas.snapshot(null, null));
-        } catch (WriterException ignored) {
-        }
+        } catch (WriterException ignored) {}
     }
 
     @Override

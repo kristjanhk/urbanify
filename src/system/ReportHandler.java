@@ -35,10 +35,9 @@ public class ReportHandler {
                             event.getFormattedDate().replaceAll("/", ".") + "_" +
                             event.getTime().replaceAll(":", "."))));
             return true;
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ignored) {
+            return false;
         }
-        return false;
     }
 
     private File getFileLocation(String name) {
