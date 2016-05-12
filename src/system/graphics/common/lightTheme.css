@@ -1,5 +1,5 @@
 @font-face {
-    src: url("TicketFont.ttf");
+    src: url("ticketfont2.ttf");
 }
 
 .text-field {
@@ -13,34 +13,83 @@
     -fx-font-size: 35;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
+    -fx-padding: 1 20 1 20;
 }
 
-.button {
+.bottomButton {
+    -fx-padding: 0 0 0 0;
     -fx-background-color: #ffffff;
     -fx-text-fill: #b0afb0;
     -fx-max-height: 70.5;
     -fx-min-height: 70.5;
     -fx-pref-height: 70.5;
+    -fx-max-width: 121.0;
+    -fx-min-width: 121.0;
+    -fx-pref-width: 121.0;
     -fx-font-family: 'TicketFont';
     -fx-font-size: 30;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
 }
 
-.menu-button {
-    -fx-background-color: #ffffff;
-    -fx-font-family: 'TicketFont';
-    -fx-font-size: 26;
+.bottomButton:hover {
+    -fx-background-color: #dddddd;
+    -fx-text-fill: #b0afb0;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
+}
+
+.bottomButton:armed {
+    -fx-background-color: #d0d3d3;
+    -fx-text-fill: #ffffff;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
+
+.buttonSmall {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #b0afb0;
+    -fx-max-height: 70.5;
+    -fx-min-height: 70.5;
+    -fx-pref-height: 70.5;
+    -fx-max-width: 70.5;
+    -fx-min-width: 70.5;
+    -fx-pref-width: 70.5;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 30;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
+
+.buttonSmall:hover {
+    -fx-background-color: #dddddd;
+    -fx-text-fill: #b0afb0;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
+
+.buttonSmall:armed {
+    -fx-background-color: #d0d3d3;
+    -fx-text-fill: #ffffff;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
+
+.menu-button {
+    -fx-pref-height: 70.5;
+    -fx-background-color: #ffffff;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 35;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+    -fx-padding: 0 0 0 10;
 }
 
 .menu-button:hover {
     -fx-background-color: #dddddd;
     -fx-text-fill: #ffffff;
-    -fx-font-family: 'TicketFont';
-    -fx-font-size: 26;
     -fx-font-smoothing-type: gray;
+    -fx-padding: 0 0 0 10;
     -fx-background-radius: 0;
 }
 
@@ -48,12 +97,14 @@
     -fx-text-fill: #b0afb0;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
+    -fx-padding: 0 0 0 10;
 }
 
 .menu-button .label:hover{
     -fx-text-fill: #ffffff;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
+    -fx-padding: 0 0 0 10;
 }
 
 .menu-button:openvertically .arrow-button {
@@ -69,12 +120,18 @@
     -fx-font-size: 19;
     -fx-font-family: 'TicketFont';
     -fx-font-smoothing-type: gray;
-    -fx-background-color: white;
 }
 
 .text35 {
     -fx-fill: #b0afb0;
     -fx-font-size: 35;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
+}
+
+.text30 {
+    -fx-fill: #b0afb0;
+    -fx-font-size: 30;
     -fx-font-family: 'TicketFont';
     -fx-font-smoothing-type: gray;
 }
@@ -88,16 +145,10 @@
 
 .button:hover {
     -fx-background-color: #dddddd;
-    -fx-text-fill: #ffffff;
-    -fx-font-smoothing-type: gray;
-    -fx-background-radius: 0;
 }
 
 .button:armed {
     -fx-background-color: #d0d3d3;
-    -fx-text-fill: #ffffff;
-    -fx-font-smoothing-type: gray;
-    -fx-background-radius: 0;
 }
 
 .context-menu {
@@ -236,14 +287,56 @@ Seat:hover {
     -fx-font-family: 'TicketFont';
     -fx-font-smoothing-type: gray;
 }
+
 .textFlowNimi {
     -fx-padding: 25 25 26 25;
     -fx-background-color: white;
 }
 
+.textFlowPos {
+    -fx-padding: 25 25 26 25;
+    -fx-background-color: white;
+}
+
+.textFlowNimi:hover {
+    -fx-background-color: #dddddd;
+}
+
+.textFlowNimi:pressed {
+    -fx-background-color: #d0d3d3;
+}
+
 .textFlowInfo {
     -fx-padding: 25 0 26 0;
     -fx-background-color: white;
+}
+
+.textFlow30 {
+    -fx-padding: 8 0 0 20;
+    -fx-background-color: white;
+}
+
+.textFlow20 {
+    -fx-padding: 8 0 0 20;
+    -fx-background-color: white;
+}
+
+.text25 {
+    -fx-font-size: 27;
+    -fx-fill: #b0afb0;
+    -fx-font-family: "ticketFont";
+}
+
+.textFlow20txt {
+    -fx-font-size: 20;
+    -fx-fill: #b0afb0;
+    -fx-font-family: "ticketFont";
+}
+
+.textFlow30txt {
+    -fx-font-size: 30;
+    -fx-fill: #b0afb0;
+    -fx-font-family: "ticketFont";
 }
 
 .buttonRound {
@@ -263,28 +356,10 @@ Seat:hover {
 
 .buttonRound:hover {
     -fx-background-color: #dddddd;
-    -fx-text-fill: #ffffff;
-    -fx-background-radius: 35;
-    -fx-pref-width: 70;
-    -fx-pref-height: 70;
-    -fx-max-height: 70;
-    -fx-max-width: 70;
-    -fx-font-family: 'TicketFont';
-    -fx-font-size: 30;
-    -fx-font-smoothing-type: gray;
 }
 
 .buttonRound:armed {
     -fx-background-color: #d0d3d3;
-    -fx-text-fill: #ffffff;
-    -fx-font-smoothing-type: gray;
-    -fx-background-radius: 35;
-    -fx-pref-width: 70;
-    -fx-pref-height: 70;
-    -fx-max-height: 70;
-    -fx-max-width: 70;
-    -fx-font-family: 'TicketFont';
-    -fx-font-size: 30;
 }
 
 /*###################################CALENDAR##################### */
@@ -416,4 +491,93 @@ Seat:hover {
 .date-picker-popup .previous-month,
 .date-picker-popup .next-month {
     visibility: hidden;
+}
+
+.check-box .text {
+    -fx-fill: #babab9;
+    -fx-font-size: 35;
+    -fx-font-family: "ticketFont";
+}
+
+.check-box .box {
+    -fx-background-color: white;
+    -fx-background-radius: 0;
+    -fx-pref-height: 70.5;
+    -fx-pref-width: 70.5;
+}
+
+.check-box .box:hover {
+    -fx-background-color: #dddddd;
+}
+
+.check-box .box:pressed {
+    -fx-background-color: #d0d3d3;
+}
+
+
+.validationError{
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-border-width: 2;
+    -fx-border-color: #f05455;
+}
+
+.barButton {
+    -fx-background-color: #e6e6e5;
+    -fx-background-radius: 0;
+    -fx-padding: 0 0 0 0;
+    -fx-max-height: 28;
+    -fx-min-height: 28;
+    -fx-pref-height: 28;
+    -fx-max-width: 51;
+    -fx-min-width: 51;
+    -fx-pref-width: 51;
+    -fx-text-fill: #8c8c8b;
+    -fx-font-family: "ticketFont";
+}
+
+.barButton:hover {
+    -fx-background-color: #bdbdbc;
+}
+
+.barButton:armed {
+    -fx-background-color: #9d9d9c;
+    -fx-text-fill: #ffffff;
+}
+
+.chart-pie-label-line {
+    -fx-stroke: transparent;
+    -fx-fill: transparent;
+}
+
+.chart-pie-label {
+    -fx-fill: #8c8c8b;
+    -fx-font-family: "ticketFont";
+    -fx-font-size: 34;
+}
+
+.chart-pie {
+    -fx-border-width: 10;
+    -fx-border-color: transparent;
+}
+
+.default-color0.chart-pie { -fx-pie-color: #626262; }
+.default-color8.chart-pie { -fx-pie-color: #bdbdbd; }
+.default-color6.chart-pie { -fx-pie-color: #e8e8e8; }
+.default-color14.chart-pie { -fx-pie-color: #e7e7e7; }
+.default-color10.chart-pie { -fx-pie-color: #d6d6d6; }
+.default-color4.chart-pie { -fx-pie-color: #d6d6d6; }
+.default-color12.chart-pie { -fx-pie-color: #c6c6c6; }
+.default-color2.chart-pie { -fx-pie-color: #c6c6c6; }
+.default-color13.chart-pie { -fx-pie-color: #b5b5b5; }
+.default-color1.chart-pie { -fx-pie-color: #b5b5b5; }
+.default-color3.chart-pie { -fx-pie-color: #949494; }
+.default-color9.chart-pie { -fx-pie-color: #949494; }
+.default-color7.chart-pie { -fx-pie-color: #838383; }
+.default-color5.chart-pie { -fx-pie-color: #626262; }
+.default-color11.chart-pie { -fx-pie-color: #626262; }
+
+.popOver {
+    -fx-background-color: #e6e6e5;
+    -fx-fill: #8c8c8b;
+    -fx-padding: 20,20,20,20;
 }

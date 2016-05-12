@@ -47,7 +47,6 @@
 }
 
 .buttonSmall {
-    -fx-fill: red;
     -fx-background-color: #151515;
     -fx-text-fill: #f05455;
     -fx-max-height: 70.5;
@@ -75,7 +74,6 @@
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
 }
-
 
 .menu-button {
     -fx-pref-height: 70.5;
@@ -238,13 +236,12 @@
     -fx-image: url("../floorPlanner/images/stageDark.png");
 }
 
-
 Seat {
     -fx-fill: #5b5c5c;
 }
 
 Seat:hover {
-    -fx-fill: #943233;
+    -fx-fill: #161616;
 }
 
 .scroll-pane {
@@ -563,15 +560,24 @@ Seat:hover {
 }
 
 .default-color0.chart-pie { -fx-pie-color: #121212; }
-.default-color1.chart-pie { -fx-pie-color: #2d2d2d; }
-.default-color2.chart-pie { -fx-pie-color: #464646; }
-.default-color3.chart-pie { -fx-pie-color: #606060; }
-.default-color4.chart-pie { -fx-pie-color: #7a7a7a; }
-.default-color5.chart-pie { -fx-pie-color: #949494; }
-.default-color6.chart-pie { -fx-pie-color: #aeaeae; }
-.default-color7.chart-pie { -fx-pie-color: #c8c8c8; }
-.default-color8.chart-pie { -fx-pie-color: #e2e2e2; }
-.default-color9.chart-pie { -fx-pie-color: #ffffff; }
+.default-color6.chart-pie { -fx-pie-color: #121212; }
+.default-color12.chart-pie { -fx-pie-color: #1b1b1b; }
+.default-color9.chart-pie { -fx-pie-color: #232323; }
+.default-color18.chart-pie { -fx-pie-color: #232323; }
+.default-color7.chart-pie { -fx-pie-color: #2c2c2c; }
+.default-color11.chart-pie { -fx-pie-color: #2c2c2c; }
+.default-color17.chart-pie { -fx-pie-color: #343434; }
+.default-color5.chart-pie { -fx-pie-color: #343434; }
+.default-color16.chart-pie { -fx-pie-color: #3c3c3c; }
+.default-color8.chart-pie { -fx-pie-color: #3c3c3c; }
+.default-color2.chart-pie { -fx-pie-color: #454545; }
+.default-color13.chart-pie { -fx-pie-color: #454545; }
+.default-color4.chart-pie { -fx-pie-color: #4d4d4d; }
+.default-color1.chart-pie { -fx-pie-color: #4d4d4d; }
+.default-color14.chart-pie { -fx-pie-color: #555555; }
+.default-color3.chart-pie { -fx-pie-color: #555555; }
+.default-color10.chart-pie { -fx-pie-color: #5d5d5d; }
+.default-color15.chart-pie { -fx-pie-color: #5d5d5d; }
 
 .popOver {
     -fx-background-color: #404040;

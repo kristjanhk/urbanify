@@ -48,8 +48,8 @@
             <HBox prefHeight="92.0" prefWidth="355.0">
                 <Region prefHeight="111.0" prefWidth="172.0"/>
                 <MenuButton fx:id="floorPlans" alignment="CENTER" contentDisplay="CENTER" maxHeight="70.5"
-                            maxWidth="130.0" minHeight="70.5" minWidth="130.0" mnemonicParsing="false"
-                            prefHeight="70.5" prefWidth="130.0">
+                            maxWidth="1500" minHeight="70.5" minWidth="150.0" mnemonicParsing="false"
+                            prefHeight="70.5" prefWidth="150.0">
                     <items>
                         <MenuItem mnemonicParsing="false" text="saal 1"/>
                         <MenuItem mnemonicParsing="false" text="saal 2"/>
@@ -60,8 +60,8 @@
                 </MenuButton>
                 <Region minWidth="40.0" prefWidth="40.0"/>
                 <MenuButton fx:id="floorTypes" alignment="CENTER" contentDisplay="CENTER" maxHeight="70.5"
-                            maxWidth="130.0" minHeight="70.5" minWidth="130.0" mnemonicParsing="false"
-                            prefHeight="70.5" prefWidth="130.0">
+                            maxWidth="150.0" minHeight="70.5" minWidth="150.0" mnemonicParsing="false"
+                            prefHeight="70.5" prefWidth="150.0">
                     <items>
                         <MenuItem mnemonicParsing="false"/>
                         <MenuItem mnemonicParsing="false"/>
@@ -75,7 +75,7 @@
             <HBox alignment="CENTER" prefHeight="0.0" prefWidth="355.0">
                 <Region prefHeight="71.0" prefWidth="161.0"/>
                 <Button fx:id="removeRow" onAction="#removeRowAction" mnemonicParsing="false" styleClass="buttonRound"
-                        text="-"/>
+                        text="ô"/>
                 <Region maxWidth="20.0" minWidth="20.0" prefHeight="0.0" prefWidth="20.0"/>
                 <VBox alignment="CENTER">
                     <Text fx:id="rowCountText" text="0" styleClass="text35" textAlignment="CENTER" wrappingWidth="50.0">
@@ -95,7 +95,7 @@
             <HBox alignment="CENTER" prefHeight="8.0" prefWidth="355.0">
                 <Region prefHeight="73.0" prefWidth="166.0"/>
                 <Button fx:id="removeSeat" onAction="#removeColumnAction" mnemonicParsing="false"
-                        styleClass="buttonRound" text="-"/>
+                        styleClass="buttonRound" text="ô"/>
                 <Region maxWidth="20.0" minWidth="20.0" prefWidth="20.0"/>
                 <VBox alignment="CENTER">
                     <Text fx:id="columnCountText" text="0" styleClass="text35" textAlignment="CENTER"
