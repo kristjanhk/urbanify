@@ -80,7 +80,7 @@ public class Controller extends AbstractController {
         if (seatingType.equals("OPENSEATING")) {
             this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, this.event);
         } else {
-            this.scene.getStageHandler().switchSceneTo(Scenetype.FLOORPLANNER);
+            this.scene.getStageHandler().switchSceneTo(Scenetype.FLOORPLANNER, this.event);
         }
     }
 

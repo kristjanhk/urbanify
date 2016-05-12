@@ -52,7 +52,7 @@
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="242.0" minWidth="242.0" prefWidth="242.0"/>
                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="125" minWidth="125.0" prefWidth="125.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0"/>
                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="175.0" prefWidth="175.0"/>
                 </columnConstraints>
                 <rowConstraints>

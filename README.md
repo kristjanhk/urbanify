@@ -1,6 +1,9 @@
 Piletisüsteem
 =============
+https://bitbucket.org/kristjanhk/piletisystem
 
+Kristjan Hendrik Küngas,
+Kristen Kotkas
 
 
 TODO
