@@ -252,7 +252,7 @@ public class Controller extends AbstractController {
 
     public void doCancel() {
         // TODO: 14.04.2016 reset current scene?
-        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR);
+        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR, false);
     }
 
     public void doSave() {
@@ -262,6 +262,10 @@ public class Controller extends AbstractController {
 
     public void doCreate() {
         // TODO: 12.05.2016 change
+        int seats = this.getFloor().size() * this.columnCount;
+        if (seats != 0) {
+            this.event.setMaxSeats(seats);
+        }
         this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, this.event);
     }
 

@@ -86,7 +86,9 @@ public class Controller extends AbstractController {
 
     @Override
     public <T> void prepareToDisplay(T object) {
-        this.scene.getStageHandler().replaceScene(Scenetype.EVENTCREATOR);
+        if (!(object instanceof Boolean)) {
+            this.scene.getStageHandler().replaceScene(Scenetype.EVENTCREATOR);
+        }
     }
 
     @Override
