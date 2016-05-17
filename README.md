@@ -12,6 +12,6 @@ Exceli link vanale Kultuurimaja aruandesüsteemile
 https://docs.google.com/spreadsheets/d/1xrYj270qb7vQ-o62Kz3VWfDUjjU9MRRQTX7OwrRl28k/edit#gid=0
 
 * saaliplaani loomine korda
-* pakendamine jar-ks või exe-ks
+* pakendamine exe-ks
 * export excel, email
 * saksa keel, vene keel, keelte hoidmine faili?
