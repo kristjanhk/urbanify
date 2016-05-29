@@ -29,7 +29,7 @@ public class StageHandler {
         primaryStage.setHeight(880);
         primaryStage.setWidth(1220);
         primaryStage.setMinHeight(720);
-        primaryStage.setMinWidth(1100);
+        primaryStage.setMinWidth(1180);
         this.initScenes();
         this.switchSceneTo(Scenetype.MAINMENU);
         primaryStage.show();

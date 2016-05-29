@@ -26,6 +26,8 @@ public class Ticket extends HBox {
     private boolean priceTextValidated;
     private TextField ticketText;
     private Text ticketLabel;
+    private TextField currencyText;
+    private Text currencyLabel;
     private boolean ticketTextValidated;
 
     public Ticket(Controller parentController, VBox parentNode) {
@@ -60,6 +62,14 @@ public class Ticket extends HBox {
         this.priceLabel = createText();
         this.getChildren().add(createVBox(this.priceText, this.priceLabel));
 
+        this.currencyText = new TextField();
+        this.currencyText.setMinSize(60.0, 70.5);
+        this.currencyText.setMaxSize(60.0, 70.5);
+        this.currencyText.setPrefSize(60.0, 70.5);
+        this.currencyLabel = createText();
+        this.getChildren().add(createVBox(this.currencyText, this.currencyLabel));
+        this.currencyText.setStyle("-fx-alignment: center; -fx-padding: 0 0 0 0");
+
         this.ticketText = new TextField();
         this.ticketText.setMinSize(300.0, 70.5);
         this.ticketText.setMaxSize(300.0, 70.5);
@@ -78,8 +88,8 @@ public class Ticket extends HBox {
     }
 
     private static VBox createVBox(Node node, Text text) {
-        VBox vBox = new VBox(node, text);
-        HBox.setMargin(vBox, new Insets(0.0, 0.0, 0.0, 40.0));
+        VBox vBox = new VBox(node);
+        HBox.setMargin(vBox, new Insets(0.0, 0.0, 0.0, 30.0));
         return vBox;
     }
 
