@@ -26,8 +26,6 @@ public class Ticket extends HBox {
     private boolean priceTextValidated;
     private TextField ticketText;
     private Text ticketLabel;
-    private TextField currencyText;
-    private Text currencyLabel;
     private boolean ticketTextValidated;
 
     public Ticket(Controller parentController, VBox parentNode) {
@@ -60,22 +58,21 @@ public class Ticket extends HBox {
         this.priceText.setMaxSize(140, 70.5);
         this.priceText.setPrefSize(140, 70.5);
         this.priceLabel = createText();
-        this.getChildren().add(createVBox(this.priceText, this.priceLabel));
+        this.getChildren().add(createVBox(this.priceText));
 
-        this.currencyText = new TextField();
-        this.currencyText.setMinSize(60.0, 70.5);
-        this.currencyText.setMaxSize(60.0, 70.5);
-        this.currencyText.setPrefSize(60.0, 70.5);
-        this.currencyLabel = createText();
-        this.getChildren().add(createVBox(this.currencyText, this.currencyLabel));
-        this.currencyText.setStyle("-fx-alignment: center; -fx-padding: 0 0 0 0");
+        TextField currencyText = new TextField();
+        currencyText.setMinSize(60.0, 70.5);
+        currencyText.setMaxSize(60.0, 70.5);
+        currencyText.setPrefSize(60.0, 70.5);
+        this.getChildren().add(createVBox(currencyText));
+        currencyText.setStyle("-fx-alignment: center; -fx-padding: 0 0 0 0");
 
         this.ticketText = new TextField();
         this.ticketText.setMinSize(300.0, 70.5);
         this.ticketText.setMaxSize(300.0, 70.5);
         this.ticketText.setPrefSize(300.0, 70.5);
         this.ticketLabel = createText();
-        this.getChildren().add(createVBox(this.ticketText, this.ticketLabel));
+        this.getChildren().add(createVBox(this.ticketText));
     }
 
     private static Text createText() {
@@ -87,7 +84,7 @@ public class Ticket extends HBox {
         return text;
     }
 
-    private static VBox createVBox(Node node, Text text) {
+    private static VBox createVBox(Node node) {
         VBox vBox = new VBox(node);
         HBox.setMargin(vBox, new Insets(0.0, 0.0, 0.0, 30.0));
         return vBox;
@@ -106,6 +103,13 @@ public class Ticket extends HBox {
                     this.priceTextValidated = !newValue;
                     this.parentController.checkNextButtonValidation();
                 });
+        this.priceText.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                if (this.priceText.getText().contains(",")) {
+                    this.priceText.setText(this.priceText.getText().replace(",", "."));
+                }
+            }
+        });
         MainHandler.setValidationFor(this.ticketText, "^(?=\\s*\\S).*$").addListener(
                 (observable, oldValue, newValue) -> {
                     this.ticketTextValidated = !newValue;
