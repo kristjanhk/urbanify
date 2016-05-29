@@ -28,8 +28,8 @@ public class StageHandler {
         primaryStage.setTitle("Superpilet 3000");
         primaryStage.setHeight(880);
         primaryStage.setWidth(1220);
-        primaryStage.setMinHeight(880);
-        primaryStage.setMinWidth(1220);
+        primaryStage.setMinHeight(720);
+        primaryStage.setMinWidth(1100);
         this.initScenes();
         this.switchSceneTo(Scenetype.MAINMENU);
         primaryStage.show();

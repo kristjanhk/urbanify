@@ -8,140 +8,167 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="600.0" minWidth="1000.0" prefHeight="900.0" prefWidth="1600.0" styleClass="background"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.eventCreator.Controller">
+<BorderPane minHeight="600.0" minWidth="1000.0" prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.eventCreator.Controller">
     <top>
-        <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset"
-              prefHeight="123.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
+        <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="100.0">
-                <Button onMouseClicked="#handleStageMinimize" mnemonicParsing="false" text="→" textAlignment="CENTER"
-                        styleClass="barButton">
+                <Button mnemonicParsing="false" onMouseClicked="#handleStageMinimize" styleClass="barButton" text="→" textAlignment="CENTER">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="maximizeButton" onMouseClicked="#handleStageMaximize" mnemonicParsing="false"
-                        textAlignment="CENTER" styleClass="barButton">
+                <Button fx:id="maximizeButton" mnemonicParsing="false" onMouseClicked="#handleStageMaximize" styleClass="barButton" textAlignment="CENTER">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
-                <Button onMouseClicked="#handleStageClose" mnemonicParsing="false" text="←" styleClass="barButton">
+                <Button mnemonicParsing="false" onMouseClicked="#handleStageClose" styleClass="barButton" text="←">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
             </HBox>
             <Text fx:id="eventCreator" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText">
                 <VBox.margin>
-                    <Insets left="70.0" top="40.0"/>
+                    <Insets left="70.0" top="40.0" />
                 </VBox.margin>
             </Text>
             <TextField fx:id="eventText" maxHeight="70.5" minHeight="70.5" minWidth="40.0" prefHeight="70.5">
                 <VBox.margin>
-                    <Insets left="40.0" right="40.0" top="40.0"/>
+                    <Insets left="40.0" right="40.0" top="40.0" />
                 </VBox.margin>
             </TextField>
-            <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="200.0"/>
+            <Region maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="200.0" />
         </VBox>
     </top>
-    <right>
-        <VBox alignment="TOP_RIGHT" prefHeight="595.0" prefWidth="404.0" BorderPane.alignment="CENTER">
-            <DatePicker fx:id="calendar" maxHeight="70.5" maxWidth="304.0" minHeight="70.5" minWidth="304.0"
-                        prefHeight="70.5" prefWidth="304.0" showWeekNumbers="false">
-            </DatePicker>
-            <Text fx:id="calendarLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19"
-                  wrappingWidth="284.0">
-                <VBox.margin>
-                    <Insets left="20.0" top="6.0"/>
-                </VBox.margin>
-            </Text>
-            <TextField fx:id="timeText" maxHeight="70.5" maxWidth="304.0" minHeight="70.5" minWidth="304.0"
-                       prefHeight="70.5" prefWidth="304.0">
-                <VBox.margin>
-                    <Insets top="20.0"/>
-                </VBox.margin>
-            </TextField>
-            <Text fx:id="timeLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" wrappingWidth="284.0">
-                <VBox.margin>
-                    <Insets left="20.0" top="6.0"/>
-                </VBox.margin>
-            </Text>
-            <MenuButton fx:id="seating" maxHeight="70.5" maxWidth="304.0" minHeight="70.5" minWidth="304.0"
-                        mnemonicParsing="false" prefHeight="70.5" prefWidth="304.0">
-                <items>
-                    <MenuItem mnemonicParsing="false" id="ASSIGNEDSEATING" onAction="#handleSeatingSwitch"/>
-                    <MenuItem mnemonicParsing="false" id="OPENSEATING" onAction="#handleSeatingSwitch"/>
-                </items>
-                <VBox.margin>
-                    <Insets top="20.0"/>
-                </VBox.margin>
-            </MenuButton>
-            <Text fx:id="seatingLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" wrappingWidth="284.0">
-                <VBox.margin>
-                    <Insets top="6.0"/>
-                </VBox.margin>
-            </Text>
-            <TextField fx:id="maxSeats" maxHeight="70.5" maxWidth="304.0" minHeight="70.5" minWidth="304.0"
-                       prefHeight="70.5" prefWidth="304.0">
-                <VBox.margin>
-                    <Insets top="20.0"/>
-                </VBox.margin>
-            </TextField>
-            <Text fx:id="maxSeatsLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19"
-                  wrappingWidth="284.0">
-                <VBox.margin>
-                    <Insets top="6.0"/>
-                </VBox.margin>
-            </Text>
-            <Region maxHeight="9999.0" maxWidth="9999.0" minHeight="0.0" minWidth="0.0" prefHeight="9999.0"
-                    prefWidth="9999.0"/>
-            <HBox alignment="TOP_RIGHT">
-                <Button fx:id="cancel" alignment="CENTER" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false"
-                        onMouseClicked="#doCancel" prefWidth="121.0" styleClass="bottomButton">
-                    <HBox.margin>
-                        <Insets right="40.0" top="40.0"/>
-                    </HBox.margin>
-                </Button>
-                <Button fx:id="next" alignment="CENTER" maxWidth="92.3" minWidth="92.3" mnemonicParsing="false"
-                        onMouseClicked="#doNext" prefWidth="92.3" styleClass="bottomButton">
-                    <HBox.margin>
-                        <Insets top="40.0"/>
-                    </HBox.margin>
-                </Button>
-            </HBox>
-            <BorderPane.margin>
-                <Insets right="40.0"/>
-            </BorderPane.margin>
-            <opaqueInsets>
-                <Insets/>
-            </opaqueInsets>
-        </VBox>
-    </right>
     <bottom>
         <BorderPane id="bottom" BorderPane.alignment="CENTER">
             <top>
-                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0"
-                        prefWidth="40.0" BorderPane.alignment="CENTER"/>
+                <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" BorderPane.alignment="CENTER" />
             </top>
         </BorderPane>
     </bottom>
     <left>
-        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true"
-                    BorderPane.alignment="CENTER">
+        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets left="40.0" />
             </BorderPane.margin>
             <VBox fx:id="ticketVBox" minWidth="0.0" styleClass="background">
-                <Button fx:id="addTicketButton" maxWidth="70.5" minWidth="70.5" mnemonicParsing="false"
-                        onAction="#addTicket" prefWidth="70.5" styleClass="buttonSmall" text="ò" textAlignment="CENTER">
+                <Button fx:id="addTicketButton" maxWidth="70.5" minWidth="70.5" mnemonicParsing="false" onAction="#addTicket" prefWidth="70.5" styleClass="buttonSmall" text="ò" textAlignment="CENTER">
                 </Button>
             </VBox>
         </ScrollPane>
     </left>
+   <center>
+        <VBox alignment="TOP_RIGHT" prefHeight="595.0" prefWidth="404.0" BorderPane.alignment="CENTER">
+            <HBox alignment="BOTTOM_RIGHT" prefWidth="404.0" />
+            <BorderPane.margin>
+                <Insets right="40.0" />
+            </BorderPane.margin>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </VBox>
+   </center>
+   <right>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="121.0" minHeight="80.0" prefHeight="121.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="121.0" minHeight="80.0" prefHeight="121.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="121.0" minHeight="80.0" prefHeight="121.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="121.0" minHeight="80.0" prefHeight="121.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                     <DatePicker fx:id="calendar" maxHeight="70.5" maxWidth="304.0" minHeight="50.0" minWidth="304.0" prefHeight="70.5" prefWidth="304.0" showWeekNumbers="false">
+            </DatePicker>
+                     <Text fx:id="calendarLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" text="text" wrappingWidth="284.0">
+                         <VBox.margin>
+                             <Insets bottom="20.0" left="20.0" top="6.0" />
+                         </VBox.margin>
+                     </Text>
+               </children>
+               <GridPane.margin>
+                  <Insets right="40.0" />
+               </GridPane.margin>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+               <children>
+                     <TextField fx:id="timeText" maxHeight="70.5" maxWidth="304.0" minHeight="50.0" minWidth="304.0" prefHeight="70.5" prefWidth="304.0">
+                         <VBox.margin>
+                             <Insets />
+                         </VBox.margin>
+                     </TextField>
+                     <Text fx:id="timeLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" text="text" wrappingWidth="284.0">
+                         <VBox.margin>
+                             <Insets bottom="20.0" left="20.0" top="6.0" />
+                         </VBox.margin>
+                     </Text>
+               </children>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+               <children>
+                     <TextField fx:id="maxSeats" maxHeight="70.5" maxWidth="304.0" minHeight="50.0" minWidth="304.0" prefHeight="70.5" prefWidth="304.0">
+                         <VBox.margin>
+                             <Insets />
+                         </VBox.margin>
+                     </TextField>
+                     <Text fx:id="maxSeatsLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" text="text" wrappingWidth="284.0">
+                         <VBox.margin>
+                             <Insets bottom="20.0" left="20.0" top="6.0" />
+                         </VBox.margin>
+                     </Text>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+               <children>
+                     <MenuButton fx:id="seating" maxHeight="70.5" maxWidth="304.0" minHeight="50.0" minWidth="304.0" mnemonicParsing="false" prefHeight="70.5" prefWidth="304.0">
+                         <items>
+                             <MenuItem id="ASSIGNEDSEATING" mnemonicParsing="false" onAction="#handleSeatingSwitch" />
+                             <MenuItem id="OPENSEATING" mnemonicParsing="false" onAction="#handleSeatingSwitch" />
+                         </items>
+                         <VBox.margin>
+                             <Insets />
+                         </VBox.margin>
+                     </MenuButton>
+                     <Text fx:id="seatingLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" text="text" wrappingWidth="284.0">
+                         <VBox.margin>
+                             <Insets bottom="20.0" left="20.0" top="6.0" />
+                         </VBox.margin>
+                     </Text>
+               </children>
+            </VBox>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+               <children>
+                      <Button fx:id="cancel" alignment="CENTER" maxWidth="121.0" minWidth="121.0" mnemonicParsing="false" onMouseClicked="#doCancel" prefWidth="121.0" styleClass="bottomButton">
+                          <HBox.margin>
+                              <Insets right="40.0" top="40.0" />
+                          </HBox.margin>
+                      </Button>
+                      <Button fx:id="next" alignment="CENTER" maxWidth="92.3" minWidth="92.3" mnemonicParsing="false" onMouseClicked="#doNext" prefWidth="92.3" styleClass="bottomButton">
+                          <HBox.margin>
+                              <Insets right="40.0" top="40.0" />
+                          </HBox.margin>
+                      </Button>
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+   </right>
 </BorderPane>
