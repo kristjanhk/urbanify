@@ -236,19 +236,19 @@
 }
 
 .seat_available {
-    -fx-fill: #5b5c5c;
+    -fx-background-color: #5b5c5c;
 }
 
 .seat_available:hover {
-    -fx-fill: #e6e6e5;
+    -fx-background-color: #e6e6e5;
 }
 
 .seat_unavailable {
-    -fx-fill: indianred;
+    -fx-background-color: indianred;
 }
 
 .seat_unavailable:hover {
-    -fx-fill: blue;
+    -fx-background-color: blue;
 }
 
 .scroll-pane {

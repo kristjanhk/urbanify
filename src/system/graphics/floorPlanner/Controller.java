@@ -10,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -169,7 +168,7 @@ public class Controller extends AbstractController {
     private void addNewRow() {
         Group group = new Group();
         for (int i = 0; i < this.columnCount; i++) {
-            group.getChildren().add(new Seat(getFloor().size(), i));
+            group.getChildren().add(new Seat(this, getFloor().size(), i));
         }
         this.getFloor().add(group);
         this.setRowCountText();
@@ -192,7 +191,7 @@ public class Controller extends AbstractController {
 
     private void addNewColumn() {
         for (int i = this.getFloor().size() - 1; i >= 0; i--) {
-            ((Group) this.getFloor().get(i)).getChildren().add(new Seat(i, this.columnCount));
+            ((Group) this.getFloor().get(i)).getChildren().add(new Seat(this, i, this.columnCount));
         }
         this.columnCount++;
         this.setColumnCountText();
@@ -256,9 +255,22 @@ public class Controller extends AbstractController {
         this.getFloorGroup().setTranslateY(this.maxY);
     }
 
+    public void setSeatsHovering(Seat triggerer, boolean trigger) {
+        for (Node group : this.getFloor()) {
+            for (Node seat : ((Group) group).getChildren()) {
+                Seat target = (Seat) seat;
+                if (!triggerer.equals(target)) {
+                    if (triggerer.getX() == target.getX() || triggerer.getY() == target.getY()) {
+                        target.triggerHover(trigger);
+                    }
+                }
+            }
+        }
+    }
+
     @FXML
     protected void handleFloorPlanSwitch(ActionEvent event) {
-
+        // TODO: 31.05.2016
     }
 
     @FXML
