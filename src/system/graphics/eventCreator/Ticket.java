@@ -6,8 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.StrokeType;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import system.MainHandler;
 import system.data.Lang;
@@ -22,10 +20,10 @@ public class Ticket extends HBox {
     private Controller parentController;
     private VBox parentNode;
     private TextField priceText;
-    private Text priceLabel;
+    private TextField currencyText;
+    private boolean currencyTextValidated;
     private boolean priceTextValidated;
     private TextField ticketText;
-    private Text ticketLabel;
     private boolean ticketTextValidated;
 
     public Ticket(Controller parentController, VBox parentNode) {
@@ -57,31 +55,20 @@ public class Ticket extends HBox {
         this.priceText.setMinSize(140, 70.5);
         this.priceText.setMaxSize(140, 70.5);
         this.priceText.setPrefSize(140, 70.5);
-        this.priceLabel = createText();
         this.getChildren().add(createVBox(this.priceText));
 
-        TextField currencyText = new TextField();
-        currencyText.setMinSize(60.0, 70.5);
-        currencyText.setMaxSize(60.0, 70.5);
-        currencyText.setPrefSize(60.0, 70.5);
-        this.getChildren().add(createVBox(currencyText));
-        currencyText.setStyle("-fx-alignment: center; -fx-padding: 0 0 0 0");
+        this.currencyText = new TextField();
+        this.currencyText.setMinSize(60.0, 70.5);
+        this.currencyText.setMaxSize(60.0, 70.5);
+        this.currencyText.setPrefSize(60.0, 70.5);
+        this.currencyText.setStyle("-fx-alignment: center; -fx-padding: 0 0 0 0");
+        this.getChildren().add(createVBox(this.currencyText));
 
         this.ticketText = new TextField();
         this.ticketText.setMinSize(300.0, 70.5);
         this.ticketText.setMaxSize(300.0, 70.5);
         this.ticketText.setPrefSize(300.0, 70.5);
-        this.ticketLabel = createText();
         this.getChildren().add(createVBox(this.ticketText));
-    }
-
-    private static Text createText() {
-        Text text = new Text();
-        text.getStyleClass().add("text19");
-        text.setStrokeType(StrokeType.OUTSIDE);
-        text.setStrokeWidth(0.0);
-        VBox.setMargin(text, new Insets(6.0, 0.0, 0.0, 20.0));
-        return text;
     }
 
     private static VBox createVBox(Node node) {
@@ -91,10 +78,9 @@ public class Ticket extends HBox {
     }
 
     public void setLanguage() {
-        this.priceText.setPromptText(Lang.getActiveLang().getCurrency());
-        this.priceLabel.setText(Word.PRICE.toString());
+        this.priceText.setPromptText(Word.PRICE.toString());
+        this.setCurrencyText();
         this.ticketText.setPromptText(Word.TICKETYPE.toString());
-        this.ticketLabel.setText(Word.TICKETYPE.toString());
     }
 
     private void addValidation() {
@@ -110,6 +96,15 @@ public class Ticket extends HBox {
                 }
             }
         });
+        MainHandler.setValidationFor(this.currencyText, "^(?=\\s*\\S).{1}$").addListener(
+                (observable, oldValue, newValue) -> {
+                    this.currencyTextValidated = !newValue;
+                    this.parentController.checkNextButtonValidation();
+                });
+        this.currencyText.textProperty().addListener((observable, oldValue, newValue) -> {
+            this.parentController.getTickets().stream().filter(node -> node instanceof Ticket).
+                    forEach(node -> ((Ticket) node).setCurrencyText(this.currencyText.getText()));
+        });
         MainHandler.setValidationFor(this.ticketText, "^(?=\\s*\\S).*$").addListener(
                 (observable, oldValue, newValue) -> {
                     this.ticketTextValidated = !newValue;
@@ -117,8 +112,24 @@ public class Ticket extends HBox {
                 });
     }
 
+    public String getCurrencyText() {
+        return this.currencyText.getText();
+    }
+
+    public void setCurrencyText(String text) {
+        this.currencyText.setText(text);
+    }
+
+    private void setCurrencyText() {
+        if (this.parentController.getTickets().size() > 1) {
+            this.currencyText.setText(((Ticket) this.parentController.getTickets().get(0)).getCurrencyText());
+        } else {
+            this.currencyText.setText(Lang.getActiveLang().getCurrency());
+        }
+    }
+
     public boolean isValid() {
-        return this.priceTextValidated && this.ticketTextValidated;
+        return this.priceTextValidated && this.currencyTextValidated && this.ticketTextValidated;
     }
 
     public String getType() {

@@ -1,5 +1,6 @@
 package system.graphics.eventCreator;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -37,6 +38,9 @@ public class Controller extends AbstractController {
     @FXML protected Button next;
     @FXML protected Button addTicketButton;
     @FXML protected VBox ticketVBox;
+    @FXML protected Text priceLabel;
+    @FXML protected Text currencyLabel;
+    @FXML protected Text ticketLabel;
 
     private Text popoverText;
     private String seatingType = "";
@@ -53,6 +57,7 @@ public class Controller extends AbstractController {
         this.createMaxSeatsHelper();
         this.setLanguage();
         this.addValidation();
+        this.addTicket();
     }
 
     @FXML
@@ -95,6 +100,9 @@ public class Controller extends AbstractController {
     public void setLanguage() {
         this.eventCreator.setText(Word.EVENTCREATOR.toString());
         this.eventText.setPromptText(Word.NAMEYOUREVENT.toString());
+        this.priceLabel.setText(Word.PRICE.toString());
+        this.currencyLabel.setText(Word.CURRENCY.toString());
+        this.ticketLabel.setText(Word.TICKETYPE.toString());
         this.calendar.setPromptText(Word.DATEFORMAT.toString());
         this.calendarLabel.setText(Word.SETDATE.toString());
         this.timeText.setPromptText(Word.TIMEFORMAT.toString());
@@ -187,5 +195,9 @@ public class Controller extends AbstractController {
             }
         }
         this.next.setDisable(!valid);
+    }
+
+    public ObservableList<Node> getTickets() {
+        return this.ticketVBox.getChildren();
     }
 }
