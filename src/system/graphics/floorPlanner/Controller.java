@@ -2,12 +2,16 @@ package system.graphics.floorPlanner;
 
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
@@ -24,6 +28,7 @@ import java.util.ResourceBundle;
  */
 public class Controller extends AbstractController {
     @FXML protected Text floorPlanText;
+    @FXML protected ImageView floorPlanImage;
     @FXML protected MenuButton floorPlans;
     @FXML protected MenuButton floorTypes;
     @FXML protected Button removeRow;
@@ -50,6 +55,7 @@ public class Controller extends AbstractController {
         this.floorPlan.getChildren().add(new Group());
         StackPane.setMargin(this.getFloorGroup(), new Insets(10));
         this.setLanguage();
+        this.setFloorPlanImage();
         this.floorPlan.widthProperty().addListener((observable, oldValue, newValue) -> {
             this.checkPaneWidthResize(newValue);
         });
@@ -250,6 +256,26 @@ public class Controller extends AbstractController {
         this.getFloorGroup().setTranslateY(this.maxY);
     }
 
+    @FXML
+    protected void handleFloorPlanSwitch(ActionEvent event) {
+
+    }
+
+    @FXML
+    protected void handleFloorTypeSwitch(ActionEvent event) {
+        this.floorTypes.setText(Word.valueOf(((MenuItem) event.getSource()).getId()).toString());
+        this.setFloorPlanImage();
+    }
+
+    private void setFloorPlanImage() {
+        String floortype = this.floorTypes.getText();
+        if (floortype.equals(this.floorTypes.getItems().get(0).getText())) {
+            this.floorPlanImage.setImage(Imagetype.STAGE.toImage());
+        } else {
+            this.floorPlanImage.setImage(Imagetype.SCREEN.toImage());
+        }
+    }
+
     public void doCancel() {
         // TODO: 14.04.2016 reset current scene?
         this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR, false);
@@ -269,14 +295,6 @@ public class Controller extends AbstractController {
         this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, this.event);
     }
 
-    public void selectPlan(int id) {
-
-    }
-
-    public void selectType(int id) {
-
-    }
-
     @Override
     public <T> void prepareToDisplay(T object) {
         if (object instanceof Event) {
@@ -289,7 +307,7 @@ public class Controller extends AbstractController {
         this.floorPlanText.setText(Word.NEWFLOORPLAN.toString());
         this.floorPlans.setText(Word.FLOORPLANS.toString());
         // TODO: 27.04.2016 rename plans 
-        this.floorTypes.setText(Word.FLOORTYPE.toString());
+        this.floorTypes.setText(Word.STAGE.toString());
         this.floorTypes.getItems().get(0).setText(Word.STAGE.toString());
         this.floorTypes.getItems().get(1).setText(Word.SCREEN.toString());
         this.rowText.setText(Word.ROWS.toString());

@@ -1,5 +1,6 @@
 package system.graphics.floorPlanner;
 
+import javafx.fxml.FXML;
 import javafx.scene.shape.Circle;
 
 /**
@@ -8,13 +9,14 @@ import javafx.scene.shape.Circle;
  * Luuakse programmi töö käigus, seega ei saa FXMLis ette valmistada
  */
 public class Seat extends Circle {
+    public enum Seattype {AVAILABLE, UNAVAILABLE}
     private Seattype seattype;
     private int x;
     private int y;
 
     public Seat() {
         super(25);
-        this.seattype = Seattype.AVAILABLE;
+        this.toggleStyle();
         this.setOnMouseClicked(event -> this.handleClick());
     }
 
@@ -35,15 +37,24 @@ public class Seat extends Circle {
         return this.seattype;
     }
 
-    private void handleClick() {
+    @FXML
+    protected void handleClick() {
         System.out.println("Clicked: (" + this.x + "," + this.y + ")");
-        if (this.seattype.equals(Seattype.AVAILABLE)) {
-            this.seattype = Seattype.UNAVAILABLE;
-            //this.setStyle("-fx-fill: #5b5c5c");
-            // TODO: 27.04.2016 set from css?, or use togglebutton 
-        } else {
+        this.toggleStyle();
+    }
+
+    private void toggleStyle() {
+        String styleclass = "";
+        if (this.getStyleClass().size() > 0) {
+            styleclass = this.getStyleClass().get(0);
+            this.getStyleClass().clear();
+        }
+        if (styleclass.equals("") || this.seattype == Seattype.UNAVAILABLE) {
             this.seattype = Seattype.AVAILABLE;
-            //this.setStyle("-fx-fill: #7e2b2c");
+            this.getStyleClass().add("seat_available");
+        } else {
+            this.seattype = Seattype.UNAVAILABLE;
+            this.getStyleClass().add("seat_unavailable");
         }
     }
 

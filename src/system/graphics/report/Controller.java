@@ -108,8 +108,9 @@ public class Controller extends AbstractController {
                 data.add(new PieChart.Data(tickettype, ticketdata.get(1)));
             }
         });
-        pieChart.setLegendVisible(false);
-        pieChart.setData(FXCollections.observableArrayList(data));
+        this.pieChart.setLegendVisible(false);
+        this.pieChart.setData(FXCollections.observableArrayList(data));
+        // TODO: 30.05.2016 bind text size to stage width
     }
 
     @Override

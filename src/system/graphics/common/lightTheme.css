@@ -235,12 +235,20 @@
     -fx-image: url("../floorPlanner/images/stage.png");
 }
 
-Seat {
+.seat_available {
     -fx-fill: #5b5c5c;
 }
 
-Seat:hover {
+.seat_available:hover {
     -fx-fill: #e6e6e5;
+}
+
+.seat_unavailable {
+    -fx-fill: indianred;
+}
+
+.seat_unavailable:hover {
+    -fx-fill: blue;
 }
 
 .scroll-pane {
@@ -557,6 +565,7 @@ Seat:hover {
 .chart-pie {
     -fx-border-width: 10;
     -fx-border-color: transparent;
+    -fx-padding: 0 0 0 0;
 }
 
 .default-color0.chart-pie { -fx-pie-color: #626262; }

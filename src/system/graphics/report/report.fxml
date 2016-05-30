@@ -81,9 +81,6 @@
     </top>
     <bottom>
         <HBox alignment="BOTTOM_RIGHT" minHeight="0.0" minWidth="0.0" BorderPane.alignment="CENTER">
-            <BorderPane.margin>
-                <Insets/>
-            </BorderPane.margin>
             <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#doBack" styleClass="bottomButton">
                 <HBox.margin>
                     <Insets bottom="40.0" right="40.0"/>
@@ -109,11 +106,7 @@
             <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="9999.0" maxWidth="780.0"
                         minHeight="0.0" minWidth="780.0" pannable="true" prefHeight="9999.0" prefWidth="780.0"
                         styleClass="background">
-                <VBox fx:id="ticketVBox" prefHeight="50.0" prefWidth="755.0" styleClass="background">
-                </VBox>
-                <VBox.margin>
-                    <Insets/>
-                </VBox.margin>
+                <VBox fx:id="ticketVBox" prefHeight="50.0" prefWidth="755.0" styleClass="background"/>
             </ScrollPane>
             <GridPane alignment="CENTER" maxHeight="50.0" maxWidth="750.0" minHeight="50.0" minWidth="750.0"
                       prefHeight="50.0" prefWidth="594.0" styleClass="textFlow30">
@@ -145,7 +138,7 @@
     <center>
         <PieChart fx:id="pieChart" minHeight="0" minWidth="0" prefHeight="-Infinity">
             <BorderPane.margin>
-                <Insets bottom="40.0" left="40.0" right="40.0"/>
+                <Insets bottom="40.0" right="20.0"/>
             </BorderPane.margin>
         </PieChart>
     </center>

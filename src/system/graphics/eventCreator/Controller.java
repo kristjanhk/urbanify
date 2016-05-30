@@ -195,6 +195,7 @@ public class Controller extends AbstractController {
             }
         }
         this.next.setDisable(!valid);
+        //this.next.setDisable(false);
     }
 
     public ObservableList<Node> getTickets() {
