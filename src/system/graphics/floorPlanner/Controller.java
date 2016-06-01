@@ -20,29 +20,48 @@ import system.graphics.common.Scenetype;
 import system.data.Word;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
  * Saaliplaani looja controller
  */
 public class Controller extends AbstractController {
-    @FXML protected Text floorPlanText;
-    @FXML protected ImageView floorPlanImage;
-    @FXML protected MenuButton floorPlans;
-    @FXML protected MenuButton floorTypes;
-    @FXML protected Button removeRow;
-    @FXML protected Button addRow;
-    @FXML protected Button removeSeat;
-    @FXML protected Button addSeat;
-    @FXML protected Button cancel;
-    @FXML protected Button save;
-    @FXML protected Button create;
-    @FXML protected BorderPane borderPane;
-    @FXML protected StackPane floorPlan;
-    @FXML protected Text rowCountText;
-    @FXML protected Text rowText;
-    @FXML protected Text columnCountText;
-    @FXML protected Text columnText;
+    @FXML
+    protected Text floorPlanText;
+    @FXML
+    protected ImageView floorPlanImage;
+    @FXML
+    protected MenuButton floorPlans;
+    @FXML
+    protected MenuButton floorTypes;
+    @FXML
+    protected Button removeRow;
+    @FXML
+    protected Button addRow;
+    @FXML
+    protected Button removeSeat;
+    @FXML
+    protected Button addSeat;
+    @FXML
+    protected Button cancel;
+    @FXML
+    protected Button save;
+    @FXML
+    protected Button create;
+    @FXML
+    protected BorderPane borderPane;
+    @FXML
+    protected StackPane floorPlan;
+    @FXML
+    protected Text rowCountText;
+    @FXML
+    protected Text rowText;
+    @FXML
+    protected Text columnCountText;
+    @FXML
+    protected Text columnText;
 
     private Event event;
 
@@ -55,6 +74,8 @@ public class Controller extends AbstractController {
         StackPane.setMargin(this.getFloorGroup(), new Insets(10));
         this.setLanguage();
         this.setFloorPlanImage();
+        this.loadFloorPlans();
+        this.validateCreateButton();
         this.floorPlan.widthProperty().addListener((observable, oldValue, newValue) -> {
             this.checkPaneWidthResize(newValue);
         });
@@ -70,11 +91,11 @@ public class Controller extends AbstractController {
 
     /**
      * Saaliplaani laiuse kontroll
-     *
+     * <p>
      * Vähendame suurust kui istmetegrupi laius on suurem kui saaliplaani laius
      * Suurendame suurust kui istmetegrupi laius on väiksem kui istmegrupi scalemata laius,
-     *                        istmetegrupi kõrgus on väiksem kui istmegrupi scalemata kõrgus,
-     *                        istmetegrupi kõrgus on väiksem kui saaliplaani kõrgus - 30 fixme
+     * istmetegrupi kõrgus on väiksem kui istmegrupi scalemata kõrgus,
+     * istmetegrupi kõrgus on väiksem kui saaliplaani kõrgus - 30 fixme
      */
     private void checkPaneWidthResize(Number width) {
         double paneWidth = width.doubleValue() - 20;
@@ -94,11 +115,11 @@ public class Controller extends AbstractController {
 
     /**
      * Saaliplaani kõrguse kontroll
-     *
+     * <p>
      * Vähendame suurust kui istmetegrupi kõrgus on suurem kui saaliplaani kõrgus
      * Suurendame suurust kui istmetegrupi kõrgus on väiksem kui istmegrupi scalemata kõrgus,
-     *                        istmetegrupi laius on väiksem kui istmegrupi scalemata laius,
-     *                        istmetegrupi laius on väiksem kui saaliplaani laius - 30 fixme
+     * istmetegrupi laius on väiksem kui istmegrupi scalemata laius,
+     * istmetegrupi laius on väiksem kui saaliplaani laius - 30 fixme
      */
     private void checkPaneHeightResize(Number height) {
         double paneHeight = height.doubleValue() - 20;
@@ -143,6 +164,7 @@ public class Controller extends AbstractController {
         this.addNewRow();
         this.checkPaneHeightResize(this.floorPlan.getHeight());
         this.correctY(prevY);
+        this.validateCreateButton();
     }
 
     @FXML
@@ -151,18 +173,21 @@ public class Controller extends AbstractController {
         this.removeFirstRow();
         this.checkPaneHeightResize(this.floorPlan.getHeight());
         this.correctY(prevY);
+        this.validateCreateButton();
     }
 
     @FXML
     protected void addColumnAction() {
         this.addNewColumn();
         this.checkPaneWidthResize(this.floorPlan.getWidth());
+        this.validateCreateButton();
     }
 
     @FXML
     protected void removeColumnAction() {
         this.removeLastColumn();
         this.checkPaneWidthResize(this.floorPlan.getWidth());
+        this.validateCreateButton();
     }
 
     private void addNewRow() {
@@ -269,11 +294,6 @@ public class Controller extends AbstractController {
     }
 
     @FXML
-    protected void handleFloorPlanSwitch(ActionEvent event) {
-        // TODO: 31.05.2016
-    }
-
-    @FXML
     protected void handleFloorTypeSwitch(ActionEvent event) {
         this.floorTypes.setText(Word.valueOf(((MenuItem) event.getSource()).getId()).toString());
         this.setFloorPlanImage();
@@ -288,22 +308,59 @@ public class Controller extends AbstractController {
         }
     }
 
+    private void loadFloorPlans() {
+        if (this.getData().getFloorPlans() != null) {
+            for (int i = 0; i < this.getData().getFloorPlans().size(); i++) {
+                MenuItem floorPlanItem = new MenuItem(Word.FLOORPLAN.toString() + (i + 1));
+                floorPlanItem.setMnemonicParsing(false);
+                floorPlanItem.setOnAction(event -> {
+                    String name = ((MenuItem) event.getSource()).getText();
+                    int index = Character.getNumericValue(name.charAt(name.length() - 1)) - 1;
+                    this.loadFloorPlan(this.getData().getFloorPlan(index));
+                });
+                this.floorPlans.getItems().add(floorPlanItem);
+            }
+        }
+    }
+
+    private void loadFloorPlan(ArrayList<ArrayList<Seat.Seattype>> floorPlan) {
+        // TODO: 1.06.2016 clear previous floorplan
+
+        for (int i = 0; i < floorPlan.size(); i++) {
+            this.addRowAction();
+        }
+        for (int i = 0; i < floorPlan.get(0).size() - 1; i++) {
+            this.addColumnAction();
+        }
+
+        // TODO: 1.06.2016  set seat types
+    }
+
+    private void validateCreateButton() {
+        if (this.getFloor().size() * this.columnCount > 0) {
+            this.create.setDisable(false);
+        } else {
+            this.create.setDisable(true);
+        }
+    }
+
     public void doCancel() {
-        // TODO: 14.04.2016 reset current scene?
         this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR, false);
     }
 
     public void doSave() {
-        // TODO: 21.04.2016 save
-        this.resize(getGroupMaxY(), 0.95);
+        if (this.getFloor().size() * this.columnCount > 0) {
+            ArrayList<ArrayList<Seat.Seattype>> floorPlan = new ArrayList<>();
+            for (Node group : this.getFloor()) {
+                ArrayList<Seat.Seattype> currentRow = ((Group) group).getChildren().stream().map(
+                        seat -> ((Seat) seat).getSeattype()).collect(Collectors.toCollection(ArrayList::new));
+                floorPlan.add(currentRow);
+            }
+            this.getData().saveFloorPlan(floorPlan);
+        }
     }
 
     public void doCreate() {
-        // TODO: 12.05.2016 change
-        int seats = this.getFloor().size() * this.columnCount;
-        if (seats != 0) {
-            this.event.setMaxSeats(seats);
-        }
         this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, this.event);
     }
 
@@ -317,8 +374,7 @@ public class Controller extends AbstractController {
     @Override
     public void setLanguage() {
         this.floorPlanText.setText(Word.NEWFLOORPLAN.toString());
-        this.floorPlans.setText(Word.FLOORPLANS.toString());
-        // TODO: 27.04.2016 rename plans 
+        this.floorPlans.setText(Word.FLOORPLAN.toString());
         this.floorTypes.setText(Word.STAGE.toString());
         this.floorTypes.getItems().get(0).setText(Word.STAGE.toString());
         this.floorTypes.getItems().get(1).setText(Word.SCREEN.toString());

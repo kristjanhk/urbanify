@@ -50,10 +50,6 @@
                 <MenuButton fx:id="floorPlans" alignment="CENTER" contentDisplay="CENTER" maxHeight="70.5"
                             maxWidth="1500" minHeight="70.5" minWidth="150.0" mnemonicParsing="false"
                             prefHeight="70.5" prefWidth="150.0">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="saal 1" onAction="#handleFloorPlanSwitch"/>
-                        <MenuItem mnemonicParsing="false" text="saal 2" onAction="#handleFloorPlanSwitch"/>
-                    </items>
                     <HBox.margin>
                         <Insets top="40.0"/>
                     </HBox.margin>

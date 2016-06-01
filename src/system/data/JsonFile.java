@@ -4,7 +4,9 @@ import system.MainHandler;
 import system.graphics.common.Csstype;
 import system.graphics.common.Scenetype;
 import system.graphics.eventManager.Controller;
+import system.graphics.floorPlanner.Seat;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -24,6 +26,7 @@ public class JsonFile {
     private Csstype activeTheme;
     private HashSet<Event> events;
     private HashSet<Event> archivedEvents;
+    private ArrayList<ArrayList<ArrayList<Seat.Seattype>>> savedFloorPlans;
 
     public JsonFile() {}
 
@@ -42,6 +45,21 @@ public class JsonFile {
             return this.events;
         }
         return new HashSet<>();
+    }
+
+    public ArrayList<ArrayList<ArrayList<Seat.Seattype>>> getFloorPlans() {
+        return this.savedFloorPlans;
+    }
+
+    public ArrayList<ArrayList<Seat.Seattype>> getFloorPlan(int id) {
+        return this.savedFloorPlans.get(id);
+    }
+
+    public void saveFloorPlan(ArrayList<ArrayList<Seat.Seattype>> floorPlan) {
+        if (this.savedFloorPlans == null) {
+            this.savedFloorPlans = new ArrayList<>();
+        }
+        this.savedFloorPlans.add(floorPlan);
     }
 
     public void saveCurrentData() {

@@ -21,7 +21,7 @@ public class Ticket extends HBox {
     private VBox parentNode;
     private TextField priceText;
     private TextField currencyText;
-    private boolean currencyTextValidated;
+    private boolean currencyTextValidated = true;
     private boolean priceTextValidated;
     private TextField ticketText;
     private boolean ticketTextValidated;

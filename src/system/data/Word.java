@@ -11,7 +11,7 @@ import java.util.HashMap;
  */
 public enum Word {
     NEWEVENT, OPENEVENT, SETTINGS, ARCHIVE, EVENTCREATOR, POINTOFSALE, NAMEYOUREVENT, PRICE, TICKETYPE, OPENSEATING,
-    ASSIGNEDSEATING, NEXT, CANCEL, BACK, CREATE, SAVE, NEWFLOORPLAN, FLOORPLANS, FLOORTYPE, ROWS, SEATSINROW, STAGE,
+    ASSIGNEDSEATING, NEXT, CANCEL, BACK, CREATE, SAVE, NEWFLOORPLAN, FLOORPLAN, FLOORTYPE, ROWS, SEATSINROW, STAGE,
     SCREEN, EVENTS, SETDATE, SETTIME, MAXNROFSEATS, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, APPLY, OK, PATH,
     LANGUAGE, THEME, LIGHT, DARK, WARM, SETSEATINGTYPE, SEATINGTYPE, ENGLISH, ESTONIAN, VÕRO, GERMAN,
     RUSSIAN, CHECKOUT, TOTAL, POS, FINISH, COST, QUANTITY, NEW, POPOVERTEXT, SEATSLEFT, UNLIMITED, CURRENCY;
@@ -61,7 +61,7 @@ public enum Word {
                 "speichern", "TODO"});
         wordsMap.put(Word.NEWFLOORPLAN, new String[]{"new floorplan", "uus saaliplaan", "vahtsõnõ saaliplaan",
                 "neue Gebäudeplan?", "TODO"});
-        wordsMap.put(Word.FLOORPLANS, new String[]{"plan", "plaan", "plaan",
+        wordsMap.put(Word.FLOORPLAN, new String[]{"plan", "plaan", "plaan",
                 "Plan", "TODO"});
         wordsMap.put(Word.FLOORTYPE, new String[]{"type", "tüüp", "sort",
                 "Typ", "TODO"});

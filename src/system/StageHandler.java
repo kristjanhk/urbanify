@@ -23,17 +23,22 @@ public class StageHandler {
 
     public StageHandler(Stage primaryStage) {
         this.stage = primaryStage;
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        this.resizeHandler = new ResizeHandler(primaryStage);
-        primaryStage.setTitle("Superpilet 3000");
-        primaryStage.setHeight(880);
-        primaryStage.setWidth(1220);
-        primaryStage.setMinHeight(720);
-        primaryStage.setMinWidth(1180);
+        this.init();
+    }
+
+    private void init() {
+        this.stage.initStyle(StageStyle.UNDECORATED);
+        this.resizeHandler = new ResizeHandler(this.stage);
+        this.stage.setTitle("Piletikassa");
+        this.stage.setHeight(880);
+        this.stage.setWidth(1220);
+        this.stage.setMinHeight(720);
+        this.stage.setMinWidth(1180);
+        this.stage.setMaximized(true);
+        this.stage.setOnCloseRequest(event -> MainHandler.getFileHandler().saveData());
         this.initScenes();
         this.switchSceneTo(Scenetype.MAINMENU);
-        primaryStage.show();
-        primaryStage.setOnCloseRequest(event -> MainHandler.getFileHandler().saveData());
+        this.stage.show();
     }
 
     public Stage getStage() {

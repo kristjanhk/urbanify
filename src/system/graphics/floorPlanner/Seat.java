@@ -17,22 +17,25 @@ public class Seat extends Button {
     private int x;
     private int y;
 
-    public Seat(Controller parentController) {
+    private Seat(Controller parentController, Seattype seattype) {
         super();
         this.parentController = parentController;
         double radius = 25.0;
         this.setShape(new Circle(radius));
         this.setMinSize(radius * 2, radius * 2);
         this.setMaxSize(radius * 2, radius * 2);
-        this.toggleStyle(true);
+        this.setGivenStyle(seattype);
         this.setOnMouseClicked(event -> this.handleClick());
         this.setOnMouseEntered(event -> this.parentController.setSeatsHovering(this, true));
         this.setOnMouseExited(event -> this.parentController.setSeatsHovering(this, false));
     }
 
-    // TODO: 20.04.2016 asukohad määrata pane ja group abiga vms
     public Seat(Controller parentController, int row, int column) {
-        this(parentController);
+        this(parentController, Seattype.AVAILABLE,  row, column);
+    }
+
+    public Seat(Controller parentController, Seattype seattype, int row, int column) {
+        this(parentController, seattype);
         this.x = column;
         this.y = row;
         if (column == 0 || row == 0) {
@@ -75,23 +78,23 @@ public class Seat extends Button {
     @FXML
     protected void handleClick() {
         System.out.println("Clicked: (" + this.x + "," + this.y + ")");
-        this.toggleStyle(false);
+        this.toggleStyle(this.seattype);
     }
 
-    private void toggleStyle(boolean init) {
-        String styleclass = "";
-        if (init) {
-            this.getStyleClass().clear();
+    private void toggleStyle(Seattype seattype) {
+        if (seattype == Seattype.AVAILABLE) {
+            this.setGivenStyle(Seattype.UNAVAILABLE);
+        } else {
+            this.setGivenStyle(Seattype.AVAILABLE);
         }
-        if (this.getStyleClass().size() > 0) {
-            styleclass = this.getStyleClass().get(0);
-            this.getStyleClass().clear();
-        }
-        if (styleclass.equals("") || this.seattype == Seattype.UNAVAILABLE) {
-            this.seattype = Seattype.AVAILABLE;
+    }
+
+    private void setGivenStyle(Seattype seattype) {
+        this.getStyleClass().clear();
+        this.seattype = seattype;
+        if (seattype == Seattype.AVAILABLE) {
             this.getStyleClass().add("seat_available");
         } else {
-            this.seattype = Seattype.UNAVAILABLE;
             this.getStyleClass().add("seat_unavailable");
         }
     }

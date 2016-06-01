@@ -80,8 +80,8 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void doNext() {
-        /*this.event.readyCreator(this.eventText.getText(), this.ticketVBox.getChildren(), this.calendar.getValue(),
-                this.timeText.getText(), this.seating.getText(), this.maxSeats.getText());*/
+        this.event.readyCreator(this.eventText.getText(), this.ticketVBox.getChildren(), this.calendar.getValue(),
+                this.timeText.getText(), this.seating.getText(), this.maxSeats.getText());
         if (seatingType.equals("OPENSEATING")) {
             this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, this.event);
         } else {
@@ -93,6 +93,7 @@ public class Controller extends AbstractController {
     public <T> void prepareToDisplay(T object) {
         if (!(object instanceof Boolean)) {
             this.scene.getStageHandler().replaceScene(Scenetype.EVENTCREATOR);
+            this.scene.getStageHandler().replaceScene(Scenetype.FLOORPLANNER);
         }
     }
 
@@ -194,8 +195,8 @@ public class Controller extends AbstractController {
                 break;
             }
         }
-        //this.next.setDisable(!valid);
-        this.next.setDisable(false);
+        this.next.setDisable(!valid);
+        //this.next.setDisable(false);
     }
 
     public ObservableList<Node> getTickets() {
