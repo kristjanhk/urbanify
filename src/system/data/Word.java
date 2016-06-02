@@ -20,117 +20,118 @@ public enum Word {
     private static HashMap<Word, String[]> createLanguages() {
         HashMap<Word, String[]> wordsMap = new HashMap<>();
         wordsMap.put(Word.NEWEVENT, new String[]{"new event", "uus üritus", "vahtsõnõ üritus",
-                "neue Ereignis", "TODO"});
+                "neue Ereignis", "новое мероприятие"});
         wordsMap.put(Word.OPENEVENT, new String[]{"open event", "ava üritused", "valla ettevõtminõsõ",
-                "öffne Ereignis", "TODO"});
+                "öffne Ereignis", "открытое мероприятие"});
         wordsMap.put(Word.SETTINGS, new String[]{"settings", "seaded", "säädistüs",
-                "Einstellungen", "TODO"});
+                "Einstellungen", "настройки"});
         wordsMap.put(Word.ARCHIVE, new String[]{"archive", "arhiiv", "kiräkogo",
-                "Archiv", "TODO"});
+                "Archiv", "архив"});
         wordsMap.put(Word.EVENTCREATOR, new String[]{"event creator", "ürituse looja", "ürituse luuja",
-                "Ereigniserzeuger", "TODO"});
+                "Ereigniserzeuger", "создатель мероприятие"});
         wordsMap.put(Word.POINTOFSALE, new String[]{"point of sale", "müügipunkt", "müügikotus",
-                "Verkaufsstelle", "TODO"});
+                "Verkaufsstelle", "POS-терминал "});
         wordsMap.put(Word.NAMEYOUREVENT, new String[]{"name your event", "nimeta üritus", "märgota üritus",
-                "nennen Sie Ihres Ereignis", "TODO"});
+                "nennen Sie Ihres Ereignis", "назовите мероприятие"});
         wordsMap.put(Word.PRICE, new String[]{"price", "hind", "hind",
-                "Preis", "TODO"});
+                "Preis", "цена"});
         wordsMap.put(Word.TICKETYPE, new String[]{"ticket type", "pileti tüüp", "lubatähe muud",
-                "Ticket-typ", "TODO"});
+                "Ticket-typ", "тип билета"});
         wordsMap.put(Word.OPENSEATING, new String[]{"open seating", "vabad kohad", "vaba kotosõ",
-                "freie Plätze", "TODO"});
+                "freie Plätze", "открыт рассадка"});
         wordsMap.put(Word.ASSIGNEDSEATING, new String[]{"assigned seating", "määratud kohad", "määrätü kotosõ",
-                "zuweisen Plätze", "TODO"});
+                "zuweisen Plätze", "назначены рассадка"});
         wordsMap.put(Word.SETDATE, new String[]{"set date", "määra kuupäev", "määrä kuupäiv",
-                "Datum setzen", "TODO"});
+                "Datum setzen", "установить дату"});
         wordsMap.put(Word.SETTIME, new String[]{"set time", "määra aeg", "määrä aig",
-                "Zeit setzen", "TODO"});
+                "Zeit setzen", "установить время"});
         wordsMap.put(Word.MAXNROFSEATS, new String[]{"max nr of seats", "suurim arv kohti",
-                "kõgõ suurõmb nummõr kotosõid", "maximale Anzahl der Plätze", "TODO"});
+                "kõgõ suurõmb nummõr kotosõid", "maximale Anzahl der Plätze", "максимальное количество мест"});
         wordsMap.put(Word.SETMAXNROFSEATS, new String[]{"set max nr of seats", "määra suurim arv kohti",
-                "määrä kõgõ suurõmb nummõr kotosõid", "setzen maximale Anzahl der Plätze", "TODO"});
+                "määrä kõgõ suurõmb nummõr kotosõid", "setzen maximale Anzahl der Plätze",
+                "установить максимальное количество мест"});
         wordsMap.put(Word.NEXT, new String[]{"next", "edasi", "edesi",
-                "weiter", "TODO"});
+                "weiter", "следующий "});
         wordsMap.put(Word.CANCEL, new String[]{"cancel", "katkesta", "jätä katski",
-                "zurück", "TODO"});
+                "zurück", "отмена"});
         wordsMap.put(Word.BACK, new String[]{"back", "tagasi", "tagasi",
-                "zurück", "TODO"});
+                "zurück", "назад"});
         wordsMap.put(Word.CREATE, new String[]{"create", "loo", "luu",
-                "erstellen", "TODO"});
+                "erstellen", "создайте"});
         wordsMap.put(Word.SAVE, new String[]{"save", "salvesta", "panõ tallõlõ",
-                "speichern", "TODO"});
+                "speichern", "сохранить"});
         wordsMap.put(Word.NEWFLOORPLAN, new String[]{"new floorplan", "uus saaliplaan", "vahtsõnõ saaliplaan",
-                "neue Saalplan", "TODO"});
+                "neue Saalplan", "новый план этажа"});
         wordsMap.put(Word.FLOORPLAN, new String[]{"plan", "plaan", "plaan",
-                "Plan", "TODO"});
+                "Plan", "план"});
         wordsMap.put(Word.FLOORTYPE, new String[]{"type", "tüüp", "sort",
-                "Typ", "TODO"});
+                "Typ", "тип"});
         wordsMap.put(Word.ROWS, new String[]{"rows", "read", "riaq",
-                "Reihen", "TODO"});
+                "Reihen", "строки"});
         wordsMap.put(Word.SEATSINROW, new String[]{"columns", "veerge", "tulpi",
-                "Spalte", "TODO"});
+                "Spalte", "столбцы"});
         wordsMap.put(Word.STAGE, new String[]{"stage", "lava", "püüne",
-                "Bühne", "TODO"});
+                "Bühne", "сцена"});
         wordsMap.put(Word.SCREEN, new String[]{"screen", "ekraan", "pildikruut",
-                "Bildschrim", "TODO"});
+                "Bildschrim", "экран"});
         wordsMap.put(Word.EVENTS, new String[]{"events", "üritused", "üritusõ",
-                "Ereignisse", "TODO"});
+                "Ereignisse", "мероприятия"});
         wordsMap.put(Word.DATEFORMAT, new String[]{"dd/mm/yyyy", "pp.kk.aaaa", "pp.kk.aaaa",
-                "tt.mm.jjjj", "TODO"});
+                "tt.mm.jjjj", "дд.мм.гггг"});
         wordsMap.put(Word.TIMEFORMAT, new String[]{"hh:mm", "hh:mm", "hh:mm",
-                "hh:mm", "TODO"});
+                "hh:mm", "чч:мм"});
         wordsMap.put(Word.APPLY, new String[]{"apply", "rakenda", "rakenda",
-                "anwenden", "TODO"});
+                "anwenden", "применять"});
         wordsMap.put(Word.OK, new String[]{"ok", "ok", "häste",
-                "ok", "TODO"});
+                "ok", "ок"});
         wordsMap.put(Word.PATH, new String[]{"location path", "kausta asukoht", "kausta paik",
-                "Ordnerpfad", "TODO"});
+                "Ordnerpfad", "путь к папке"});
         wordsMap.put(Word.LANGUAGE, new String[]{"language", "keel", "kill",
-                "Sprache", "TODO"});
+                "Sprache", "язык"});
         wordsMap.put(Word.THEME, new String[]{"theme", "kujundus", "kujondus",
-                "Thema", "TODO"});
+                "Thema", "тема"});
         wordsMap.put(Word.LIGHT, new String[]{"light", "hele", "helle",
-                "hell", "TODO"});
+                "hell", "легкий"}); //vene keel pole vist päris õige
         wordsMap.put(Word.DARK, new String[]{"dark", "tume", "tummõ",
-                "dunkel", "TODO"});
+                "dunkel", "темно"});
         wordsMap.put(Word.WARM, new String[]{"warm", "soe", "lämmi",
-                "warm", "TODO"});
+                "warm", "тепло"});
         wordsMap.put(Word.SETSEATINGTYPE, new String[]{"set seating type", "määra kohtade tüüp", "määrä kotosõ sort",
-                "Plätze-typ setzen", "TODO"});
+                "Plätze-typ setzen", "установить типа рассадка"});
         wordsMap.put(Word.SEATINGTYPE, new String[]{"seating type", "kohtade tüüp", "kotosõ sort",
-                "Plätze-typ", "TODO"});
+                "Plätze-typ", "рассадка тип"});
         wordsMap.put(Word.ENGLISH, new String[]{"english", "inglise keel", "ingliskiil",
-                "Englisch", "TODO"});
+                "Englisch", "английский язык"});
         wordsMap.put(Word.ESTONIAN, new String[]{"estonian", "eesti keel", "eesti kiil",
-                "Estnisch", "TODO"});
+                "Estnisch", "эстонский язык"});
         wordsMap.put(Word.VÕRO, new String[]{"võro", "võro kiil", "võro kiil",
-                "Võru dialekt", "TODO"});
+                "Võru dialekt", "выруский диалект"});
         wordsMap.put(Word.GERMAN, new String[]{"german", "saksa keel", "saksa kiil",
-                "Deutsch", "TODO"});
+                "Deutsch", "немецкий язык"});
         wordsMap.put(Word.RUSSIAN, new String[]{"russian", "vene keel", "vinne kiil",
-                "Russisch", "pусский язык"});
+                "Russisch", "русский язык"});
         wordsMap.put(Word.CHECKOUT, new String[]{"checkout", "lõpeta", "lõpeta",
-                "Ende", "TODO"});
+                "Ende", "конец"});
         wordsMap.put(Word.TOTAL, new String[]{"total", "kokku", "kokko",
-                "gesamt", "TODO"});
+                "gesamt", "итог"});
         wordsMap.put(Word.POS, new String[]{"pos", "müük", "müük",
-                "Verkauf", "TODO"});
+                "Verkauf", "продажа"}); //vale vist vene keeles
         wordsMap.put(Word.FINISH, new String[]{"finish", "lõpeta", "lõpeta",
-                "Ende", "TODO"});
+                "Ende", "конец"});
         wordsMap.put(Word.COST, new String[]{"cost", "hind", "hind",
-                "Preis", "TODO"});
+                "Preis", "цена"});
         wordsMap.put(Word.QUANTITY, new String[]{"quantity", "kogus", "ports",
-                "Menge", "TODO"});
+                "Menge", "количество"});
         wordsMap.put(Word.NEW, new String[]{"new", "uus", "vahtsõnõ",
-                "neue", "TODO"});
+                "neue", "новый"});
         wordsMap.put(Word.POPOVERTEXT, new String[]{"set 0 for unlimited", "vali 0 kui kohtade arv ei ole määratud",
-                "vali 0 kui kotosõ arv olõi määrätü", "TODO", "TODO"});
+                "vali 0 kui kotosõ arv olõi määrätü", "TODO", "пиши 0 что указать безграничность"});
         wordsMap.put(Word.SEATSLEFT, new String[]{"seats left", "istmekohti alles", "kotosõid alale",
-                "freie Plätze", "TODO"});
+                "freie Plätze", "мест осталось"});
         wordsMap.put(Word.UNLIMITED, new String[]{"unlimited", "lõpmatu", "ilmotsaldaq",
-                "Unlimitiert", "TODO"});
+                "Unlimitiert", "неограниченный"});
         wordsMap.put(Word.CURRENCY, new String[]{"curr", "ühik", "mõõt",
-                "währ", "TODO"});
+                "währ", "вал"}); //vene keel ei lähe äkki üldse kõik kuidagi pmber teha
         return wordsMap;
     }
 
