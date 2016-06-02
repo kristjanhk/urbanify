@@ -4,9 +4,9 @@ import system.MainHandler;
 import system.graphics.common.Csstype;
 import system.graphics.common.Scenetype;
 import system.graphics.eventManager.Controller;
-import system.graphics.floorPlanner.Seat;
+import system.graphics.floorPlanner.FloorPlan;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -26,7 +26,7 @@ public class JsonFile {
     private Csstype activeTheme;
     private HashSet<Event> events;
     private HashSet<Event> archivedEvents;
-    private ArrayList<ArrayList<ArrayList<Seat.Seattype>>> savedFloorPlans;
+    private HashMap<String, HashMap<FloorPlan, Object>> savedFloorPlans;
 
     public JsonFile() {}
 
@@ -47,19 +47,34 @@ public class JsonFile {
         return new HashSet<>();
     }
 
-    public ArrayList<ArrayList<ArrayList<Seat.Seattype>>> getFloorPlans() {
+    public HashMap<String, HashMap<FloorPlan, Object>> getFloorPlans() {
+        if (this.savedFloorPlans == null) {
+            return new HashMap<>();
+        }
         return this.savedFloorPlans;
     }
 
-    public ArrayList<ArrayList<Seat.Seattype>> getFloorPlan(int id) {
-        return this.savedFloorPlans.get(id);
+    public Integer[] getFloorPlanDimensions(String name) {
+        return (Integer[]) this.getFloorPlans().get(name).get(FloorPlan.DIMENSIONS);
     }
 
-    public void saveFloorPlan(ArrayList<ArrayList<Seat.Seattype>> floorPlan) {
+    @SuppressWarnings("unchecked")
+    public HashSet<Integer[]> getFloorPlanUnavailables(String name) {
+        return (HashSet<Integer[]>) this.getFloorPlans().get(name).get(FloorPlan.UNAVAILABLE);
+    }
+
+    public void saveFloorPlan(String name, int rows, int columns, HashSet<Integer[]> unavailableSeats) {
         if (this.savedFloorPlans == null) {
-            this.savedFloorPlans = new ArrayList<>();
+            this.savedFloorPlans = new HashMap<>();
         }
-        this.savedFloorPlans.add(floorPlan);
+        Integer[] dimensions = new Integer[]{rows, columns};
+        if (!this.savedFloorPlans.containsKey(name)) {
+            this.savedFloorPlans.put(name, new HashMap<>());
+        } else {
+            this.savedFloorPlans.replace(name, new HashMap<>());
+        }
+        this.savedFloorPlans.get(name).put(FloorPlan.DIMENSIONS, dimensions);
+        this.savedFloorPlans.get(name).put(FloorPlan.UNAVAILABLE, unavailableSeats);
     }
 
     public void saveCurrentData() {

@@ -49,6 +49,9 @@ public enum Lang {
     }
 
     public String getCurrencyIn(Lang language) {
+        if (language == RUSSIAN) {
+            return "\u20BD";
+        }
         return Currency.getInstance(language.locale).getSymbol();
     }
 

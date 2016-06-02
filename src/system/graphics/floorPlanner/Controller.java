@@ -20,9 +20,8 @@ import system.graphics.common.Scenetype;
 import system.data.Word;
 
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 /**
  * Saaliplaani looja controller
@@ -48,17 +47,15 @@ public class Controller extends AbstractController {
 
     private Event event;
 
-    private int columnCount = 0;
+    private int columnCount;
     private double maxY = 0.0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.floorPlan.getChildren().add(new Group());
-        StackPane.setMargin(this.getFloorGroup(), new Insets(10));
         this.setLanguage();
+        this.resetFloor();
         this.setFloorPlanImage();
         this.loadFloorPlans();
-        this.validateCreateButton();
         this.floorPlan.widthProperty().addListener((observable, oldValue, newValue) -> {
             this.checkPaneWidthResize(newValue);
         });
@@ -147,7 +144,7 @@ public class Controller extends AbstractController {
         this.addNewRow();
         this.checkPaneHeightResize(this.floorPlan.getHeight());
         this.correctY(prevY);
-        this.validateCreateButton();
+        this.validateButtons();
     }
 
     @FXML
@@ -156,21 +153,21 @@ public class Controller extends AbstractController {
         this.removeFirstRow();
         this.checkPaneHeightResize(this.floorPlan.getHeight());
         this.correctY(prevY);
-        this.validateCreateButton();
+        this.validateButtons();
     }
 
     @FXML
     protected void addColumnAction() {
         this.addNewColumn();
         this.checkPaneWidthResize(this.floorPlan.getWidth());
-        this.validateCreateButton();
+        this.validateButtons();
     }
 
     @FXML
     protected void removeColumnAction() {
         this.removeLastColumn();
         this.checkPaneWidthResize(this.floorPlan.getWidth());
-        this.validateCreateButton();
+        this.validateButtons();
     }
 
     private void addNewRow() {
@@ -263,6 +260,16 @@ public class Controller extends AbstractController {
         this.getFloorGroup().setTranslateY(this.maxY);
     }
 
+    private void resetFloor() {
+        this.floorPlan.getChildren().clear();
+        this.floorPlan.getChildren().add(new Group());
+        StackPane.setMargin(this.getFloorGroup(), new Insets(10));
+        this.columnCount = 0;
+        this.setRowCountText();
+        this.setColumnCountText();
+        this.validateButtons();
+    }
+
     public void setSeatsHovering(Seat triggerer, boolean trigger) {
         for (Node group : this.getFloor()) {
             for (Node seat : ((Group) group).getChildren()) {
@@ -292,37 +299,38 @@ public class Controller extends AbstractController {
     }
 
     private void loadFloorPlans() {
-        if (this.getData().getFloorPlans() != null) {
-            for (int i = 0; i < this.getData().getFloorPlans().size(); i++) {
-                MenuItem floorPlanItem = new MenuItem(Word.FLOORPLAN.toString() + (i + 1));
-                floorPlanItem.setMnemonicParsing(false);
-                floorPlanItem.setOnAction(event -> {
-                    String name = ((MenuItem) event.getSource()).getText();
-                    int index = Character.getNumericValue(name.charAt(name.length() - 1)) - 1;
-                    this.loadFloorPlan(this.getData().getFloorPlan(index));
-                });
-                this.floorPlans.getItems().add(floorPlanItem);
-            }
-        }
+        this.getData().getFloorPlans().forEach((name, floorplan) -> {
+            this.createFloorPlanItem(name);
+        });
     }
 
-    private void loadFloorPlan(ArrayList<ArrayList<Seat.Seattype>> floorPlan) {
-        // TODO: 1.06.2016 clear previous floorplan
+    private void createFloorPlanItem(String name) {
+        MenuItem floorPlanItem = new MenuItem(name);
+        floorPlanItem.setMnemonicParsing(false);
+        floorPlanItem.setOnAction(event -> this.loadFloorPlan(name));
+        this.floorPlans.getItems().add(floorPlanItem);
+    }
 
-        for (int i = 0; i < floorPlan.size(); i++) {
+    private void loadFloorPlan(String name) {
+        this.resetFloor();
+        Integer[] dimensions = this.getData().getFloorPlanDimensions(name);
+
+        /*for (int i = 0; i < floorPlan.size(); i++) {
             this.addRowAction();
         }
         for (int i = 0; i < floorPlan.get(0).size() - 1; i++) {
             this.addColumnAction();
-        }
+        }*/
 
         // TODO: 1.06.2016  set seat types
     }
 
-    private void validateCreateButton() {
+    private void validateButtons() {
         if (this.getFloor().size() * this.columnCount > 0) {
+            this.save.setDisable(false);
             this.create.setDisable(false);
         } else {
+            this.save.setDisable(true);
             this.create.setDisable(true);
         }
     }
@@ -333,13 +341,17 @@ public class Controller extends AbstractController {
 
     public void doSave() {
         if (this.getFloor().size() * this.columnCount > 0) {
-            ArrayList<ArrayList<Seat.Seattype>> floorPlan = new ArrayList<>();
+            HashSet<Integer[]> unavailables = new HashSet<>();
             for (Node group : this.getFloor()) {
-                ArrayList<Seat.Seattype> currentRow = ((Group) group).getChildren().stream().map(
-                        seat -> ((Seat) seat).getSeattype()).collect(Collectors.toCollection(ArrayList::new));
-                floorPlan.add(currentRow);
+                for (Node seat : ((Group) group).getChildren()) {
+                    Integer[] seatCoordinates = ((Seat) seat).isUnavailable();
+                    if (seatCoordinates != null) {
+                        unavailables.add(seatCoordinates);
+                    }
+                }
             }
-            this.getData().saveFloorPlan(floorPlan);
+            this.getData().saveFloorPlan("floorplan", this.getFloor().size(), this.columnCount, unavailables);
+            this.createFloorPlanItem("floorplan");
         }
     }
 

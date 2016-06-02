@@ -53,6 +53,7 @@ public class Controller extends AbstractController {
         this.seatsLeft = this.event.getMaxSeats();
         this.updateSeatsLeft();
         this.updateTotal();
+        this.validateCheckoutButton();
         for (String ticket : this.event.getTickets().keySet()) {
             this.eventsVBox.getChildren().add(new Ticket(this, ticket, this.event));
         }
@@ -107,6 +108,7 @@ public class Controller extends AbstractController {
         }
         this.cost -= ticketprice;
         this.updateTotal();
+        this.validateCheckoutButton();
     }
 
     /**
@@ -142,6 +144,11 @@ public class Controller extends AbstractController {
         this.totalcost.setText(String.format("%.2f", this.cost) + " " + Lang.getActiveLang().getCurrency());
     }
 
+    protected void validateCheckoutButton() {
+        System.out.println(this.cost);
+        this.checkout.setDisable(this.cost == 0.0);
+    }
+
     /**
      * Meetod, mis loob Zxing teegiga qr koodi
      * https://github.com/zxing/zxing
@@ -150,9 +157,8 @@ public class Controller extends AbstractController {
      * @param ticketdata list piletite andmetest, mis on juba vajalikul kujul
      */
     private void createQrCode(ArrayList<String> ticketdata) {
-        StringBuilder tekst = new StringBuilder(
-                this.event.getName() + "\n" +
-                        this.event.getFormattedDate() + " " + this.event.getTime() + "\n");
+        StringBuilder tekst = new StringBuilder(this.event.getName() + "\n" + this.event.getFormattedDate() + " " +
+                this.event.getTime() + "\n");
         ticketdata.forEach(tekst::append);
         tekst.append(this.totalcost.getText()); // FIXME: 11.05.2016 currency symbol bugine?
         try {

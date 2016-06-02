@@ -91,6 +91,7 @@ public class Ticket extends GridPane {
         this.addTicket.setOnMouseClicked(event -> {
             if (this.parentController.occupySeat(this.event.getTicketPrice(this.tickettype))) {
                 this.ticketAmount.set(this.ticketAmount.getValue() + 1);
+                this.parentController.validateCheckoutButton();
             }
         });
         this.add(this.addTicket,3,0);

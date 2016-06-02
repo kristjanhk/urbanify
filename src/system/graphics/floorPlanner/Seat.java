@@ -75,6 +75,13 @@ public class Seat extends Button {
         return this.seattype;
     }
 
+    public Integer[] isUnavailable() {
+        if (this.seattype == Seattype.UNAVAILABLE) {
+            return new Integer[]{this.y, this.x};
+        }
+        return null;
+    }
+
     @FXML
     protected void handleClick() {
         System.out.println("Clicked: (" + this.x + "," + this.y + ")");
