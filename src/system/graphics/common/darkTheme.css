@@ -592,3 +592,11 @@
     -fx-fill: #f05455;
     -fx-padding: 20,20,20,20;
 }
+
+.floorplanName {
+    -fx-background-color: #262626;
+    -fx-border-color: #121212;
+    -fx-border-width: 2;
+    -fx-font-size: 50;
+    -fx-padding: 10 10 10 20;
+}

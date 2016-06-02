@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
  * Saaliplaani looja controller
  */
 public class Controller extends AbstractController {
-    @FXML protected Text floorPlanText;
+    //@FXML protected Text floorPlanText;
     @FXML protected ImageView floorPlanImage;
     @FXML protected MenuButton floorPlans;
     @FXML protected MenuButton floorTypes;
@@ -368,7 +368,7 @@ public class Controller extends AbstractController {
 
     @Override
     public void setLanguage() {
-        this.floorPlanText.setText(Word.NEWFLOORPLAN.toString());
+        //this.floorPlanText.setText(Word.NEWFLOORPLAN.toString());
         this.floorPlans.setText(Word.FLOORPLAN.toString());
         this.floorTypes.setText(Word.STAGE.toString());
         this.floorTypes.getItems().get(0).setText(Word.STAGE.toString());
@@ -380,3 +380,4 @@ public class Controller extends AbstractController {
         this.create.setText(Word.CREATE.toString());
     }
 }
+
