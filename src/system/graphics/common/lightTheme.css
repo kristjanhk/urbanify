@@ -592,8 +592,6 @@
 
 .floorplanName {
     -fx-background-color: #e6e6e5;
-    -fx-border-color: #ffffff;
-    -fx-border-width: 2;
     -fx-font-size: 50;
     -fx-padding: 10 10 10 20;
 }
