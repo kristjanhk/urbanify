@@ -33,7 +33,7 @@
                     </HBox.margin>
                 </Button>
             </HBox>
-         <TextField fx:id="floorPlanText" styleClass="floorplanName" promptText="new floorplan">
+         <TextField fx:id="floorPlanTextField" styleClass="floorplanName" promptText="new floorplan">
             <VBox.margin>
                <Insets left="40.0" right="40.0" />
             </VBox.margin>

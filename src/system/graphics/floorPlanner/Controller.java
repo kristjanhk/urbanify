@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -27,7 +28,7 @@ import java.util.ResourceBundle;
  * Saaliplaani looja controller
  */
 public class Controller extends AbstractController {
-    //@FXML protected Text floorPlanText;
+    @FXML protected TextField floorPlanTextField;
     @FXML protected ImageView floorPlanImage;
     @FXML protected MenuButton floorPlans;
     @FXML protected MenuButton floorTypes;
@@ -56,6 +57,8 @@ public class Controller extends AbstractController {
         this.resetFloor();
         this.setFloorPlanImage();
         this.loadFloorPlans();
+        this.save.setOnMouseEntered(event -> this.setFloorPlanTextFieldHighlight(true));
+        this.save.setOnMouseExited(event -> this.setFloorPlanTextFieldHighlight(false));
         this.floorPlan.widthProperty().addListener((observable, oldValue, newValue) -> {
             this.checkPaneWidthResize(newValue);
         });
@@ -283,6 +286,15 @@ public class Controller extends AbstractController {
         }
     }
 
+    private void setFloorPlanTextFieldHighlight(boolean enable) {
+        System.out.println(this.floorPlanTextField.getStyleClass());
+        if (enable) {
+            this.floorPlanTextField.getStyleClass().add("floorPlanTextField_highlighted");
+        } else {
+            this.floorPlanTextField.getStyleClass().remove("floorPlanTextField_highlighted");
+        }
+    }
+
     @FXML
     protected void handleFloorTypeSwitch(ActionEvent event) {
         this.floorTypes.setText(Word.valueOf(((MenuItem) event.getSource()).getId()).toString());
@@ -314,14 +326,12 @@ public class Controller extends AbstractController {
     private void loadFloorPlan(String name) {
         this.resetFloor();
         Integer[] dimensions = this.getData().getFloorPlanDimensions(name);
-
-        /*for (int i = 0; i < floorPlan.size(); i++) {
+        for (int row = 0; row < dimensions[0]; row++) {
             this.addRowAction();
         }
-        for (int i = 0; i < floorPlan.get(0).size() - 1; i++) {
+        for (int column = 0; column < dimensions[1] - 1; column++) {
             this.addColumnAction();
-        }*/
-
+        }
         // TODO: 1.06.2016  set seat types
     }
 
@@ -368,7 +378,7 @@ public class Controller extends AbstractController {
 
     @Override
     public void setLanguage() {
-        //this.floorPlanText.setText(Word.NEWFLOORPLAN.toString());
+        this.floorPlanTextField.setPromptText(Word.NEWFLOORPLAN.toString());
         this.floorPlans.setText(Word.FLOORPLAN.toString());
         this.floorTypes.setText(Word.STAGE.toString());
         this.floorTypes.getItems().get(0).setText(Word.STAGE.toString());
