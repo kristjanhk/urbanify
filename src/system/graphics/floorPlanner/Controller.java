@@ -28,40 +28,23 @@ import java.util.stream.Collectors;
  * Saaliplaani looja controller
  */
 public class Controller extends AbstractController {
-    @FXML
-    protected Text floorPlanText;
-    @FXML
-    protected ImageView floorPlanImage;
-    @FXML
-    protected MenuButton floorPlans;
-    @FXML
-    protected MenuButton floorTypes;
-    @FXML
-    protected Button removeRow;
-    @FXML
-    protected Button addRow;
-    @FXML
-    protected Button removeSeat;
-    @FXML
-    protected Button addSeat;
-    @FXML
-    protected Button cancel;
-    @FXML
-    protected Button save;
-    @FXML
-    protected Button create;
-    @FXML
-    protected BorderPane borderPane;
-    @FXML
-    protected StackPane floorPlan;
-    @FXML
-    protected Text rowCountText;
-    @FXML
-    protected Text rowText;
-    @FXML
-    protected Text columnCountText;
-    @FXML
-    protected Text columnText;
+    @FXML protected Text floorPlanText;
+    @FXML protected ImageView floorPlanImage;
+    @FXML protected MenuButton floorPlans;
+    @FXML protected MenuButton floorTypes;
+    @FXML protected Button removeRow;
+    @FXML protected Button addRow;
+    @FXML protected Button removeSeat;
+    @FXML protected Button addSeat;
+    @FXML protected Button cancel;
+    @FXML protected Button save;
+    @FXML protected Button create;
+    @FXML protected BorderPane borderPane;
+    @FXML protected StackPane floorPlan;
+    @FXML protected Text rowCountText;
+    @FXML protected Text rowText;
+    @FXML protected Text columnCountText;
+    @FXML protected Text columnText;
 
     private Event event;
 
