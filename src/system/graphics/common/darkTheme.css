@@ -602,3 +602,7 @@
 .floorPlanTextField_highlighted {
     -fx-background-color: #7e2b2c;
 }
+
+.save_button {
+    -fx-background-color: #7e2b2c;
+}

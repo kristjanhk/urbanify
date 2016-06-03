@@ -15,13 +15,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import system.MainHandler;
 import system.data.Event;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
 import system.data.Word;
 
 import java.net.URL;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -47,18 +48,24 @@ public class Controller extends AbstractController {
     @FXML protected Text columnText;
 
     private Event event;
-
+    private boolean titleValidated;
     private int columnCount;
     private double maxY = 0.0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ArrayList<Integer> defaultSize = new ArrayList<>(2);
+        defaultSize.add(5);
+        defaultSize.add(5);
+        this.createNewFloorPlan(defaultSize, true);
         this.setLanguage();
-        this.resetFloor();
         this.setFloorPlanImage();
         this.loadFloorPlans();
-        this.save.setOnMouseEntered(event -> this.setFloorPlanTextFieldHighlight(true));
-        this.save.setOnMouseExited(event -> this.setFloorPlanTextFieldHighlight(false));
+        this.initSaveButton();
+        MainHandler.setValidationFor(this.floorPlanTextField, "^(?=\\s*\\S).*$").addListener(
+                (observable, oldValue, newValue) -> {
+                    this.titleValidated = !newValue;
+                });
         this.floorPlan.widthProperty().addListener((observable, oldValue, newValue) -> {
             this.checkPaneWidthResize(newValue);
         });
@@ -67,6 +74,17 @@ public class Controller extends AbstractController {
         });
     }
 
+    private void initSaveButton() {
+        this.save.setOnMouseEntered(event -> this.setFloorPlanTextFieldHighlight(true));
+        this.save.setOnMouseExited(event -> this.setFloorPlanTextFieldHighlight(false));
+        // FIXME: 3.06.2016 
+        this.save.setOnMouseReleased(event -> this.save.getStyleClass().remove("save_button"));
+        this.save.setOnMousePressed(event -> {
+            if (!this.titleValidated) {
+                this.save.getStyleClass().add("save_button");
+            }
+        });
+    }
 
     // TODO: 23.04.2016 viimane if condition on bugine mõlemal
     // selle asemel get ratio, korrutada oma kõrguse laiusega läbi ja saada teada uus scaletud suurus
@@ -143,34 +161,42 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void addRowAction() {
-        double prevY = getGroupMaxY();
-        this.addNewRow();
-        this.checkPaneHeightResize(this.floorPlan.getHeight());
-        this.correctY(prevY);
-        this.validateButtons();
+        if (this.getFloor().size() != 0) {
+            double prevY = getGroupMaxY();
+            this.addNewRow();
+            this.checkPaneHeightResize(this.floorPlan.getHeight());
+            this.correctY(prevY);
+        } else {
+            this.addNewRow();
+        }
     }
 
     @FXML
     protected void removeRowAction() {
-        double prevY = getGroupMaxY();
-        this.removeFirstRow();
-        this.checkPaneHeightResize(this.floorPlan.getHeight());
-        this.correctY(prevY);
-        this.validateButtons();
+        if (this.getFloor().size() > 1) {
+            double prevY = getGroupMaxY();
+            this.removeFirstRow();
+            this.checkPaneHeightResize(this.floorPlan.getHeight());
+            this.correctY(prevY);
+        } else {
+            this.resetFloor();
+        }
     }
 
     @FXML
     protected void addColumnAction() {
-        this.addNewColumn();
-        this.checkPaneWidthResize(this.floorPlan.getWidth());
-        this.validateButtons();
+        if (this.columnCount != 0) {
+            this.addNewColumn();
+            this.checkPaneWidthResize(this.floorPlan.getWidth());
+        } else {
+            this.addNewColumn();
+        }
     }
 
     @FXML
     protected void removeColumnAction() {
         this.removeLastColumn();
         this.checkPaneWidthResize(this.floorPlan.getWidth());
-        this.validateButtons();
     }
 
     private void addNewRow() {
@@ -226,10 +252,12 @@ public class Controller extends AbstractController {
 
     private void setColumnCountText() {
         this.columnCountText.setText(String.valueOf(this.columnCount));
+        this.validateButtons();
     }
 
     private void setRowCountText() {
         this.rowCountText.setText(String.valueOf(getFloor().size()));
+        this.validateButtons();
     }
 
     private ObservableList<Node> getFloor() {
@@ -268,6 +296,7 @@ public class Controller extends AbstractController {
         this.floorPlan.getChildren().add(new Group());
         StackPane.setMargin(this.getFloorGroup(), new Insets(10));
         this.columnCount = 0;
+        this.maxY = 0.0;
         this.setRowCountText();
         this.setColumnCountText();
         this.validateButtons();
@@ -287,8 +316,7 @@ public class Controller extends AbstractController {
     }
 
     private void setFloorPlanTextFieldHighlight(boolean enable) {
-        System.out.println(this.floorPlanTextField.getStyleClass());
-        if (enable) {
+        if (enable && !this.titleValidated) {
             this.floorPlanTextField.getStyleClass().add("floorPlanTextField_highlighted");
         } else {
             this.floorPlanTextField.getStyleClass().remove("floorPlanTextField_highlighted");
@@ -311,9 +339,7 @@ public class Controller extends AbstractController {
     }
 
     private void loadFloorPlans() {
-        this.getData().getFloorPlans().forEach((name, floorplan) -> {
-            this.createFloorPlanItem(name);
-        });
+        this.getData().getFloorPlans().forEach((name, floorplan) -> this.createFloorPlanItem(name));
     }
 
     private void createFloorPlanItem(String name) {
@@ -324,15 +350,32 @@ public class Controller extends AbstractController {
     }
 
     private void loadFloorPlan(String name) {
-        this.resetFloor();
-        Integer[] dimensions = this.getData().getFloorPlanDimensions(name);
-        for (int row = 0; row < dimensions[0]; row++) {
-            this.addRowAction();
-        }
-        for (int column = 0; column < dimensions[1] - 1; column++) {
-            this.addColumnAction();
-        }
+        this.createNewFloorPlan(this.getData().getFloorPlanDimensions(name), false);
         // TODO: 1.06.2016  set seat types
+        ArrayList<ArrayList<Integer>>  unavailables = this.getData().getFloorPlanUnavailables(name);
+        for (Node group : this.getFloor()) {
+            ((Group) group).getChildren().stream().filter(
+                    seat -> unavailables.contains(((Seat) seat).getCoordinates())).forEach(
+                    seat -> ((Seat) seat).setSeattype(Seat.Seattype.UNAVAILABLE));
+        }
+    }
+
+    private void createNewFloorPlan(ArrayList<Integer> dimensions, boolean init) {
+        this.resetFloor();
+        for (int row = 0; row < dimensions.get(0); row++) {
+            if (init) {
+                this.addNewRow();
+            } else {
+                this.addRowAction();
+            }
+        }
+        for (int column = 0; column < dimensions.get(1) - 1; column++) {
+            if (init) {
+                this.addNewColumn();
+            } else {
+                this.addColumnAction();
+            }
+        }
     }
 
     private void validateButtons() {
@@ -350,11 +393,11 @@ public class Controller extends AbstractController {
     }
 
     public void doSave() {
-        if (this.getFloor().size() * this.columnCount > 0) {
-            HashSet<Integer[]> unavailables = new HashSet<>();
+        if (this.getFloor().size() * this.columnCount > 0 && this.titleValidated) {
+            ArrayList<ArrayList<Integer>> unavailables = new ArrayList<>();
             for (Node group : this.getFloor()) {
                 for (Node seat : ((Group) group).getChildren()) {
-                    Integer[] seatCoordinates = ((Seat) seat).isUnavailable();
+                    ArrayList<Integer> seatCoordinates = ((Seat) seat).isUnavailable();
                     if (seatCoordinates != null) {
                         unavailables.add(seatCoordinates);
                     }
@@ -366,6 +409,7 @@ public class Controller extends AbstractController {
     }
 
     public void doCreate() {
+        // TODO: 3.06.2016 pass floorplan to event
         this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, this.event);
     }
 
@@ -390,4 +434,3 @@ public class Controller extends AbstractController {
         this.create.setText(Word.CREATE.toString());
     }
 }
-

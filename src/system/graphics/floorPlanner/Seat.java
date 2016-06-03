@@ -5,6 +5,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
 
+import java.util.ArrayList;
+
 /**
  * Iste saaliplaanis (ja müügipunktis)
  * On Circle mähisklass
@@ -69,17 +71,25 @@ public class Seat extends Button {
 
     public void setSeattype(Seattype seattype) {
         this.seattype = seattype;
+        this.setGivenStyle(seattype);
     }
 
     public Seattype getSeattype() {
         return this.seattype;
     }
 
-    public Integer[] isUnavailable() {
+    public ArrayList<Integer> isUnavailable() {
         if (this.seattype == Seattype.UNAVAILABLE) {
-            return new Integer[]{this.y, this.x};
+            return this.getCoordinates();
         }
         return null;
+    }
+
+    public ArrayList<Integer> getCoordinates() {
+        ArrayList<Integer> coordinates = new ArrayList<>();
+        coordinates.add(this.y);
+        coordinates.add(this.x);
+        return coordinates;
     }
 
     @FXML

@@ -6,6 +6,7 @@ import system.graphics.common.Scenetype;
 import system.graphics.eventManager.Controller;
 import system.graphics.floorPlanner.FloorPlan;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -54,20 +55,40 @@ public class JsonFile {
         return this.savedFloorPlans;
     }
 
-    public Integer[] getFloorPlanDimensions(String name) {
-        return (Integer[]) this.getFloorPlans().get(name).get(FloorPlan.DIMENSIONS);
+    public ArrayList<Integer> getFloorPlanDimensions(String name) {
+        Object dimensions = this.getFloorPlans().get(name).get(FloorPlan.DIMENSIONS);
+        ArrayList<Integer> floorPlanSize = new ArrayList<>();
+        for (int i = 0; i < ((ArrayList) dimensions).size(); i++) {
+            Object number = ((ArrayList) dimensions).get(i);
+            if (number instanceof Number) {
+                floorPlanSize.add(((Number) number).intValue());
+            }
+        }
+        return floorPlanSize;
     }
 
-    @SuppressWarnings("unchecked")
-    public HashSet<Integer[]> getFloorPlanUnavailables(String name) {
-        return (HashSet<Integer[]>) this.getFloorPlans().get(name).get(FloorPlan.UNAVAILABLE);
+    public ArrayList<ArrayList<Integer>> getFloorPlanUnavailables(String name) {
+        Object seats = this.getFloorPlans().get(name).get(FloorPlan.UNAVAILABLE);
+        ArrayList<ArrayList<Integer>> unavailables = new ArrayList<>();
+        for (Object seatData : (ArrayList) seats) {
+            ArrayList<Integer> data = new ArrayList<>(2);
+            for (Object coordinate : (ArrayList) seatData) {
+                if (coordinate instanceof Number) {
+                    data.add(((Number) coordinate).intValue());
+                }
+            }
+            unavailables.add(data);
+        }
+        return unavailables;
     }
 
-    public void saveFloorPlan(String name, int rows, int columns, HashSet<Integer[]> unavailableSeats) {
+    public void saveFloorPlan(String name, int rows, int columns, ArrayList<ArrayList<Integer>> unavailableSeats) {
         if (this.savedFloorPlans == null) {
             this.savedFloorPlans = new HashMap<>();
         }
-        Integer[] dimensions = new Integer[]{rows, columns};
+        ArrayList<Integer> dimensions = new ArrayList<>(2);
+        dimensions.add(rows);
+        dimensions.add(columns);
         if (!this.savedFloorPlans.containsKey(name)) {
             this.savedFloorPlans.put(name, new HashMap<>());
         } else {
