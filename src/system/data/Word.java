@@ -13,7 +13,7 @@ public enum Word {
     NEWEVENT, OPENEVENT, SETTINGS, ARCHIVE, EVENTCREATOR, POINTOFSALE, NAMEYOUREVENT, PRICE, TICKETYPE, OPENSEATING,
     ASSIGNEDSEATING, NEXT, CANCEL, BACK, CREATE, SAVE, NEWFLOORPLAN, FLOORPLAN, FLOORTYPE, ROWS, SEATSINROW, STAGE,
     SCREEN, EVENTS, SETDATE, SETTIME, MAXNROFSEATS, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, APPLY, OK, PATH,
-    LANGUAGE, THEME, LIGHT, DARK, WARM, SETSEATINGTYPE, SEATINGTYPE, ENGLISH, ESTONIAN, VÕRO, GERMAN,
+    LANGUAGE, THEME, LIGHT, DARK, WARM, SETSEATINGTYPE, SEATINGTYPE, ENGLISH, ESTONIAN, VÕRO, GERMAN, TICKETSTOSELECT,
     RUSSIAN, CHECKOUT, TOTAL, POS, FINISH, COST, QUANTITY, NEW, POPOVERTEXT, SEATSLEFT, UNLIMITED, CURRENCY;
     private static HashMap<Word, String[]> words = createLanguages();
 
@@ -132,6 +132,8 @@ public enum Word {
                 "Unlimitiert", "неограниченный"});
         wordsMap.put(Word.CURRENCY, new String[]{"curr", "ühik", "mõõt",
                 "währ", "вал"}); //vene keel ei lähe äkki üldse kõik kuidagi pmber teha
+        wordsMap.put(Word.TICKETSTOSELECT, new String[]{"tickets to select", "pileteid valida", "TODO",
+                "TODO", "TODO"});
         return wordsMap;
     }
 

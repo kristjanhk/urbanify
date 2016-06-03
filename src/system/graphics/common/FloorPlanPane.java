@@ -56,6 +56,10 @@ public class FloorPlanPane extends VBox {
         this.createNewFloorPlan(defaultSize, true);
     }
 
+    public AbstractController getParentController() {
+        return this.parentController;
+    }
+
     public int getSize() {
         return this.getFloor().size() * this.columnCount;
     }
@@ -112,7 +116,7 @@ public class FloorPlanPane extends VBox {
             floorPlan.put(Property.IMAGETYPE, imageConstant.inLang(Lang.ENGLISH).toUpperCase());
             if (event != null) {
                 event.setFloorPlan(floorPlan);
-                event.setMaxSeats(this.getSize() - unavailables.size());
+                event.setMaxSeats(0);
             } else {
                 this.parentController.getData().saveFloorPlan(name, floorPlan);
             }
@@ -193,7 +197,7 @@ public class FloorPlanPane extends VBox {
                     seat -> unavailables.contains(((Seat) seat).getCoordinates())).forEach(
                     unavailableSeat -> {
                         ((Seat) unavailableSeat).setSeattype(Seat.Seattype.UNAVAILABLE);
-                        if (this.parentController instanceof system.graphics.report.Controller) {
+                        if (this.parentController instanceof system.graphics.pointOfSale.Controller) {
                             ((Seat) unavailableSeat).lock();
                         }
                     });

@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
 import system.graphics.common.FloorPlanPane;
+import system.graphics.pointOfSale.Controller;
 
 import java.util.ArrayList;
 
@@ -80,10 +81,6 @@ public class Seat extends Button {
         this.setGivenStyle(seattype);
     }
 
-    public Seattype getSeattype() {
-        return this.seattype;
-    }
-
     public ArrayList<Integer> isUnavailable() {
         if (this.seattype == Seattype.UNAVAILABLE) {
             return this.getCoordinates();
@@ -101,7 +98,21 @@ public class Seat extends Button {
     @FXML
     protected void handleClick() {
         System.out.println("Clicked: (" + this.x + "," + this.y + ")");
-        this.toggleStyle(this.seattype);
+        if (!this.locked) {
+            if (this.floorPlan.getParentController() instanceof system.graphics.pointOfSale.Controller) {
+                if (this.seattype == Seattype.AVAILABLE) {
+                    ((Controller) this.floorPlan.getParentController()).addSeat();
+                    this.toggleStyle(this.seattype);
+                } else {
+                    if (((Controller) this.floorPlan.getParentController()).removeSeat()) {
+                        this.toggleStyle(this.seattype);
+                    }
+
+                }
+            } else {
+                this.toggleStyle(this.seattype);
+            }
+        }
     }
 
     private void toggleStyle(Seattype seattype) {

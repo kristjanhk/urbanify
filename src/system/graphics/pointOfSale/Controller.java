@@ -43,7 +43,6 @@ public class Controller extends AbstractController {
     private Event event;
     private int seatsLeft;
     private double cost = 0.0;
-    private ImageView qrcode;
     private FloorPlanPane floorPlan;
 
     @Override
@@ -55,7 +54,6 @@ public class Controller extends AbstractController {
         this.name.setText(this.event.getName());
         this.setDatetime();
         this.seatsLeft = this.event.getMaxSeats();
-        this.updateSeatsLeft();
         this.updateTotal();
         this.validateCheckoutButton();
         for (String ticket : this.event.getTickets().keySet()) {
@@ -66,6 +64,7 @@ public class Controller extends AbstractController {
             this.rightContent.getChildren().add(this.floorPlan);
             this.floorPlan.loadFloorPlan(this.event);
         }
+        this.updateSeatsLeft();
     }
 
     @FXML
@@ -88,8 +87,6 @@ public class Controller extends AbstractController {
             }
             this.createQrCode(ticketdata);
             this.checkout.setText(Word.NEW.toString());
-            // TODO: 3.06.2016 remove 
-            System.out.println(this.event);
         } else {
             this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
         }
@@ -124,6 +121,20 @@ public class Controller extends AbstractController {
         this.validateCheckoutButton();
     }
 
+    public void addSeat() {
+        this.seatsLeft++;
+        this.updateSeatsLeft();
+    }
+
+    public boolean removeSeat() {
+        if (this.seatsLeft > 0) {
+            this.seatsLeft--;
+            this.updateSeatsLeft();
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Meetod, mis valmistab stseeni ette enne selle kuvamist
      * Kontrollib, kas vastava üritusega stseen on valmis, vastasel juhul loob uue stseeni antud üritusega
@@ -149,8 +160,13 @@ public class Controller extends AbstractController {
     }
 
     private void updateSeatsLeft() {
-        this.seats.setText(Word.SEATSLEFT.toString() + ": " +
-                (this.seatsLeft == -1 ? Word.UNLIMITED.toString() : this.seatsLeft));
+        if (this.floorPlan != null) {
+            this.seats.setText(Word.TICKETSTOSELECT.toString() + ": " + this.seatsLeft);
+        } else {
+            this.seats.setText(Word.SEATSLEFT.toString() + ": " +
+                    (this.seatsLeft == -1 ? Word.UNLIMITED.toString() : this.seatsLeft));
+        }
+
     }
 
     private void updateTotal() {
@@ -158,8 +174,11 @@ public class Controller extends AbstractController {
     }
 
     protected void validateCheckoutButton() {
-        System.out.println(this.cost);
-        this.checkout.setDisable(this.cost == 0.0);
+        boolean valid = !(this.cost == 0.0);
+        if (this.seatsLeft > 0) {
+            valid = false;
+        }
+        this.checkout.setDisable(!valid);
     }
 
     /**
@@ -171,19 +190,19 @@ public class Controller extends AbstractController {
      */
     private void createQrCode(ArrayList<String> ticketdata) {
         this.rightContent.getChildren().clear();
-        this.qrcode = new ImageView();
-        this.qrcode.setFitWidth(350.0);
-        this.qrcode.setFitHeight(350.0);
-        this.qrcode.setPickOnBounds(true);
-        this.qrcode.setPreserveRatio(true);
+        ImageView qrcode = new ImageView();
+        qrcode.setFitWidth(350.0);
+        qrcode.setFitHeight(350.0);
+        qrcode.setPickOnBounds(true);
+        qrcode.setPreserveRatio(true);
         StringBuilder tekst = new StringBuilder(this.event.getName() + "\n" + this.event.getFormattedDate() + " " +
                 this.event.getTime() + "\n");
         ticketdata.forEach(tekst::append);
         tekst.append(this.totalcost.getText()); // FIXME: 11.05.2016 currency symbol bugine?
         try {
             BitMatrix bytematrix = new QRCodeWriter().encode(tekst.toString(),
-                    BarcodeFormat.QR_CODE, (int) this.qrcode.getFitWidth(), (int) this.qrcode.getFitHeight());
-            Canvas canvas = new Canvas((int) this.qrcode.getFitWidth(), (int) this.qrcode.getFitHeight());
+                    BarcodeFormat.QR_CODE, (int) qrcode.getFitWidth(), (int) qrcode.getFitHeight());
+            Canvas canvas = new Canvas((int) qrcode.getFitWidth(), (int) qrcode.getFitHeight());
             GraphicsContext gc = canvas.getGraphicsContext2D();
             if (Csstype.getActiveTheme().equals(Csstype.DARK)) {
                 gc.setFill(Color.valueOf("262626"));
@@ -201,8 +220,8 @@ public class Controller extends AbstractController {
                     }
                 }
             }
-            this.qrcode.setImage(canvas.snapshot(null, null));
-            this.rightContent.getChildren().add(this.qrcode);
+            qrcode.setImage(canvas.snapshot(null, null));
+            this.rightContent.getChildren().add(qrcode);
         } catch (WriterException ignored) {}
     }
 

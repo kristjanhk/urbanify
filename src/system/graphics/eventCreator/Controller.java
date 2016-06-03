@@ -170,7 +170,7 @@ public class Controller extends AbstractController {
                     this.timeTextValidated = !newValue;
                     this.checkNextButtonValidation();
                 });
-        MainHandler.setValidationFor(this.maxSeats, "^$|^\\d+$").addListener(
+        MainHandler.setValidationFor(this.maxSeats, "^$|^[1-9]\\d*$").addListener(
                 (observable, oldValue, newValue) -> {
                     this.maxSeatsValidated = !newValue;
                     this.checkNextButtonValidation();

@@ -19,7 +19,7 @@ public class LimitedText extends Text {
     public void setOriginalText(String limitedtext) {
         this.originalText = limitedtext;
         if (limitedtext.length() > this.lengthLimit) {
-            super.setText(limitedtext.substring(0, lengthLimit) + "...");
+            super.setText(limitedtext.substring(0, this.lengthLimit) + "...");
             System.out.println("limited text set");
         } else {
             super.setText(limitedtext);
