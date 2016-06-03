@@ -19,6 +19,7 @@ public class Seat extends Button {
     private FloorPlanPane floorPlan;
     private int x;
     private int y;
+    private boolean locked = false;
 
     private Seat(FloorPlanPane floorPlan, Seattype seattype) {
         super();
@@ -68,6 +69,10 @@ public class Seat extends Button {
 
     private void setCenterY(double location) {
         this.setLayoutY(location - this.getHeight() / 2);
+    }
+
+    public void lock() {
+        this.locked = true;
     }
 
     public void setSeattype(Seattype seattype) {

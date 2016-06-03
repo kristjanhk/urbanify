@@ -5,10 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import org.controlsfx.control.PopOver;
 import system.MainHandler;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
@@ -17,8 +15,6 @@ import system.data.Word;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static javafx.geometry.Pos.CENTER;
 
 /**
  * Ürituse looja controller
@@ -42,19 +38,19 @@ public class Controller extends AbstractController {
     @FXML protected Text currencyLabel;
     @FXML protected Text ticketLabel;
 
-    private Text popoverText;
+    //private Text popoverText;
     private String seatingType = "";
-    private PopOver maxSeatsPopOver;
+    //private PopOver maxSeatsPopOver;
     private Event event = new Event();
     private boolean eventTextValidated = false;
     private boolean calendarValidated = false;
     private boolean timeTextValidated = false;
     private boolean seatingValidated = false;
-    private boolean maxSeatsValidated = false;
+    private boolean maxSeatsValidated = true;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.createMaxSeatsHelper();
+        //this.createMaxSeatsHelper();
         this.setLanguage();
         this.addValidation();
         this.addTicket();
@@ -112,8 +108,8 @@ public class Controller extends AbstractController {
         this.seating.getItems().get(0).setText(Word.ASSIGNEDSEATING.toString());
         this.seating.getItems().get(1).setText(Word.OPENSEATING.toString());
         this.seatingLabel.setText(Word.SETSEATINGTYPE.toString());
-        this.popoverText.setText(Word.POPOVERTEXT.toString());
-        this.maxSeats.setPromptText(Word.MAXNROFSEATS.toString());
+        //this.popoverText.setText(Word.POPOVERTEXT.toString());
+        this.maxSeats.setPromptText(Word.UNLIMITED.toString());
         this.maxSeatsLabel.setText(Word.SETMAXNROFSEATS.toString());
         this.cancel.setText(Word.CANCEL.toString());
         this.ticketVBox.getChildren().stream()
@@ -142,7 +138,7 @@ public class Controller extends AbstractController {
         }
     }
 
-    private void createMaxSeatsHelper() {
+    /*private void createMaxSeatsHelper() {
         this.popoverText = new Text();
         this.popoverText.getStyleClass().add("popOver");
         HBox box = new HBox(this.popoverText);
@@ -156,7 +152,7 @@ public class Controller extends AbstractController {
         this.maxSeatsPopOver.setArrowSize(0);
         this.maxSeats.setOnMouseEntered(event -> this.maxSeatsPopOver.show(this.maxSeats));
         this.maxSeats.setOnMouseExited(event -> this.maxSeatsPopOver.hide());
-    }
+    }*/
 
     private void addValidation() {
         MainHandler.setValidationFor(this.eventText, "^(?=\\s*\\S).*$").addListener(
@@ -174,7 +170,7 @@ public class Controller extends AbstractController {
                     this.timeTextValidated = !newValue;
                     this.checkNextButtonValidation();
                 });
-        MainHandler.setValidationFor(this.maxSeats, "^\\d+$").addListener(
+        MainHandler.setValidationFor(this.maxSeats, "^$|^\\d+$").addListener(
                 (observable, oldValue, newValue) -> {
                     this.maxSeatsValidated = !newValue;
                     this.checkNextButtonValidation();

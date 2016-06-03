@@ -92,7 +92,7 @@ public class FloorPlanPane extends VBox {
     }
 
     public void save(String name, String imageName, Event event) {
-        Word imageConstant = Word.toEnum(imageName);
+        Word imageConstant = Word.toEnum(imageName.toLowerCase());
         if (imageConstant != null) {
             HashMap<Property, Object> floorPlan = new HashMap<>(3);
             ArrayList<Integer> dimensions = new ArrayList<>(2);
@@ -112,6 +112,7 @@ public class FloorPlanPane extends VBox {
             floorPlan.put(Property.IMAGETYPE, imageConstant.inLang(Lang.ENGLISH).toUpperCase());
             if (event != null) {
                 event.setFloorPlan(floorPlan);
+                event.setMaxSeats(this.getSize() - unavailables.size());
             } else {
                 this.parentController.getData().saveFloorPlan(name, floorPlan);
             }
@@ -179,6 +180,10 @@ public class FloorPlanPane extends VBox {
         return Imagetype.valueOf((String) imagetype);
     }
 
+    public String getSavedFloorPlanImageTypeString(Event event) {
+        return (String) event.getFloorPlan().get(Property.IMAGETYPE);
+    }
+
     public void loadFloorPlan(String name, Event event) {
         this.createNewFloorPlan(this.getSavedFloorPlanDimensions(name, event), false);
         this.setFloorPlanImage(this.getSavedFloorPlanImageType(name, event));
@@ -186,7 +191,12 @@ public class FloorPlanPane extends VBox {
         for (Node group : this.getFloor()) {
             ((Group) group).getChildren().stream().filter(
                     seat -> unavailables.contains(((Seat) seat).getCoordinates())).forEach(
-                    seat -> ((Seat) seat).setSeattype(Seat.Seattype.UNAVAILABLE));
+                    unavailableSeat -> {
+                        ((Seat) unavailableSeat).setSeattype(Seat.Seattype.UNAVAILABLE);
+                        if (this.parentController instanceof system.graphics.report.Controller) {
+                            ((Seat) unavailableSeat).lock();
+                        }
+                    });
         }
     }
 

@@ -83,8 +83,12 @@ public class Controller extends AbstractController {
                 ((Ticket) node).save();
                 ((Ticket) node).disableButtons();
             });
+            if (this.floorPlan != null) {
+                this.floorPlan.save(null, this.floorPlan.getSavedFloorPlanImageTypeString(this.event), this.event);
+            }
             this.createQrCode(ticketdata);
             this.checkout.setText(Word.NEW.toString());
+            // TODO: 3.06.2016 remove 
             System.out.println(this.event);
         } else {
             this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
