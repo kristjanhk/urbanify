@@ -135,6 +135,15 @@ public enum Word {
         return wordsMap;
     }
 
+    public static Word toEnum(String translated) {
+        for (Word constant : values()) {
+            if (constant.toString().equals(translated)) {
+                return constant;
+            }
+        }
+        return null;
+    }
+
     public String inLang(Lang lang) {
         return words.get(this)[lang.getIndex()];
     }

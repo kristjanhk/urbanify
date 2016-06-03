@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
+import system.graphics.common.FloorPlanPane;
 
 import java.util.ArrayList;
 
@@ -15,29 +16,29 @@ import java.util.ArrayList;
 public class Seat extends Button {
     public enum Seattype {AVAILABLE, UNAVAILABLE}
     private Seattype seattype;
-    private Controller parentController;
+    private FloorPlanPane floorPlan;
     private int x;
     private int y;
 
-    private Seat(Controller parentController, Seattype seattype) {
+    private Seat(FloorPlanPane floorPlan, Seattype seattype) {
         super();
-        this.parentController = parentController;
+        this.floorPlan = floorPlan;
         double radius = 25.0;
         this.setShape(new Circle(radius));
         this.setMinSize(radius * 2, radius * 2);
         this.setMaxSize(radius * 2, radius * 2);
         this.setGivenStyle(seattype);
         this.setOnMouseClicked(event -> this.handleClick());
-        this.setOnMouseEntered(event -> this.parentController.setSeatsHovering(this, true));
-        this.setOnMouseExited(event -> this.parentController.setSeatsHovering(this, false));
+        this.setOnMouseEntered(event -> this.floorPlan.setSeatsHovering(this, true));
+        this.setOnMouseExited(event -> this.floorPlan.setSeatsHovering(this, false));
     }
 
-    public Seat(Controller parentController, int row, int column) {
-        this(parentController, Seattype.AVAILABLE,  row, column);
+    public Seat(FloorPlanPane floorPlan, int row, int column) {
+        this(floorPlan, Seattype.AVAILABLE,  row, column);
     }
 
-    public Seat(Controller parentController, Seattype seattype, int row, int column) {
-        this(parentController, seattype);
+    public Seat(FloorPlanPane floorPlan, Seattype seattype, int row, int column) {
+        this(floorPlan, seattype);
         this.x = column;
         this.y = row;
         if (column == 0 || row == 0) {

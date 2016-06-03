@@ -9,6 +9,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -17,6 +18,7 @@ import system.data.Lang;
 import system.data.Word;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Csstype;
+import system.graphics.common.FloorPlanPane;
 import system.graphics.common.Scenetype;
 
 import java.net.URL;
@@ -32,7 +34,7 @@ public class Controller extends AbstractController {
     @FXML protected Text datetime;
     @FXML protected Text seats;
     @FXML protected VBox eventsVBox;
-    @FXML protected ImageView qrcode;
+    @FXML protected HBox rightContent;
     @FXML protected Text total;
     @FXML protected Text totalcost;
     @FXML protected Button back;
@@ -41,6 +43,8 @@ public class Controller extends AbstractController {
     private Event event;
     private int seatsLeft;
     private double cost = 0.0;
+    private ImageView qrcode;
+    private FloorPlanPane floorPlan;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,6 +60,11 @@ public class Controller extends AbstractController {
         this.validateCheckoutButton();
         for (String ticket : this.event.getTickets().keySet()) {
             this.eventsVBox.getChildren().add(new Ticket(this, ticket, this.event));
+        }
+        if (this.event.getFloorPlan() != null) {
+            this.floorPlan = new FloorPlanPane(this);
+            this.rightContent.getChildren().add(this.floorPlan);
+            this.floorPlan.loadFloorPlan(this.event);
         }
     }
 
@@ -157,6 +166,12 @@ public class Controller extends AbstractController {
      * @param ticketdata list piletite andmetest, mis on juba vajalikul kujul
      */
     private void createQrCode(ArrayList<String> ticketdata) {
+        this.rightContent.getChildren().clear();
+        this.qrcode = new ImageView();
+        this.qrcode.setFitWidth(350.0);
+        this.qrcode.setFitHeight(350.0);
+        this.qrcode.setPickOnBounds(true);
+        this.qrcode.setPreserveRatio(true);
         StringBuilder tekst = new StringBuilder(this.event.getName() + "\n" + this.event.getFormattedDate() + " " +
                 this.event.getTime() + "\n");
         ticketdata.forEach(tekst::append);
@@ -183,6 +198,7 @@ public class Controller extends AbstractController {
                 }
             }
             this.qrcode.setImage(canvas.snapshot(null, null));
+            this.rightContent.getChildren().add(this.qrcode);
         } catch (WriterException ignored) {}
     }
 

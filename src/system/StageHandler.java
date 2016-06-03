@@ -34,7 +34,7 @@ public class StageHandler {
         this.stage.setWidth(1220);
         this.stage.setMinHeight(720);
         this.stage.setMinWidth(1180);
-        this.stage.setMaximized(true);
+        //this.stage.setMaximized(true);
         this.stage.setOnCloseRequest(event -> MainHandler.getFileHandler().saveData());
         this.initScenes();
         this.switchSceneTo(Scenetype.MAINMENU);

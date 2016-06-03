@@ -77,11 +77,7 @@
                             pannable="true" prefHeight="9999.0" prefWidth="750.0">
                     <VBox fx:id="eventsVBox" styleClass="background"/>
                 </ScrollPane>
-                <HBox alignment="CENTER" minHeight="0.0" minWidth="0.0" HBox.hgrow="ALWAYS">
-                    <ImageView fx:id="qrcode" fitHeight="350.0" fitWidth="350.0" pickOnBounds="true"
-                               preserveRatio="true">
-                    </ImageView>
-                </HBox>
+                <HBox fx:id="rightContent" alignment="CENTER" minHeight="0.0" minWidth="0.0" HBox.hgrow="ALWAYS"/>
             </HBox>
             <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0"
                     prefWidth="40.0"/>

@@ -2,6 +2,7 @@ package system.data;
 
 import javafx.scene.Node;
 import system.MainHandler;
+import system.graphics.common.FloorPlanPane;
 import system.graphics.common.Scenetype;
 import system.graphics.eventCreator.Ticket;
 import system.graphics.eventManager.Controller;
@@ -26,6 +27,7 @@ public class Event {
     private String seatingType;
     private int maxSeats;
     private boolean active = false;
+    private HashMap<FloorPlanPane.Property, Object> floorPlan;
 
     public void readyCreator(String name, List<Node> tickets, LocalDate date, String time,
                              String seatingType, String maxSeats) {
@@ -59,6 +61,7 @@ public class Event {
         this.seatingType = null;
         this.maxSeats = -1;
         this.active = false;
+        this.floorPlan = null;
     }
 
     public String getName() {
@@ -102,6 +105,14 @@ public class Event {
         return this.active;
     }
 
+    public HashMap<FloorPlanPane.Property, Object> getFloorPlan() {
+        return floorPlan;
+    }
+
+    public void setFloorPlan(HashMap<FloorPlanPane.Property, Object> floorPlan) {
+        this.floorPlan = floorPlan;
+    }
+
     public void sendToArchive() {
         this.active = false;
         ((Controller) MainHandler.getStageHandler().
@@ -117,8 +128,9 @@ public class Event {
                 ", date=" + date +
                 ", time='" + time + '\'' +
                 ", seatingType='" + seatingType + '\'' +
-                ", maxSeats='" + maxSeats + '\'' +
+                ", maxSeats=" + maxSeats +
                 ", active=" + active +
+                ", floorPlan=" + floorPlan +
                 '}';
     }
 }
