@@ -2,121 +2,75 @@
 
 <?xml-stylesheet type="text/css" href="lightTheme.css"?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.HBox?>
-
-<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="system.graphics.mainMenu.Controller">
+<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.mainMenu.Controller">
     <top>
-        <HBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset"
-              alignment="TOP_RIGHT" prefHeight="28.0" prefWidth="100.0">
-            <Button onMouseClicked="#handleStageMinimize" mnemonicParsing="false" text="→" textAlignment="CENTER"
-                    styleClass="barButton">
+        <HBox alignment="TOP_RIGHT" onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="28.0" prefWidth="100.0">
+            <Button mnemonicParsing="false" onMouseClicked="#handleStageMinimize" styleClass="barButton" text="→" textAlignment="CENTER">
                 <HBox.margin>
-                    <Insets right="1.0" top="1.0"/>
+                    <Insets right="1.0" top="1.0" />
                 </HBox.margin>
             </Button>
-            <Button fx:id="maximizeButton" onMouseClicked="#handleStageMaximize" mnemonicParsing="false"
-                    textAlignment="CENTER" styleClass="barButton">
+            <Button fx:id="maximizeButton" mnemonicParsing="false" onMouseClicked="#handleStageMaximize" styleClass="barButton" textAlignment="CENTER">
                 <HBox.margin>
-                    <Insets right="1.0" top="1.0"/>
+                    <Insets right="1.0" top="1.0" />
                 </HBox.margin>
             </Button>
-            <Button onMouseClicked="#handleStageClose" mnemonicParsing="false" text="←" styleClass="barButton">
+            <Button mnemonicParsing="false" onMouseClicked="#handleStageClose" styleClass="barButton" text="←">
                 <HBox.margin>
-                    <Insets right="1.0" top="1.0"/>
+                    <Insets right="1.0" top="1.0" />
                 </HBox.margin>
             </Button>
         </HBox>
     </top>
     <center>
-        <GridPane prefHeight="840.0" prefWidth="1543.0" BorderPane.alignment="BOTTOM_CENTER">
+        <GridPane alignment="CENTER" prefHeight="840.0" prefWidth="1543.0" BorderPane.alignment="BOTTOM_CENTER">
             <columnConstraints>
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="90.0" minWidth="200.0" prefWidth="90.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="162.0" minHeight="162.0" prefHeight="162.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="162.0" minHeight="162.0" prefHeight="162.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
             </rowConstraints>
-            <VBox alignment="BOTTOM_RIGHT" prefHeight="200.0" prefWidth="100.0">
-                <GridPane.margin>
-                    <Insets right="60.0"/>
-                </GridPane.margin>
-                <ImageView fx:id="newEventImage" onMouseClicked="#openNewEvent" styleClass="newEvent">
-                    <VBox.margin>
-                        <Insets right="3.5"/>
-                    </VBox.margin>
-                </ImageView>
-                <Text fx:id="newEventText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35"
-                      textAlignment="CENTER" wrappingWidth="140.0">
-                    <VBox.margin>
-                        <Insets bottom="25.0" top="15.0"/>
-                    </VBox.margin>
-                </Text>
-            </VBox>
-            <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
-                <GridPane.margin>
-                    <Insets left="60.0"/>
-                </GridPane.margin>
-                <ImageView fx:id="eventsImage" onMouseClicked="#openEvents" styleClass="openEvent">
-                    <VBox.margin>
-                        <Insets left="9.5"/>
-                    </VBox.margin>
-                </ImageView>
-                <Text fx:id="eventsText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35"
-                      textAlignment="CENTER" wrappingWidth="152.0">
-                    <VBox.margin>
-                        <Insets bottom="25.0" top="15.0"/>
-                    </VBox.margin>
-                </Text>
-            </VBox>
-            <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-                <GridPane.margin>
-                    <Insets right="60.0"/>
-                </GridPane.margin>
-                <ImageView fx:id="settingsImage" onMouseClicked="#openSettings" styleClass="settings"/>
-                <Text fx:id="settingsText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35"
-                             textAlignment="CENTER" wrappingWidth="105.0">
-                    <VBox.margin>
-                        <Insets right="17.5" top="15.0"/>
-                    </VBox.margin>
-                </Text>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                <GridPane.margin>
-                    <Insets left="60.0"/>
-                </GridPane.margin>
-                <ImageView fx:id="archiveImage" onMouseClicked="#openArchive" styleClass="archive">
-                    <VBox.margin>
-                        <Insets/>
-                    </VBox.margin>
-                </ImageView>
-                <Text fx:id="archiveText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35"
-                      textAlignment="CENTER" wrappingWidth="100.0">
-                    <VBox.margin>
-                        <Insets left="16.5" top="15.0"/>
-                    </VBox.margin>
-                </Text>
-
-                <!-- todo implement
-                <LimitedText lengthLimit="6" originalText="megapikktekst" strokeType="OUTSIDE"
-                             strokeWidth="0.0" styleClass="text35" textAlignment="CENTER">
-                    <VBox.margin>
-                        <Insets left="16.5" top="15.0"/>
-                    </VBox.margin>
-                </LimitedText>
-                -->
-
-            </VBox>
+             <ImageView fx:id="archiveImage" onMouseClicked="#openArchive" styleClass="archive" GridPane.columnIndex="3"
+                        GridPane.rowIndex="4">
+             </ImageView>
+             <Text fx:id="archiveText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" textAlignment="CENTER"
+                   wrappingWidth="267.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
+             </Text>
+             <ImageView fx:id="newEventImage" onMouseClicked="#openNewEvent" styleClass="newEvent" GridPane.columnIndex="1">
+             </ImageView>
+             <Text fx:id="newEventText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" textAlignment="CENTER"
+                   wrappingWidth="366.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+             </Text>
+             <ImageView fx:id="eventsImage" onMouseClicked="#openEvents" styleClass="openEvent" GridPane.columnIndex="3">
+             </ImageView>
+             <ImageView fx:id="settingsImage" onMouseClicked="#openSettings" styleClass="settings" GridPane.columnIndex="1"
+                        GridPane.rowIndex="4">
+         </ImageView>
+             <Text fx:id="eventsText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" textAlignment="CENTER"
+                   wrappingWidth="264.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+             </Text>
+             <Text fx:id="settingsText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" textAlignment="CENTER"
+                   wrappingWidth="237.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+             </Text>
         </GridPane>
     </center>
 </BorderPane>
