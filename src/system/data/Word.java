@@ -10,19 +10,17 @@ import java.util.HashMap;
  * Keele määrab ära Lang klassi activeLanguage
  */
 public enum Word {
-    NEWEVENT, OPENEVENT, SETTINGS, ARCHIVE, EVENTCREATOR, POINTOFSALE, NAMEYOUREVENT, PRICE, TICKETYPE, OPENSEATING,
-    ASSIGNEDSEATING, NEXT, CANCEL, BACK, CREATE, SAVE, NEWFLOORPLAN, FLOORPLAN, FLOORTYPE, ROWS, SEATSINROW, STAGE,
-    SCREEN, EVENTS, SETDATE, SETTIME, MAXNROFSEATS, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, APPLY, OK, PATH,
-    LANGUAGE, THEME, LIGHT, DARK, WARM, SETSEATINGTYPE, SEATINGTYPE, ENGLISH, ESTONIAN, VÕRO, GERMAN, TICKETSTOSELECT,
-    RUSSIAN, CHECKOUT, TOTAL, POS, FINISH, COST, QUANTITY, NEW, POPOVERTEXT, SEATSLEFT, UNLIMITED, CURRENCY;
+    NEWEVENT, SETTINGS, ARCHIVE, EVENTCREATOR, POINTOFSALE, NAMEYOUREVENT, PRICE, TICKETYPE, OPENSEATING,
+    ASSIGNEDSEATING, NEXT, CANCEL, BACK, CREATE, SAVE, NEWFLOORPLAN, FLOORPLAN, ROWS, SEATSINROW, STAGE, SCREEN,
+    EVENTS, SETDATE, SETTIME, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, PATH, LIGHT, DARK, WARM, SETSEATINGTYPE,
+    SEATINGTYPE, TICKETSTOSELECT, CHECKOUT, TOTAL, POS, FINISH, COST, QUANTITY, NEW, SEATSLEFT, UNLIMITED, CURRENCY,
+    ENGLISH, ESTONIAN, VÕRO, GERMAN, RUSSIAN;
     private static HashMap<Word, String[]> words = createLanguages();
 
     private static HashMap<Word, String[]> createLanguages() {
         HashMap<Word, String[]> wordsMap = new HashMap<>();
         wordsMap.put(Word.NEWEVENT, new String[]{"new event", "uus üritus", "vahtsõnõ üritus",
                 "neue Ereignis", "новое мероприятие"});
-        wordsMap.put(Word.OPENEVENT, new String[]{"open event", "ava üritused", "valla ettevõtminõsõ",
-                "öffne Ereignis", "открытое мероприятие"});
         wordsMap.put(Word.SETTINGS, new String[]{"settings", "seaded", "säädistüs",
                 "Einstellungen", "настройки"});
         wordsMap.put(Word.ARCHIVE, new String[]{"archive", "arhiiv", "kiräkogo",
@@ -45,8 +43,6 @@ public enum Word {
                 "Datum setzen", "установить дату"});
         wordsMap.put(Word.SETTIME, new String[]{"set time", "määra aeg", "määrä aig",
                 "Zeit setzen", "установить время"});
-        wordsMap.put(Word.MAXNROFSEATS, new String[]{"max nr of seats", "suurim arv kohti",
-                "kõgõ suurõmb nummõr kotosõid", "maximale Anzahl der Plätze", "максимальное количество мест"});
         wordsMap.put(Word.SETMAXNROFSEATS, new String[]{"set max nr of seats", "määra suurim arv kohti",
                 "määrä kõgõ suurõmb nummõr kotosõid", "setzen maximale Anzahl der Plätze",
                 "установить максимальное количество мест"});
@@ -64,8 +60,6 @@ public enum Word {
                 "neue Saalplan", "новый план этажа"});
         wordsMap.put(Word.FLOORPLAN, new String[]{"plan", "plaan", "plaan",
                 "Plan", "план"});
-        wordsMap.put(Word.FLOORTYPE, new String[]{"type", "tüüp", "sort",
-                "Typ", "тип"});
         wordsMap.put(Word.ROWS, new String[]{"rows", "read", "riaq",
                 "Reihen", "строки"});
         wordsMap.put(Word.SEATSINROW, new String[]{"columns", "veerge", "tulpi",
@@ -80,16 +74,8 @@ public enum Word {
                 "tt.mm.jjjj", "дд.мм.гггг"});
         wordsMap.put(Word.TIMEFORMAT, new String[]{"hh:mm", "hh:mm", "hh:mm",
                 "hh:mm", "чч:мм"});
-        wordsMap.put(Word.APPLY, new String[]{"apply", "rakenda", "rakenda",
-                "anwenden", "применять"});
-        wordsMap.put(Word.OK, new String[]{"ok", "ok", "häste",
-                "ok", "ок"});
         wordsMap.put(Word.PATH, new String[]{"location path", "kausta asukoht", "kausta paik",
                 "Ordnerpfad", "путь к папке"});
-        wordsMap.put(Word.LANGUAGE, new String[]{"language", "keel", "kill",
-                "Sprache", "язык"});
-        wordsMap.put(Word.THEME, new String[]{"theme", "kujundus", "kujondus",
-                "Thema", "тема"});
         wordsMap.put(Word.LIGHT, new String[]{"light", "hele", "helle",
                 "hell", "легкий"}); //vene keel pole vist päris õige
         wordsMap.put(Word.DARK, new String[]{"dark", "tume", "tummõ",
@@ -124,8 +110,6 @@ public enum Word {
                 "Menge", "количество"});
         wordsMap.put(Word.NEW, new String[]{"new", "uus", "vahtsõnõ",
                 "neue", "новый"});
-        wordsMap.put(Word.POPOVERTEXT, new String[]{"set 0 for unlimited", "vali 0 kui kohtade arv ei ole määratud",
-                "vali 0 kui kotosõ arv olõi määrätü", "TODO", "пиши 0 что указать безграничность"});
         wordsMap.put(Word.SEATSLEFT, new String[]{"seats left", "istmekohti alles", "kotosõid alale",
                 "freie Plätze", "мест осталось"});
         wordsMap.put(Word.UNLIMITED, new String[]{"unlimited", "lõpmatu", "ilmotsaldaq",

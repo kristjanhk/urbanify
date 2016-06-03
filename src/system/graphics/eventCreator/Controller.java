@@ -38,9 +38,7 @@ public class Controller extends AbstractController {
     @FXML protected Text currencyLabel;
     @FXML protected Text ticketLabel;
 
-    //private Text popoverText;
     private String seatingType = "";
-    //private PopOver maxSeatsPopOver;
     private Event event = new Event();
     private boolean eventTextValidated = false;
     private boolean calendarValidated = false;
@@ -50,7 +48,6 @@ public class Controller extends AbstractController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //this.createMaxSeatsHelper();
         this.setLanguage();
         this.addValidation();
         this.addTicket();
@@ -108,7 +105,6 @@ public class Controller extends AbstractController {
         this.seating.getItems().get(0).setText(Word.ASSIGNEDSEATING.toString());
         this.seating.getItems().get(1).setText(Word.OPENSEATING.toString());
         this.seatingLabel.setText(Word.SETSEATINGTYPE.toString());
-        //this.popoverText.setText(Word.POPOVERTEXT.toString());
         this.maxSeats.setPromptText(Word.UNLIMITED.toString());
         this.maxSeatsLabel.setText(Word.SETMAXNROFSEATS.toString());
         this.cancel.setText(Word.CANCEL.toString());
@@ -137,22 +133,6 @@ public class Controller extends AbstractController {
             this.checkNextButtonValidation();
         }
     }
-
-    /*private void createMaxSeatsHelper() {
-        this.popoverText = new Text();
-        this.popoverText.getStyleClass().add("popOver");
-        HBox box = new HBox(this.popoverText);
-        box.setPrefHeight(60);
-        box.setMinHeight(60);
-        box.setAlignment(CENTER);
-        box.getStyleClass().add("popOver");
-        this.maxSeatsPopOver = new PopOver(box);
-        maxSeatsPopOver.setCornerRadius(0);
-        this.maxSeatsPopOver.setArrowLocation(PopOver.ArrowLocation.RIGHT_CENTER);
-        this.maxSeatsPopOver.setArrowSize(0);
-        this.maxSeats.setOnMouseEntered(event -> this.maxSeatsPopOver.show(this.maxSeats));
-        this.maxSeats.setOnMouseExited(event -> this.maxSeatsPopOver.hide());
-    }*/
 
     private void addValidation() {
         MainHandler.setValidationFor(this.eventText, "^(?=\\s*\\S).*$").addListener(
