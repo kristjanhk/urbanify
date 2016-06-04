@@ -91,15 +91,15 @@ public class MainHandler extends Application {
 
     public static ImageView createQrCode(String text) {
         ImageView qrcode = new ImageView();
-        qrcode.setFitWidth(350.0);
-        qrcode.setFitHeight(350.0);
+        qrcode.setFitWidth(320.0);
+        qrcode.setFitHeight(320.0);
         qrcode.setPickOnBounds(true);
         qrcode.setPreserveRatio(true);
-        int cropsize = 50;
+        int cropsize = 44;
         try {
             BitMatrix bytematrix = new QRCodeWriter().encode(text, BarcodeFormat.QR_CODE,
                     (int) qrcode.getFitWidth(), (int) qrcode.getFitHeight());
-            Canvas canvas = new Canvas((int) qrcode.getFitWidth(), (int) qrcode.getFitHeight());
+            Canvas canvas = new Canvas((int) qrcode.getFitWidth() - cropsize, (int) qrcode.getFitHeight() - cropsize);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             if (Csstype.getActiveTheme().equals(Csstype.DARK)) {
                 gc.setFill(Color.valueOf("262626"));
