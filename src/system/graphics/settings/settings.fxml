@@ -116,9 +116,12 @@
                   <Insets right="40.0" />
                </HBox.margin>
                 </VBox>
-            <HBox maxHeight="350.0" maxWidth="350.0" prefHeight="350.0" prefWidth="350.0" alignment="TOP_LEFT">
+            <HBox alignment="TOP_LEFT" maxHeight="350.0" maxWidth="350.0" prefHeight="350.0" prefWidth="350.0">
                <children>
-                  <Button fx:id="qrButton" mnemonicParsing="false" onMouseClicked="#handleQrCodeGenerate" styleClass="qrGenButton" />
+                  <Button fx:id="qrButton" mnemonicParsing="false" onMouseClicked="#handleQrCodeGenerate" styleClass="qrGenButton">
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin></Button>
                   <Pane fx:id="qrContent" maxHeight="350.0" maxWidth="350.0" minHeight="350.0" minWidth="350.0" prefHeight="350.0" prefWidth="350.0" />
                </children>
             </HBox>
