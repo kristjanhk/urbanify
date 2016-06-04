@@ -96,7 +96,7 @@ public class FloorPlanPane extends VBox {
     }
 
     public void save(String name, String imageName, Event event) {
-        Word imageConstant = Word.toEnum(imageName.toLowerCase());
+        Word imageConstant = Word.toEnum(imageName.toLowerCase(), Lang.ENGLISH);
         if (imageConstant != null) {
             HashMap<Property, Object> floorPlan = new HashMap<>(3);
             ArrayList<Integer> dimensions = new ArrayList<>(2);

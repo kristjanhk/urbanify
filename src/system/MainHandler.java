@@ -11,6 +11,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Control;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.controlsfx.validation.Severity;
@@ -94,6 +95,7 @@ public class MainHandler extends Application {
         qrcode.setFitHeight(350.0);
         qrcode.setPickOnBounds(true);
         qrcode.setPreserveRatio(true);
+        int cropsize = 50;
         try {
             BitMatrix bytematrix = new QRCodeWriter().encode(text, BarcodeFormat.QR_CODE,
                     (int) qrcode.getFitWidth(), (int) qrcode.getFitHeight());
@@ -115,10 +117,12 @@ public class MainHandler extends Application {
                     }
                 }
             }
-            qrcode.setImage(canvas.snapshot(null, null));
+            qrcode.setImage(new WritableImage(canvas.snapshot(null, null).getPixelReader(), cropsize, cropsize,
+                    (int) canvas.getWidth() - cropsize, (int) canvas.getHeight() - cropsize));
             return qrcode;
-        } catch (WriterException ignored) {}
-        return null;
+        } catch (WriterException ignored) {
+            return null;
+        }
     }
 }
 

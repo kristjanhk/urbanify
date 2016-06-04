@@ -12,19 +12,21 @@ import java.util.Locale;
  * Iga isend määrab ära Word klassis isendite sõna, samuti määra ära lokaali (kalendri jaoks)
  */
 public enum Lang {
-    ENGLISH(0, Locale.UK),
-    ESTONIAN(1, new Locale.Builder().setLanguage("et").setScript("Latn").setRegion("EE").build()),
-    VÕRO(2, new Locale.Builder().setLanguage("et").setScript("Latn").setRegion("EE").build()),
-    GERMAN(3, new Locale.Builder().setLanguage("de").setScript("Latn").setRegion("GR").build()),
-    RUSSIAN(4, new Locale.Builder().setLanguage("ru").setScript("Cyrl").setRegion("RU").build());
+    ENGLISH(0, Locale.UK, "english"),
+    ESTONIAN(1, new Locale.Builder().setLanguage("et").setScript("Latn").setRegion("EE").build(), "eesti keel"),
+    VÕRO(2, new Locale.Builder().setLanguage("et").setScript("Latn").setRegion("EE").build(), "võro kiil"),
+    GERMAN(3, new Locale.Builder().setLanguage("de").setScript("Latn").setRegion("GR").build(), "deutsch"),
+    RUSSIAN(4, new Locale.Builder().setLanguage("ru").setScript("Cyrl").setRegion("RU").build(), "русский язык");
 
     private int index;
     private Locale locale;
+    private String name;
     private static Lang activeLang;
 
-    Lang(int i, Locale locale) {
+    Lang(int i, Locale locale, String name) {
         this.index = i;
         this.locale = locale;
+        this.name = name;
     }
 
     public static Lang getActiveLang() {
@@ -38,6 +40,10 @@ public enum Lang {
             MainHandler.getStageHandler().getScenes().forEach(
                     (scenetype, customScene) -> customScene.getController().setLanguage());
         }
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public Locale getLocale() {

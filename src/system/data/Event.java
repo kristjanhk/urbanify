@@ -25,20 +25,18 @@ public class Event {
     private String currency;
     private LocalDate date;
     private String time;
-    private String seatingType;
     private int maxSeats;
     private boolean active = false;
     private HashMap<FloorPlanPane.Property, Object> floorPlan;
 
     public void readyCreator(String name, List<Node> tickets, String currency, LocalDate date, String time,
-                             String seatingType, String maxSeats) {
+                             String maxSeats) {
         this.resetCreator(!this.isActive());
         this.name = name;
         this.saveTickets(tickets, this.isActive());
         this.currency = currency;
         this.date = date;
         this.time = time;
-        this.seatingType = seatingType;
         if (!maxSeats.equals("")) {
             this.maxSeats = Integer.parseInt(maxSeats) - this.getTotalTicketAmount();
         } else {
@@ -70,7 +68,6 @@ public class Event {
         this.currency = null;
         this.date = null;
         this.time = null;
-        this.seatingType = null;
     }
 
     public String getName() {
@@ -157,7 +154,6 @@ public class Event {
                 ", currency='" + currency + '\'' +
                 ", date=" + date +
                 ", time='" + time + '\'' +
-                ", seatingType='" + seatingType + '\'' +
                 ", maxSeats=" + maxSeats +
                 ", active=" + active +
                 ", floorPlan=" + floorPlan +

@@ -25,6 +25,7 @@ public class Ticket extends HBox {
     private boolean priceTextValidated;
     private TextField ticketText;
     private boolean ticketTextValidated;
+    boolean disabled = false;
 
     public Ticket(Controller parentController, VBox parentNode) {
         super();
@@ -37,13 +38,15 @@ public class Ticket extends HBox {
         this.addValidation();
     }
 
-    public Ticket(Controller parentController, VBox parentNode, String name, String price, String currency) {
+    public Ticket(Controller parentController, VBox parentNode, String name, String price, String currency,
+                  boolean disabled) {
         this(parentController, parentNode);
         this.priceText.setText(price);
         this.priceTextValidated = true;
         this.currencyText.setText(currency);
         this.ticketText.setText(name);
         this.ticketTextValidated = true;
+        this.disabled = disabled;
     }
 
     private void initChildren() {

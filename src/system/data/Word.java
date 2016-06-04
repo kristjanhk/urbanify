@@ -133,13 +133,17 @@ public enum Word {
         return wordsMap;
     }
 
-    public static Word toEnum(String translated) {
+    public static Word toEnum(String translated, Lang lang) {
         for (Word constant : values()) {
-            if (constant.toString().equals(translated)) {
+            if (constant.inLang(lang).equals(translated)) {
                 return constant;
             }
         }
         return null;
+    }
+
+    public static Word toEnum(String translated) {
+        return toEnum(translated, Lang.getActiveLang());
     }
 
     public String inLang(Lang lang) {
@@ -148,6 +152,6 @@ public enum Word {
 
     @Override
     public String toString() {
-        return words.get(this)[Lang.getActiveLang().getIndex()];
+        return this.inLang(Lang.getActiveLang());
     }
 }

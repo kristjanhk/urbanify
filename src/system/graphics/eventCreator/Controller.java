@@ -60,9 +60,9 @@ public class Controller extends AbstractController {
         this.ticketVBox.getChildren().add(this.ticketVBox.getChildren().size() - 1, new Ticket(this, this.ticketVBox));
     }
 
-    private void addTicket(String name, String price, String currency) {
+    private void addTicket(String name, String price, String currency, boolean disabled) {
         this.ticketVBox.getChildren().add(this.ticketVBox.getChildren().size() - 1,
-                new Ticket(this, this.ticketVBox, name, price, currency));
+                new Ticket(this, this.ticketVBox, name, price, currency, disabled));
     }
 
     @FXML
@@ -85,7 +85,7 @@ public class Controller extends AbstractController {
     protected void doNext() {
         this.event.readyCreator(this.eventText.getText(), this.ticketVBox.getChildren(),
                 ((Ticket) this.ticketVBox.getChildren().get(0)).getCurrencyText(), this.calendar.getValue(),
-                this.timeText.getText(), this.seating.getText(), this.maxSeats.getText());
+                this.timeText.getText(), this.maxSeats.getText());
         if (seatingType.equals("OPENSEATING")) {
             if (this.event.isActive()) {
                 this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
@@ -114,14 +114,22 @@ public class Controller extends AbstractController {
     }
 
     private void loadFromEvent(Event event) {
+        boolean fullyUpdateable = true;
+        this.ticketVBox.getChildren().remove(0);
+        for (String ticket : event.getTickets().keySet()) {
+            boolean disabled = false;
+            if (event.getTicketAmount(ticket) != 0) {
+                disabled = true;
+                fullyUpdateable = false;
+            }
+            this.addTicket(ticket, String.valueOf(event.getTicketPrice(ticket)), event.getCurrency(), disabled);
+        }
+
         this.event = event;
         this.eventCreator.setText(Word.EVENTUPDATER.toString());
         this.eventText.setText(event.getName());
         this.eventTextValidated = true;
-        this.ticketVBox.getChildren().remove(0);
-        for (String ticket : event.getTickets().keySet()) {
-            this.addTicket(ticket, String.valueOf(event.getTicketPrice(ticket)), event.getCurrency());
-        }
+
         this.calendar.setValue(event.getDate());
         this.calendarValidated = true;
         this.timeText.setText(event.getTime());

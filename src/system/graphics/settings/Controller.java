@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
@@ -57,31 +56,23 @@ public class Controller extends AbstractController {
         MainHandler.changeGlobalThemeTo(Csstype.valueOf(((MenuItem) event.getSource()).getId()));
         // TODO: 29.04.2016 warm theme
         this.theme.setText(Word.valueOf(Csstype.getActiveTheme().toString()).toString());
+        if (this.qrContent.getChildren().size() > 0) {
+            this.handleQrCodeGenerate();
+        }
     }
 
     @FXML
     protected void handleLangSwitch(ActionEvent event) {
-        Lang lang = null;
-        switch (((MenuItem) event.getSource()).getText()) {
-            case "english":
-                lang = Lang.ENGLISH;
+        Lang newLang = null;
+        for (Lang currentLang : Lang.values()) {
+            if (((MenuItem) event.getSource()).getText().equals(currentLang.getName())) {
+                newLang = currentLang;
                 break;
-            case "eesti keel":
-                lang = Lang.ESTONIAN;
-                break;
-            case "võro kiil":
-                lang = Lang.VÕRO;
-                break;
-            case "deutsch":
-                lang = Lang.GERMAN;
-                break;
-            case "русский язык":
-                lang = Lang.RUSSIAN;
-                break;
+            }
         }
-        if (lang != null) {
-            Lang.setActiveLang(lang);
-            this.language.setText(Word.valueOf(lang.toString()).inLang(lang));
+        if (newLang != null) {
+            Lang.setActiveLang(newLang);
+            this.language.setText(Word.valueOf(newLang.toString()).inLang(newLang));
         }
     }
 

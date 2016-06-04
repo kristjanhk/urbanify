@@ -46,9 +46,6 @@ public class Controller extends AbstractController {
     private void init() {
         this.name.setText(this.event.getName());
         this.setDatetime();
-        this.seatsLeft = this.event.getMaxSeats();
-        this.updateTotal();
-        this.validateCheckoutButton();
         for (String ticket : this.event.getTickets().keySet()) {
             this.eventsVBox.getChildren().add(new Ticket(this, ticket, this.event));
         }
@@ -56,7 +53,12 @@ public class Controller extends AbstractController {
             this.floorPlan = new FloorPlanPane(this);
             this.rightContent.getChildren().add(this.floorPlan);
             this.floorPlan.loadFloorPlan(this.event);
+            this.seatsLeft = 0;
+        } else {
+            this.seatsLeft = this.event.getMaxSeats();
         }
+        this.updateTotal();
+        this.validateCheckoutButton();
         this.updateSeatsLeft();
     }
 
