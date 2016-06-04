@@ -71,7 +71,7 @@ public class Controller extends AbstractController {
             case "deutsch":
                 lang = Lang.GERMAN;
                 break;
-            case "pусский язык":
+            case "русский язык":
                 lang = Lang.RUSSIAN;
                 break;
         }
