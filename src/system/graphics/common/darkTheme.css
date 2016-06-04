@@ -618,3 +618,33 @@
 .save_button {
     -fx-background-color: #7e2b2c;
 }
+
+.qrGenButton {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color: #151515;
+    -fx-text-fill: #f05455;
+    -fx-max-height: 70.5;
+    -fx-min-height: 70.5;
+    -fx-pref-height: 70.5;
+    -fx-min-width: 200.0;
+    -fx-pref-width: 200.0;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 35;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+    -fx-text-alignment: center;
+}
+
+.qrGenButton:hover {
+    -fx-background-color: #5b5c5c;
+    -fx-text-fill: #f05455;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
+
+.qrGenButton:armed {
+    -fx-background-color: #333333;
+    -fx-text-fill: #f05455;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}

@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import system.MainHandler;
@@ -31,7 +32,7 @@ public class Controller extends AbstractController {
     @FXML protected MenuButton theme;
     @FXML protected Text langLabel;
     @FXML protected Text themeLabel;
-    @FXML protected HBox qrContent;
+    @FXML protected Pane qrContent;
     @FXML protected Button qrButton;
 
     @Override
