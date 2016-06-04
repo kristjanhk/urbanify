@@ -1,9 +1,17 @@
 package system;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import javafx.application.Application;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.scene.Node;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Control;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.controlsfx.validation.Severity;
 import org.controlsfx.validation.ValidationSupport;
@@ -78,6 +86,39 @@ public class MainHandler extends Application {
 
     public static void registerValidator(ValidationSupport vs, Node node, String validation) {
         vs.registerValidator((Control) node, true, Validator.createRegexValidator("error", validation, Severity.ERROR));
+    }
+
+    public static ImageView createQrCode(String text) {
+        ImageView qrcode = new ImageView();
+        qrcode.setFitWidth(350.0);
+        qrcode.setFitHeight(350.0);
+        qrcode.setPickOnBounds(true);
+        qrcode.setPreserveRatio(true);
+        try {
+            BitMatrix bytematrix = new QRCodeWriter().encode(text, BarcodeFormat.QR_CODE,
+                    (int) qrcode.getFitWidth(), (int) qrcode.getFitHeight());
+            Canvas canvas = new Canvas((int) qrcode.getFitWidth(), (int) qrcode.getFitHeight());
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            if (Csstype.getActiveTheme().equals(Csstype.DARK)) {
+                gc.setFill(Color.valueOf("262626"));
+                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+                gc.setFill(Color.BLACK);
+            } else {
+                gc.setFill(Color.valueOf("e6e6e5"));
+                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+                gc.setFill(Color.valueOf("5b5c5c"));
+            }
+            for (int i = 0; i < canvas.getHeight(); i++) {
+                for (int j = 0; j < canvas.getWidth(); j++) {
+                    if (bytematrix.get(i, j)) {
+                        gc.fillRect(i, j, 1, 1);
+                    }
+                }
+            }
+            qrcode.setImage(canvas.snapshot(null, null));
+            return qrcode;
+        } catch (WriterException ignored) {}
+        return null;
     }
 }
 

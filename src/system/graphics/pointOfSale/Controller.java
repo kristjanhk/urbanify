@@ -1,23 +1,16 @@
 package system.graphics.pointOfSale;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.qrcode.QRCodeWriter;
 import javafx.fxml.FXML;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import system.MainHandler;
 import system.data.Event;
 import system.data.Lang;
 import system.data.Word;
 import system.graphics.common.AbstractController;
-import system.graphics.common.Csstype;
 import system.graphics.common.FloorPlanPane;
 import system.graphics.common.Scenetype;
 
@@ -190,39 +183,12 @@ public class Controller extends AbstractController {
      */
     private void createQrCode(ArrayList<String> ticketdata) {
         this.rightContent.getChildren().clear();
-        ImageView qrcode = new ImageView();
-        qrcode.setFitWidth(350.0);
-        qrcode.setFitHeight(350.0);
-        qrcode.setPickOnBounds(true);
-        qrcode.setPreserveRatio(true);
         StringBuilder tekst = new StringBuilder(this.event.getName() + "\n" + this.event.getFormattedDate() + " " +
                 this.event.getTime() + "\n");
         ticketdata.forEach(tekst::append);
         tekst.append(this.totalcost.getText()); // FIXME: 11.05.2016 currency symbol bugine?
-        try {
-            BitMatrix bytematrix = new QRCodeWriter().encode(tekst.toString(),
-                    BarcodeFormat.QR_CODE, (int) qrcode.getFitWidth(), (int) qrcode.getFitHeight());
-            Canvas canvas = new Canvas((int) qrcode.getFitWidth(), (int) qrcode.getFitHeight());
-            GraphicsContext gc = canvas.getGraphicsContext2D();
-            if (Csstype.getActiveTheme().equals(Csstype.DARK)) {
-                gc.setFill(Color.valueOf("262626"));
-                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-                gc.setFill(Color.BLACK);
-            } else {
-                gc.setFill(Color.valueOf("e6e6e5"));
-                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-                gc.setFill(Color.valueOf("5b5c5c"));
-            }
-            for (int i = 0; i < canvas.getHeight(); i++) {
-                for (int j = 0; j < canvas.getWidth(); j++) {
-                    if (bytematrix.get(i, j)) {
-                        gc.fillRect(i, j, 1, 1);
-                    }
-                }
-            }
-            qrcode.setImage(canvas.snapshot(null, null));
-            this.rightContent.getChildren().add(qrcode);
-        } catch (WriterException ignored) {}
+        ImageView qrcode = MainHandler.createQrCode(tekst.toString());
+        this.rightContent.getChildren().add(qrcode);
     }
 
     @Override

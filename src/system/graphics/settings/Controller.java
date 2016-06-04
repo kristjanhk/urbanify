@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import system.MainHandler;
@@ -30,6 +31,8 @@ public class Controller extends AbstractController {
     @FXML protected MenuButton theme;
     @FXML protected Text langLabel;
     @FXML protected Text themeLabel;
+    @FXML protected HBox qrContent;
+    @FXML protected Button qrButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -82,6 +85,12 @@ public class Controller extends AbstractController {
     }
 
     @FXML
+    protected void handleQrCodeGenerate() {
+        this.qrContent.getChildren().clear();
+        this.qrContent.getChildren().add(MainHandler.createQrCode("megatekst!"));
+    }
+
+    @FXML
     protected void doBack() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
     }
@@ -97,5 +106,6 @@ public class Controller extends AbstractController {
         this.theme.getItems().get(2).setText(Word.WARM.toString());
         this.langLabel.setText(Word.LANGUAGE.toString());
         this.themeLabel.setText(Word.THEME.toString());
+        this.qrButton.setText(Word.GENERATE.toString());
     }
 }

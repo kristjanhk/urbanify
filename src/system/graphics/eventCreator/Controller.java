@@ -25,7 +25,7 @@ public class Controller extends AbstractController {
     @FXML protected TextField eventText;
     @FXML protected DatePicker calendar;
     @FXML protected Text calendarLabel;
-    @FXML protected TextField timeText; //TODO: 23.04.2016 picker
+    @FXML protected TextField timeText;
     @FXML protected Text timeLabel;
     @FXML protected MenuButton seating;
     @FXML protected Text seatingLabel;
@@ -94,7 +94,12 @@ public class Controller extends AbstractController {
                 this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, this.event);
             }
         } else {
-            this.scene.getStageHandler().switchSceneTo(Scenetype.FLOORPLANNER, this.event);
+            if (this.event.isActive()) {
+                this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
+            } else {
+                this.scene.getStageHandler().switchSceneTo(Scenetype.FLOORPLANNER, this.event);
+            }
+
         }
     }
 
@@ -213,10 +218,10 @@ public class Controller extends AbstractController {
                     this.checkNextButtonValidation();
                 });
         this.maxSeatsValidation = MainHandler.validate(this.maxSeats, "^$|^[1-9]\\d*$");
-                this.maxSeatsValidation.invalidProperty().addListener((observable, oldValue, newValue) -> {
-                    this.maxSeatsValidated = !newValue;
-                    this.checkNextButtonValidation();
-                });
+        this.maxSeatsValidation.invalidProperty().addListener((observable, oldValue, newValue) -> {
+            this.maxSeatsValidated = !newValue;
+            this.checkNextButtonValidation();
+        });
     }
 
     public void checkNextButtonValidation() {
