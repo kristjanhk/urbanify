@@ -237,18 +237,24 @@
 
 .seat_available {
     -fx-background-color: #5b5c5c;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
+    -fx-text-fill: #f05455;
 }
 
 .seat_available:hover {
-    -fx-background-color: #e6e6e5;
+    -fx-background-color: #8e8f8f;
 }
 
 .seat_unavailable {
     -fx-background-color: indianred;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
+    -fx-text-fill: white;
 }
 
 .seat_unavailable:hover {
-    -fx-background-color: blue;
+    -fx-background-color: #ff7474;
 }
 
 .scroll-pane {
@@ -521,7 +527,6 @@
     -fx-background-color: #333333;
 }
 
-
 .validationError{
     -fx-background-color: rgba(255,255,255,0.05);
     -fx-border-width: 2;
@@ -600,11 +605,14 @@
 }
 
 .floorplanName:hover {
-    -fx-background-color: rgba(166, 166, 166, 0.5);
+    -fx-background-color: #5b5c5c;
+    -fx-text-fill: #f05455;
+    -fx-prompt-text-fill: #f05455;
 }
 
 .floorPlanTextField_highlighted {
-    -fx-background-color: #7e2b2c;
+    -fx-background-color: #ff5152;
+    -fx-prompt-text-fill: white;
 }
 
 .save_button {

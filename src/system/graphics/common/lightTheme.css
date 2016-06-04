@@ -140,7 +140,7 @@
     -fx-font-size: 50;
     -fx-font-family: 'TicketFont';
     -fx-font-smoothing-type: gray;
- }
+}
 
 .button:hover {
     -fx-background-color: #dddddd;
@@ -237,18 +237,24 @@
 
 .seat_available {
     -fx-background-color: #5b5c5c;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
+    -fx-text-fill: white;
 }
 
 .seat_available:hover {
-    -fx-background-color: #e6e6e5;
+    -fx-background-color: #8e8f8f;
 }
 
 .seat_unavailable {
     -fx-background-color: indianred;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
+    -fx-text-fill: white;
 }
 
 .seat_unavailable:hover {
-    -fx-background-color: blue;
+    -fx-background-color: #ff7474;
 }
 
 .scroll-pane {
@@ -594,4 +600,19 @@
     -fx-background-color: #e6e6e5;
     -fx-font-size: 50;
     -fx-padding: 10 10 10 20;
+}
+
+.floorplanName:hover {
+    -fx-background-color: #dddddd;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+}
+
+.floorPlanTextField_highlighted {
+    -fx-background-color: #ff5152;
+    -fx-prompt-text-fill: white;
+}
+
+.save_button {
+    -fx-background-color: #7e2b2c;
 }
