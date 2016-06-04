@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import org.controlsfx.validation.ValidationSupport;
 import system.MainHandler;
 import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
@@ -35,19 +36,20 @@ public class Controller extends AbstractController {
     @FXML protected Button addTicketButton;
     @FXML protected VBox ticketVBox;
     @FXML protected Text priceLabel;
-    @FXML protected Text currencyLabel;
     @FXML protected Text ticketLabel;
 
     private String seatingType = "";
-    private Event event = new Event();
+    private Event event;
     private boolean eventTextValidated = false;
     private boolean calendarValidated = false;
     private boolean timeTextValidated = false;
     private boolean seatingValidated = false;
     private boolean maxSeatsValidated = true;
+    private ValidationSupport maxSeatsValidation;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.event = new Event();
         this.setLanguage();
         this.addValidation();
         this.addTicket();
@@ -55,8 +57,12 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void addTicket() {
+        this.ticketVBox.getChildren().add(this.ticketVBox.getChildren().size() - 1, new Ticket(this, this.ticketVBox));
+    }
+
+    private void addTicket(String name, String price, String currency) {
         this.ticketVBox.getChildren().add(this.ticketVBox.getChildren().size() - 1,
-                new Ticket(this, this.ticketVBox));
+                new Ticket(this, this.ticketVBox, name, price, currency));
     }
 
     @FXML
@@ -68,15 +74,25 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void doCancel() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
+        if (this.event.isActive()) {
+            this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT);
+        } else {
+            this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
+        }
     }
 
     @FXML
     protected void doNext() {
-        this.event.readyCreator(this.eventText.getText(), this.ticketVBox.getChildren(), this.calendar.getValue(),
+        this.event.readyCreator(this.eventText.getText(), this.ticketVBox.getChildren(),
+                ((Ticket) this.ticketVBox.getChildren().get(0)).getCurrencyText(), this.calendar.getValue(),
                 this.timeText.getText(), this.seating.getText(), this.maxSeats.getText());
         if (seatingType.equals("OPENSEATING")) {
-            this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, this.event);
+            if (this.event.isActive()) {
+                this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
+            } else {
+                this.event.setActive();
+                this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, this.event);
+            }
         } else {
             this.scene.getStageHandler().switchSceneTo(Scenetype.FLOORPLANNER, this.event);
         }
@@ -84,10 +100,57 @@ public class Controller extends AbstractController {
 
     @Override
     public <T> void prepareToDisplay(T object) {
-        if (!(object instanceof Boolean)) {
+        if (object instanceof Event) {
+            this.loadFromEvent((Event) object);
+        } else if (!(object instanceof Boolean)) {
             this.scene.getStageHandler().replaceScene(Scenetype.EVENTCREATOR);
             this.scene.getStageHandler().replaceScene(Scenetype.FLOORPLANNER);
         }
+    }
+
+    private void loadFromEvent(Event event) {
+        this.event = event;
+        this.eventCreator.setText(Word.EVENTUPDATER.toString());
+        this.eventText.setText(event.getName());
+        this.eventTextValidated = true;
+        this.ticketVBox.getChildren().remove(0);
+        for (String ticket : event.getTickets().keySet()) {
+            this.addTicket(ticket, String.valueOf(event.getTicketPrice(ticket)), event.getCurrency());
+        }
+        this.calendar.setValue(event.getDate());
+        this.calendarValidated = true;
+        this.timeText.setText(event.getTime());
+        this.timeTextValidated = true;
+        this.seating.setDisable(true);
+        if (event.getFloorPlan() != null) {
+            this.seating.setText(Word.ASSIGNEDSEATING.toString());
+            this.seatingType = "ASSIGNEDSEATING";
+            this.setNextText();
+        } else {
+            this.seating.setText(Word.OPENSEATING.toString());
+            this.seatingType = "OPENSEATING";
+            this.setNextText();
+            this.maxSeats.setText(String.valueOf(
+                    event.getMaxSeats() == -1 ? "" : event.getMaxSeats() + event.getTotalTicketAmount()));
+            this.next.setText(Word.UPDATE.toString());
+            this.loadValidation(event);
+        }
+    }
+
+    private void loadValidation(Event event) {
+        int usedSeats = event.getTotalTicketAmount();
+        StringBuilder validation = new StringBuilder("^");
+        for (char character : String.valueOf(usedSeats).toCharArray()) {
+            if (!Character.toString(character).equals("-")) {
+                validation.append("[");
+                validation.append(Character.toString(character));
+                validation.append("-9]");
+            }
+        }
+        validation.append("|[1-9]\\d{");
+        validation.append(String.valueOf(usedSeats).length());
+        validation.append(",}$");
+        MainHandler.registerValidator(this.maxSeatsValidation, this.maxSeats, validation.toString());
     }
 
     @Override
@@ -95,7 +158,6 @@ public class Controller extends AbstractController {
         this.eventCreator.setText(Word.EVENTCREATOR.toString());
         this.eventText.setPromptText(Word.NAMEYOUREVENT.toString());
         this.priceLabel.setText(Word.PRICE.toString());
-        this.currencyLabel.setText(Word.CURRENCY.toString());
         this.ticketLabel.setText(Word.TICKETYPE.toString());
         this.calendar.setPromptText(Word.DATEFORMAT.toString());
         this.calendarLabel.setText(Word.SETDATE.toString());
@@ -150,8 +212,8 @@ public class Controller extends AbstractController {
                     this.timeTextValidated = !newValue;
                     this.checkNextButtonValidation();
                 });
-        MainHandler.setValidationFor(this.maxSeats, "^$|^[1-9]\\d*$").addListener(
-                (observable, oldValue, newValue) -> {
+        this.maxSeatsValidation = MainHandler.validate(this.maxSeats, "^$|^[1-9]\\d*$");
+                this.maxSeatsValidation.invalidProperty().addListener((observable, oldValue, newValue) -> {
                     this.maxSeatsValidated = !newValue;
                     this.checkNextButtonValidation();
                 });

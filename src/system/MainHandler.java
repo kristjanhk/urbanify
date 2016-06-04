@@ -65,12 +65,19 @@ public class MainHandler extends Application {
      * @return ReadOnlyBooleanProperty isInvalid
      */
     public static ReadOnlyBooleanProperty setValidationFor(Node node, String validation) {
+        return validate(node, validation).invalidProperty();
+    }
+
+    public static ValidationSupport validate(Node node, String validation) {
         ValidationSupport validationSupport = new ValidationSupport();
         validationSupport.setValidationDecorator(
                 new StyleClassValidationDecoration("validationError", "validationWarning"));
-        validationSupport.registerValidator((Control) node, true,
-                Validator.createRegexValidator("error", validation, Severity.ERROR));
-        return validationSupport.invalidProperty();
+        registerValidator(validationSupport, node, validation);
+        return validationSupport;
+    }
+
+    public static void registerValidator(ValidationSupport vs, Node node, String validation) {
+        vs.registerValidator((Control) node, true, Validator.createRegexValidator("error", validation, Severity.ERROR));
     }
 }
 

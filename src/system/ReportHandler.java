@@ -110,7 +110,7 @@ public class ReportHandler {
             for (String tickettype : event.getTickets().keySet()) {
                 this.tickettypes.add(tickettype);
                 double ticketprice = event.getTicketPrice(tickettype);
-                int ticketamount = event.getTicketAmount(tickettype).intValue();
+                int ticketamount = event.getTicketAmount(tickettype);
                 this.ticketprices.add(String.format("%.2f", ticketprice) + " " + Lang.getActiveLang().getCurrency());
                 this.ticketamounts.add(String.valueOf(ticketamount));
                 this.tickettotals.add(String.format("%.2f", ticketprice * ticketamount) + " " +

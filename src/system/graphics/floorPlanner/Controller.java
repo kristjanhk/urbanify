@@ -142,6 +142,7 @@ public class Controller extends AbstractController {
     @FXML
     protected void doCreate() {
         this.floorPlan.save(null, this.floorTypes.getText(), this.event);
+        this.event.setActive();
         this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER, this.event);
     }
 

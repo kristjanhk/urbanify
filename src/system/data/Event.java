@@ -22,6 +22,7 @@ import java.util.List;
 public class Event {
     private String name;
     private HashMap<String, ArrayList<Double>> tickets = new HashMap<>();
+    private String currency;
     private LocalDate date;
     private String time;
     private String seatingType;
@@ -29,37 +30,47 @@ public class Event {
     private boolean active = false;
     private HashMap<FloorPlanPane.Property, Object> floorPlan;
 
-    public void readyCreator(String name, List<Node> tickets, LocalDate date, String time,
+    public void readyCreator(String name, List<Node> tickets, String currency, LocalDate date, String time,
                              String seatingType, String maxSeats) {
-        this.resetCreator();
+        this.resetCreator(!this.isActive());
         this.name = name;
-        tickets.stream().filter(node -> node instanceof Ticket).forEach(node -> {
-            ArrayList<Double> ticketdata = new ArrayList<>();
-            ticketdata.add(((Ticket) node).getPrice());
-            ticketdata.add(0.0);
-            this.tickets.put(((Ticket) node).getType(), ticketdata);
-        });
+        this.saveTickets(tickets, this.isActive());
+        this.currency = currency;
         this.date = date;
         this.time = time;
         this.seatingType = seatingType;
-        System.out.println(maxSeats);
         if (!maxSeats.equals("")) {
-            this.maxSeats = Integer.parseInt(maxSeats);
+            this.maxSeats = Integer.parseInt(maxSeats) - this.getTotalTicketAmount();
         } else {
             this.maxSeats = -1;
         }
-        this.active = true;
     }
 
-    private void resetCreator() {
+    private void saveTickets(List<Node> tickets, boolean update) {
+        HashMap<String, ArrayList<Double>> saveableTickets = new HashMap<>();
+        tickets.stream().filter(node -> node instanceof Ticket).forEach(node -> {
+            ArrayList<Double> ticketdata = new ArrayList<>();
+            ticketdata.add(((Ticket) node).getPrice());
+            if (update) {
+                ticketdata.add((double) this.getTicketAmount(((Ticket) node).getType()));
+            } else {
+                ticketdata.add(0.0);
+            }
+            saveableTickets.put(((Ticket) node).getType(), ticketdata);
+        });
+        this.tickets = saveableTickets;
+    }
+
+    private void resetCreator(boolean all) {
         this.name = null;
-        this.tickets.clear();
+        if (all) {
+            this.tickets.clear();
+            this.maxSeats = -1;
+        }
+        this.currency = null;
         this.date = null;
         this.time = null;
         this.seatingType = null;
-        this.maxSeats = -1;
-        this.active = false;
-        this.floorPlan = null;
     }
 
     public String getName() {
@@ -69,6 +80,10 @@ public class Event {
     public String getFormattedDate() {
         return this.date.format(
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).withLocale(Lang.getActiveLang().getLocale()));
+    }
+
+    public LocalDate getDate() {
+        return this.date;
     }
 
     public String getTime() {
@@ -83,12 +98,24 @@ public class Event {
         return this.tickets.get(ticketName).get(0);
     }
 
-    public Double getTicketAmount(String ticketName) {
-        return this.tickets.get(ticketName).get(1);
+    public int getTicketAmount(String ticketName) {
+        return this.tickets.get(ticketName).get(1).intValue();
+    }
+
+    public String getCurrency() {
+        return this.currency;
     }
 
     public void addTicketAmount(String tickettype, double amount) {
         this.tickets.get(tickettype).set(1, this.tickets.get(tickettype).get(1) + amount);
+    }
+
+    public int getTotalTicketAmount() {
+        int soldTickets = 0;
+        for (String ticket : this.tickets.keySet()) {
+            soldTickets += this.getTicketAmount(ticket);
+        }
+        return soldTickets;
     }
 
     public int getMaxSeats() {
@@ -101,6 +128,10 @@ public class Event {
 
     public boolean isActive() {
         return this.active;
+    }
+
+    public void setActive() {
+        this.active = true;
     }
 
     public HashMap<FloorPlanPane.Property, Object> getFloorPlan() {
@@ -123,6 +154,7 @@ public class Event {
         return "Event{" +
                 "name='" + name + '\'' +
                 ", tickets=" + tickets +
+                ", currency='" + currency + '\'' +
                 ", date=" + date +
                 ", time='" + time + '\'' +
                 ", seatingType='" + seatingType + '\'' +

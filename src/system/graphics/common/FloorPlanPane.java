@@ -20,6 +20,7 @@ import java.util.HashMap;
 
 public class FloorPlanPane extends VBox {
     public enum Property {DIMENSIONS, UNAVAILABLE, IMAGETYPE}
+
     private AbstractController parentController;
     private StackPane floorPlan;
     private ImageView floorPlanImage;
@@ -135,14 +136,22 @@ public class FloorPlanPane extends VBox {
         this.floorPlanImage.setImage(imagetype.toImage());
     }
 
-    private ArrayList<Integer> getSavedFloorPlanDimensions(String name, Event event) {
-        Object dimensions;
-        if (event != null) {
-            dimensions = event.getFloorPlan().get(Property.DIMENSIONS);
-        } else {
-            dimensions = this.parentController.getData().getFloorPlan(name).get(FloorPlanPane.Property.DIMENSIONS);
-        }
+    public static ArrayList<Integer> getSavedFloorPlanDimensions(String name) {
+        return getSavedFloorPlanDimensions(name, null);
+    }
 
+    public static ArrayList<Integer> getSavedFloorPlanDimensions(Object from) {
+        return getSavedFloorPlanDimensions(null, from);
+    }
+
+    private static ArrayList<Integer> getSavedFloorPlanDimensions(String name, Object from) {
+        Object dimensions;
+        if (from instanceof Event) {
+            dimensions = ((Event) from).getFloorPlan().get(Property.DIMENSIONS);
+        } else {
+            dimensions = ((AbstractController) from).getData().
+                    getFloorPlan(name).get(FloorPlanPane.Property.DIMENSIONS);
+        }
         ArrayList<Integer> floorPlanSize = new ArrayList<>(2);
         for (int i = 0; i < ((ArrayList) dimensions).size(); i++) {
             Object number = ((ArrayList) dimensions).get(i);
@@ -153,14 +162,21 @@ public class FloorPlanPane extends VBox {
         return floorPlanSize;
     }
 
-    private ArrayList<ArrayList<Integer>> getSavedFloorPlanUnavailables(String name, Event event) {
-        Object seats;
-        if (event != null) {
-            seats = event.getFloorPlan().get(Property.UNAVAILABLE);
-        } else {
-            seats = this.parentController.getData().getFloorPlan(name).get(FloorPlanPane.Property.UNAVAILABLE);
-        }
+    public static ArrayList<ArrayList<Integer>> getSavedFloorPlanUnavailables(String name) {
+        return getSavedFloorPlanUnavailables(name, null);
+    }
 
+    public static ArrayList<ArrayList<Integer>> getSavedFloorPlanUnavailables(Object from) {
+        return getSavedFloorPlanUnavailables(null, from);
+    }
+
+    private static ArrayList<ArrayList<Integer>> getSavedFloorPlanUnavailables(String name, Object from) {
+        Object seats;
+        if (from instanceof Event) {
+            seats = ((Event) from).getFloorPlan().get(Property.UNAVAILABLE);
+        } else {
+            seats = ((AbstractController) from).getData().getFloorPlan(name).get(FloorPlanPane.Property.UNAVAILABLE);
+        }
         ArrayList<ArrayList<Integer>> unavailables = new ArrayList<>();
         for (Object seatData : (ArrayList) seats) {
             ArrayList<Integer> data = new ArrayList<>(2);
@@ -174,12 +190,20 @@ public class FloorPlanPane extends VBox {
         return unavailables;
     }
 
-    private Imagetype getSavedFloorPlanImageType(String name, Event event) {
+    public static Imagetype getSavedFloorPlanImageType(String name) {
+        return getSavedFloorPlanImageType(name, null);
+    }
+
+    public static Imagetype getSavedFloorPlanImageType(Object from) {
+        return getSavedFloorPlanImageType(null, from);
+    }
+
+    private static Imagetype getSavedFloorPlanImageType(String name, Object from) {
         Object imagetype;
-        if (event != null) {
-            imagetype = event.getFloorPlan().get(Property.IMAGETYPE);
+        if (from instanceof Event) {
+            imagetype = ((Event) from).getFloorPlan().get(Property.IMAGETYPE);
         } else {
-            imagetype = this.parentController.getData().getFloorPlan(name).get(FloorPlanPane.Property.IMAGETYPE);
+            imagetype = ((AbstractController) from).getData().getFloorPlan(name).get(FloorPlanPane.Property.IMAGETYPE);
         }
         return Imagetype.valueOf((String) imagetype);
     }
@@ -189,9 +213,9 @@ public class FloorPlanPane extends VBox {
     }
 
     public void loadFloorPlan(String name, Event event) {
-        this.createNewFloorPlan(this.getSavedFloorPlanDimensions(name, event), false);
-        this.setFloorPlanImage(this.getSavedFloorPlanImageType(name, event));
-        ArrayList<ArrayList<Integer>>  unavailables = this.getSavedFloorPlanUnavailables(name, event);
+        this.createNewFloorPlan(getSavedFloorPlanDimensions(name, event), false);
+        this.setFloorPlanImage(getSavedFloorPlanImageType(name, event));
+        ArrayList<ArrayList<Integer>> unavailables = getSavedFloorPlanUnavailables(name, event);
         for (Node group : this.getFloor()) {
             ((Group) group).getChildren().stream().filter(
                     seat -> unavailables.contains(((Seat) seat).getCoordinates())).forEach(

@@ -11,6 +11,7 @@ import system.data.Event;
 import system.data.Lang;
 import system.data.Word;
 import system.graphics.common.AbstractController;
+import system.graphics.common.FloorPlanPane;
 import system.graphics.common.Scenetype;
 
 import java.net.URL;
@@ -28,11 +29,13 @@ public class Controller extends AbstractController {
     @FXML protected Text quantity;
     @FXML protected Text total;
     @FXML protected VBox ticketVBox;
+    @FXML protected Text seatsLeft;
     @FXML protected Text total2;
     @FXML protected Text quantityTotal;
     @FXML protected Text soldTotal;
     @FXML protected PieChart pieChart;
     @FXML protected Button back;
+    @FXML protected Button edit;
     @FXML protected Button endEvent;
     @FXML protected Button pos;
 
@@ -46,6 +49,7 @@ public class Controller extends AbstractController {
     private void init() {
         this.setTitle();
         this.setDatetime();
+        this.setSeatsLeft();
         this.createTickets();
         this.createTotal();
         this.createPieChart();
@@ -58,6 +62,12 @@ public class Controller extends AbstractController {
     @FXML
     protected void doBack() {
         this.scene.getStageHandler().switchSceneTo(this.event.isActive() ? Scenetype.EVENTMANAGER : Scenetype.ARCHIVE);
+    }
+
+    @FXML
+    protected void doEdit() {
+        this.scene.getStageHandler().replaceScene(Scenetype.EVENTCREATOR);
+        this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTCREATOR, this.event);
     }
 
     @FXML
@@ -113,6 +123,17 @@ public class Controller extends AbstractController {
         // TODO: 30.05.2016 bind text size to stage width
     }
 
+    private void setSeatsLeft() {
+        if (this.event.getFloorPlan() != null) {
+            ArrayList<Integer> size = FloorPlanPane.getSavedFloorPlanDimensions(this.event);
+            ArrayList<ArrayList<Integer>> unavailables = FloorPlanPane.getSavedFloorPlanUnavailables(this.event);
+            this.seatsLeft.setText(Word.SEATSLEFT.toString() + ":" + (size.get(0) * size.get(1) - unavailables.size()));
+        } else {
+            this.seatsLeft.setText(Word.SEATSLEFT.toString() + ": " +
+                    (this.event.getMaxSeats() == -1 ? Word.UNLIMITED.toString() : this.event.getMaxSeats()));
+        }
+    }
+
     @Override
     public <T> void prepareToDisplay(T object) {
         if (object instanceof Event) {
@@ -135,6 +156,7 @@ public class Controller extends AbstractController {
         this.total.setText(Word.TOTAL.toString());
         this.total2.setText(Word.TOTAL.toString());
         this.back.setText(Word.BACK.toString());
+        this.edit.setText(Word.EDIT.toString());
         this.endEvent.setText(Word.FINISH.toString());
         this.pos.setText(Word.POS.toString());
     }

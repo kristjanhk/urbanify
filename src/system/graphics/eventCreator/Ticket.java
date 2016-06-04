@@ -37,6 +37,15 @@ public class Ticket extends HBox {
         this.addValidation();
     }
 
+    public Ticket(Controller parentController, VBox parentNode, String name, String price, String currency) {
+        this(parentController, parentNode);
+        this.priceText.setText(price);
+        this.priceTextValidated = true;
+        this.currencyText.setText(currency);
+        this.ticketText.setText(name);
+        this.ticketTextValidated = true;
+    }
+
     private void initChildren() {
         Button deleteTicket = new Button("ó");
         deleteTicket.setMinSize(70.5, 70.5);

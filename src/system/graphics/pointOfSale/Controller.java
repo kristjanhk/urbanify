@@ -175,7 +175,7 @@ public class Controller extends AbstractController {
 
     protected void validateCheckoutButton() {
         boolean valid = !(this.cost == 0.0);
-        if (this.seatsLeft > 0) {
+        if (this.floorPlan != null && this.seatsLeft > 0) {
             valid = false;
         }
         this.checkout.setDisable(!valid);
