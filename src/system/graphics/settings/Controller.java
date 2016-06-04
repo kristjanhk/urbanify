@@ -28,6 +28,8 @@ public class Controller extends AbstractController {
     @FXML protected Text filepath;
     @FXML protected MenuButton language;
     @FXML protected MenuButton theme;
+    @FXML protected Text langLabel;
+    @FXML protected Text themeLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -93,5 +95,7 @@ public class Controller extends AbstractController {
         this.theme.getItems().get(0).setText(Word.LIGHT.toString());
         this.theme.getItems().get(1).setText(Word.DARK.toString());
         this.theme.getItems().get(2).setText(Word.WARM.toString());
+        this.langLabel.setText(Word.LANGUAGE.toString());
+        this.themeLabel.setText(Word.THEME.toString());
     }
 }

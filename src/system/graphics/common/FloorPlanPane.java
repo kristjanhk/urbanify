@@ -20,7 +20,6 @@ import java.util.HashMap;
 
 public class FloorPlanPane extends VBox {
     public enum Property {DIMENSIONS, UNAVAILABLE, IMAGETYPE}
-
     private AbstractController parentController;
     private StackPane floorPlan;
     private ImageView floorPlanImage;
@@ -121,7 +120,6 @@ public class FloorPlanPane extends VBox {
             } else {
                 this.parentController.getData().saveFloorPlan(name, floorPlan);
             }
-
         }
     }
 
@@ -136,15 +134,11 @@ public class FloorPlanPane extends VBox {
         this.floorPlanImage.setImage(imagetype.toImage());
     }
 
-    public static ArrayList<Integer> getSavedFloorPlanDimensions(String name) {
-        return getSavedFloorPlanDimensions(name, null);
-    }
-
     public static ArrayList<Integer> getSavedFloorPlanDimensions(Object from) {
         return getSavedFloorPlanDimensions(null, from);
     }
 
-    private static ArrayList<Integer> getSavedFloorPlanDimensions(String name, Object from) {
+    public static ArrayList<Integer> getSavedFloorPlanDimensions(String name, Object from) {
         Object dimensions;
         if (from instanceof Event) {
             dimensions = ((Event) from).getFloorPlan().get(Property.DIMENSIONS);
@@ -162,15 +156,11 @@ public class FloorPlanPane extends VBox {
         return floorPlanSize;
     }
 
-    public static ArrayList<ArrayList<Integer>> getSavedFloorPlanUnavailables(String name) {
-        return getSavedFloorPlanUnavailables(name, null);
-    }
-
     public static ArrayList<ArrayList<Integer>> getSavedFloorPlanUnavailables(Object from) {
         return getSavedFloorPlanUnavailables(null, from);
     }
 
-    private static ArrayList<ArrayList<Integer>> getSavedFloorPlanUnavailables(String name, Object from) {
+    public static ArrayList<ArrayList<Integer>> getSavedFloorPlanUnavailables(String name, Object from) {
         Object seats;
         if (from instanceof Event) {
             seats = ((Event) from).getFloorPlan().get(Property.UNAVAILABLE);
@@ -190,15 +180,11 @@ public class FloorPlanPane extends VBox {
         return unavailables;
     }
 
-    public static Imagetype getSavedFloorPlanImageType(String name) {
-        return getSavedFloorPlanImageType(name, null);
-    }
-
     public static Imagetype getSavedFloorPlanImageType(Object from) {
         return getSavedFloorPlanImageType(null, from);
     }
 
-    private static Imagetype getSavedFloorPlanImageType(String name, Object from) {
+    public static Imagetype getSavedFloorPlanImageType(String name, Object from) {
         Object imagetype;
         if (from instanceof Event) {
             imagetype = ((Event) from).getFloorPlan().get(Property.IMAGETYPE);
@@ -212,10 +198,10 @@ public class FloorPlanPane extends VBox {
         return (String) event.getFloorPlan().get(Property.IMAGETYPE);
     }
 
-    public void loadFloorPlan(String name, Event event) {
-        this.createNewFloorPlan(getSavedFloorPlanDimensions(name, event), false);
-        this.setFloorPlanImage(getSavedFloorPlanImageType(name, event));
-        ArrayList<ArrayList<Integer>> unavailables = getSavedFloorPlanUnavailables(name, event);
+    public void loadFloorPlan(String name, Object from) {
+        this.createNewFloorPlan(getSavedFloorPlanDimensions(name, from), false);
+        this.setFloorPlanImage(getSavedFloorPlanImageType(name, from));
+        ArrayList<ArrayList<Integer>> unavailables = getSavedFloorPlanUnavailables(name, from);
         for (Node group : this.getFloor()) {
             ((Group) group).getChildren().stream().filter(
                     seat -> unavailables.contains(((Seat) seat).getCoordinates())).forEach(
@@ -226,10 +212,6 @@ public class FloorPlanPane extends VBox {
                         }
                     });
         }
-    }
-
-    public void loadFloorPlan(String name) {
-        this.loadFloorPlan(name, null);
     }
 
     public void loadFloorPlan(Event event) {

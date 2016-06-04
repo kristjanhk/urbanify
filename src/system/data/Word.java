@@ -12,9 +12,9 @@ import java.util.HashMap;
 public enum Word {
     NEWEVENT, SETTINGS, ARCHIVE, EVENTCREATOR, POINTOFSALE, NAMEYOUREVENT, PRICE, TICKETYPE, OPENSEATING,
     ASSIGNEDSEATING, NEXT, CANCEL, BACK, CREATE, SAVE, NEWFLOORPLAN, FLOORPLAN, ROWS, SEATSINROW, STAGE, SCREEN,
-    EVENTS, SETDATE, SETTIME, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, PATH, LIGHT, DARK, WARM, SETSEATINGTYPE,
-    SEATINGTYPE, TICKETSTOSELECT, CHECKOUT, TOTAL, POS, FINISH, COST, QUANTITY, NEW, SEATSLEFT, UNLIMITED, CURRENCY,
-    ENGLISH, ESTONIAN, VÕRO, GERMAN, RUSSIAN, EDIT, UPDATE, EVENTUPDATER;
+    EVENTS, SETDATE, SETTIME, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, PATH, LANGUAGE, THEME, LIGHT, DARK, WARM,
+    SETSEATINGTYPE, SEATINGTYPE, ENGLISH, ESTONIAN, VÕRO, GERMAN, TICKETSTOSELECT, RUSSIAN, CHECKOUT, TOTAL, POS,
+    FINISH, COST, QUANTITY, NEW, SEATSLEFT, UNLIMITED, CURRENCY, EDIT, UPDATE, EVENTUPDATER;
     private static HashMap<Word, String[]> words = createLanguages();
 
     private static HashMap<Word, String[]> createLanguages() {
@@ -76,6 +76,10 @@ public enum Word {
                 "hh:mm", "чч:мм"});
         wordsMap.put(Word.PATH, new String[]{"location path", "kausta asukoht", "kausta paik",
                 "Ordnerpfad", "путь к папке"});
+        wordsMap.put(Word.LANGUAGE, new String[]{"language", "keel", "kill",
+                "Sprache", "язык"});
+        wordsMap.put(Word.THEME, new String[]{"theme", "kujundus", "kujondus",
+                "Thema", "тема"});
         wordsMap.put(Word.LIGHT, new String[]{"light", "hele", "helle",
                 "hell", "легкий"}); //vene keel pole vist päris õige
         wordsMap.put(Word.DARK, new String[]{"dark", "tume", "tummõ",
@@ -116,7 +120,7 @@ public enum Word {
                 "Unlimitiert", "неограниченный"});
         wordsMap.put(Word.CURRENCY, new String[]{"curr", "ühik", "mõõt",
                 "währ", "вал"}); //vene keel ei lähe äkki üldse kõik kuidagi pmber teha
-        wordsMap.put(Word.TICKETSTOSELECT, new String[]{"tickets to select", "pileteid valida", "TODO",
+        wordsMap.put(Word.TICKETSTOSELECT, new String[]{"tickets left", "pileteid alles", "TODO",
                 "TODO", "TODO"});
         wordsMap.put(Word.EDIT, new String[]{"edit", "muuda", "TODO",
                 "TODO", "TODO"});

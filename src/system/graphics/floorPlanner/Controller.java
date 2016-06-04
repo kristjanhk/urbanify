@@ -96,7 +96,7 @@ public class Controller extends AbstractController {
     private void createFloorPlanItem(String name) {
         MenuItem floorPlanItem = new MenuItem(name);
         floorPlanItem.setMnemonicParsing(false);
-        floorPlanItem.setOnAction(event -> this.floorPlan.loadFloorPlan(name));
+        floorPlanItem.setOnAction(event -> this.floorPlan.loadFloorPlan(name, this));
         this.floorPlans.getItems().add(floorPlanItem);
     }
 

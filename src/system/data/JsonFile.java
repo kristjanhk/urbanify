@@ -64,7 +64,11 @@ public class JsonFile {
         if (this.savedFloorPlans == null) {
             this.savedFloorPlans = new HashMap<>();
         }
-        this.savedFloorPlans.replace(name, floorPlan);
+        if (this.savedFloorPlans.containsKey(name)) {
+            this.savedFloorPlans.replace(name, floorPlan);
+        } else {
+            this.savedFloorPlans.put(name, floorPlan);
+        }
     }
 
     public void saveCurrentData() {
