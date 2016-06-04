@@ -2,43 +2,38 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.TextFlow?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="system.graphics.settings.Controller">
+<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.settings.Controller">
     <top>
-        <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0"
-              prefWidth="1600.0" BorderPane.alignment="CENTER">
+        <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="100.0">
-                <Button onMouseClicked="#handleStageMinimize" mnemonicParsing="false" text="→" textAlignment="CENTER"
-                        styleClass="barButton">
+                <Button mnemonicParsing="false" onMouseClicked="#handleStageMinimize" styleClass="barButton" text="→" textAlignment="CENTER">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="maximizeButton" onMouseClicked="#handleStageMaximize" mnemonicParsing="false"
-                        textAlignment="CENTER" styleClass="barButton">
+                <Button fx:id="maximizeButton" mnemonicParsing="false" onMouseClicked="#handleStageMaximize" styleClass="barButton" textAlignment="CENTER">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
-                <Button onMouseClicked="#handleStageClose" mnemonicParsing="false" text="←" styleClass="barButton">
+                <Button mnemonicParsing="false" onMouseClicked="#handleStageClose" styleClass="barButton" text="←">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
             </HBox>
-        <Text fx:id="settingsText" strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="TOP_LEFT"
-              styleClass="topText">
+        <Text fx:id="settingsText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText" BorderPane.alignment="TOP_LEFT">
             <VBox.margin>
-                <Insets left="70.0" top="40.0"/>
+                <Insets left="70.0" top="40.0" />
             </VBox.margin>
         </Text>
         </VBox>
@@ -46,11 +41,11 @@
     <bottom>
         <HBox alignment="BOTTOM_RIGHT" BorderPane.alignment="BOTTOM_RIGHT">
             <BorderPane.margin>
-                <Insets bottom="40.0" right="40.0"/>
+                <Insets bottom="40.0" right="40.0" />
             </BorderPane.margin>
-            <Button fx:id="back" onMouseClicked="#doBack" mnemonicParsing="false" styleClass="bottomButton">
+            <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#doBack" styleClass="bottomButton">
                 <HBox.margin>
-                    <Insets left="40.0"/>
+                    <Insets left="40.0" />
                 </HBox.margin>
             </Button>
         </HBox>
@@ -58,52 +53,67 @@
     <center>
         <VBox BorderPane.alignment="TOP_RIGHT">
             <BorderPane.margin>
-                <Insets left="40.0" top="40.0"/>
+                <Insets left="40.0" top="40.0" />
             </BorderPane.margin>
             <HBox alignment="CENTER_LEFT">
                 <Text fx:id="pathText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35">
                     <font>
-                        <Font size="36.0"/>
+                        <Font size="36.0" />
                     </font>
                     <HBox.margin>
-                        <Insets right="40.0"/>
+                        <Insets right="40.0" />
                     </HBox.margin>
                 </Text>
-                <TextFlow onMouseClicked="#handleDirectoryChange" maxHeight="70.5" minHeight="70.5" prefHeight="70.5"
-                          styleClass="textFlowNimi" HBox.hgrow="ALWAYS">
+                <TextFlow maxHeight="70.5" minHeight="70.5" onMouseClicked="#handleDirectoryChange" prefHeight="70.5" styleClass="textFlowNimi" HBox.hgrow="ALWAYS">
                     <HBox.margin>
-                        <Insets right="40.0"/>
+                        <Insets right="40.0" />
                     </HBox.margin>
                     <Text fx:id="filepath" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35">
                         <font>
-                            <Font size="35.0"/>
+                            <Font size="35.0" />
                         </font>
                     </Text>
                 </TextFlow>
             </HBox>
             <HBox alignment="CENTER_LEFT">
                 <VBox.margin>
-                    <Insets bottom="40.0" top="40.0"/>
+                    <Insets bottom="40.0" top="40.0" />
                 </VBox.margin>
-                <MenuButton fx:id="language" mnemonicParsing="false">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="english" onAction="#handleLangSwitch"/>
-                        <MenuItem mnemonicParsing="false" text="eesti keel" onAction="#handleLangSwitch"/>
-                        <MenuItem mnemonicParsing="false" text="võro kiil" onAction="#handleLangSwitch"/>
-                        <MenuItem mnemonicParsing="false" text="deutsch" onAction="#handleLangSwitch"/>
-                        <MenuItem mnemonicParsing="false" text="pусский язык" onAction="#handleLangSwitch"/>
-                    </items>
-                    <HBox.margin>
-                        <Insets right="40.0"/>
-                    </HBox.margin>
-                </MenuButton>
-                <MenuButton fx:id="theme" mnemonicParsing="false">
-                    <items>
-                        <MenuItem mnemonicParsing="false" id="LIGHT" onAction="#handleThemeSwitch"/>
-                        <MenuItem mnemonicParsing="false" id="DARK" onAction="#handleThemeSwitch"/>
-                        <MenuItem mnemonicParsing="false" id="WARM" onAction="#handleThemeSwitch"/>
-                    </items>
-                </MenuButton>
+            <VBox>
+               <children>
+                      <MenuButton fx:id="language" mnemonicParsing="false">
+                          <items>
+                              <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="english" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="eesti keel" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="võro kiil" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="deutsch" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="pусский язык" />
+                          </items>
+                      </MenuButton>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" text="language">
+                     <VBox.margin>
+                        <Insets left="20.0" top="6.0" />
+                     </VBox.margin></Text>
+               </children>
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                      <MenuButton fx:id="theme" mnemonicParsing="false">
+                          <items>
+                              <MenuItem id="LIGHT" mnemonicParsing="false" onAction="#handleThemeSwitch" />
+                              <MenuItem id="DARK" mnemonicParsing="false" onAction="#handleThemeSwitch" />
+                              <MenuItem id="WARM" mnemonicParsing="false" onAction="#handleThemeSwitch" />
+                          </items>
+                      </MenuButton>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" text="theme">
+                     <VBox.margin>
+                        <Insets left="20.0" top="6.0" />
+                     </VBox.margin></Text>
+               </children>
+            </VBox>
             </HBox>
         </VBox>
     </center>
