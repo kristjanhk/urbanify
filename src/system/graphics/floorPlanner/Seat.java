@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * Luuakse programmi töö käigus, seega ei saa FXMLis ette valmistada
  */
 public class Seat extends Button {
-    public enum Seattype {AVAILABLE, UNAVAILABLE}
+    public enum Seattype {AVAILABLE, UNAVAILABLE, OCCUPIED}
     private Seattype seattype;
     private FloorPlanPane floorPlan;
     private int x;
@@ -82,7 +82,7 @@ public class Seat extends Button {
     }
 
     public ArrayList<Integer> isUnavailable() {
-        if (this.seattype == Seattype.UNAVAILABLE) {
+        if (this.seattype == Seattype.UNAVAILABLE || this.seattype == Seattype.OCCUPIED) {
             return this.getCoordinates();
         }
         return null;
@@ -97,15 +97,15 @@ public class Seat extends Button {
 
     @FXML
     protected void handleClick() {
-        System.out.println("Clicked: (" + this.x + "," + this.y + ")");
+        System.out.println("Clicked: (" + this.y + "," + this.x + ")");
         if (!this.locked) {
             if (this.floorPlan.getParentController() instanceof system.graphics.pointOfSale.Controller) {
                 if (this.seattype == Seattype.AVAILABLE) {
                     ((Controller) this.floorPlan.getParentController()).addSeat();
-                    this.toggleStyle(this.seattype);
+                    this.setGivenStyle(Seattype.OCCUPIED);
                 } else {
                     if (((Controller) this.floorPlan.getParentController()).removeSeat()) {
-                        this.toggleStyle(this.seattype);
+                        this.setGivenStyle(Seattype.AVAILABLE);
                     }
                 }
             } else {
@@ -127,6 +127,8 @@ public class Seat extends Button {
         this.seattype = seattype;
         if (seattype == Seattype.AVAILABLE) {
             this.getStyleClass().add("seat_available");
+        } else if (seattype == Seattype.OCCUPIED) {
+            this.getStyleClass().add("seat_occupied");
         } else {
             this.getStyleClass().add("seat_unavailable");
         }
