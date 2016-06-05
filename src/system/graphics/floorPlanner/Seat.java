@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * Luuakse programmi töö käigus, seega ei saa FXMLis ette valmistada
  */
 public class Seat extends Button {
-    public enum Seattype {AVAILABLE, UNAVAILABLE, OCCUPIED}
+    public enum Seattype {AVAILABLE, UNAVAILABLE, OCCUPIED, DISABLED}
     private Seattype seattype;
     private FloorPlanPane floorPlan;
     private int x;
@@ -76,6 +76,10 @@ public class Seat extends Button {
         this.locked = true;
     }
 
+    public void disable() {
+        this.setVisible(false);
+    }
+
     public void setSeattype(Seattype seattype) {
         this.seattype = seattype;
         this.setGivenStyle(seattype);
@@ -83,6 +87,13 @@ public class Seat extends Button {
 
     public ArrayList<Integer> isUnavailable() {
         if (this.seattype == Seattype.UNAVAILABLE || this.seattype == Seattype.OCCUPIED) {
+            return this.getCoordinates();
+        }
+        return null;
+    }
+
+    public ArrayList<Integer> hasBeenDisabled() {
+        if (this.seattype == Seattype.DISABLED) {
             return this.getCoordinates();
         }
         return null;
@@ -116,7 +127,11 @@ public class Seat extends Button {
 
     private void toggleStyle(Seattype seattype) {
         if (seattype == Seattype.AVAILABLE) {
-            this.setGivenStyle(Seattype.UNAVAILABLE);
+            if (this.floorPlan.getParentController() instanceof system.graphics.floorPlanner.Controller) {
+                this.setGivenStyle(Seattype.DISABLED);
+            } else {
+                this.setGivenStyle(Seattype.UNAVAILABLE);
+            }
         } else {
             this.setGivenStyle(Seattype.AVAILABLE);
         }
@@ -129,6 +144,8 @@ public class Seat extends Button {
             this.getStyleClass().add("seat_available");
         } else if (seattype == Seattype.OCCUPIED) {
             this.getStyleClass().add("seat_occupied");
+        } else if (seattype == Seattype.DISABLED) {
+            this.getStyleClass().add("seat_disabled");
         } else {
             this.getStyleClass().add("seat_unavailable");
         }

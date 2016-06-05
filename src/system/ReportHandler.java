@@ -47,7 +47,7 @@ public class ReportHandler {
         fileChooser.setInitialDirectory(new File(MainHandler.getFileHandler().getPath()));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF", "*.pdf"));
         fileChooser.setInitialFileName(name);
-        return fileChooser.showSaveDialog(MainHandler.getStageHandler().getStage());
+        return fileChooser.showSaveDialog(MainHandler.getPrimaryStageHandler().getStage());
     }
 
     public void generatePdf(String htmlStr, OutputStream out) throws Exception {

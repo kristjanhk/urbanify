@@ -27,6 +27,7 @@ public class Controller extends AbstractController {
     @FXML protected Text pointofsale;
     @FXML protected Text name;
     @FXML protected Text datetime;
+    @FXML protected HBox seatsHbox;
     @FXML protected Text seats;
     @FXML protected VBox ticketsVbox;
     @FXML protected HBox rightContent;
@@ -80,6 +81,7 @@ public class Controller extends AbstractController {
                 ((Ticket) node).disableButtons(false);
             });
             if (this.floorPlan != null) {
+                this.seatsHbox.setVisible(false);
                 this.floorPlan.save(null, this.floorPlan.getSavedFloorPlanImageTypeString(this.event), this.event);
             }
             this.createQrCode(ticketdata);

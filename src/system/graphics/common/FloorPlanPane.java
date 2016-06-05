@@ -19,7 +19,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FloorPlanPane extends VBox {
-    public enum Property {DIMENSIONS, UNAVAILABLE, IMAGETYPE}
+    public enum Property {DIMENSIONS, UNAVAILABLE, IMAGETYPE, DISABLED}
+
     private AbstractController parentController;
     private StackPane floorPlan;
     private ImageView floorPlanImage;
@@ -103,16 +104,22 @@ public class FloorPlanPane extends VBox {
             dimensions.add(this.getFloor().size());
             dimensions.add(this.columnCount);
             ArrayList<ArrayList<Integer>> unavailables = new ArrayList<>();
+            ArrayList<ArrayList<Integer>> disabled = new ArrayList<>();
             for (Node group : this.getFloor()) {
                 for (Node seat : ((Group) group).getChildren()) {
-                    ArrayList<Integer> seatCoordinates = ((Seat) seat).isUnavailable();
-                    if (seatCoordinates != null) {
-                        unavailables.add(seatCoordinates);
+                    ArrayList<Integer> unavailableCoordinates = ((Seat) seat).isUnavailable();
+                    ArrayList<Integer> disabledCoordinates = ((Seat) seat).hasBeenDisabled();
+                    if (unavailableCoordinates != null) {
+                        unavailables.add(unavailableCoordinates);
+                    }
+                    if (disabledCoordinates != null) {
+                        disabled.add(disabledCoordinates);
                     }
                 }
             }
             floorPlan.put(Property.DIMENSIONS, dimensions);
             floorPlan.put(Property.UNAVAILABLE, unavailables);
+            floorPlan.put(Property.DISABLED, disabled);
             floorPlan.put(Property.IMAGETYPE, imageConstant.inLang(Lang.ENGLISH).toUpperCase());
             if (event != null) {
                 event.setFloorPlan(floorPlan);
@@ -157,17 +164,21 @@ public class FloorPlanPane extends VBox {
     }
 
     public static ArrayList<ArrayList<Integer>> getSavedFloorPlanUnavailables(Object from) {
-        return getSavedFloorPlanUnavailables(null, from);
+        return getSavedFloorPlanCoordinates(null, from, Property.UNAVAILABLE);
     }
 
-    public static ArrayList<ArrayList<Integer>> getSavedFloorPlanUnavailables(String name, Object from) {
+    public static ArrayList<ArrayList<Integer>> getSavedFloorPlanDisabled(Object from) {
+        return getSavedFloorPlanCoordinates(null, from, Property.DISABLED);
+    }
+
+    private static ArrayList<ArrayList<Integer>> getSavedFloorPlanCoordinates(String name, Object from, Property type) {
         Object seats;
         if (from instanceof Event) {
-            seats = ((Event) from).getFloorPlan().get(Property.UNAVAILABLE);
+            seats = ((Event) from).getFloorPlan().get(type);
         } else {
-            seats = ((AbstractController) from).getData().getFloorPlan(name).get(FloorPlanPane.Property.UNAVAILABLE);
+            seats = ((AbstractController) from).getData().getFloorPlan(name).get(type);
         }
-        ArrayList<ArrayList<Integer>> unavailables = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> selected = new ArrayList<>();
         for (Object seatData : (ArrayList) seats) {
             ArrayList<Integer> data = new ArrayList<>(2);
             for (Object coordinate : (ArrayList) seatData) {
@@ -175,9 +186,9 @@ public class FloorPlanPane extends VBox {
                     data.add(((Number) coordinate).intValue());
                 }
             }
-            unavailables.add(data);
+            selected.add(data);
         }
-        return unavailables;
+        return selected;
     }
 
     public static Imagetype getSavedFloorPlanImageType(Object from) {
@@ -201,7 +212,8 @@ public class FloorPlanPane extends VBox {
     public void loadFloorPlan(String name, Object from) {
         this.createNewFloorPlan(getSavedFloorPlanDimensions(name, from), false);
         this.setFloorPlanImage(getSavedFloorPlanImageType(name, from));
-        ArrayList<ArrayList<Integer>> unavailables = getSavedFloorPlanUnavailables(name, from);
+        ArrayList<ArrayList<Integer>> unavailables = getSavedFloorPlanCoordinates(name, from, Property.UNAVAILABLE);
+        ArrayList<ArrayList<Integer>> disabled = getSavedFloorPlanCoordinates(name, from, Property.DISABLED);
         for (Node group : this.getFloor()) {
             ((Group) group).getChildren().stream().filter(
                     seat -> unavailables.contains(((Seat) seat).getCoordinates())).forEach(
@@ -211,6 +223,14 @@ public class FloorPlanPane extends VBox {
                             ((Seat) unavailableSeat).lock();
                         }
                     });
+            ((Group) group).getChildren().stream().filter(
+                    seat -> disabled.contains(((Seat) seat).getCoordinates())).forEach(
+                    disabledSeat -> {
+                        if (this.parentController instanceof system.graphics.pointOfSale.Controller) {
+                            ((Seat) disabledSeat).setSeattype(Seat.Seattype.DISABLED);
+                            ((Seat) disabledSeat).disable();
+                        }
+            });
         }
     }
 

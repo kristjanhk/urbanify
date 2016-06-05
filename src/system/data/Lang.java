@@ -36,8 +36,8 @@ public enum Lang {
     public static void setActiveLang(Lang lang) {
         activeLang = lang;
         Locale.setDefault(lang.locale);
-        if (MainHandler.getStageHandler() != null) {
-            MainHandler.getStageHandler().getScenes().forEach(
+        if (MainHandler.getPrimaryStageHandler() != null) {
+            MainHandler.getPrimaryStageHandler().getScenes().forEach(
                     (scenetype, customScene) -> customScene.getController().setLanguage());
         }
     }

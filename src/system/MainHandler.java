@@ -40,10 +40,10 @@ public class MainHandler extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        stageHandler = new StageHandler(primaryStage);
+        stageHandler = new StageHandler(primaryStage, "Piletikontroll");
     }
 
-    public static StageHandler getStageHandler() {
+    public static StageHandler getPrimaryStageHandler() {
         return stageHandler;
     }
 

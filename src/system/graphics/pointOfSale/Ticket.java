@@ -45,6 +45,7 @@ public class Ticket extends GridPane {
 
     public void save() {
         this.event.addTicketAmount(this.tickettype, this.ticketAmount.doubleValue());
+
     }
 
     public void disableButtons(boolean init) {

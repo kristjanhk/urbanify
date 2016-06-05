@@ -140,9 +140,10 @@ public class Event {
 
     public void sendToArchive() {
         this.active = false;
-        ((Controller) MainHandler.getStageHandler().
+        ((Controller) MainHandler.getPrimaryStageHandler().
                 getScene(Scenetype.EVENTMANAGER).getController()).removeEventLine(this);
-        ((Controller) MainHandler.getStageHandler().getScene(Scenetype.ARCHIVE).getController()).addEventLine(this);
+        ((Controller) MainHandler.getPrimaryStageHandler().
+                getScene(Scenetype.ARCHIVE).getController()).addEventLine(this);
     }
 
     @Override

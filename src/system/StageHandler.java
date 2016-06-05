@@ -21,24 +21,31 @@ public class StageHandler {
     private double stageXOffset = 0.0;
     private double stageYOffset = 0.0;
 
-    public StageHandler(Stage primaryStage) {
+    public StageHandler(Stage primaryStage, String title) {
         this.stage = primaryStage;
-        this.init();
+        this.init(title, true);
     }
 
-    private void init() {
+    public StageHandler(String title) {
+        this.stage = new Stage();
+        this.init(title, false);
+    }
+
+    private void init(String title, boolean primary) {
         this.stage.initStyle(StageStyle.UNDECORATED);
         this.resizeHandler = new ResizeHandler(this.stage);
-        this.stage.setTitle("Piletikassa");
+        this.stage.setTitle(title);
         this.stage.setHeight(880);
         this.stage.setWidth(1220);
         this.stage.setMinHeight(720);
         this.stage.setMinWidth(1180);
         //this.stage.setMaximized(true);
-        this.stage.setOnCloseRequest(event -> MainHandler.getFileHandler().saveData());
-        this.initScenes();
-        this.switchSceneTo(Scenetype.MAINMENU);
-        this.stage.show();
+        if (primary) {
+            this.stage.setOnCloseRequest(event -> MainHandler.getFileHandler().saveData());
+            this.initScenes();
+            this.switchSceneTo(Scenetype.MAINMENU);
+            this.stage.show();
+        }
     }
 
     public Stage getStage() {
