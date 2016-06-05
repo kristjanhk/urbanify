@@ -1,6 +1,8 @@
 package system.graphics.pointOfSale;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.*;
 import javafx.scene.layout.HBox;
@@ -26,7 +28,7 @@ public class Controller extends AbstractController {
     @FXML protected Text name;
     @FXML protected Text datetime;
     @FXML protected Text seats;
-    @FXML protected VBox eventsVBox;
+    @FXML protected VBox ticketsVbox;
     @FXML protected HBox rightContent;
     @FXML protected Text total;
     @FXML protected Text totalcost;
@@ -34,7 +36,7 @@ public class Controller extends AbstractController {
     @FXML protected Button checkout;
 
     private Event event;
-    private int seatsLeft;
+    private SimpleIntegerProperty seatsLeft = new SimpleIntegerProperty();
     private double cost = 0.0;
     private FloorPlanPane floorPlan;
 
@@ -47,15 +49,15 @@ public class Controller extends AbstractController {
         this.name.setText(this.event.getName());
         this.setDatetime();
         for (String ticket : this.event.getTickets().keySet()) {
-            this.eventsVBox.getChildren().add(new Ticket(this, ticket, this.event));
+            this.ticketsVbox.getChildren().add(new Ticket(this, ticket, this.event));
         }
         if (this.event.getFloorPlan() != null) {
             this.floorPlan = new FloorPlanPane(this);
             this.rightContent.getChildren().add(this.floorPlan);
             this.floorPlan.loadFloorPlan(this.event);
-            this.seatsLeft = 0;
+            this.seatsLeft.set(0);
         } else {
-            this.seatsLeft = this.event.getMaxSeats();
+            this.seatsLeft.set(this.event.getMaxSeats());
         }
         this.updateTotal();
         this.validateCheckoutButton();
@@ -70,12 +72,12 @@ public class Controller extends AbstractController {
     @FXML
     protected void doCheckout() {
         if (this.checkout.getText().equals(Word.CHECKOUT.toString())) {
-            this.event.setMaxSeats(this.seatsLeft);
+            this.event.setMaxSeats(this.seatsLeft.get());
             ArrayList<String> ticketdata = new ArrayList<>();
-            this.eventsVBox.getChildren().forEach(node -> {
+            this.ticketsVbox.getChildren().forEach(node -> {
                 ticketdata.add(((Ticket) node).getCurrentData());
                 ((Ticket) node).save();
-                ((Ticket) node).disableButtons();
+                ((Ticket) node).disableButtons(false);
             });
             if (this.floorPlan != null) {
                 this.floorPlan.save(null, this.floorPlan.getSavedFloorPlanImageTypeString(this.event), this.event);
@@ -91,13 +93,17 @@ public class Controller extends AbstractController {
         return this.event;
     }
 
+    public SimpleIntegerProperty getSeatsLeftProperty() {
+        return this.seatsLeft;
+    }
+
     public boolean occupySeat(double ticketprice) {
-        if (this.seatsLeft == -1) {
+        if (this.seatsLeft.get() == -1) {
             this.cost += ticketprice;
             this.updateTotal();
             return true;
-        } else if (this.seatsLeft > 0) {
-            this.seatsLeft--;
+        } else if (this.seatsLeft.get() > 0) {
+            this.seatsLeft.set(this.seatsLeft.get() - 1);
             this.updateSeatsLeft();
             this.cost += ticketprice;
             this.updateTotal();
@@ -107,8 +113,8 @@ public class Controller extends AbstractController {
     }
 
     public void freeSeat(double ticketprice) {
-        if (this.seatsLeft != -1) {
-            this.seatsLeft++;
+        if (this.seatsLeft.get() != -1) {
+            this.seatsLeft.set(this.seatsLeft.get() + 1);
             this.updateSeatsLeft();
         }
         this.cost -= ticketprice;
@@ -117,13 +123,16 @@ public class Controller extends AbstractController {
     }
 
     public void addSeat() {
-        this.seatsLeft++;
+        this.seatsLeft.set(this.seatsLeft.get() + 1);
         this.updateSeatsLeft();
+        for (Node node : this.ticketsVbox.getChildren()) {
+            ((Ticket) node).enableAddTicketButton();
+        }
     }
 
     public boolean removeSeat() {
-        if (this.seatsLeft > 0) {
-            this.seatsLeft--;
+        if (this.seatsLeft.get() > 0) {
+            this.seatsLeft.set(this.seatsLeft.get() - 1);
             this.updateSeatsLeft();
             return true;
         }
@@ -156,10 +165,10 @@ public class Controller extends AbstractController {
 
     private void updateSeatsLeft() {
         if (this.floorPlan != null) {
-            this.seats.setText(Word.TICKETSTOSELECT.toString() + ": " + this.seatsLeft);
+            this.seats.setText(Word.TICKETSTOSELECT.toString() + ": " + this.seatsLeft.intValue());
         } else {
             this.seats.setText(Word.SEATSLEFT.toString() + ": " +
-                    (this.seatsLeft == -1 ? Word.UNLIMITED.toString() : this.seatsLeft));
+                    (this.seatsLeft.get() == -1 ? Word.UNLIMITED.toString() : this.seatsLeft.intValue()));
         }
 
     }
@@ -170,7 +179,7 @@ public class Controller extends AbstractController {
 
     protected void validateCheckoutButton() {
         boolean valid = !(this.cost == 0.0);
-        if (this.floorPlan != null && this.seatsLeft > 0) {
+        if (this.floorPlan != null && this.seatsLeft.get() > 0) {
             valid = false;
         }
         this.checkout.setDisable(!valid);

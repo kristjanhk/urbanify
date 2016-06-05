@@ -33,6 +33,7 @@ public class Ticket extends GridPane {
         this.setAlignment(Pos.CENTER_LEFT);
         VBox.setMargin(this, new Insets(0, 0, 20, 0));
         this.initChildren();
+        this.disableButtons(true);
     }
 
     public String getCurrentData() {
@@ -46,9 +47,15 @@ public class Ticket extends GridPane {
         this.event.addTicketAmount(this.tickettype, this.ticketAmount.doubleValue());
     }
 
-    public void disableButtons() {
+    public void disableButtons(boolean init) {
         this.removeTicket.setDisable(true);
-        this.addTicket.setDisable(true);
+        if (this.event.getFloorPlan() != null || !init) {
+            this.addTicket.setDisable(true);
+        }
+    }
+
+    public void enableAddTicketButton() {
+        this.addTicket.setDisable(false);
     }
 
     private void initChildren() {
@@ -58,8 +65,8 @@ public class Ticket extends GridPane {
         this.ticketName.setStrokeWidth(0.0);
         this.ticketName.setWrappingWidth(280);
         GridPane.setMargin(this.ticketName, new Insets(0.0, 0.0, 0.0, 0.0));
-        this.add(this.ticketName,0,0);
-        this.getColumnConstraints().add(new ColumnConstraints(280,280,280));
+        this.add(this.ticketName, 0, 0);
+        this.getColumnConstraints().add(new ColumnConstraints(280, 280, 280));
 
         this.removeTicket = new Button("-");
         this.removeTicket.getStyleClass().add("buttonRound");
@@ -71,8 +78,12 @@ public class Ticket extends GridPane {
                 this.parentController.freeSeat(this.event.getTicketPrice(this.tickettype));
             }
         });
-        this.add(this.removeTicket,1,0);
-        this.getColumnConstraints().add(new ColumnConstraints(70,70,70));
+        this.ticketAmount.addListener((observable, oldValue, newValue) -> {
+            this.removeTicket.setDisable(newValue.intValue() == 0);
+        });
+        this.add(this.removeTicket, 1, 0);
+
+        this.getColumnConstraints().add(new ColumnConstraints(70, 70, 70));
 
         Text ticketAmountText = new Text("0");
         ticketAmountText.getStyleClass().add("text35");
@@ -82,8 +93,8 @@ public class Ticket extends GridPane {
         ticketAmountText.setWrappingWidth(100.0); //57.8671875??
         HBox.setMargin(ticketAmountText, new Insets(0.0, 0, 0.0, 0));
         ticketAmountText.textProperty().bind(this.ticketAmount.asString());
-        this.add(ticketAmountText,2,0);
-        this.getColumnConstraints().add(new ColumnConstraints(100,100,100));
+        this.add(ticketAmountText, 2, 0);
+        this.getColumnConstraints().add(new ColumnConstraints(100, 100, 100));
 
         this.addTicket = new Button("ò");
         this.addTicket.getStyleClass().add("buttonRound");
@@ -94,8 +105,11 @@ public class Ticket extends GridPane {
                 this.parentController.validateCheckoutButton();
             }
         });
-        this.add(this.addTicket,3,0);
-        this.getColumnConstraints().add(new ColumnConstraints(70,70,70));
+        this.parentController.getSeatsLeftProperty().addListener((observable, oldValue, newValue) -> {
+            this.addTicket.setDisable(newValue.intValue() == 0);
+        });
+        this.add(this.addTicket, 3, 0);
+        this.getColumnConstraints().add(new ColumnConstraints(70, 70, 70));
 
         this.ticketCost = new Text();
         this.ticketCost.setText(String.format("%.2f", this.parentController.getEvent().
@@ -106,7 +120,7 @@ public class Ticket extends GridPane {
         this.ticketCost.setStrokeWidth(0.0);
         this.ticketCost.setWrappingWidth(180); //96.8671875??
         HBox.setMargin(this.ticketCost, new Insets(0.0, 0.0, 0.0, 0.0));
-        this.add(this.ticketCost,4,0);
-        this.getColumnConstraints().add(new ColumnConstraints(180,180,180));
+        this.add(this.ticketCost, 4, 0);
+        this.getColumnConstraints().add(new ColumnConstraints(180, 180, 180));
     }
 }

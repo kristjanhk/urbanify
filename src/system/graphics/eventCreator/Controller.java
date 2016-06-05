@@ -158,9 +158,9 @@ public class Controller extends AbstractController {
     }
 
     //726 72[6-9] (726-729) | 7[3-9]\\d    (730-799) | [8-9]\\d\\d  (800-999) | [1-9]\\d{3,} (1000-)
-    //444 44[4-9] (444-449) | 4[5-9]\\d    (450-499) | [5-9]\\d\\d  (500-999) | [1-9]\\d{3,} (1000-)
+    //472 47[2-9] (472-479) | 4[8-9]\\d    (480-499) | [5-9]\\d\\d  (500-999) | [1-9]\\d{3,} (1000-)
     //38  3[8-9]  (38-39)   | [4-9]\\d     (40-99)   | [1-9]\\d{2,} (100-)
-    //44  4[4-9]  (44-49)   | [5-9]\\d     (50-99)   | [1-9]\\d{2,} (100-)
+    //27  2[7-9]  (27-29)   | [3-9]\\d     (30-99)   | [1-9]\\d{2,} (100-)
     //4   [4-9]   (4-9)     | [1-9]\\d{1,} (10-)
     private void loadValidation(Event event) {
         String ustring = String.valueOf(event.getTotalTicketAmount());
@@ -179,8 +179,7 @@ public class Controller extends AbstractController {
             }
             validation.append("|");
         }
-        validation.deleteCharAt(validation.length() - 1);
-        validation.append("|[1-9]\\d{");
+        validation.append("[1-9]\\d{");
         validation.append(ustring.length());
         validation.append(",}$");
         MainHandler.registerValidator(this.maxSeatsValidation, this.maxSeats, validation.toString());

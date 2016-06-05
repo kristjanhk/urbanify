@@ -107,7 +107,6 @@ public class Seat extends Button {
                     if (((Controller) this.floorPlan.getParentController()).removeSeat()) {
                         this.toggleStyle(this.seattype);
                     }
-
                 }
             } else {
                 this.toggleStyle(this.seattype);
