@@ -5,134 +5,126 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="system.graphics.settings.Controller">
+<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="system.graphics.settings.Controller">
     <top>
-        <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0"
-              prefWidth="1600.0" BorderPane.alignment="CENTER">
+        <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="100.0">
-                <Button mnemonicParsing="false" onMouseClicked="#handleStageMinimize" styleClass="barButton" text="→"
-                        textAlignment="CENTER">
+                <Button mnemonicParsing="false" onMouseClicked="#handleStageMinimize" styleClass="barButton" text="→" textAlignment="CENTER">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="maximizeButton" mnemonicParsing="false" onMouseClicked="#handleStageMaximize"
-                        styleClass="barButton" textAlignment="CENTER">
+                <Button fx:id="maximizeButton" mnemonicParsing="false" onMouseClicked="#handleStageMaximize" styleClass="barButton" textAlignment="CENTER">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
                 <Button mnemonicParsing="false" onMouseClicked="#handleStageClose" styleClass="barButton" text="←">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
             </HBox>
-            <Text fx:id="settingsText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText"
-                  BorderPane.alignment="TOP_LEFT">
+            <Text fx:id="settingsText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText" BorderPane.alignment="TOP_LEFT">
                 <VBox.margin>
-                    <Insets left="70.0" top="40.0"/>
+                    <Insets left="70.0" top="40.0" />
                 </VBox.margin>
             </Text>
+            <HBox alignment="CENTER_LEFT">
+                <Text fx:id="pathText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35">
+                    <font>
+                        <Font size="36.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets right="40.0" />
+                    </HBox.margin>
+                </Text>
+                <TextFlow maxHeight="70.5" minHeight="70.5" onMouseClicked="#handleDirectoryChange" prefHeight="70.5" styleClass="textFlowNimi" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets right="40.0" />
+                    </HBox.margin>
+                    <Text fx:id="filepath" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35">
+                        <font>
+                            <Font size="35.0" />
+                        </font>
+                    </Text>
+                </TextFlow>
+            <VBox.margin>
+               <Insets left="40.0" top="40.0" />
+            </VBox.margin>
+            </HBox>
         </VBox>
     </top>
     <bottom>
         <HBox alignment="BOTTOM_RIGHT" BorderPane.alignment="BOTTOM_RIGHT">
             <BorderPane.margin>
-                <Insets bottom="40.0" right="40.0"/>
+                <Insets bottom="40.0" right="40.0" />
             </BorderPane.margin>
             <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#doBack" styleClass="bottomButton">
                 <HBox.margin>
-                    <Insets left="40.0"/>
+                    <Insets left="40.0" />
                 </HBox.margin>
             </Button>
         </HBox>
     </bottom>
-    <left>
-        <VBox BorderPane.alignment="CENTER">
-            <BorderPane.margin>
-                <Insets left="40.0" top="40.0"/>
-            </BorderPane.margin>
-            <HBox alignment="CENTER_LEFT">
-                <Text fx:id="pathText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35">
-                    <font>
-                        <Font size="36.0"/>
-                    </font>
-                    <HBox.margin>
-                        <Insets right="40.0"/>
-                    </HBox.margin>
-                </Text>
-                <TextFlow maxHeight="70.5" minHeight="70.5" onMouseClicked="#handleDirectoryChange" prefHeight="70.5"
-                          styleClass="textFlowNimi" HBox.hgrow="ALWAYS">
-                    <HBox.margin>
-                        <Insets right="40.0"/>
-                    </HBox.margin>
-                    <Text fx:id="filepath" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35">
-                        <font>
-                            <Font size="35.0"/>
-                        </font>
-                    </Text>
-                </TextFlow>
-            </HBox>
-            <HBox alignment="CENTER_LEFT">
-                <VBox.margin>
-                    <Insets bottom="20.0" top="40.0"/>
-                </VBox.margin>
-                <VBox>
-                    <HBox.margin>
-                        <Insets right="40.0"/>
-                    </HBox.margin>
-                    <MenuButton fx:id="language" mnemonicParsing="false">
-                        <items>
-                            <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="english"/>
-                            <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="eesti keel"/>
-                            <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="võro kiil"/>
-                            <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="deutsch"/>
-                            <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="русский язык"/>
-                        </items>
-                    </MenuButton>
-                    <Text fx:id="langLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19">
-                        <VBox.margin>
-                            <Insets left="20.0" top="6.0"/>
-                        </VBox.margin>
-                    </Text>
-                </VBox>
-                <VBox>
-                    <MenuButton fx:id="theme" mnemonicParsing="false">
-                        <items>
-                            <MenuItem id="LIGHT" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
-                            <MenuItem id="DARK" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
-                            <MenuItem id="WARM" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
-                        </items>
-                    </MenuButton>
-                    <Text fx:id="themeLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19">
-                        <VBox.margin>
-                            <Insets left="20.0" top="6.0"/>
-                        </VBox.margin>
-                    </Text>
-                    <HBox.margin>
-                        <Insets right="40.0"/>
-                    </HBox.margin>
-                </VBox>
-                <HBox maxHeight="320.0" maxWidth="320.0" prefHeight="320.0" prefWidth="320.0" alignment="TOP_LEFT">
-                    <Button fx:id="qrButton" mnemonicParsing="false" onMouseClicked="#handleQrCodeGenerate"
-                            styleClass="qrGenButton">
-                        <HBox.margin>
-                            <Insets right="40.0" />
-                        </HBox.margin>
-                    </Button>
-                    <Pane fx:id="qrContent" maxHeight="320.0" maxWidth="320.0" minHeight="320.0" minWidth="320.0"
-                          prefHeight="320.0" prefWidth="320.0"/>
-                </HBox>
-            </HBox>
-        </VBox>
-    </left>
+   <left>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="70.5" minHeight="70.5" prefHeight="70.5" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="TOP" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="70.5" minHeight="70.5" prefHeight="70.5" valignment="TOP" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="TOP" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="70.5" minHeight="70.5" prefHeight="70.5" valignment="TOP" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <BorderPane.margin>
+            <Insets left="40.0" top="40.0" />
+         </BorderPane.margin>
+         <children>
+                 <MenuButton fx:id="language" mnemonicParsing="false">
+                     <items>
+                         <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="english" />
+                         <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="eesti keel" />
+                         <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="võro kiil" />
+                         <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="deutsch" />
+                         <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="русский язык" />
+                     </items>
+                 </MenuButton>
+                 <Text fx:id="langLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" top="6.0" />
+               </GridPane.margin>
+                 </Text>
+                 <MenuButton fx:id="theme" mnemonicParsing="false" GridPane.rowIndex="3">
+                     <items>
+                         <MenuItem id="LIGHT" mnemonicParsing="false" onAction="#handleThemeSwitch" />
+                         <MenuItem id="DARK" mnemonicParsing="false" onAction="#handleThemeSwitch" />
+                         <MenuItem id="WARM" mnemonicParsing="false" onAction="#handleThemeSwitch" />
+                     </items>
+                 </MenuButton>
+                 <Text fx:id="themeLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="20.0" top="6.0" />
+               </GridPane.margin>
+                 </Text>
+                 <Button fx:id="qrButton" mnemonicParsing="false" onMouseClicked="#handleQrCodeGenerate" styleClass="qrGenButton" GridPane.rowIndex="6" />
+                 <Pane fx:id="qrContent" maxHeight="320.0" maxWidth="320.0" minHeight="320.0" minWidth="320.0" prefHeight="320.0" prefWidth="320.0" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+   </left>
 </BorderPane>
