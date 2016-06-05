@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+
+<!-- todo fix all-->
+
+<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="system.graphics.pointOfSale.ticketInfo.Controller">
+    <top>
+
+        <!-- see peaks ok olema?-->
+        <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0"
+              prefWidth="1600.0" BorderPane.alignment="CENTER">
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="100.0">
+                <Button onMouseClicked="#handleStageMinimize" mnemonicParsing="false" text="→" textAlignment="CENTER"
+                        styleClass="barButton">
+                    <HBox.margin>
+                        <Insets right="1.0" top="1.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="maximizeButton" onMouseClicked="#handleStageMaximize" mnemonicParsing="false"
+                        textAlignment="CENTER" styleClass="barButton">
+                    <HBox.margin>
+                        <Insets right="1.0" top="1.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button onMouseClicked="#handleStageClose" mnemonicParsing="false" text="←" styleClass="barButton">
+                    <HBox.margin>
+                        <Insets right="1.0" top="1.0"/>
+                    </HBox.margin>
+                </Button>
+            </HBox>
+
+
+
+            <Text text="Hello world!" styleClass="topText" strokeType="OUTSIDE" strokeWidth="0.0"
+                  BorderPane.alignment="TOP_LEFT">
+                <VBox.margin>
+                    <Insets bottom="40.0" left="70.0" top="40.0"/>
+                </VBox.margin>
+            </Text>
+
+
+        </VBox>
+    </top>
+</BorderPane>

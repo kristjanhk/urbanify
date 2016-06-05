@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import system.MainHandler;
+import system.StageHandler;
 import system.data.Event;
 import system.data.Lang;
 import system.data.Word;
@@ -86,6 +87,7 @@ public class Controller extends AbstractController {
             }
             this.createQrCode(ticketdata);
             this.checkout.setText(Word.NEW.toString());
+            StageHandler ticketHandler = new StageHandler("Piletiinfo");
         } else {
             this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
         }

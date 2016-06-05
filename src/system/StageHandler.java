@@ -29,6 +29,9 @@ public class StageHandler {
     public StageHandler(String title) {
         this.stage = new Stage();
         this.init(title, false);
+        this.scenes.put(Scenetype.TICKETINFO, createScene(Scenetype.TICKETINFO));
+        this.switchSceneTo(Scenetype.TICKETINFO);
+        this.stage.show();
     }
 
     private void init(String title, boolean primary) {
