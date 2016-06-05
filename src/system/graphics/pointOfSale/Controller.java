@@ -189,7 +189,7 @@ public class Controller extends AbstractController {
                 this.event.getTime() + "\n");
         ticketdata.forEach(tekst::append);
         tekst.append(this.totalcost.getText()); // FIXME: 11.05.2016 currency symbol bugine?
-        ImageView qrcode = MainHandler.createQrCode(tekst.toString());
+        ImageView qrcode = MainHandler.createQrCode(tekst.toString(), 320.0, 44);
         this.rightContent.getChildren().add(qrcode);
     }
 

@@ -33,12 +33,18 @@ public class Controller extends AbstractController {
     @FXML protected Text themeLabel;
     @FXML protected Pane qrContent;
     @FXML protected Button qrButton;
+    @FXML protected Text qrLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.setLanguage();
         this.filepath.setText(this.getFileHandler().getPath());
         this.language.setText(Word.valueOf(Lang.getActiveLang().toString()).inLang(Lang.getActiveLang()));
+    }
+
+    @Override
+    public <T> void prepareToDisplay(T object) {
+        this.qrContent.getChildren().clear();
     }
 
     @FXML
@@ -79,7 +85,8 @@ public class Controller extends AbstractController {
     @FXML
     protected void handleQrCodeGenerate() {
         this.qrContent.getChildren().clear();
-        this.qrContent.getChildren().add(MainHandler.createQrCode("megatekst!"));
+        // TODO: 5.06.2016 generate key pair and save it or load from file and display public key
+        this.qrContent.getChildren().add(MainHandler.createQrCode("megatekst!", 320.0, 44));
     }
 
     @FXML
@@ -98,6 +105,7 @@ public class Controller extends AbstractController {
         this.theme.getItems().get(2).setText(Word.WARM.toString());
         this.langLabel.setText(Word.LANGUAGE.toString());
         this.themeLabel.setText(Word.THEME.toString());
-        this.qrButton.setText(Word.GENERATE.toString());
+        this.qrButton.setText(Word.SHOWQR.toString());
+        this.qrLabel.setText(Word.AUTHKEY.toString());
     }
 }

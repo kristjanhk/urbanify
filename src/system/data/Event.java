@@ -33,7 +33,7 @@ public class Event {
                              String maxSeats) {
         this.resetCreator(!this.isActive());
         this.name = name;
-        this.saveTickets(tickets, this.isActive());
+        this.saveTickets(tickets);
         this.currency = currency;
         this.date = date;
         this.time = time;
@@ -44,16 +44,12 @@ public class Event {
         }
     }
 
-    private void saveTickets(List<Node> tickets, boolean update) {
+    private void saveTickets(List<Node> tickets) {
         HashMap<String, ArrayList<Double>> saveableTickets = new HashMap<>();
         tickets.stream().filter(node -> node instanceof Ticket).forEach(node -> {
             ArrayList<Double> ticketdata = new ArrayList<>();
             ticketdata.add(((Ticket) node).getPrice());
-            if (update) {
-                ticketdata.add((double) this.getTicketAmount(((Ticket) node).getType()));
-            } else {
-                ticketdata.add(0.0);
-            }
+            ticketdata.add((double) this.getTicketAmount(((Ticket) node).getType()));
             saveableTickets.put(((Ticket) node).getType(), ticketdata);
         });
         this.tickets = saveableTickets;
@@ -96,7 +92,10 @@ public class Event {
     }
 
     public int getTicketAmount(String ticketName) {
-        return this.tickets.get(ticketName).get(1).intValue();
+        if (this.tickets.get(ticketName) != null && this.tickets.get(ticketName).get(1) != null) {
+            return this.tickets.get(ticketName).get(1).intValue();
+        }
+        return 0;
     }
 
     public String getCurrency() {

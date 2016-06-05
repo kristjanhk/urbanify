@@ -40,6 +40,7 @@ public class Controller extends AbstractController {
 
     private String seatingType = "";
     private Event event;
+    private boolean fullyUpdateable = true;
     private boolean eventTextValidated = false;
     private boolean calendarValidated = false;
     private boolean timeTextValidated = false;
@@ -55,14 +56,18 @@ public class Controller extends AbstractController {
         this.addTicket();
     }
 
+    public boolean isFullyUpdateable() {
+        return this.fullyUpdateable;
+    }
+
     @FXML
     protected void addTicket() {
         this.ticketVBox.getChildren().add(this.ticketVBox.getChildren().size() - 1, new Ticket(this, this.ticketVBox));
     }
 
-    private void addTicket(String name, String price, String currency, boolean disabled) {
+    private void addTicket(String name, String price, String currency) {
         this.ticketVBox.getChildren().add(this.ticketVBox.getChildren().size() - 1,
-                new Ticket(this, this.ticketVBox, name, price, currency, disabled));
+                new Ticket(this, this.ticketVBox, name, price, currency));
     }
 
     @FXML
@@ -114,26 +119,28 @@ public class Controller extends AbstractController {
     }
 
     private void loadFromEvent(Event event) {
-        boolean fullyUpdateable = true;
+        this.event = event;
         this.ticketVBox.getChildren().remove(0);
         for (String ticket : event.getTickets().keySet()) {
-            boolean disabled = false;
             if (event.getTicketAmount(ticket) != 0) {
-                disabled = true;
-                fullyUpdateable = false;
+                this.fullyUpdateable = false;
             }
-            this.addTicket(ticket, String.valueOf(event.getTicketPrice(ticket)), event.getCurrency(), disabled);
+            this.addTicket(ticket, String.valueOf(event.getTicketPrice(ticket)), event.getCurrency());
         }
-
-        this.event = event;
+        if (!this.fullyUpdateable) {
+            this.ticketVBox.getChildren().stream().filter(node -> node instanceof Ticket).forEach(
+                    node -> ((Ticket) node).disable(event.getTicketAmount(((Ticket) node).getType()) > 0));
+        }
         this.eventCreator.setText(Word.EVENTUPDATER.toString());
         this.eventText.setText(event.getName());
         this.eventTextValidated = true;
-
+        this.eventText.setDisable(!this.fullyUpdateable);
         this.calendar.setValue(event.getDate());
         this.calendarValidated = true;
+        this.calendar.setDisable(!this.fullyUpdateable);
         this.timeText.setText(event.getTime());
         this.timeTextValidated = true;
+        this.timeText.setDisable(!this.fullyUpdateable);
         this.seating.setDisable(true);
         if (event.getFloorPlan() != null) {
             this.seating.setText(Word.ASSIGNEDSEATING.toString());
@@ -150,18 +157,31 @@ public class Controller extends AbstractController {
         }
     }
 
+    //726 72[6-9] (726-729) | 7[3-9]\\d    (730-799) | [8-9]\\d\\d  (800-999) | [1-9]\\d{3,} (1000-)
+    //444 44[4-9] (444-449) | 4[5-9]\\d    (450-499) | [5-9]\\d\\d  (500-999) | [1-9]\\d{3,} (1000-)
+    //38  3[8-9]  (38-39)   | [4-9]\\d     (40-99)   | [1-9]\\d{2,} (100-)
+    //44  4[4-9]  (44-49)   | [5-9]\\d     (50-99)   | [1-9]\\d{2,} (100-)
+    //4   [4-9]   (4-9)     | [1-9]\\d{1,} (10-)
     private void loadValidation(Event event) {
-        int usedSeats = event.getTotalTicketAmount();
+        String ustring = String.valueOf(event.getTotalTicketAmount());
         StringBuilder validation = new StringBuilder("^");
-        for (char character : String.valueOf(usedSeats).toCharArray()) {
-            if (!Character.toString(character).equals("-")) {
-                validation.append("[");
-                validation.append(Character.toString(character));
-                validation.append("-9]");
+        for (int i = 1; i < ustring.length() + 1; i++) {
+            validation.append(ustring.substring(0, ustring.length() - i));
+            validation.append("[");
+            if (i == 1) {
+                validation.append(ustring.charAt(ustring.length() - i));
+            } else {
+                validation.append(String.valueOf(Character.getNumericValue(ustring.charAt(ustring.length() - i)) + 1));
             }
+            validation.append("-9]");
+            for (int j = 0; j < i - 1; j++) {
+                validation.append("\\d");
+            }
+            validation.append("|");
         }
+        validation.deleteCharAt(validation.length() - 1);
         validation.append("|[1-9]\\d{");
-        validation.append(String.valueOf(usedSeats).length());
+        validation.append(ustring.length());
         validation.append(",}$");
         MainHandler.registerValidator(this.maxSeatsValidation, this.maxSeats, validation.toString());
     }

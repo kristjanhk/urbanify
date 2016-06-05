@@ -19,13 +19,13 @@ import system.data.Word;
 public class Ticket extends HBox {
     private Controller parentController;
     private VBox parentNode;
+    private Button deleteTicket;
     private TextField priceText;
     private TextField currencyText;
     private boolean currencyTextValidated = true;
     private boolean priceTextValidated;
     private TextField ticketText;
     private boolean ticketTextValidated;
-    boolean disabled = false;
 
     public Ticket(Controller parentController, VBox parentNode) {
         super();
@@ -38,30 +38,28 @@ public class Ticket extends HBox {
         this.addValidation();
     }
 
-    public Ticket(Controller parentController, VBox parentNode, String name, String price, String currency,
-                  boolean disabled) {
+    public Ticket(Controller parentController, VBox parentNode, String name, String price, String currency) {
         this(parentController, parentNode);
         this.priceText.setText(price);
         this.priceTextValidated = true;
         this.currencyText.setText(currency);
         this.ticketText.setText(name);
         this.ticketTextValidated = true;
-        this.disabled = disabled;
     }
 
     private void initChildren() {
-        Button deleteTicket = new Button("ó");
-        deleteTicket.setMinSize(70.5, 70.5);
-        deleteTicket.setMaxSize(70.5, 70.5);
-        deleteTicket.setPrefSize(70.5, 70.5);
-        deleteTicket.setTextAlignment(TextAlignment.CENTER);
-        deleteTicket.setMnemonicParsing(false);
-        deleteTicket.getStyleClass().add("buttonSmall");
-        deleteTicket.setOnMouseClicked(event -> {
+        this.deleteTicket = new Button("ó");
+        this.deleteTicket.setMinSize(70.5, 70.5);
+        this.deleteTicket.setMaxSize(70.5, 70.5);
+        this.deleteTicket.setPrefSize(70.5, 70.5);
+        this.deleteTicket.setTextAlignment(TextAlignment.CENTER);
+        this.deleteTicket.setMnemonicParsing(false);
+        this.deleteTicket.getStyleClass().add("buttonSmall");
+        this.deleteTicket.setOnMouseClicked(event -> {
             this.parentNode.getChildren().remove(this);
             this.parentController.checkNextButtonValidation();
         });
-        this.getChildren().add(deleteTicket);
+        this.getChildren().add(this.deleteTicket);
 
         this.priceText = new TextField();
         this.priceText.setMinSize(140, 70.5);
@@ -74,6 +72,7 @@ public class Ticket extends HBox {
         this.currencyText.setMaxSize(60.0, 70.5);
         this.currencyText.setPrefSize(60.0, 70.5);
         this.currencyText.setStyle("-fx-alignment: center; -fx-padding: 0 0 0 0");
+        this.currencyText.setDisable(!this.parentController.isFullyUpdateable());
         this.getChildren().add(createVBox(this.currencyText));
 
         this.ticketText = new TextField();
@@ -93,6 +92,13 @@ public class Ticket extends HBox {
         this.priceText.setPromptText(Word.PRICE.toString());
         this.setCurrencyText();
         this.ticketText.setPromptText(Word.TICKETYPE.toString());
+    }
+
+    public void disable(boolean all) {
+        this.deleteTicket.setDisable(all);
+        this.currencyText.setDisable(true);
+        this.priceText.setDisable(all);
+        this.ticketText.setDisable(all);
     }
 
     private void addValidation() {

@@ -89,13 +89,12 @@ public class MainHandler extends Application {
         vs.registerValidator((Control) node, true, Validator.createRegexValidator("error", validation, Severity.ERROR));
     }
 
-    public static ImageView createQrCode(String text) {
+    public static ImageView createQrCode(String text, double size, int cropsize) {
         ImageView qrcode = new ImageView();
-        qrcode.setFitWidth(320.0);
-        qrcode.setFitHeight(320.0);
+        qrcode.setFitWidth(size);
+        qrcode.setFitHeight(size);
         qrcode.setPickOnBounds(true);
         qrcode.setPreserveRatio(true);
-        int cropsize = 44;
         try {
             BitMatrix bytematrix = new QRCodeWriter().encode(text, BarcodeFormat.QR_CODE,
                     (int) qrcode.getFitWidth(), (int) qrcode.getFitHeight());
