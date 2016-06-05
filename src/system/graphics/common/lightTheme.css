@@ -257,6 +257,17 @@
     -fx-background-color: #ff7474;
 }
 
+.seat_occupied {
+    -fx-background-color: #77b2de;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
+    -fx-text-fill: white;
+}
+
+.seat_occupied:hover {
+    -fx-background-color: #99d7de;
+}
+
 .scroll-pane {
     -fx-background-color: #e6e6e5;
 }

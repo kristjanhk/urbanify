@@ -258,14 +258,14 @@
 }
 
 .seat_occupied {
-    -fx-background-color: #cd7e91;
+    -fx-background-color: #cfde57;
     -fx-font-family: 'TicketFont';
     -fx-font-smoothing-type: gray;
-    -fx-text-fill: white;
+    -fx-text-fill: #f05455;
 }
 
 .seat_occupied:hover {
-    -fx-background-color: #ff9c75;
+    -fx-background-color: #f7f675;
 }
 
 .scroll-pane {
