@@ -14,9 +14,12 @@ import system.graphics.common.Csstype;
 import system.graphics.common.Scenetype;
 import system.data.Lang;
 import system.data.Word;
+import system.graphics.common.ClientScreentype;
 
 import java.io.File;
 import java.net.URL;
+import java.security.*;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 /**
@@ -34,6 +37,8 @@ public class Controller extends AbstractController {
     @FXML protected Pane qrContent;
     @FXML protected Button qrButton;
     @FXML protected Text qrLabel;
+    @FXML protected MenuButton clientScreen;
+    @FXML protected Text clientScreenLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -83,10 +88,44 @@ public class Controller extends AbstractController {
     }
 
     @FXML
+    protected void handleScreenTypeChange(ActionEvent event) {
+        ClientScreentype.setActiveScreenType(ClientScreentype.valueOf(((MenuItem) event.getSource()).getId()));
+        this.clientScreen.setText(Word.valueOf(ClientScreentype.getActiveScreenType().name()).toString());
+    }
+
+    @FXML
     protected void handleQrCodeGenerate() {
         this.qrContent.getChildren().clear();
         // TODO: 5.06.2016 generate key pair and save it or load from file and display public key
-        this.qrContent.getChildren().add(MainHandler.createQrCode("megatekst!", 320.0, 44));
+        this.qrContent.getChildren().add(
+                MainHandler.createQrCode("Auth: " + this.getAuthenticationKey(), 320.0, 37));
+    }
+
+    private PublicKey getAuthenticationKey() {
+        PublicKey publicKey = this.getData().getPublicKey();
+        if (publicKey != null) {
+            return publicKey;
+        }
+        KeyPair keyPair = this.generateAuthenticationKeys();
+        if (keyPair != null) {
+            return keyPair.getPublic();
+        }
+        return null;
+    }
+
+    private KeyPair generateAuthenticationKeys() {
+        try {
+            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA", "SUN");
+            SecureRandom random = SecureRandom.getInstance("SHA1PRNG", "SUN");
+            keyGen.initialize(512, random);
+            KeyPair keyPair = keyGen.generateKeyPair();
+            this.getData().saveKeys(keyPair);
+            System.out.println(Arrays.toString(keyPair.getPublic().getEncoded()));
+            return keyPair;
+        } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @FXML
@@ -107,5 +146,9 @@ public class Controller extends AbstractController {
         this.themeLabel.setText(Word.THEME.toString());
         this.qrButton.setText(Word.SHOWQR.toString());
         this.qrLabel.setText(Word.AUTHKEY.toString());
+        this.clientScreen.setText(Word.valueOf(ClientScreentype.getActiveScreenType().name()).toString());
+        this.clientScreen.getItems().get(0).setText(Word.PRIMARY.toString());
+        this.clientScreen.getItems().get(1).setText(Word.SECONDARY.toString());
+        this.clientScreenLabel.setText(Word.SCREENTYPE.toString());
     }
 }

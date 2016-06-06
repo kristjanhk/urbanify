@@ -14,6 +14,7 @@ import system.data.Event;
 import system.data.Lang;
 import system.data.Word;
 import system.graphics.common.AbstractController;
+import system.graphics.common.ClientScreentype;
 import system.graphics.common.FloorPlanPane;
 import system.graphics.common.Scenetype;
 
@@ -41,6 +42,7 @@ public class Controller extends AbstractController {
     private SimpleIntegerProperty seatsLeft = new SimpleIntegerProperty();
     private double cost = 0.0;
     private FloorPlanPane floorPlan;
+    private StageHandler clientScreen;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -48,6 +50,10 @@ public class Controller extends AbstractController {
     }
 
     private void init() {
+        this.clientScreen = new StageHandler("Piletiinfo");
+        if (ClientScreentype.getActiveScreenType().equals(ClientScreentype.SECONDARY)) {
+            this.clientScreen.showStage();
+        }
         this.name.setText(this.event.getName());
         this.setDatetime();
         for (String ticket : this.event.getTickets().keySet()) {
@@ -68,6 +74,7 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void doBack() {
+        this.clientScreen.getStage().close();
         this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
     }
 
@@ -87,8 +94,11 @@ public class Controller extends AbstractController {
             }
             this.createQrCode(ticketdata);
             this.checkout.setText(Word.NEW.toString());
-            StageHandler ticketHandler = new StageHandler("Piletiinfo");
+            if (ClientScreentype.getActiveScreenType().equals(ClientScreentype.PRIMARY)) {
+                this.clientScreen.showStage();
+            }
         } else {
+            this.clientScreen.getStage().close();
             this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
         }
     }
@@ -99,6 +109,10 @@ public class Controller extends AbstractController {
 
     public SimpleIntegerProperty getSeatsLeftProperty() {
         return this.seatsLeft;
+    }
+
+    public StageHandler getClientScreenHandler() {
+        return this.clientScreen;
     }
 
     public boolean occupySeat(double ticketprice) {
@@ -202,7 +216,7 @@ public class Controller extends AbstractController {
                 this.event.getTime() + "\n");
         ticketdata.forEach(tekst::append);
         tekst.append(this.totalcost.getText()); // FIXME: 11.05.2016 currency symbol bugine?
-        ImageView qrcode = MainHandler.createQrCode(tekst.toString(), 320.0, 44);
+        ImageView qrcode = MainHandler.createQrCode(tekst.toString(), 350.0, 45);
         this.rightContent.getChildren().add(qrcode);
     }
 

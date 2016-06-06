@@ -4,10 +4,12 @@ import system.MainHandler;
 import system.graphics.common.Csstype;
 import system.graphics.common.FloorPlanPane;
 import system.graphics.common.Scenetype;
+import system.graphics.common.ClientScreentype;
 import system.graphics.eventManager.Controller;
-import system.graphics.floorPlanner.Imagetype;
 
-import java.util.ArrayList;
+import java.security.*;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -26,9 +28,12 @@ import java.util.HashSet;
 public class JsonFile {
     private Lang activeLanguage;
     private Csstype activeTheme;
+    private ClientScreentype activeClientScreen;
     private HashSet<Event> events;
     private HashSet<Event> archivedEvents;
     private HashMap<String, HashMap<FloorPlanPane.Property, Object>> savedFloorPlans;
+    private byte[] publicKey;
+    private byte[] privateKey;
 
     public JsonFile() {}
 
@@ -38,6 +43,10 @@ public class JsonFile {
 
     public Csstype getActiveTheme() {
         return this.activeTheme;
+    }
+
+    public ClientScreentype getActiveClientScreen() {
+        return this.activeClientScreen;
     }
 
     public HashSet<Event> getEvents(Scenetype scenetype) {
@@ -71,9 +80,41 @@ public class JsonFile {
         }
     }
 
+    public void saveKeys(KeyPair keyPair) {
+        this.publicKey = keyPair.getPublic().getEncoded();
+        this.privateKey = keyPair.getPrivate().getEncoded();
+    }
+
+    public PublicKey getPublicKey() {
+        if (this.publicKey != null) {
+            X509EncodedKeySpec pubKeySpec = new X509EncodedKeySpec(this.publicKey);
+            try {
+                KeyFactory keyFactory = KeyFactory.getInstance("DSA", "SUN");
+                return keyFactory.generatePublic(pubKeySpec);
+            } catch (NoSuchAlgorithmException | NoSuchProviderException | InvalidKeySpecException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    public PrivateKey getPrivateKey() {
+        if (this.privateKey != null) {
+            X509EncodedKeySpec privKeySpec = new X509EncodedKeySpec(this.privateKey);
+            try {
+                KeyFactory keyFactory = KeyFactory.getInstance("DSA", "SUN");
+                return keyFactory.generatePrivate(privKeySpec);
+            } catch (NoSuchAlgorithmException | NoSuchProviderException | InvalidKeySpecException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
     public void saveCurrentData() {
         this.activeLanguage = Lang.getActiveLang();
         this.activeTheme = Csstype.getActiveTheme();
+        this.activeClientScreen = ClientScreentype.getActiveScreenType();
         this.events = ((Controller) MainHandler.getPrimaryStageHandler().
                 getScene(Scenetype.EVENTMANAGER).getController()).getEvents();
         this.archivedEvents = ((Controller) MainHandler.getPrimaryStageHandler().

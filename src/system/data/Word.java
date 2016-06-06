@@ -14,7 +14,8 @@ public enum Word {
     ASSIGNEDSEATING, NEXT, CANCEL, BACK, CREATE, SAVE, NEWFLOORPLAN, FLOORPLAN, ROWS, SEATSINROW, STAGE, SCREEN,
     EVENTS, SETDATE, SETTIME, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, PATH, LANGUAGE, THEME, LIGHT, DARK, WARM,
     SETSEATINGTYPE, SEATINGTYPE, ENGLISH, ESTONIAN, VÕRO, GERMAN, TICKETSTOSELECT, RUSSIAN, CHECKOUT, TOTAL, POS,
-    FINISH, COST, QUANTITY, NEW, SEATSLEFT, UNLIMITED, CURRENCY, EDIT, UPDATE, EVENTUPDATER, SHOWQR, AUTHKEY;
+    FINISH, COST, QUANTITY, NEW, SEATSLEFT, UNLIMITED, CURRENCY, EDIT, UPDATE, EVENTUPDATER, SHOWQR, AUTHKEY, PRIMARY,
+    SECONDARY, SCREENTYPE;
     private static HashMap<Word, String[]> words = createLanguages();
 
     private static HashMap<Word, String[]> createLanguages() {
@@ -131,6 +132,12 @@ public enum Word {
         wordsMap.put(Word.SHOWQR, new String[]{"show qr code", "näita qr koodi", "TODO",
                 "TODO", "TODO"});
         wordsMap.put(Word.AUTHKEY, new String[]{"get authentication key", "hangi autentimise võti", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.PRIMARY, new String[]{"primary", "peamine", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.SECONDARY, new String[]{"secondary", "teine", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.SCREENTYPE, new String[]{"client screen", "kliendi ekraan", "TODO",
                 "TODO", "TODO"});
         return wordsMap;
     }

@@ -102,45 +102,55 @@
             <BorderPane.margin>
                 <Insets left="40.0" top="40.0"/>
             </BorderPane.margin>
-            <children>
-                <MenuButton fx:id="language" mnemonicParsing="false">
-                    <items>
-                        <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="english"/>
-                        <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="eesti keel"/>
-                        <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="võro kiil"/>
-                        <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="deutsch"/>
-                        <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="русский язык"/>
-                    </items>
-                </MenuButton>
-                <Text fx:id="langLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19"
-                      GridPane.rowIndex="1">
-                    <GridPane.margin>
-                        <Insets left="20.0" top="6.0"/>
-                    </GridPane.margin>
-                </Text>
-                <MenuButton fx:id="theme" mnemonicParsing="false" GridPane.rowIndex="3">
-                    <items>
-                        <MenuItem id="LIGHT" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
-                        <MenuItem id="DARK" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
-                        <MenuItem id="WARM" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
-                    </items>
-                </MenuButton>
-                <Text fx:id="themeLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19"
-                      GridPane.rowIndex="4">
-                    <GridPane.margin>
-                        <Insets left="20.0" top="6.0"/>
-                    </GridPane.margin>
-                </Text>
-                <Button fx:id="qrButton" mnemonicParsing="false" onMouseClicked="#handleQrCodeGenerate"
-                        styleClass="qrGenButton" GridPane.rowIndex="6"/>
-                <Pane fx:id="qrContent" maxHeight="320.0" maxWidth="320.0" minHeight="320.0" minWidth="320.0"
-                      prefHeight="320.0" prefWidth="320.0" GridPane.columnIndex="1"/>
-                <Text fx:id="qrLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" GridPane.rowIndex="7">
-                    <GridPane.margin>
-                        <Insets left="20.0" top="6.0"/>
-                    </GridPane.margin>
-                </Text>
-            </children>
+            <MenuButton fx:id="language" mnemonicParsing="false">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="english"/>
+                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="eesti keel"/>
+                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="võro kiil"/>
+                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="deutsch"/>
+                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="русский язык"/>
+                </items>
+            </MenuButton>
+            <Text fx:id="langLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19"
+                  GridPane.rowIndex="1">
+                <GridPane.margin>
+                    <Insets left="20.0" top="6.0"/>
+                </GridPane.margin>
+            </Text>
+            <MenuButton fx:id="theme" mnemonicParsing="false" GridPane.rowIndex="3">
+                <items>
+                    <MenuItem id="LIGHT" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
+                    <MenuItem id="DARK" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
+                    <MenuItem id="WARM" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
+                </items>
+            </MenuButton>
+            <Text fx:id="themeLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19"
+                  GridPane.rowIndex="4">
+                <GridPane.margin>
+                    <Insets left="20.0" top="6.0"/>
+                </GridPane.margin>
+            </Text>
+            <Button fx:id="qrButton" mnemonicParsing="false" onMouseClicked="#handleQrCodeGenerate"
+                    styleClass="qrGenButton" GridPane.rowIndex="6"/>
+            <Pane fx:id="qrContent" maxHeight="320.0" maxWidth="320.0" minHeight="320.0" minWidth="320.0"
+                  prefHeight="320.0" prefWidth="320.0" GridPane.columnIndex="1"/>
+            <Text fx:id="qrLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" GridPane.rowIndex="7">
+                <GridPane.margin>
+                    <Insets left="20.0" top="6.0"/>
+                </GridPane.margin>
+            </Text>
+            <MenuButton fx:id="clientScreen" mnemonicParsing="false" GridPane.rowIndex="8">
+                <items>
+                    <MenuItem mnemonicParsing="false" id="PRIMARY" onAction="#handleScreenTypeChange"/>
+                    <MenuItem mnemonicParsing="false" id="SECONDARY" onAction="#handleScreenTypeChange"/>
+                </items>
+            </MenuButton>
+            <Text fx:id="clientScreenLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19"
+                  GridPane.rowIndex="9">
+                <GridPane.margin>
+                    <Insets left="20.0" top="6.0"/>
+                </GridPane.margin>
+            </Text>
         </GridPane>
     </left>
 </BorderPane>

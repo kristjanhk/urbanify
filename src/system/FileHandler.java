@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import system.graphics.common.Csstype;
 import system.data.JsonFile;
 import system.data.Lang;
+import system.graphics.common.ClientScreentype;
 
 import java.io.*;
 
@@ -37,9 +38,10 @@ public class FileHandler {
         return this.jsonFile;
     }
 
-    private void setActiveConstants(Csstype csstype, Lang lang) {
+    private void setActiveConstants(Csstype csstype, Lang lang, ClientScreentype clientScreentype) {
         Csstype.setActiveTheme(csstype);
         Lang.setActiveLang(lang);
+        ClientScreentype.setActiveScreenType(clientScreentype);
     }
 
     public void saveData() {
@@ -54,7 +56,8 @@ public class FileHandler {
         this.jsonPath = loadJsonPath();
         try (BufferedReader br = new BufferedReader(new FileReader(this.jsonPath + "\\andmed.json"))) {
             this.jsonFile = this.gson.fromJson(br, JsonFile.class);
-            this.setActiveConstants(this.jsonFile.getActiveTheme(), this.jsonFile.getActiveLanguage());
+            this.setActiveConstants(this.jsonFile.getActiveTheme(), this.jsonFile.getActiveLanguage(),
+                    this.jsonFile.getActiveClientScreen());
         } catch (IOException ignored) {
             this.resetData();
         }
@@ -62,7 +65,7 @@ public class FileHandler {
 
     private void resetData() {
         this.jsonFile = new JsonFile();
-        this.setActiveConstants(Csstype.DARK, Lang.ENGLISH);
+        this.setActiveConstants(Csstype.DARK, Lang.ENGLISH, ClientScreentype.PRIMARY);
     }
 
     private String loadJsonPath() {

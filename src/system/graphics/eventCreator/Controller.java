@@ -70,6 +70,11 @@ public class Controller extends AbstractController {
                 new Ticket(this, this.ticketVBox, name, price, currency));
     }
 
+
+    public ObservableList<Node> getTickets() {
+        return this.ticketVBox.getChildren();
+    }
+
     @FXML
     protected void handleSeatingSwitch(ActionEvent event) {
         this.seatingType = ((MenuItem) event.getSource()).getId();
@@ -267,9 +272,5 @@ public class Controller extends AbstractController {
         }
         this.next.setDisable(!valid);
         //this.next.setDisable(false);
-    }
-
-    public ObservableList<Node> getTickets() {
-        return this.ticketVBox.getChildren();
     }
 }

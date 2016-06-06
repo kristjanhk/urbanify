@@ -1,4 +1,4 @@
-package system.graphics.pointOfSale.ticketInfo;
+package system.graphics.ticketInfo;
 
 import system.graphics.common.AbstractController;
 
