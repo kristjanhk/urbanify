@@ -38,15 +38,27 @@ public class JsonFile {
     public JsonFile() {}
 
     public Lang getActiveLanguage() {
-        return this.activeLanguage;
+        if (this.activeLanguage != null) {
+            return this.activeLanguage;
+        }
+        Lang.setActiveLang(Lang.ENGLISH);
+        return Lang.ENGLISH;
     }
 
     public Csstype getActiveTheme() {
-        return this.activeTheme;
+        if (this.activeTheme != null) {
+            return this.activeTheme;
+        }
+        Csstype.setActiveTheme(Csstype.DARK);
+        return Csstype.DARK;
     }
 
     public ClientScreentype getActiveClientScreen() {
-        return this.activeClientScreen;
+        if (this.activeClientScreen != null) {
+            return this.activeClientScreen;
+        }
+        ClientScreentype.setActiveScreenType(ClientScreentype.PRIMARY);
+        return ClientScreentype.PRIMARY;
     }
 
     public HashSet<Event> getEvents(Scenetype scenetype) {
