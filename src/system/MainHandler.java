@@ -28,7 +28,7 @@ import system.graphics.common.Csstype;
  * Võimaldab lisada tippudele valideerimist
  */
 public class MainHandler extends Application {
-    private static StageHandler stageHandler;
+    private static StageHandler[] stageHandlers = new StageHandler[2];
     private static FileHandler fileHandler;
     private static ReportHandler reportHandler;
 
@@ -40,11 +40,16 @@ public class MainHandler extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        stageHandler = new StageHandler(primaryStage, "Piletikontroll");
+        stageHandlers[0] = new StageHandler(primaryStage, "Piletikontroll");
+        stageHandlers[1] = new StageHandler("Piletiinfo");
     }
 
     public static StageHandler getPrimaryStageHandler() {
-        return stageHandler;
+        return stageHandlers[0];
+    }
+
+    public static StageHandler getSecondaryStageHandler() {
+        return stageHandlers[1];
     }
 
     public static FileHandler getFileHandler() {
@@ -56,7 +61,9 @@ public class MainHandler extends Application {
     }
 
     public static void changeGlobalThemeTo(Csstype csstype) {
-        stageHandler.getScenes().forEach((type, scene) -> changeSceneThemeTo(scene, csstype));
+        for (StageHandler stageHandler : stageHandlers) {
+            stageHandler.getScenes().forEach((type, scene) -> changeSceneThemeTo(scene, csstype));
+        }
     }
 
     public static void changeSceneThemeTo(CustomScene scene, Csstype csstype) {

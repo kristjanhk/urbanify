@@ -3,22 +3,22 @@ package system.graphics.common;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 
-public enum ClientScreentype {
+public enum ClientScreen {
     PRIMARY(0),
     SECONDARY(1);
 
-    private static ClientScreentype activeScreenType;
+    private static ClientScreen activeScreenType;
     private int index;
 
-    ClientScreentype(int index) {
+    ClientScreen(int index) {
         this.index = index;
     }
 
-    public static ClientScreentype getActiveScreenType() {
+    public static ClientScreen getActiveScreenType() {
         return activeScreenType;
     }
 
-    public static void setActiveScreenType(ClientScreentype screenType) {
+    public static void setActiveScreenType(ClientScreen screenType) {
         activeScreenType = screenType;
     }
 

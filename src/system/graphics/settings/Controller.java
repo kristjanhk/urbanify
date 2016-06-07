@@ -14,7 +14,7 @@ import system.graphics.common.Csstype;
 import system.graphics.common.Scenetype;
 import system.data.Lang;
 import system.data.Word;
-import system.graphics.common.ClientScreentype;
+import system.graphics.common.ClientScreen;
 
 import java.io.File;
 import java.net.URL;
@@ -89,8 +89,8 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void handleScreenTypeChange(ActionEvent event) {
-        ClientScreentype.setActiveScreenType(ClientScreentype.valueOf(((MenuItem) event.getSource()).getId()));
-        this.clientScreen.setText(Word.valueOf(ClientScreentype.getActiveScreenType().name()).toString());
+        ClientScreen.setActiveScreenType(ClientScreen.valueOf(((MenuItem) event.getSource()).getId()));
+        this.clientScreen.setText(Word.valueOf(ClientScreen.getActiveScreenType().name()).toString());
     }
 
     @FXML
@@ -146,7 +146,7 @@ public class Controller extends AbstractController {
         this.themeLabel.setText(Word.THEME.toString());
         this.qrButton.setText(Word.SHOWQR.toString());
         this.qrLabel.setText(Word.AUTHKEY.toString());
-        this.clientScreen.setText(Word.valueOf(ClientScreentype.getActiveScreenType().name()).toString());
+        this.clientScreen.setText(Word.valueOf(ClientScreen.getActiveScreenType().name()).toString());
         this.clientScreen.getItems().get(0).setText(Word.PRIMARY.toString());
         this.clientScreen.getItems().get(1).setText(Word.SECONDARY.toString());
         this.clientScreenLabel.setText(Word.SCREENTYPE.toString());

@@ -4,7 +4,7 @@ import system.MainHandler;
 import system.graphics.common.Csstype;
 import system.graphics.common.FloorPlanPane;
 import system.graphics.common.Scenetype;
-import system.graphics.common.ClientScreentype;
+import system.graphics.common.ClientScreen;
 import system.graphics.eventManager.Controller;
 
 import java.security.*;
@@ -28,7 +28,7 @@ import java.util.HashSet;
 public class JsonFile {
     private Lang activeLanguage;
     private Csstype activeTheme;
-    private ClientScreentype activeClientScreen;
+    private ClientScreen activeClientScreen;
     private HashSet<Event> events;
     private HashSet<Event> archivedEvents;
     private HashMap<String, HashMap<FloorPlanPane.Property, Object>> savedFloorPlans;
@@ -53,12 +53,12 @@ public class JsonFile {
         return Csstype.DARK;
     }
 
-    public ClientScreentype getActiveClientScreen() {
+    public ClientScreen getActiveClientScreen() {
         if (this.activeClientScreen != null) {
             return this.activeClientScreen;
         }
-        ClientScreentype.setActiveScreenType(ClientScreentype.PRIMARY);
-        return ClientScreentype.PRIMARY;
+        ClientScreen.setActiveScreenType(ClientScreen.PRIMARY);
+        return ClientScreen.PRIMARY;
     }
 
     public HashSet<Event> getEvents(Scenetype scenetype) {
@@ -126,7 +126,7 @@ public class JsonFile {
     public void saveCurrentData() {
         this.activeLanguage = Lang.getActiveLang();
         this.activeTheme = Csstype.getActiveTheme();
-        this.activeClientScreen = ClientScreentype.getActiveScreenType();
+        this.activeClientScreen = ClientScreen.getActiveScreenType();
         this.events = ((Controller) MainHandler.getPrimaryStageHandler().
                 getScene(Scenetype.EVENTMANAGER).getController()).getEvents();
         this.archivedEvents = ((Controller) MainHandler.getPrimaryStageHandler().

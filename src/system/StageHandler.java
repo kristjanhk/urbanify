@@ -3,7 +3,7 @@ package system;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import system.graphics.common.ClientScreentype;
+import system.graphics.common.ClientScreen;
 import system.graphics.common.CustomScene;
 import system.graphics.common.Scenetype;
 import system.graphics.pointOfSale.Controller;
@@ -28,23 +28,23 @@ public class StageHandler {
         this.init(title);
         this.stage.setOnCloseRequest(event -> {
             MainHandler.getFileHandler().saveData();
-            ((Controller) this.getScene(Scenetype.POINTOFSALE).getController()).
-                    getClientScreenHandler().getStage().close();
+            MainHandler.getSecondaryStageHandler().getStage().close();
         });
-        this.initScenes();
+        this.initSaveableScenes();
         this.switchSceneTo(Scenetype.MAINMENU);
-        this.stage.show();
         this.showStage();
     }
 
-    public StageHandler(String title) { //ticketInfo stagehandler
+    public StageHandler(String title) {
         this.stage = new Stage();
         this.init(title);
+        this.stage.setOnCloseRequest(event -> ((Controller) MainHandler.getPrimaryStageHandler().
+                getScene(Scenetype.POINTOFSALE).getController()).cancel());
         this.scenes.put(Scenetype.TICKETINFO, createScene(Scenetype.TICKETINFO));
         this.switchSceneTo(Scenetype.TICKETINFO);
-        this.stage.setX(ClientScreentype.getActiveVisualBounds().getMinX());
-        this.stage.setY(ClientScreentype.getActiveVisualBounds().getMinY());
-        //this.stage.centerOnScreen();
+        this.stage.setX(ClientScreen.getActiveVisualBounds().getMinX());
+        this.stage.setY(ClientScreen.getActiveVisualBounds().getMinY());
+        this.stage.centerOnScreen();
     }
 
     private void init(String title) {
@@ -58,7 +58,7 @@ public class StageHandler {
     }
 
     public void showStage() {
-        this.stage.setMaximized(true);
+        //this.stage.setMaximized(true);
         this.stage.toFront();
         this.stage.show();
     }
@@ -89,12 +89,9 @@ public class StageHandler {
         this.stage.setY(eventY + this.stageYOffset);
     }
 
-    private void initScenes() {
-        for (Scenetype scenetype : Scenetype.values()) {
-            if (scenetype != Scenetype.TICKETINFO) {
-                this.scenes.put(scenetype, createScene(scenetype));
-            }
-        }
+    private void initSaveableScenes() {
+        this.scenes.put(Scenetype.EVENTMANAGER, createScene(Scenetype.EVENTMANAGER));
+        this.scenes.put(Scenetype.ARCHIVE, createScene(Scenetype.ARCHIVE));
     }
 
     /**
@@ -130,6 +127,9 @@ public class StageHandler {
      * @param object    suvaline objekt, selle määratlemisega tegeleb stseeni controller ise
      */
     public <T> void switchSceneTo(Scenetype scenetype, T object) {
+        if (this.scenes.get(scenetype) == null) {
+            this.scenes.put(scenetype, createScene(scenetype));
+        }
         this.scenes.get(scenetype).getController().prepareToDisplay(object);
         this.scenes.get(scenetype).getController().setMaximizeButton();
         this.stage.setScene(this.scenes.get(scenetype));

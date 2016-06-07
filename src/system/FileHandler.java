@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import system.graphics.common.Csstype;
 import system.data.JsonFile;
 import system.data.Lang;
-import system.graphics.common.ClientScreentype;
+import system.graphics.common.ClientScreen;
 
 import java.io.*;
 
@@ -38,10 +38,10 @@ public class FileHandler {
         return this.jsonFile;
     }
 
-    private void setActiveConstants(Csstype csstype, Lang lang, ClientScreentype clientScreentype) {
+    private void setActiveConstants(Csstype csstype, Lang lang, ClientScreen clientScreen) {
         Csstype.setActiveTheme(csstype);
         Lang.setActiveLang(lang);
-        ClientScreentype.setActiveScreenType(clientScreentype);
+        ClientScreen.setActiveScreenType(clientScreen);
     }
 
     public void saveData() {
@@ -65,7 +65,7 @@ public class FileHandler {
 
     private void resetData() {
         this.jsonFile = new JsonFile();
-        this.setActiveConstants(Csstype.DARK, Lang.ENGLISH, ClientScreentype.PRIMARY);
+        this.setActiveConstants(Csstype.DARK, Lang.ENGLISH, ClientScreen.PRIMARY);
     }
 
     private String loadJsonPath() {

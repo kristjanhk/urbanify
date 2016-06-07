@@ -9,12 +9,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import system.MainHandler;
-import system.StageHandler;
 import system.data.Event;
 import system.data.Lang;
 import system.data.Word;
 import system.graphics.common.AbstractController;
-import system.graphics.common.ClientScreentype;
 import system.graphics.common.FloorPlanPane;
 import system.graphics.common.Scenetype;
 
@@ -42,7 +40,7 @@ public class Controller extends AbstractController {
     private SimpleIntegerProperty seatsLeft = new SimpleIntegerProperty();
     private double cost = 0.0;
     private FloorPlanPane floorPlan;
-    private StageHandler clientScreen;
+    private system.graphics.ticketInfo.Controller clientController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,10 +48,6 @@ public class Controller extends AbstractController {
     }
 
     private void init() {
-        this.clientScreen = new StageHandler("Piletiinfo");
-        if (ClientScreentype.getActiveScreenType().equals(ClientScreentype.SECONDARY)) {
-            this.clientScreen.showStage();
-        }
         this.name.setText(this.event.getName());
         this.setDatetime();
         for (String ticket : this.event.getTickets().keySet()) {
@@ -70,11 +64,12 @@ public class Controller extends AbstractController {
         this.updateTotal();
         this.validateCheckoutButton();
         this.updateSeatsLeft();
+        this.resetClientScreen();
     }
 
     @FXML
     protected void doBack() {
-        this.clientScreen.getStage().close();
+        MainHandler.getSecondaryStageHandler().getStage().close();
         this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
     }
 
@@ -94,11 +89,8 @@ public class Controller extends AbstractController {
             }
             this.createQrCode(ticketdata);
             this.checkout.setText(Word.NEW.toString());
-            if (ClientScreentype.getActiveScreenType().equals(ClientScreentype.PRIMARY)) {
-                this.clientScreen.showStage();
-            }
+            MainHandler.getSecondaryStageHandler().showStage();
         } else {
-            this.clientScreen.getStage().close();
             this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
         }
     }
@@ -111,8 +103,18 @@ public class Controller extends AbstractController {
         return this.seatsLeft;
     }
 
-    public StageHandler getClientScreenHandler() {
-        return this.clientScreen;
+    public void cancel() {
+        this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
+    }
+
+    private void resetClientScreen() {
+        MainHandler.getSecondaryStageHandler().replaceScene(Scenetype.TICKETINFO);
+        MainHandler.getSecondaryStageHandler().switchSceneTo(Scenetype.TICKETINFO, this);
+        this.clientController.init();
+    }
+
+    public void setClientScreenController(system.graphics.ticketInfo.Controller controller) {
+        this.clientController = controller;
     }
 
     public boolean occupySeat(double ticketprice) {
