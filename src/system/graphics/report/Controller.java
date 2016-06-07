@@ -8,7 +8,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import system.MainHandler;
 import system.data.Event;
-import system.data.Lang;
 import system.data.Word;
 import system.graphics.common.AbstractController;
 import system.graphics.common.FloorPlanPane;
@@ -95,8 +94,8 @@ public class Controller extends AbstractController {
         if (this.ticketVBox.getChildren().size() > 0) {
             this.ticketVBox.getChildren().clear();
         }
-        this.event.getTickets().forEach(
-                (tickettype, ticketdata) -> this.ticketVBox.getChildren().add(new Ticket(tickettype, ticketdata)));
+        this.event.getTickets().forEach((tickettype, ticketdata) -> this.ticketVBox.getChildren().add(
+                new Ticket(tickettype, ticketdata, this.event)));
     }
 
     private void createTotal() {
@@ -108,7 +107,7 @@ public class Controller extends AbstractController {
         }
         this.quantityTotal.setText(String.valueOf(totalQuantity));
         this.soldTotal.setText(String.format("%.2f", totalSold) +
-                " " + Lang.getActiveLang().getCurrency());
+                " " + this.event.getCurrency());
     }
 
     private void createPieChart() {

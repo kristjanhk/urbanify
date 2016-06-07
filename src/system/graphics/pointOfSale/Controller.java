@@ -10,7 +10,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import system.MainHandler;
 import system.data.Event;
-import system.data.Lang;
 import system.data.Word;
 import system.graphics.common.AbstractController;
 import system.graphics.common.FloorPlanPane;
@@ -69,7 +68,7 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void doBack() {
-        MainHandler.getSecondaryStageHandler().getStage().close();
+        this.clientController.getScene().getStageHandler().getStage().close();
         this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
     }
 
@@ -89,7 +88,7 @@ public class Controller extends AbstractController {
             }
             this.createQrCode(ticketdata);
             this.checkout.setText(Word.NEW.toString());
-            MainHandler.getSecondaryStageHandler().showStage();
+            this.clientController.getScene().getStageHandler().showStage();
         } else {
             this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
         }
@@ -194,7 +193,7 @@ public class Controller extends AbstractController {
     }
 
     private void updateTotal() {
-        this.totalcost.setText(String.format("%.2f", this.cost) + " " + Lang.getActiveLang().getCurrency());
+        this.totalcost.setText(String.format("%.2f", this.cost) + " " + this.event.getCurrency());
     }
 
     protected void validateCheckoutButton() {

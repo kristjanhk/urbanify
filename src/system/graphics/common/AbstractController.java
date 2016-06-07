@@ -3,6 +3,7 @@ package system.graphics.common;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -25,6 +26,10 @@ public abstract class AbstractController implements Initializable {
     public void initData(CustomScene scene) {
         this.scene = scene;
         this.scene.getStageHandler().getResizeHandler().addResizeListener(this.scene);
+    }
+
+    public CustomScene getScene() {
+        return this.scene;
     }
 
     public void setMaximizeButton() {

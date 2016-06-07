@@ -12,7 +12,6 @@ import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import system.data.Event;
-import system.data.Lang;
 
 public class Ticket extends GridPane {
     private Controller parentController;
@@ -91,7 +90,7 @@ public class Ticket extends GridPane {
         ticketAmountText.setTextAlignment(TextAlignment.CENTER);
         ticketAmountText.setStrokeType(StrokeType.OUTSIDE);
         ticketAmountText.setStrokeWidth(0.0);
-        ticketAmountText.setWrappingWidth(100.0); //57.8671875??
+        ticketAmountText.setWrappingWidth(100.0);
         HBox.setMargin(ticketAmountText, new Insets(0.0, 0, 0.0, 0));
         ticketAmountText.textProperty().bind(this.ticketAmount.asString());
         this.add(ticketAmountText, 2, 0);
@@ -114,12 +113,12 @@ public class Ticket extends GridPane {
 
         this.ticketCost = new Text();
         this.ticketCost.setText(String.format("%.2f", this.parentController.getEvent().
-                getTicketPrice(this.tickettype)) + " " + Lang.getActiveLang().getCurrency());
+                getTicketPrice(this.tickettype)) + " " + event.getCurrency());
         this.ticketCost.getStyleClass().add("text35");
         this.ticketCost.setTextAlignment(TextAlignment.CENTER);
         this.ticketCost.setStrokeType(StrokeType.OUTSIDE);
         this.ticketCost.setStrokeWidth(0.0);
-        this.ticketCost.setWrappingWidth(180); //96.8671875??
+        this.ticketCost.setWrappingWidth(180);
         HBox.setMargin(this.ticketCost, new Insets(0.0, 0.0, 0.0, 0.0));
         this.add(this.ticketCost, 4, 0);
         this.getColumnConstraints().add(new ColumnConstraints(180, 180, 180));
