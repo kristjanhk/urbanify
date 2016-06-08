@@ -97,7 +97,7 @@ public class FloorPlanPane extends VBox {
     }
 
     public void save(String name, String imageName, Event event) {
-        Word imageConstant = Word.toEnum(imageName.toLowerCase(), Lang.ENGLISH);
+        Word imageConstant = Word.toEnum(imageName.toLowerCase(), Lang.getActiveLang());
         if (imageConstant != null) {
             HashMap<Property, Object> floorPlan = new HashMap<>(3);
             ArrayList<Integer> dimensions = new ArrayList<>(2);
@@ -206,7 +206,12 @@ public class FloorPlanPane extends VBox {
     }
 
     public String getSavedFloorPlanImageTypeString(Event event) {
-        return (String) event.getFloorPlan().get(Property.IMAGETYPE);
+        Word imageType = Word.toEnum(
+                ((String) event.getFloorPlan().get(Property.IMAGETYPE)).toLowerCase(), Lang.ENGLISH);
+        if (imageType != null) {
+            return imageType.toString();
+        }
+        return null;
     }
 
     public void loadFloorPlan(String name, Object from) {

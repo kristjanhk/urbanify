@@ -62,27 +62,27 @@
                 <VBox.margin>
                     <Insets left="40.0" top="40.0"/>
                 </VBox.margin>
-                <Text fx:id="tickettype" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="ticket type"
+                <Text fx:id="tickettype" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35"
                       wrappingWidth="227.0">
                     <GridPane.margin>
                         <Insets left="20.0"/>
                     </GridPane.margin>
                 </Text>
-                <Text fx:id="cost" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="cost"
-                      textAlignment="CENTER" wrappingWidth="200.0" GridPane.columnIndex="1">
+                <Text fx:id="cost" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" textAlignment="CENTER"
+                      wrappingWidth="200.0" GridPane.columnIndex="1">
                 </Text>
-                <Text fx:id="quantity" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="quantity"
-                      textAlignment="CENTER" wrappingWidth="125.0" GridPane.columnIndex="2">
+                <Text fx:id="quantity" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" textAlignment="CENTER"
+                      wrappingWidth="125.0" GridPane.columnIndex="2">
                 </Text>
-                <Text fx:id="total" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="total"
-                      textAlignment="CENTER" wrappingWidth="175.0" GridPane.columnIndex="3">
+                <Text fx:id="total" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" textAlignment="CENTER"
+                      wrappingWidth="175.0" GridPane.columnIndex="3">
                 </Text>
             </GridPane>
         </VBox>
     </top>
     <bottom>
         <HBox alignment="BOTTOM_RIGHT" minHeight="0.0" minWidth="0.0" BorderPane.alignment="CENTER">
-            <Button fx:id="pos" mnemonicParsing="false" styleClass="bottomButton" text="back">
+            <Button fx:id="back" onMouseClicked="#handleBack" mnemonicParsing="false" styleClass="bottomButton">
                 <HBox.margin>
                     <Insets bottom="40.0" right="40.0"/>
                 </HBox.margin>
@@ -102,9 +102,10 @@
             <GridPane alignment="CENTER_LEFT" maxHeight="50.0" maxWidth="750.0" minHeight="50.0" minWidth="750.0"
                       prefHeight="50.0" prefWidth="594.0" styleClass="textFlow30">
                 <columnConstraints>
-                    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0"
-                                       prefWidth="150.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="242.0" prefWidth="242.0"/>
                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="175.0" prefWidth="175.0"/>
                 </columnConstraints>
                 <rowConstraints>
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
@@ -112,14 +113,14 @@
                 <VBox.margin>
                     <Insets top="40.0"/>
                 </VBox.margin>
-                <Text fx:id="total2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" text="total"
-                      wrappingWidth="250.0" GridPane.columnIndex="0">
-                    <GridPane.margin>
-                        <Insets left="20.0"/>
-                    </GridPane.margin>
+                <Text fx:id="total2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" wrappingWidth="125.0"
+                      GridPane.columnIndex="1" textAlignment="CENTER">
+                </Text>
+                <Text fx:id="totalQuantity" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER"
+                      wrappingWidth="200.0" GridPane.columnIndex="2" styleClass="text35">
                 </Text>
                 <Text fx:id="totalPrice" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35"
-                      textAlignment="CENTER" wrappingWidth="125.0" GridPane.columnIndex="1">
+                      textAlignment="CENTER" wrappingWidth="175.0" GridPane.columnIndex="3">
                 </Text>
             </GridPane>
             <Region minHeight="50.0" prefHeight="200.0" prefWidth="200.0"/>

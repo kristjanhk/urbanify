@@ -13,6 +13,8 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import system.data.Event;
 
+import java.util.ArrayList;
+
 public class Ticket extends GridPane {
     private Controller parentController;
     private Event event;
@@ -58,6 +60,13 @@ public class Ticket extends GridPane {
         this.addTicket.setDisable(false);
     }
 
+    private ArrayList<Double> getTicketData() {
+        ArrayList<Double> ticketdata = new ArrayList<>(2);
+        ticketdata.add(this.event.getTicketPrice(this.tickettype));
+        ticketdata.add(this.ticketAmount.doubleValue());
+        return ticketdata;
+    }
+
     private void initChildren() {
         this.ticketName = new Text(this.tickettype);
         this.ticketName.getStyleClass().add("text35");
@@ -76,13 +85,19 @@ public class Ticket extends GridPane {
             if (this.ticketAmount.getValue() > 0) {
                 this.ticketAmount.set(this.ticketAmount.getValue() - 1);
                 this.parentController.freeSeat(this.event.getTicketPrice(this.tickettype));
+                if (this.ticketAmount.getValue() != 0) {
+                    this.parentController.getClientController().updateTicket(
+                            this.tickettype, this.getTicketData(), this.event.getCurrency());
+                } else {
+                    this.parentController.getClientController().removeTicket(this.tickettype);
+                }
+                this.parentController.getClientController().updateTotals();
             }
         });
         this.ticketAmount.addListener((observable, oldValue, newValue) -> {
             this.removeTicket.setDisable(newValue.intValue() == 0);
         });
         this.add(this.removeTicket, 1, 0);
-
         this.getColumnConstraints().add(new ColumnConstraints(70, 70, 70));
 
         Text ticketAmountText = new Text("0");
@@ -103,6 +118,9 @@ public class Ticket extends GridPane {
             if (this.parentController.occupySeat(this.event.getTicketPrice(this.tickettype))) {
                 this.ticketAmount.set(this.ticketAmount.getValue() + 1);
                 this.parentController.validateCheckoutButton();
+                this.parentController.getClientController().updateTicket(
+                        this.tickettype, this.getTicketData(), this.event.getCurrency());
+                this.parentController.getClientController().updateTotals();
             }
         });
         this.parentController.getSeatsLeftProperty().addListener((observable, oldValue, newValue) -> {

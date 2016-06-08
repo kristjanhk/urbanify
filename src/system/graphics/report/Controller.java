@@ -95,7 +95,7 @@ public class Controller extends AbstractController {
             this.ticketVBox.getChildren().clear();
         }
         this.event.getTickets().forEach((tickettype, ticketdata) -> this.ticketVBox.getChildren().add(
-                new Ticket(tickettype, ticketdata, this.event)));
+                new Ticket(tickettype, ticketdata, this.event.getCurrency())));
     }
 
     private void createTotal() {

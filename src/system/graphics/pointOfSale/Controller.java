@@ -116,6 +116,10 @@ public class Controller extends AbstractController {
         this.clientController = controller;
     }
 
+    public system.graphics.ticketInfo.Controller getClientController() {
+        return this.clientController;
+    }
+
     public boolean occupySeat(double ticketprice) {
         if (this.seatsLeft.get() == -1) {
             this.cost += ticketprice;

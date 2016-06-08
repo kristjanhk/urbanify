@@ -121,7 +121,7 @@ public enum Word {
                 "Unlimitiert", "неограниченный"});
         wordsMap.put(Word.CURRENCY, new String[]{"curr", "ühik", "mõõt",
                 "währ", "вал"}); //vene keel ei lähe äkki üldse kõik kuidagi pmber teha
-        wordsMap.put(Word.TICKETSTOSELECT, new String[]{"tickets left", "pileteid alles", "TODO",
+        wordsMap.put(Word.TICKETSTOSELECT, new String[]{"tickets left", "pileteid valida", "TODO",
                 "TODO", "TODO"});
         wordsMap.put(Word.EDIT, new String[]{"edit", "muuda", "TODO",
                 "TODO", "TODO"});
