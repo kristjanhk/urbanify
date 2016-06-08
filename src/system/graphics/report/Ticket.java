@@ -82,7 +82,6 @@ public class Ticket extends GridPane {
     private void setTextFor(Texttype type, Double data) {
         switch (type) {
             case COST:
-                //this.costText.setText(String.format("%.2f", data) + " " + this.currency);
                 this.cost.set(data);
                 break;
             case QUANTITY:
@@ -109,6 +108,6 @@ public class Ticket extends GridPane {
     }
 
     public double getPrice() {
-        return this.cost.get();
+        return this.getAmount() * this.cost.get();
     }
 }

@@ -169,7 +169,7 @@ public class Controller extends AbstractController {
     //4   [4-9]   (4-9)     | [1-9]\\d{1,} (10-)
     private void loadValidation(Event event) {
         String ustring = String.valueOf(event.getTotalTicketAmount());
-        StringBuilder validation = new StringBuilder("^");
+        StringBuilder validation = new StringBuilder("^$|^");
         for (int i = 1; i < ustring.length() + 1; i++) {
             validation.append(ustring.substring(0, ustring.length() - i));
             validation.append("[");

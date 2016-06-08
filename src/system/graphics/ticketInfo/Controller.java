@@ -36,6 +36,7 @@ public class Controller extends AbstractController {
     }
 
     public void init() {
+        this.title.setText(this.parentController.getEvent().getName());
         this.setDatetime();
         if (ClientScreen.getActiveScreenType().equals(ClientScreen.SECONDARY)) {
             this.scene.getStageHandler().showStage();
@@ -74,7 +75,7 @@ public class Controller extends AbstractController {
             total += ((Ticket) node).getPrice();
         }
         this.totalQuantity.setText(String.valueOf(quantity));
-        this.totalPrice.setText(String.format("%.2f", quantity * total) + " " +
+        this.totalPrice.setText(String.format("%.2f", total) + " " +
                 this.parentController.getEvent().getCurrency());
     }
 
@@ -94,7 +95,6 @@ public class Controller extends AbstractController {
 
     @Override
     public void setLanguage() {
-        this.title.setText(Word.TICKETINFO.toString());
         this.tickettype.setText(Word.TICKETYPE.toString());
         this.cost.setText(Word.COST.toString());
         this.quantity.setText(Word.QUANTITY.toString());
