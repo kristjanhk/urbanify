@@ -158,7 +158,7 @@ public class Seat extends Button {
     }
 
     public void triggerHover(boolean enable) {
-        if (!(this.floorPlan.getParentController() instanceof system.graphics.pointOfSale.Controller) &&
+        if (this.floorPlan.getParentController() instanceof system.graphics.pointOfSale.Controller &&
                 this.seattype != Seattype.DISABLED) {
             this.setHover(enable);
         }

@@ -21,6 +21,9 @@ import org.controlsfx.validation.decoration.StyleClassValidationDecoration;
 import system.graphics.common.CustomScene;
 import system.graphics.common.Csstype;
 
+import java.security.*;
+import java.util.Arrays;
+
 /**
  * Peaklass
  * Hoiab ning võimaldab ligipääsu kõikidele handleritele
@@ -129,6 +132,19 @@ public class MainHandler extends Application {
         } catch (WriterException ignored) {
             return null;
         }
+    }
+
+    public static String sign(String text) {
+        try {
+            Signature dsa = Signature.getInstance("SHA1withECDSA");
+            dsa.initSign(getFileHandler().getData().getPrivateKey());
+            dsa.update(text.getBytes());
+            byte[] signature = dsa.sign();
+            return Arrays.toString(signature);
+        } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
 

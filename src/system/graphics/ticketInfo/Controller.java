@@ -19,6 +19,7 @@ import system.graphics.report.Ticket;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.ResourceBundle;
 
 public class Controller extends AbstractController {
@@ -58,15 +59,21 @@ public class Controller extends AbstractController {
      * Genereerib maatriksi andmetest, mis joonistatakse canvasega pildile
      *
      * @param ticketdata list piletite andmetest, mis on juba vajalikul kujul
+     * @param totalcost kogu piletite hind
      */
     public void createQrCode(ArrayList<String> ticketdata, String totalcost) {
         this.rightContent.getChildren().clear();
-        StringBuilder tekst = new StringBuilder(this.parentController.getEvent().getName() + "\n" +
+        StringBuilder tekst = new StringBuilder("ID: " + this.getData().getGlobalIndex() + "\n" +
+                this.parentController.getEvent().getName() + "\n" +
                 this.parentController.getEvent().getFormattedDate() + " " +
                 this.parentController.getEvent().getTime() + "\n");
         ticketdata.forEach(tekst::append);
-        tekst.append(totalcost); // FIXME: 11.05.2016 currency symbol bugine?
-        ImageView qrcode = MainHandler.createQrCode(tekst.toString(), 350.0, 45);
+        tekst.append(totalcost);
+        tekst.append("\n");
+        tekst.append(MainHandler.sign(tekst.toString()));
+        System.out.println(tekst);
+        ImageView qrcode = MainHandler.createQrCode(
+                Base64.getEncoder().encodeToString(tekst.toString().getBytes()), 350.0, 20);
         this.rightContent.getChildren().add(qrcode);
         this.locked = true;
     }

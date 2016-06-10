@@ -9,6 +9,7 @@ import system.graphics.eventManager.Controller;
 
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -32,6 +33,7 @@ public class JsonFile {
     private HashSet<Event> events;
     private HashSet<Event> archivedEvents;
     private HashMap<String, HashMap<FloorPlanPane.Property, Object>> savedFloorPlans;
+    private Integer globalIndex;
     private byte[] publicKey;
     private byte[] privateKey;
 
@@ -92,6 +94,13 @@ public class JsonFile {
         }
     }
 
+    public Integer getGlobalIndex() {
+        if (this.globalIndex == null) {
+            this.globalIndex = 1;
+        }
+        return this.globalIndex++;
+    }
+
     public void saveKeys(KeyPair keyPair) {
         this.publicKey = keyPair.getPublic().getEncoded();
         this.privateKey = keyPair.getPrivate().getEncoded();
@@ -99,28 +108,46 @@ public class JsonFile {
 
     public PublicKey getPublicKey() {
         if (this.publicKey != null) {
-            X509EncodedKeySpec pubKeySpec = new X509EncodedKeySpec(this.publicKey);
+            X509EncodedKeySpec formatted_public_key = new X509EncodedKeySpec(this.publicKey);
             try {
-                KeyFactory keyFactory = KeyFactory.getInstance("DSA", "SUN");
-                return keyFactory.generatePublic(pubKeySpec);
-            } catch (NoSuchAlgorithmException | NoSuchProviderException | InvalidKeySpecException e) {
+                KeyFactory keyFactory = KeyFactory.getInstance("EC");
+                return keyFactory.generatePublic(formatted_public_key);
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 e.printStackTrace();
             }
+        } else {
+            this.generateKeyPair();
+            return this.getPublicKey();
         }
         return null;
     }
 
     public PrivateKey getPrivateKey() {
         if (this.privateKey != null) {
-            X509EncodedKeySpec privKeySpec = new X509EncodedKeySpec(this.privateKey);
+            PKCS8EncodedKeySpec formatted_private_key = new PKCS8EncodedKeySpec(this.privateKey);
             try {
-                KeyFactory keyFactory = KeyFactory.getInstance("DSA", "SUN");
-                return keyFactory.generatePrivate(privKeySpec);
-            } catch (NoSuchAlgorithmException | NoSuchProviderException | InvalidKeySpecException e) {
+                KeyFactory keyFactory = KeyFactory.getInstance("EC");
+                return keyFactory.generatePrivate(formatted_private_key);
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 e.printStackTrace();
             }
+        } else {
+            this.generateKeyPair();
+            return this.getPrivateKey();
         }
         return null;
+    }
+
+    private void generateKeyPair() {
+        try {
+            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EC");
+            SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+            keyGen.initialize(256, random);
+            KeyPair keyPair = keyGen.generateKeyPair();
+            this.saveKeys(keyPair);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 
     public void saveCurrentData() {

@@ -18,8 +18,7 @@ import system.graphics.common.ClientScreen;
 
 import java.io.File;
 import java.net.URL;
-import java.security.*;
-import java.util.Arrays;
+import java.util.Base64;
 import java.util.ResourceBundle;
 
 /**
@@ -101,34 +100,8 @@ public class Controller extends AbstractController {
         this.qrContent.getChildren().clear();
         // TODO: 5.06.2016 generate key pair and save it or load from file and display public key
         this.qrContent.getChildren().add(
-                MainHandler.createQrCode("Auth: " + this.getAuthenticationKey(), 320.0, 37));
-    }
-
-    private PublicKey getAuthenticationKey() {
-        PublicKey publicKey = this.getData().getPublicKey();
-        if (publicKey != null) {
-            return publicKey;
-        }
-        KeyPair keyPair = this.generateAuthenticationKeys();
-        if (keyPair != null) {
-            return keyPair.getPublic();
-        }
-        return null;
-    }
-
-    private KeyPair generateAuthenticationKeys() {
-        try {
-            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA", "SUN");
-            SecureRandom random = SecureRandom.getInstance("SHA1PRNG", "SUN");
-            keyGen.initialize(512, random);
-            KeyPair keyPair = keyGen.generateKeyPair();
-            this.getData().saveKeys(keyPair);
-            System.out.println(Arrays.toString(keyPair.getPublic().getEncoded()));
-            return keyPair;
-        } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
-            e.printStackTrace();
-        }
-        return null;
+                MainHandler.createQrCode("Auth: " +
+                        Base64.getEncoder().encodeToString(this.getData().getPublicKey().getEncoded()), 320.0, 37));
     }
 
     @FXML
