@@ -279,6 +279,13 @@
     -fx-background-color: #ff9c75;
 }
 
+.seat_invisible {
+    -fx-background-color: transparent;
+    -fx-font-family: 'TicketFont';
+    -fx-font-smoothing-type: gray;
+    -fx-text-fill: white;
+}
+
 .scroll-pane {
     -fx-background-color: #262626;
 }

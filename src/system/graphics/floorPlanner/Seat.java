@@ -77,7 +77,7 @@ public class Seat extends Button {
     }
 
     public void disable() {
-        this.setVisible(false);
+        this.setSeattype(Seattype.DISABLED);
     }
 
     public void setSeattype(Seattype seattype) {
@@ -147,14 +147,21 @@ public class Seat extends Button {
         } else if (seattype == Seattype.OCCUPIED) {
             this.getStyleClass().add("seat_occupied");
         } else if (seattype == Seattype.DISABLED) {
-            this.getStyleClass().add("seat_disabled");
+            if (this.floorPlan.getParentController() instanceof system.graphics.floorPlanner.Controller) {
+                this.getStyleClass().add("seat_disabled");
+            } else {
+                this.getStyleClass().add("seat_invisible");
+            }
         } else {
             this.getStyleClass().add("seat_unavailable");
         }
     }
 
     public void triggerHover(boolean enable) {
-        this.setHover(enable);
+        if (!(this.floorPlan.getParentController() instanceof system.graphics.pointOfSale.Controller) &&
+                this.seattype != Seattype.DISABLED) {
+            this.setHover(enable);
+        }
     }
 
     @Override
