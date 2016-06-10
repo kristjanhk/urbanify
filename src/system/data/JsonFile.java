@@ -7,10 +7,11 @@ import system.graphics.common.Scenetype;
 import system.graphics.common.ClientScreen;
 import system.graphics.eventManager.Controller;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import java.math.BigInteger;
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -34,8 +35,7 @@ public class JsonFile {
     private HashSet<Event> archivedEvents;
     private HashMap<String, HashMap<FloorPlanPane.Property, Object>> savedFloorPlans;
     private Integer globalIndex;
-    private byte[] publicKey;
-    private byte[] privateKey;
+    private byte[] secret;
 
     public JsonFile() {}
 
@@ -101,52 +101,21 @@ public class JsonFile {
         return this.globalIndex++;
     }
 
-    public void saveKeys(KeyPair keyPair) {
-        this.publicKey = keyPair.getPublic().getEncoded();
-        this.privateKey = keyPair.getPrivate().getEncoded();
-    }
-
-    public PublicKey getPublicKey() {
-        if (this.publicKey != null) {
-            X509EncodedKeySpec formatted_public_key = new X509EncodedKeySpec(this.publicKey);
-            try {
-                KeyFactory keyFactory = KeyFactory.getInstance("EC");
-                return keyFactory.generatePublic(formatted_public_key);
-            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-                e.printStackTrace();
-            }
+    public byte[] getKeyBytes() {
+        if (this.secret != null) {
+            return this.secret;
         } else {
-            this.generateKeyPair();
-            return this.getPublicKey();
-        }
-        return null;
-    }
-
-    public PrivateKey getPrivateKey() {
-        if (this.privateKey != null) {
-            PKCS8EncodedKeySpec formatted_private_key = new PKCS8EncodedKeySpec(this.privateKey);
-            try {
-                KeyFactory keyFactory = KeyFactory.getInstance("EC");
-                return keyFactory.generatePrivate(formatted_private_key);
-            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-                e.printStackTrace();
+            byte[] salt = genSalt();
+            if (salt != null) {
+                try {
+                    SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+                    PBEKeySpec spec = new PBEKeySpec(genString().toCharArray(), salt, 65536, 128);
+                    this.secret = skf.generateSecret(spec).getEncoded();
+                } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+                    e.printStackTrace();
+                }
             }
-        } else {
-            this.generateKeyPair();
-            return this.getPrivateKey();
-        }
-        return null;
-    }
-
-    private void generateKeyPair() {
-        try {
-            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EC");
-            SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
-            keyGen.initialize(256, random);
-            KeyPair keyPair = keyGen.generateKeyPair();
-            this.saveKeys(keyPair);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            return this.getKeyBytes();
         }
     }
 
@@ -158,5 +127,20 @@ public class JsonFile {
                 getScene(Scenetype.EVENTMANAGER).getController()).getEvents();
         this.archivedEvents = ((Controller) MainHandler.getPrimaryStageHandler().
                 getScene(Scenetype.ARCHIVE).getController()).getEvents();
+    }
+
+    private static byte[] genSalt() {
+        try {
+            byte[] salt = new byte[20];
+            SecureRandom.getInstance("SHA1PRNG").nextBytes(salt);
+            return salt;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static String genString() {
+        return new BigInteger(130, new SecureRandom()).toString(32);
     }
 }

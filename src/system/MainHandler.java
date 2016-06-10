@@ -21,8 +21,11 @@ import org.controlsfx.validation.decoration.StyleClassValidationDecoration;
 import system.graphics.common.CustomScene;
 import system.graphics.common.Csstype;
 
+import javax.crypto.*;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import java.security.*;
-import java.util.Arrays;
+import java.util.Base64;
 
 /**
  * Peaklass
@@ -35,7 +38,7 @@ public class MainHandler extends Application {
     private static FileHandler fileHandler;
     private static ReportHandler reportHandler;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         fileHandler = new FileHandler();
         reportHandler = new ReportHandler();
         launch(args);
@@ -134,14 +137,17 @@ public class MainHandler extends Application {
         }
     }
 
-    public static String sign(String text) {
+    public static String encrypt(String plaintext) {
         try {
-            Signature dsa = Signature.getInstance("SHA1withECDSA");
-            dsa.initSign(getFileHandler().getData().getPrivateKey());
-            dsa.update(text.getBytes());
-            byte[] signature = dsa.sign();
-            return Arrays.toString(signature);
-        } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException e) {
+            SecretKeySpec sks = new SecretKeySpec(getFileHandler().getData().getKeyBytes(), "AES");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            cipher.init(Cipher.ENCRYPT_MODE, sks);
+            AlgorithmParameters params = cipher.getParameters();
+            byte[] ivbytes = params.getParameterSpec(IvParameterSpec.class).getIV();
+            byte[] encrypted = cipher.doFinal(plaintext.getBytes("UTF-8"));
+            return Base64.getEncoder().encodeToString(ivbytes) + ";" +
+                    Base64.getEncoder().encodeToString(encrypted);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

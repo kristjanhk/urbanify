@@ -19,7 +19,6 @@ import system.graphics.report.Ticket;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.ResourceBundle;
 
 public class Controller extends AbstractController {
@@ -69,11 +68,7 @@ public class Controller extends AbstractController {
                 this.parentController.getEvent().getTime() + "\n");
         ticketdata.forEach(tekst::append);
         tekst.append(totalcost);
-        tekst.append("\n");
-        tekst.append(MainHandler.sign(tekst.toString()));
-        System.out.println(tekst);
-        ImageView qrcode = MainHandler.createQrCode(
-                Base64.getEncoder().encodeToString(tekst.toString().getBytes()), 350.0, 20);
+        ImageView qrcode = MainHandler.createQrCode(MainHandler.encrypt(tekst.toString()), 350.0, 20);
         this.rightContent.getChildren().add(qrcode);
         this.locked = true;
     }

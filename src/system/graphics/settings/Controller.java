@@ -98,10 +98,9 @@ public class Controller extends AbstractController {
     @FXML
     protected void handleQrCodeGenerate() {
         this.qrContent.getChildren().clear();
-        // TODO: 5.06.2016 generate key pair and save it or load from file and display public key
         this.qrContent.getChildren().add(
                 MainHandler.createQrCode("Auth: " +
-                        Base64.getEncoder().encodeToString(this.getData().getPublicKey().getEncoded()), 320.0, 37));
+                        Base64.getEncoder().encodeToString(this.getData().getKeyBytes()), 320.0, 37));
     }
 
     @FXML
