@@ -55,6 +55,8 @@ public class Controller extends AbstractController {
     @FXML
     protected void handleDirectoryChange() {
         DirectoryChooser dc = new DirectoryChooser();
+        dc.setTitle(Word.FOLDER.toString());
+        dc.setInitialDirectory(new File(System.getProperty("user.dir")));
         File sd = dc.showDialog(this.getStage());
         if (sd != null) {
             this.getFileHandler().setPath(sd.getAbsolutePath());

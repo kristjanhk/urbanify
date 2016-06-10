@@ -43,7 +43,7 @@ public class ReportHandler {
 
     private File getFileLocation(String name) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save pdf file");
+        fileChooser.setTitle(Word.PDF.toString());
         fileChooser.setInitialDirectory(new File(MainHandler.getFileHandler().getPath()));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF", "*.pdf"));
         fileChooser.setInitialFileName(name);

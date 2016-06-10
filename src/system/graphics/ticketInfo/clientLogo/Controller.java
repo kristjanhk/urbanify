@@ -16,8 +16,11 @@ import java.util.ResourceBundle;
 public class Controller extends AbstractController {
     @FXML protected BorderPane pane;
 
+    private final MimetypesFileTypeMap mimetypesFileTypeMap = new MimetypesFileTypeMap();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.mimetypesFileTypeMap.addMimeTypes("image png jpg jpeg gif");
         this.setLogo();
     }
 
@@ -27,7 +30,7 @@ public class Controller extends AbstractController {
             File[] files = logodir.listFiles();
             if (files != null) {
                 for (File file : files) {
-                    if (new MimetypesFileTypeMap().getContentType(file).split("/")[0].equals("image")) {
+                    if (this.mimetypesFileTypeMap.getContentType(file).split("/")[0].equals("image")) {
                         this.createImage(file);
                         return;
                     }
