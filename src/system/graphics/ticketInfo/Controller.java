@@ -1,13 +1,20 @@
 package system.graphics.ticketInfo;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import system.MainHandler;
 import system.data.Word;
 import system.graphics.common.AbstractController;
 import system.graphics.common.ClientScreen;
+import system.graphics.common.FloorPlanPane;
 import system.graphics.report.Ticket;
 
 import java.net.URL;
@@ -15,6 +22,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Controller extends AbstractController {
+    @FXML protected BorderPane borderPane;
     @FXML protected Text title;
     @FXML protected Text datetime;
     @FXML protected Text tickettype;
@@ -25,10 +33,11 @@ public class Controller extends AbstractController {
     @FXML protected Text total2;
     @FXML protected Text totalQuantity;
     @FXML protected Text totalPrice;
-    @FXML protected Button back;
-
+    @FXML protected HBox rightContent;
 
     private system.graphics.pointOfSale.Controller parentController;
+    private FloorPlanPane floorPlan;
+    private boolean locked = false;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -38,9 +47,42 @@ public class Controller extends AbstractController {
     public void init() {
         this.title.setText(this.parentController.getEvent().getName());
         this.setDatetime();
-        if (ClientScreen.getActiveScreenType().equals(ClientScreen.SECONDARY)) {
-            this.scene.getStageHandler().showStage();
+        if (!ClientScreen.isSecondScreenEnabled()) {
+            this.setBackButton();
         }
+    }
+
+    /**
+     * Meetod, mis loob Zxing teegiga qr koodi
+     * https://github.com/zxing/zxing
+     * Genereerib maatriksi andmetest, mis joonistatakse canvasega pildile
+     *
+     * @param ticketdata list piletite andmetest, mis on juba vajalikul kujul
+     */
+    public void createQrCode(ArrayList<String> ticketdata, String totalcost) {
+        this.rightContent.getChildren().clear();
+        StringBuilder tekst = new StringBuilder(this.parentController.getEvent().getName() + "\n" +
+                this.parentController.getEvent().getFormattedDate() + " " +
+                this.parentController.getEvent().getTime() + "\n");
+        ticketdata.forEach(tekst::append);
+        tekst.append(totalcost); // FIXME: 11.05.2016 currency symbol bugine?
+        ImageView qrcode = MainHandler.createQrCode(tekst.toString(), 350.0, 45);
+        this.rightContent.getChildren().add(qrcode);
+        this.locked = true;
+    }
+
+    public boolean isLocked() {
+        return this.locked;
+    }
+
+    public FloorPlanPane getFloorPlan() {
+        return this.floorPlan;
+    }
+
+    public void setFloorPlan(FloorPlanPane floorPlan) {
+        this.floorPlan = floorPlan;
+        this.floorPlan.loadFloorPlan(this.parentController.getEvent());
+        this.rightContent.getChildren().add(this.floorPlan);
     }
 
     public void updateTicket(String ticketname, ArrayList<Double> ticketdata, String currency) {
@@ -62,6 +104,22 @@ public class Controller extends AbstractController {
         }
     }
 
+    private void setBackButton() {
+        Button back = new Button(Word.BACK.toString());
+        back.setMnemonicParsing(false);
+        back.getStyleClass().add("bottomButton");
+        back.setOnMouseClicked(event -> {
+            this.parentController.cancel();
+            this.scene.getStageHandler().getStage().close();
+        });
+        HBox hBox = new HBox(back);
+        HBox.setMargin(back, new Insets(0.0, 40.0, 40.0, 0.0));
+        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+        hBox.setMinSize(0.0, 0.0);
+        BorderPane.setAlignment(hBox, Pos.CENTER);
+        this.borderPane.setBottom(hBox);
+    }
+
     private void setDatetime() {
         this.datetime.setText(this.parentController.getEvent().getFormattedDate() + " " +
                 this.parentController.getEvent().getTime());
@@ -79,12 +137,6 @@ public class Controller extends AbstractController {
                 this.parentController.getEvent().getCurrency());
     }
 
-    @FXML
-    protected void handleBack() {
-        this.scene.getStageHandler().getStage().close();
-        this.parentController.cancel();
-    }
-
     @Override
     public <T> void prepareToDisplay(T object) {
         if (object instanceof system.graphics.pointOfSale.Controller) {
@@ -100,6 +152,5 @@ public class Controller extends AbstractController {
         this.quantity.setText(Word.QUANTITY.toString());
         this.total.setText(Word.TOTAL.toString());
         this.total2.setText(Word.TOTAL.toString());
-        this.back.setText(Word.BACK.toString());
     }
 }

@@ -124,14 +124,13 @@ public class Controller extends AbstractController {
 
     private void setSeatsLeft() {
         if (this.event.getFloorPlan() != null) {
-            ArrayList<Integer> size = FloorPlanPane.getSavedFloorPlanDimensions(this.event);
-            ArrayList<ArrayList<Integer>> unavailables = FloorPlanPane.getSavedFloorPlanUnavailables(this.event);
-            ArrayList<ArrayList<Integer>> disabled = FloorPlanPane.getSavedFloorPlanDisabled(this.event);
-            this.seatsLeft.setText(Word.SEATSLEFT.toString() + ":" +
-                    (size.get(0) * size.get(1) - unavailables.size() - disabled.size()));
+            int seatsleft = FloorPlanPane.getSeatsLeft(this.event);
+            this.seatsLeft.setText(Word.SEATSLEFT.toString() + ":" + seatsleft);
+            this.pos.setDisable(seatsleft == 0);
         } else {
             this.seatsLeft.setText(Word.SEATSLEFT.toString() + ": " +
                     (this.event.getMaxSeats() == -1 ? Word.UNLIMITED.toString() : this.event.getMaxSeats()));
+            this.pos.setDisable(this.event.getMaxSeats() < 1 && this.event.getMaxSeats() != -1);
         }
     }
 

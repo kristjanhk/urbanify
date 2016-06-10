@@ -4,7 +4,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.image.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -12,8 +11,10 @@ import system.MainHandler;
 import system.data.Event;
 import system.data.Word;
 import system.graphics.common.AbstractController;
+import system.graphics.common.ClientScreen;
 import system.graphics.common.FloorPlanPane;
 import system.graphics.common.Scenetype;
+import system.graphics.floorPlanner.Seat;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -68,7 +69,7 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void doBack() {
-        this.clientController.getScene().getStageHandler().getStage().close();
+        this.clientController.getScene().getStageHandler().switchSceneTo(Scenetype.CLIENTLOGO);
         this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
     }
 
@@ -85,10 +86,15 @@ public class Controller extends AbstractController {
             if (this.floorPlan != null) {
                 this.seatsHbox.setVisible(false);
                 this.floorPlan.save(null, this.floorPlan.getSavedFloorPlanImageTypeString(this.event), this.event);
+                this.checkout.setDisable(FloorPlanPane.getSeatsLeft(this.event) == 0);
+            } else {
+                this.checkout.setDisable(this.seatsLeft.get() == 0);
             }
-            this.createQrCode(ticketdata);
+            this.clientController.createQrCode(ticketdata, this.totalcost.getText());
             this.checkout.setText(Word.NEW.toString());
-            this.clientController.getScene().getStageHandler().showStage();
+            if (!ClientScreen.isSecondScreenEnabled()) {
+                this.clientController.getScene().getStageHandler().showStage();
+            }
         } else {
             this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
         }
@@ -110,6 +116,10 @@ public class Controller extends AbstractController {
         MainHandler.getSecondaryStageHandler().replaceScene(Scenetype.TICKETINFO);
         MainHandler.getSecondaryStageHandler().switchSceneTo(Scenetype.TICKETINFO, this);
         this.clientController.init();
+        if (this.floorPlan != null) {
+            FloorPlanPane clientFloorPlan = new FloorPlanPane(this);
+            this.clientController.setFloorPlan(clientFloorPlan);
+        }
     }
 
     public void setClientScreenController(system.graphics.ticketInfo.Controller controller) {
@@ -145,41 +155,27 @@ public class Controller extends AbstractController {
         this.validateCheckoutButton();
     }
 
-    public void addSeat() {
-        this.seatsLeft.set(this.seatsLeft.get() + 1);
-        this.updateSeatsLeft();
-        for (Node node : this.ticketsVbox.getChildren()) {
-            ((Ticket) node).enableAddTicketButton();
-        }
-    }
-
-    public boolean removeSeat() {
-        if (this.seatsLeft.get() > 0) {
-            this.seatsLeft.set(this.seatsLeft.get() - 1);
+    public boolean addSeat(ArrayList<Integer> coordinates) {
+        if (!this.clientController.isLocked()) {
+            this.seatsLeft.set(this.seatsLeft.get() + 1);
             this.updateSeatsLeft();
+            for (Node node : this.ticketsVbox.getChildren()) {
+                ((Ticket) node).enableAddTicketButton();
+            }
+            this.clientController.getFloorPlan().setSeatStyle(Seat.Seattype.OCCUPIED, coordinates);
             return true;
         }
         return false;
     }
 
-    /**
-     * Meetod, mis valmistab stseeni ette enne selle kuvamist
-     * Kontrollib, kas vastava üritusega stseen on valmis, vastasel juhul loob uue stseeni antud üritusega
-     *
-     * @param object suvaline object, kontrollitakse, kas see on üritus
-     */
-    @Override
-    public <T> void prepareToDisplay(T object) {
-        if (object instanceof Event) {
-            if (this.event != null) {
-                this.scene.getStageHandler().replaceScene(Scenetype.POINTOFSALE);
-                this.scene.getStageHandler().getScene(Scenetype.POINTOFSALE).
-                        getController().prepareToDisplay(object);
-            } else {
-                this.event = ((Event) object);
-                this.init();
-            }
+    public boolean removeSeat(ArrayList<Integer> coordinates) {
+        if (this.seatsLeft.get() > 0) {
+            this.seatsLeft.set(this.seatsLeft.get() - 1);
+            this.updateSeatsLeft();
+            this.clientController.getFloorPlan().setSeatStyle(Seat.Seattype.AVAILABLE, coordinates);
+            return true;
         }
+        return false;
     }
 
     private void setDatetime() {
@@ -209,20 +205,23 @@ public class Controller extends AbstractController {
     }
 
     /**
-     * Meetod, mis loob Zxing teegiga qr koodi
-     * https://github.com/zxing/zxing
-     * Genereerib maatriksi andmetest, mis joonistatakse canvasega pildile
+     * Meetod, mis valmistab stseeni ette enne selle kuvamist
+     * Kontrollib, kas vastava üritusega stseen on valmis, vastasel juhul loob uue stseeni antud üritusega
      *
-     * @param ticketdata list piletite andmetest, mis on juba vajalikul kujul
+     * @param object suvaline object, kontrollitakse, kas see on üritus
      */
-    private void createQrCode(ArrayList<String> ticketdata) {
-        this.rightContent.getChildren().clear();
-        StringBuilder tekst = new StringBuilder(this.event.getName() + "\n" + this.event.getFormattedDate() + " " +
-                this.event.getTime() + "\n");
-        ticketdata.forEach(tekst::append);
-        tekst.append(this.totalcost.getText()); // FIXME: 11.05.2016 currency symbol bugine?
-        ImageView qrcode = MainHandler.createQrCode(tekst.toString(), 350.0, 45);
-        this.rightContent.getChildren().add(qrcode);
+    @Override
+    public <T> void prepareToDisplay(T object) {
+        if (object instanceof Event) {
+            if (this.event != null) {
+                this.scene.getStageHandler().replaceScene(Scenetype.POINTOFSALE);
+                this.scene.getStageHandler().getScene(Scenetype.POINTOFSALE).
+                        getController().prepareToDisplay(object);
+            } else {
+                this.event = ((Event) object);
+                this.init();
+            }
+        }
     }
 
     @Override

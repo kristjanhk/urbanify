@@ -26,6 +26,7 @@ public class StageHandler {
     public StageHandler(Stage primaryStage, String title) {
         this.stage = primaryStage;
         this.init(title);
+        this.resizeHandler = new ResizeHandler(this.stage);
         this.stage.setOnCloseRequest(event -> {
             MainHandler.getFileHandler().saveData();
             MainHandler.getSecondaryStageHandler().getStage().close();
@@ -42,14 +43,11 @@ public class StageHandler {
                 getScene(Scenetype.POINTOFSALE).getController()).cancel());
         this.scenes.put(Scenetype.TICKETINFO, createScene(Scenetype.TICKETINFO));
         this.switchSceneTo(Scenetype.TICKETINFO);
-        this.stage.setX(ClientScreen.getActiveVisualBounds().getMinX());
-        this.stage.setY(ClientScreen.getActiveVisualBounds().getMinY());
-        this.stage.centerOnScreen();
+        this.changeScreen();
     }
 
     private void init(String title) {
         this.stage.initStyle(StageStyle.UNDECORATED);
-        this.resizeHandler = new ResizeHandler(this.stage);
         this.stage.setTitle(title);
         this.stage.setHeight(880);
         this.stage.setWidth(1220);
@@ -57,9 +55,19 @@ public class StageHandler {
         this.stage.setMinWidth(1180);
     }
 
+    public void changeScreen() {
+        this.stage.setX(ClientScreen.getActiveVisualBounds().getMinX());
+        this.stage.setY(ClientScreen.getActiveVisualBounds().getMinY());
+        this.stage.centerOnScreen();
+    }
+
     public void showStage() {
-        //this.stage.setMaximized(true);
-        this.stage.toFront();
+        this.stage.setMaximized(true);
+        if (ClientScreen.isSecondScreenEnabled() &&
+                MainHandler.getSecondaryStageHandler() != null &&
+                MainHandler.getSecondaryStageHandler().equals(this)) {
+            this.stage.toFront();
+        }
         this.stage.show();
     }
 

@@ -1,0 +1,6 @@
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="pane" prefHeight="900.0" prefWidth="1600.0" styleClass="background"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.ticketInfo.clientLogo.Controller"/>
+
+

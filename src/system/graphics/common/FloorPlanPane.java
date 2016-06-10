@@ -96,6 +96,17 @@ public class FloorPlanPane extends VBox {
         }
     }
 
+    public void setSeatStyle(Seat.Seattype seattype, ArrayList<Integer> coordinates) {
+        for (Node group : this.getFloor()) {
+            for (Node seat : ((Group) group).getChildren()) {
+                Seat target = (Seat) seat;
+                if (target.getCoordinates().equals(coordinates)) {
+                    target.setSeattype(seattype);
+                }
+            }
+        }
+    }
+
     public void save(String name, String imageName, Event event) {
         Word imageConstant = Word.toEnum(imageName.toLowerCase(), Lang.getActiveLang());
         if (imageConstant != null) {
@@ -139,6 +150,13 @@ public class FloorPlanPane extends VBox {
 
     private void setFloorPlanImage(Imagetype imagetype) {
         this.floorPlanImage.setImage(imagetype.toImage());
+    }
+
+    public static int getSeatsLeft(Event event) {
+        ArrayList<Integer> size = getSavedFloorPlanDimensions(event);
+        ArrayList<ArrayList<Integer>> unavailables = getSavedFloorPlanUnavailables(event);
+        ArrayList<ArrayList<Integer>> disabled = getSavedFloorPlanDisabled(event);
+        return size.get(0) * size.get(1) - unavailables.size() - disabled.size();
     }
 
     public static ArrayList<Integer> getSavedFloorPlanDimensions(Object from) {

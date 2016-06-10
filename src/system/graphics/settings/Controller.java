@@ -90,6 +90,7 @@ public class Controller extends AbstractController {
     @FXML
     protected void handleScreenTypeChange(ActionEvent event) {
         ClientScreen.setActiveScreenType(ClientScreen.valueOf(((MenuItem) event.getSource()).getId()));
+        MainHandler.getSecondaryStageHandler().changeScreen();
         this.clientScreen.setText(Word.valueOf(ClientScreen.getActiveScreenType().name()).toString());
     }
 

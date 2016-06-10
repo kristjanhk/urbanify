@@ -22,11 +22,11 @@ public enum ClientScreen {
         activeScreenType = screenType;
     }
 
+    public static boolean isSecondScreenEnabled() {
+        return activeScreenType == SECONDARY;
+    }
+
     public static Rectangle2D getActiveVisualBounds() {
-        // TODO: 09/06/2016 läpakale testimiseks aind, REMOVEME
-        if (Screen.getScreens().size() == 1) {
-            return Screen.getScreens().get(0).getVisualBounds();
-        }
         return Screen.getScreens().get(getActiveScreenType().index).getVisualBounds();
     }
 }

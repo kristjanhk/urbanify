@@ -5,8 +5,10 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import system.MainHandler;
 import system.data.Event;
 import system.graphics.common.AbstractController;
+import system.graphics.common.ClientScreen;
 import system.graphics.common.CustomScene;
 import system.graphics.common.Scenetype;
 import system.data.Word;
@@ -31,6 +33,7 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void doBack() {
+        MainHandler.getSecondaryStageHandler().getStage().close();
         this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
     }
 
@@ -87,6 +90,10 @@ public class Controller extends AbstractController {
         this.checkInitialization();
         if (object instanceof Event) {
             this.eventsVBox.getChildren().add(new EventLine(this, ((Event) object)));
+        }
+        if (ClientScreen.isSecondScreenEnabled()) {
+            MainHandler.getSecondaryStageHandler().switchSceneTo(Scenetype.CLIENTLOGO);
+            MainHandler.getSecondaryStageHandler().showStage();
         }
     }
 }

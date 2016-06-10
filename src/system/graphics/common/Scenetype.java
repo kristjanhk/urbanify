@@ -16,7 +16,8 @@ public enum Scenetype {
     ARCHIVE("eventManager", "archive.fxml"),
     SETTINGS("settings", "settings.fxml"),
     REPORT("report", "report.fxml"),
-    TICKETINFO("ticketInfo", "ticketInfo.fxml");
+    TICKETINFO("ticketInfo", "ticketInfo.fxml"),
+    CLIENTLOGO("ticketInfo/clientLogo", "clientLogo.fxml");
 
     private String packageString;
     private String sceneString;
