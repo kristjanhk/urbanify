@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Piletikassa" default="package" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="dist.dir" value="${build.dir}/dist"/>
+    <property name="deploy.dir" value="${build.dir}/deploy"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="src.dir" value="src"/>
+
+    <path id="libs">
+        <fileset dir="${lib.dir}" includes="*.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${deploy.dir}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}"
+               destdir="${classes.dir}"
+               includeantruntime="false">
+            <classpath refid="libs"/>
+        </javac>
+        <copy todir="${classes.dir}">
+            <fileset dir="${src.dir}" excludes="**/*.java"/>
+        </copy>
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar destfile="${build.dir}/dist/Piletikassa.jar"
+             basedir="${classes.dir}"/>
+    </target>
+
+    <target name="package" depends="compile">
+        <property name="jdk.home" value="${java.home}/.."/>
+        <property name="javafx.lib.ant-javafx.jar" value="${jdk.home}/lib/ant-javafx.jar"/>
+        <taskdef resource="com/sun/javafx/tools/ant/antlib.xml"
+                 uri="javafx:com.sun.javafx.tools.ant"
+                 classpath="${javafx.lib.ant-javafx.jar};."/>
+
+        <fx:application id="appRef"
+                        name="Piletikassa"
+                        mainClass="system.MainHandler">
+            <!-- you can pass in command line arguments  here -->
+            <!--<fx:argument>foo</fx:argument>-->
+            <!--<fx:argument>bar</fx:argument>-->
+
+        </fx:application>
+
+        <fx:resources id="appRes">
+            <fx:fileset dir="${dist.dir}" includes="*.jar"/>
+            <fx:fileset dir="${lib.dir}" includes="*.jar"/>
+        </fx:resources>
+
+        <fx:jar destfile="${dist.dir}/Piletikassa.jar">
+            <!-- Define what to launch -->
+            <fx:application refid="appRef"/>
+
+            <!-- Define what classpath to use -->
+            <fx:resources refid="appRes"/>
+
+            <manifest>
+                <attribute name="Implementation-Vendor" value="Urbanteam"/>
+                <attribute name="Implementation-Title" value="Piletikassa"/>
+                <attribute name="Implementation-Version" value="1.0"/>
+            </manifest>
+
+            <!-- Define what files to include -->
+            <fileset dir="${classes.dir}"/>
+            <fileset dir="${lib.dir}"/>
+        </fx:jar>
+
+        <fx:deploy nativeBundles="all"
+                   outdir="${deploy.dir}"
+                   verbose="true">
+
+            <fx:application refId="appRef"/>
+
+            <fx:resources refid="appRes"/>
+
+            <fx:platform>
+                <!--<fx:platform basedir="">-->
+                <!-- basedir is the root of the JVM to use -->
+                <!-- setting it to an empty string means uses the system JRE -->
+
+                <!-- you can set JVM args -->
+                <fx:jvmarg value="-XX:+UseThreadPriorities"/>
+
+                <!-- you can set properties too -->
+                <fx:property name="java.library.path" value="."/>
+            </fx:platform>
+
+            <fx:info title="Piletikassa"
+                     vendor="Urbanteam"/>
+
+            <fx:preferences install="true"
+                            menu="true"
+                            shortcut="true"/>
+            <!-- for native bundles install="false" means install per-user, whereas true means system wide -->
+        </fx:deploy>
+
+    </target>
+</project>

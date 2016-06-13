@@ -1,0 +1,30 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="piletisystem">
+    <output-path>$PROJECT_DIR$/out/artifacts/piletisystem</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="system.MainHandler" />
+        <option name="description" value="" />
+        <option name="height" value="880" />
+        <option name="htmlParamFile" value="" />
+        <option name="paramFile" value="" />
+        <option name="title" value="Piletikassa" />
+        <option name="vendor" value="Urbanteam" />
+        <option name="width" value="1220" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="piletisystem.jar">
+        <element id="module-output" name="piletisystem" />
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="com.google.code.gson:gson:2.6.2" />
+          <element id="library" level="project" name="com.google.zxing:javase:3.2.1" />
+          <element id="library" level="project" name="core-renderer" />
+          <element id="library" level="project" name="freemarker" />
+          <element id="library" level="project" name="iText-2.0.8" />
+          <element id="library" level="project" name="org.controlsfx:controlsfx:8.40.10" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

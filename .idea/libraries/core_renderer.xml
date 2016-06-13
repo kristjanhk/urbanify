@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="core-renderer">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/core-renderer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/core-renderer.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
