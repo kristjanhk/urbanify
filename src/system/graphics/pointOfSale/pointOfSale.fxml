@@ -10,34 +10,29 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="system.graphics.pointOfSale.Controller">
+<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="system.graphics.pointOfSale.Controller">
     <top>
-        <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0"
-              prefWidth="1600.0" BorderPane.alignment="CENTER">
+        <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="100.0">
-                <Button mnemonicParsing="false" onMouseClicked="#handleStageMinimize" styleClass="barButton" text="→"
-                        textAlignment="CENTER">
+                <Button mnemonicParsing="false" onMouseClicked="#handleStageMinimize" styleClass="barButton" text="→" textAlignment="CENTER">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="maximizeButton" mnemonicParsing="false" onMouseClicked="#handleStageMaximize"
-                        styleClass="barButton" textAlignment="CENTER">
+                <Button fx:id="maximizeButton" mnemonicParsing="false" onMouseClicked="#handleStageMaximize" styleClass="barButton" textAlignment="CENTER">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
                 <Button mnemonicParsing="false" onMouseClicked="#handleStageClose" styleClass="barButton" text="←">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
             </HBox>
-            <Text fx:id="pointofsale" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText"
-                  BorderPane.alignment="TOP_LEFT">
+            <Text fx:id="pointofsale" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText" BorderPane.alignment="TOP_LEFT">
                 <VBox.margin>
-                    <Insets left="70.0" top="40.0"/>
+                    <Insets left="70.0" top="40.0" />
                 </VBox.margin>
             </Text>
         </VBox>
@@ -45,65 +40,53 @@
     <center>
         <VBox BorderPane.alignment="CENTER">
             <BorderPane.margin>
-                <Insets left="40.0" right="40.0" top="40.0"/>
+                <Insets left="40.0" right="40.0" top="40.0" />
             </BorderPane.margin>
-            <HBox alignment="CENTER_LEFT" maxHeight="42.0" minHeight="50.0" minWidth="0.0" prefHeight="50.0"
-                  prefWidth="9999.0" styleClass="textFlow30">
+            <HBox alignment="CENTER_LEFT" maxHeight="42.0" minHeight="50.0" minWidth="0.0" prefHeight="50.0" prefWidth="9999.0" styleClass="textFlow30">
                 <Text fx:id="name" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" wrappingWidth="700">
                 </Text>
             </HBox>
             <HBox>
-                <HBox alignment="CENTER_LEFT" maxHeight="40.0" maxWidth="250.0" minHeight="40.0" minWidth="250.0"
-                      prefHeight="40.0" prefWidth="250.0" styleClass="textFlow20">
-                    <Text fx:id="datetime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text25"/>
+                <HBox alignment="CENTER_LEFT" maxHeight="40.0" maxWidth="250.0" minHeight="40.0" minWidth="250.0" prefHeight="40.0" prefWidth="250.0" styleClass="textFlow20">
+                    <Text fx:id="datetime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text25" />
                 </HBox>
-                <HBox fx:id="seatsHbox" alignment="CENTER_LEFT" maxHeight="40.0" maxWidth="300.0" minHeight="40.0"
-                      minWidth="300.0" prefHeight="40.0" prefWidth="300.0" styleClass="textFlow20">
+                <HBox fx:id="seatsHbox" alignment="CENTER_LEFT" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="300.0" prefHeight="40.0" prefWidth="300.0" styleClass="textFlow20">
                     <HBox.margin>
-                        <Insets left="15.0"/>
+                        <Insets left="15.0" />
                     </HBox.margin>
-                    <Text fx:id="seats" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text25"/>
+                    <Text fx:id="seats" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text25" />
                 </HBox>
                 <VBox.margin>
-                    <Insets top="15.0"/>
+                    <Insets top="15.0" />
                 </VBox.margin>
             </HBox>
-            <HBox fx:id="content" alignment="CENTER_LEFT">
+            <HBox fx:id="content" alignment="CENTER_LEFT" minHeight="0.0" minWidth="0.0">
                 <VBox.margin>
-                    <Insets right="40" top="40.0"/>
+                    <Insets right="40" top="40.0" />
                 </VBox.margin>
-                <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="750.0" minWidth="750.0"
-                            pannable="true" prefHeight="9999.0" prefWidth="750.0">
-                    <VBox fx:id="ticketsVbox" styleClass="background"/>
+                <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="750.0" minWidth="750.0" pannable="true" prefHeight="9999.0" prefWidth="750.0">
+                    <VBox fx:id="ticketsVbox" styleClass="background" />
                 </ScrollPane>
             </HBox>
-            <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0"
-                    prefWidth="40.0"/>
+            <Region maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" />
             <HBox alignment="CENTER_LEFT">
                 <VBox.margin>
-                    <Insets bottom="40.0"/>
+                    <Insets bottom="40.0" />
                 </VBox.margin>
-                <Button fx:id="back" maxHeight="70.5" maxWidth="121.0" minHeight="70.5" minWidth="121.0"
-                        mnemonicParsing="false" onMouseClicked="#doBack" prefHeight="70.5" prefWidth="121.0"
-                        styleClass="bottomButton"/>
-                <Region minHeight="0.0" minWidth="0.0" prefHeight="10.0" prefWidth="9999.0" HBox.hgrow="NEVER"/>
-                <Text fx:id="total" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" textAlignment="RIGHT"
-                      wrappingWidth="224.0">
+                <Button fx:id="back" maxHeight="70.5" maxWidth="121.0" minHeight="70.5" minWidth="121.0" mnemonicParsing="false" onMouseClicked="#doBack" prefHeight="70.5" prefWidth="121.0" styleClass="bottomButton" />
+                <Region minHeight="0.0" minWidth="0.0" prefHeight="10.0" prefWidth="9999.0" HBox.hgrow="NEVER" />
+                <Text fx:id="total" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" textAlignment="RIGHT" wrappingWidth="224.0">
                 </Text>
-                <TextFlow maxHeight="70.5" maxWidth="200.0" minHeight="70.5" minWidth="200.0" prefHeight="70.5"
-                          prefWidth="200.0" styleClass="textFlowPos" textAlignment="CENTER">
+                <TextFlow maxHeight="70.5" maxWidth="200.0" minHeight="70.5" minWidth="200.0" prefHeight="70.5" prefWidth="200.0" styleClass="textFlowPos" textAlignment="CENTER">
                     <HBox.margin>
-                        <Insets left="40.0"/>
+                        <Insets left="40.0" />
                     </HBox.margin>
-                    <Text fx:id="totalcost" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35"
-                          textAlignment="CENTER" wrappingWidth="200.0">
+                    <Text fx:id="totalcost" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35" textAlignment="CENTER" wrappingWidth="200.0">
                     </Text>
                 </TextFlow>
-                <Button fx:id="checkout" maxHeight="70.5" maxWidth="121.0" minHeight="70.5" minWidth="121.0"
-                        mnemonicParsing="false" onMouseClicked="#doCheckout" prefHeight="70.5" prefWidth="121.0"
-                        styleClass="bottomButton">
+                <Button fx:id="checkout" maxHeight="70.5" maxWidth="121.0" minHeight="70.5" minWidth="121.0" mnemonicParsing="false" onMouseClicked="#doCheckout" prefHeight="70.5" prefWidth="121.0" styleClass="bottomButton">
                     <HBox.margin>
-                        <Insets left="40.0"/>
+                        <Insets left="40.0" />
                     </HBox.margin>
                 </Button>
             </HBox>
