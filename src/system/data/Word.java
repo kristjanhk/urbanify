@@ -12,7 +12,7 @@ import java.util.HashMap;
 public enum Word {
     NEWEVENT, SETTINGS, ARCHIVE, EVENTCREATOR, POINTOFSALE, NAMEYOUREVENT, PRICE, TICKETYPE, OPENSEATING,
     ASSIGNEDSEATING, NEXT, CANCEL, BACK, CREATE, SAVE, NEWFLOORPLAN, FLOORPLAN, ROWS, SEATSINROW, STAGE, SCREEN,
-    EVENTS, SETDATE, SETTIME, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, PATH, LANGUAGE, THEME, LIGHT, DARK, WARM,
+    EVENTS, SETDATE, SETTIME, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, PATH, LANGUAGE, THEME, LIGHT, DARK,
     SETSEATINGTYPE, SEATINGTYPE, ENGLISH, ESTONIAN, VÕRO, GERMAN, TICKETSTOSELECT, RUSSIAN, CHECKOUT, TOTAL, POS,
     FINISH, COST, QUANTITY, NEW, SEATSLEFT, UNLIMITED, CURRENCY, EDIT, UPDATE, EVENTUPDATER, SHOWQR, AUTHKEY, PRIMARY,
     SECONDARY, SCREENTYPE, TICKETINFO, FOLDER, PDF;
@@ -85,8 +85,6 @@ public enum Word {
                 "hell", "легкий"}); //vene keel pole vist päris õige
         wordsMap.put(Word.DARK, new String[]{"dark", "tume", "tummõ",
                 "dunkel", "темно"});
-        wordsMap.put(Word.WARM, new String[]{"warm", "soe", "lämmi",
-                "warm", "тепло"});
         wordsMap.put(Word.SETSEATINGTYPE, new String[]{"set seating type", "määra kohtade tüüp", "määrä kotosõ sort",
                 "Plätze-typ setzen", "установить типа рассадка"});
         wordsMap.put(Word.SEATINGTYPE, new String[]{"seating type", "kohtade tüüp", "kotosõ sort",

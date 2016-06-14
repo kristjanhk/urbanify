@@ -66,7 +66,6 @@ public class Controller extends AbstractController {
     @FXML
     protected void handleThemeSwitch(ActionEvent event) {
         MainHandler.changeGlobalThemeTo(Csstype.valueOf(((MenuItem) event.getSource()).getId()));
-        // TODO: 29.04.2016 warm theme
         this.theme.setText(Word.valueOf(Csstype.getActiveTheme().toString()).toString());
         if (this.qrContent.getChildren().size() > 0) {
             this.handleQrCodeGenerate();
@@ -116,7 +115,6 @@ public class Controller extends AbstractController {
         this.theme.setText(Word.valueOf(Csstype.getActiveTheme().toString()).toString());
         this.theme.getItems().get(0).setText(Word.LIGHT.toString());
         this.theme.getItems().get(1).setText(Word.DARK.toString());
-        this.theme.getItems().get(2).setText(Word.WARM.toString());
         this.langLabel.setText(Word.LANGUAGE.toString());
         this.themeLabel.setText(Word.THEME.toString());
         this.qrButton.setText(Word.SHOWQR.toString());

@@ -55,7 +55,7 @@ public class ReportHandler {
         Document doc = builder.parse(new ByteArrayInputStream(htmlStr.getBytes()));
         ITextRenderer renderer = new ITextRenderer();
         renderer.getFontResolver().addFont(System.getProperty("user.dir") +
-                "\\src\\system\\graphics\\common\\ticketfont2.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                "\\src\\system\\graphics\\common\\TicketFont.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
         renderer.setDocument(doc, null);
         renderer.layout();
         renderer.createPDF(out);

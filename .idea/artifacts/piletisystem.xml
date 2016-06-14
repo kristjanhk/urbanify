@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="javafx" build-on-make="true" name="piletisystem">
+  <artifact type="javafx" name="piletisystem">
     <output-path>$PROJECT_DIR$/out/artifacts/piletisystem</output-path>
     <properties id="javafx-properties">
       <options>

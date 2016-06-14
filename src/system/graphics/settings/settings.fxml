@@ -121,7 +121,6 @@
                 <items>
                     <MenuItem id="LIGHT" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
                     <MenuItem id="DARK" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
-                    <MenuItem id="WARM" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
                 </items>
             </MenuButton>
             <Text fx:id="themeLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19"
