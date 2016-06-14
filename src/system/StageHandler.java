@@ -41,7 +41,7 @@ public class StageHandler {
         this.showStage(true);
     }
 
-    //secondary stagehandlers
+    //other stagehandlers
     public StageHandler(String title) {
         this.stage = new Stage();
         this.init(title);

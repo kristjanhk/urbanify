@@ -59,12 +59,13 @@ public class Controller extends AbstractController {
             this.floorPlan.loadFloorPlan(this.event);
             this.floorPlan.checkResize();
             this.seatsLeft.set(0);
+            this.updateSeatsLeft(false);
         } else {
             this.seatsLeft.set(this.event.getMaxSeats());
+            this.updateSeatsLeft();
         }
         this.updateTotal();
         this.validateCheckoutButton();
-        this.updateSeatsLeft();
         this.resetClientScreen();
     }
 
@@ -183,14 +184,18 @@ public class Controller extends AbstractController {
         this.datetime.setText(this.event.getFormattedDate() + " " + this.event.getTime());
     }
 
+    public void updateSeatsLeft(boolean hasSeatsSelected) {
+        this.seats.setText(hasSeatsSelected ? Word.TICKETSTOSELECT.toString() + ": " + this.seatsLeft.intValue() :
+                Word.SEATSLEFT.toString() + ": " + FloorPlanPane.getSeatsLeft(this.event));
+    }
+
     private void updateSeatsLeft() {
         if (this.floorPlan != null) {
-            this.seats.setText(Word.TICKETSTOSELECT.toString() + ": " + this.seatsLeft.intValue());
+            this.updateSeatsLeft(true);
         } else {
             this.seats.setText(Word.SEATSLEFT.toString() + ": " +
                     (this.seatsLeft.get() == -1 ? Word.UNLIMITED.toString() : this.seatsLeft.intValue()));
         }
-
     }
 
     private void updateTotal() {

@@ -65,6 +65,9 @@ public class JsonFile {
     }
 
     public String getCompanyName() {
+        if (this.companyName == null) {
+            return "";
+        }
         return this.companyName;
     }
 

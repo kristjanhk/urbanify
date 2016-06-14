@@ -127,9 +127,6 @@
                 <VBox.margin>
                     <Insets top="40.0"/>
                 </VBox.margin>
-                <Text fx:id="seatsLeft" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER"
-                      wrappingWidth="125.0" GridPane.columnIndex="0" styleClass="text35">
-                </Text>
                 <Text fx:id="total2" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER"
                       wrappingWidth="125.0" GridPane.columnIndex="1" styleClass="text35">
                 </Text>

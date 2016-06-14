@@ -10,7 +10,6 @@ import system.MainHandler;
 import system.data.Event;
 import system.data.Word;
 import system.graphics.common.AbstractController;
-import system.graphics.common.FloorPlanPane;
 import system.graphics.common.Scenetype;
 
 import java.net.URL;
@@ -28,7 +27,6 @@ public class Controller extends AbstractController {
     @FXML protected Text quantity;
     @FXML protected Text total;
     @FXML protected VBox ticketVBox;
-    @FXML protected Text seatsLeft;
     @FXML protected Text total2;
     @FXML protected Text quantityTotal;
     @FXML protected Text soldTotal;
@@ -48,7 +46,6 @@ public class Controller extends AbstractController {
     private void init() {
         this.setTitle();
         this.setDatetime();
-        this.setSeatsLeft();
         this.createTickets();
         this.createTotal();
         this.createPieChart();
@@ -130,18 +127,6 @@ public class Controller extends AbstractController {
         this.pieChart.setLegendVisible(false);
         this.pieChart.setData(FXCollections.observableArrayList(data));
         // TODO: 30.05.2016 bind text size to stage width
-    }
-
-    private void setSeatsLeft() {
-        if (this.event.getFloorPlan() != null) {
-            int seatsleft = FloorPlanPane.getSeatsLeft(this.event);
-            this.seatsLeft.setText(Word.SEATSLEFT.toString() + ":" + seatsleft);
-            this.pos.setDisable(seatsleft == 0);
-        } else {
-            this.seatsLeft.setText(Word.SEATSLEFT.toString() + ": " +
-                    (this.event.getMaxSeats() == -1 ? Word.UNLIMITED.toString() : this.event.getMaxSeats()));
-            this.pos.setDisable(this.event.getMaxSeats() < 1 && this.event.getMaxSeats() != -1);
-        }
     }
 
     @Override

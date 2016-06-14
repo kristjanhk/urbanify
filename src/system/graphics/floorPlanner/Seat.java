@@ -85,6 +85,10 @@ public class Seat extends Button {
         this.setGivenStyle(seattype);
     }
 
+    public boolean isOccupied() {
+        return this.seattype == Seattype.OCCUPIED;
+    }
+
     public ArrayList<Integer> isUnavailable() {
         if (this.seattype == Seattype.UNAVAILABLE || this.seattype == Seattype.OCCUPIED) {
             return this.getCoordinates();
@@ -115,10 +119,13 @@ public class Seat extends Button {
                 if (this.seattype == Seattype.AVAILABLE) {
                     if (((Controller) this.floorPlan.getParentController()).addSeat(this.getCoordinates())) {
                         this.setGivenStyle(Seattype.OCCUPIED);
+                        ((Controller) this.floorPlan.getParentController()).updateSeatsLeft(true);
                     }
                 } else {
                     if (((Controller) this.floorPlan.getParentController()).removeSeat(this.getCoordinates())) {
                         this.setGivenStyle(Seattype.AVAILABLE);
+                        ((Controller) this.floorPlan.getParentController()).
+                                updateSeatsLeft(this.floorPlan.hasSeatsSelected());
                     }
                 }
             } else {

@@ -3,7 +3,6 @@ package system.graphics.report.pdf;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import system.MainHandler;
 import system.data.Word;
@@ -14,7 +13,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller extends AbstractController {
-    @FXML protected BorderPane mainPane;
     @FXML protected Text title;
     @FXML protected TextField companyName;
     @FXML protected Text companyNameLabel;
@@ -33,9 +31,7 @@ public class Controller extends AbstractController {
     }
 
     private void init() {
-        if (this.getData().getCompanyName() != null) {
-            this.companyName.setText(this.getData().getCompanyName());
-        }
+        this.companyName.setText(this.getData().getCompanyName());
     }
 
     @FXML

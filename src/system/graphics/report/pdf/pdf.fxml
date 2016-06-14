@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="550.0" minWidth="600.0"
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="550.0" minWidth="600.0"
             prefHeight="550.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="system.graphics.report.pdf.Controller" styleClass="pdfMakerBack">
     <top>

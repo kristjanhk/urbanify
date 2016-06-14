@@ -111,6 +111,18 @@ public class FloorPlanPane extends VBox {
         }
     }
 
+    public boolean hasSeatsSelected() {
+        for (Node group : this.getFloor()) {
+            for (Node seat : ((Group) group).getChildren()) {
+                Seat target = (Seat) seat;
+                if (target.isOccupied()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public void save(String name, String imageName, Event event) {
         Word imageConstant = Word.toEnum(imageName.toLowerCase(), Lang.getActiveLang());
         if (imageConstant != null) {
