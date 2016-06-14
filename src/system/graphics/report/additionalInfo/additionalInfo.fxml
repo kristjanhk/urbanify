@@ -11,7 +11,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="300.0" minWidth="400.0" prefHeight="400.0"
             prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="system.graphics.report.additionalInfo.Controller">
+            fx:controller="system.graphics.report.additionalInfo.Controller" styleClass="background">
     <center>
         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <BorderPane.margin>
@@ -23,7 +23,8 @@
                         <Insets/>
                     </VBox.margin>
                 </TextField>
-                <Text fx:id="companyNameLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="company name">
+                <Text fx:id="companyNameLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="company name"
+                      styleClass="text19">
                     <VBox.margin>
                         <Insets left="20.0" top="6.0"/>
                     </VBox.margin>
@@ -33,7 +34,8 @@
                         <Insets top="20.0"/>
                     </VBox.margin>
                 </TextField>
-                <Text fx:id="invoiceNrLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="invoice nr">
+                <Text fx:id="invoiceNrLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="invoice nr"
+                      styleClass="text19">
                     <VBox.margin>
                         <Insets left="20.0" top="6.0"/>
                     </VBox.margin>
@@ -43,7 +45,8 @@
                         <Insets top="20.0"/>
                     </VBox.margin>
                 </TextField>
-                <Text fx:id="workerNameLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="worker name">
+                <Text fx:id="workerNameLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="worker name"
+                      styleClass="text19">
                     <VBox.margin>
                         <Insets left="20.0" top="6.0"/>
                     </VBox.margin>
@@ -54,23 +57,23 @@
     <bottom>
         <HBox alignment="BOTTOM_RIGHT" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="cancel" mnemonicParsing="false" text="cancel"/>
-                <Button fx:id="ok" mnemonicParsing="false" text="ok">
+                <Button fx:id="cancel" mnemonicParsing="false" text="cancel" styleClass="bottomButton"/>
+                <Button fx:id="ok" mnemonicParsing="false" text="ok" styleClass="bottomButton">
                     <HBox.margin>
-                        <Insets left="20.0"/>
+                        <Insets left="30.0"/>
                     </HBox.margin>
                 </Button>
             </children>
             <BorderPane.margin>
-                <Insets bottom="20.0" right="40.0"/>
+                <Insets bottom="40.0" right="40.0"/>
             </BorderPane.margin>
         </HBox>
     </bottom>
     <top>
         <Text fx:id="additionalInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="additional info"
-              BorderPane.alignment="CENTER">
+              BorderPane.alignment="CENTER" styleClass="topText">
             <BorderPane.margin>
-                <Insets top="20.0"/>
+                <Insets top="40.0"/>
             </BorderPane.margin>
         </Text>
     </top>
