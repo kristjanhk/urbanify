@@ -50,6 +50,8 @@ public class FloorPlanPane extends VBox {
     public FloorPlanPane(AbstractController parentController) {
         this();
         this.parentController = parentController;
+        this.setAlignment(Pos.CENTER);
+        this.setPrefSize(9999.0, 9999.0);
     }
 
     public void init(AbstractController parentController, ArrayList<Integer> defaultSize) {
@@ -326,7 +328,8 @@ public class FloorPlanPane extends VBox {
         if (this.getFloor().size() != 0) {
             double prevY = getGroupMaxY();
             this.addNewRow();
-            this.checkPaneHeightResize(this.getHeight());
+            this.checkPaneHeightResize(this.floorPlan.getHeight());
+            //this.checkPaneWidthResize(this.floorPlan.getWidth());
             this.correctY(prevY);
         } else {
             this.addNewRow();
@@ -337,7 +340,8 @@ public class FloorPlanPane extends VBox {
         if (this.getFloor().size() > 1) {
             double prevY = getGroupMaxY();
             this.removeFirstRow();
-            this.checkPaneHeightResize(this.getHeight());
+            this.checkPaneHeightResize(this.floorPlan.getHeight());
+            //this.checkPaneWidthResize(this.floorPlan.getWidth());
             this.correctY(prevY);
         } else {
             this.resetFloor();
@@ -347,7 +351,8 @@ public class FloorPlanPane extends VBox {
     public void addColumnAction() {
         if (this.columnCount != 0) {
             this.addNewColumn();
-            this.checkPaneWidthResize(this.getWidth());
+            this.checkPaneWidthResize(this.floorPlan.getWidth());
+            //this.checkPaneHeightResize(this.floorPlan.getHeight());
         } else {
             this.addNewColumn();
         }
@@ -355,7 +360,8 @@ public class FloorPlanPane extends VBox {
 
     public void removeColumnAction() {
         this.removeLastColumn();
-        this.checkPaneWidthResize(this.getWidth());
+        this.checkPaneWidthResize(this.floorPlan.getWidth());
+        //this.checkPaneHeightResize(this.floorPlan.getHeight());
     }
 
     private void addNewRow() {
@@ -428,12 +434,15 @@ public class FloorPlanPane extends VBox {
         double groupHeight = this.getFloorGroup().getBoundsInParent().getHeight();
         double groupOrigHeight = this.getFloorGroup().getBoundsInLocal().getHeight();
         double ratio = paneWidth / groupWidth;
+        System.out.println("W::pW:" + paneWidth + ";gH:" + groupHeight + ";goH:" + groupOrigHeight +
+                ";gW:" + groupWidth + ";goW:" + groupOrigWidth);
         if (groupWidth > paneWidth) {
             this.resizeFloorPlan(this.getGroupMaxY(), ratio);
         } else if (groupWidth < groupOrigWidth &&
                 groupHeight < groupOrigHeight &&
                 groupHeight < this.getHeight() - 30) {
             this.resizeFloorPlan(this.getGroupMaxY(), ratio);
+            this.checkPaneHeightResize(this.floorPlan.getHeight());
         }
     }
 
@@ -452,12 +461,15 @@ public class FloorPlanPane extends VBox {
         double groupWidth = this.getFloorGroup().getBoundsInParent().getWidth();
         double groupOrigWidth = this.getFloorGroup().getBoundsInLocal().getWidth();
         double ratio = paneHeight / groupHeight;
+        System.out.println("H::pH:" + paneHeight + ";gH:" + groupHeight + ";goH:" + groupOrigHeight +
+                ";gW:" + groupWidth + ";goW:" + groupOrigWidth);
         if (groupHeight > paneHeight) {
             this.resizeFloorPlan(this.getGroupMaxY(), ratio);
         } else if (groupHeight < groupOrigHeight &&
                 groupWidth < groupOrigWidth &&
                 groupWidth < this.getWidth() - 30) {
             this.resizeFloorPlan(this.getGroupMaxY(), ratio);
+            this.checkPaneWidthResize(this.floorPlan.getWidth());
         }
     }
 

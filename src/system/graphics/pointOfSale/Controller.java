@@ -30,7 +30,7 @@ public class Controller extends AbstractController {
     @FXML protected HBox seatsHbox;
     @FXML protected Text seats;
     @FXML protected VBox ticketsVbox;
-    @FXML protected HBox rightContent;
+    @FXML protected HBox content;
     @FXML protected Text total;
     @FXML protected Text totalcost;
     @FXML protected Button back;
@@ -55,7 +55,7 @@ public class Controller extends AbstractController {
         }
         if (this.event.getFloorPlan() != null) {
             this.floorPlan = new FloorPlanPane(this);
-            this.rightContent.getChildren().add(this.floorPlan);
+            this.content.getChildren().add(this.floorPlan);
             this.floorPlan.loadFloorPlan(this.event);
             this.seatsLeft.set(0);
         } else {
