@@ -675,3 +675,39 @@
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
 }
+
+.pdfMakerBack {
+    -fx-border-color: #b0afb0;
+    -fx-border-width: 5;
+    -fx-background-color: #e6e6e5;
+}
+
+.pdfMakerButton {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #b0afb0;
+    -fx-max-height: 70.5;
+    -fx-min-height: 70.5;
+    -fx-pref-height: 70.5;
+    -fx-min-width: 150.0;
+    -fx-pref-width: 150.0;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 30;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+    -fx-text-alignment: center;
+}
+
+.pdfMakerButton:hover {
+    -fx-background-color: #dddddd;
+    -fx-text-fill: #b0afb0;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
+
+.pdfMakerButton:armed {
+    -fx-background-color: #d0d3d3;
+    -fx-text-fill: #ffffff;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}

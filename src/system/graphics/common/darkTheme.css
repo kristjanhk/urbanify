@@ -677,3 +677,39 @@
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
 }
+
+.pdfMakerBack {
+    -fx-border-color: #f05455;
+    -fx-border-width: 5;
+    -fx-background-color: #262626;
+}
+
+.pdfMakerButton {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color: #151515;
+    -fx-text-fill: #f05455;
+    -fx-max-height: 70.5;
+    -fx-min-height: 70.5;
+    -fx-pref-height: 70.5;
+    -fx-min-width: 150.0;
+    -fx-pref-width: 150.0;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 30;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+    -fx-text-alignment: center;
+}
+
+.pdfMakerButton:hover {
+    -fx-background-color: #5b5c5c;
+    -fx-text-fill: #f05455;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
+
+.pdfMakerButton:armed {
+    -fx-background-color: #333333;
+    -fx-text-fill: #f05455;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
