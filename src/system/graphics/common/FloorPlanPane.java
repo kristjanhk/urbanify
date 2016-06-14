@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import system.data.Event;
@@ -52,6 +53,7 @@ public class FloorPlanPane extends VBox {
         this.parentController = parentController;
         this.setAlignment(Pos.CENTER);
         this.setPrefSize(9999.0, 9999.0);
+        HBox.setMargin(this.floorPlan, new Insets(0.0, 20.0, 0.0, 0.0));
     }
 
     public void init(AbstractController parentController, ArrayList<Integer> defaultSize) {
@@ -413,6 +415,11 @@ public class FloorPlanPane extends VBox {
             }
             this.setColumnCountText();
         }
+    }
+
+    public void checkResize() {
+        this.checkPaneWidthResize(this.floorPlan.getWidth());
+        this.checkPaneHeightResize(this.floorPlan.getHeight());
     }
 
     // TODO: 23.04.2016 viimane if condition on bugine mõlemal

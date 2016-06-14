@@ -93,7 +93,7 @@ public class Controller extends AbstractController {
         }
         if (ClientScreen.isSecondScreenEnabled()) {
             MainHandler.getSecondaryStageHandler().switchSceneTo(Scenetype.CLIENTLOGO);
-            MainHandler.getSecondaryStageHandler().showStage();
+            MainHandler.getSecondaryStageHandler().showStage(true);
         }
     }
 }

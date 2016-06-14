@@ -57,6 +57,7 @@ public class Controller extends AbstractController {
             this.floorPlan = new FloorPlanPane(this);
             this.content.getChildren().add(this.floorPlan);
             this.floorPlan.loadFloorPlan(this.event);
+            this.floorPlan.checkResize();
             this.seatsLeft.set(0);
         } else {
             this.seatsLeft.set(this.event.getMaxSeats());
@@ -93,7 +94,7 @@ public class Controller extends AbstractController {
             this.clientController.createQrCode(ticketdata, this.totalcost.getText());
             this.checkout.setText(Word.NEW.toString());
             if (!ClientScreen.isSecondScreenEnabled()) {
-                this.clientController.getScene().getStageHandler().showStage();
+                this.clientController.getScene().getStageHandler().showStage(true);
             }
         } else {
             this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);

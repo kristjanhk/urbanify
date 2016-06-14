@@ -33,7 +33,7 @@ public class StageHandler {
         });
         this.initSaveableScenes();
         this.switchSceneTo(Scenetype.MAINMENU);
-        this.showStage();
+        this.showStage(true);
     }
 
     public StageHandler(String title) {
@@ -61,8 +61,8 @@ public class StageHandler {
         this.stage.centerOnScreen();
     }
 
-    public void showStage() {
-        this.stage.setMaximized(true);
+    public void showStage(boolean maximized) {
+        this.stage.setMaximized(maximized);
         if (ClientScreen.isSecondScreenEnabled() &&
                 MainHandler.getSecondaryStageHandler() != null &&
                 MainHandler.getSecondaryStageHandler().equals(this)) {
