@@ -98,7 +98,7 @@ public class Controller extends AbstractController {
                 this.clientController.getScene().getStageHandler().showStage(true);
             }
         } else {
-            this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
+            this.reset();
         }
     }
 
@@ -110,8 +110,8 @@ public class Controller extends AbstractController {
         return this.seatsLeft;
     }
 
-    public void cancel() {
-        this.scene.getStageHandler().switchSceneTo(Scenetype.REPORT, this.event);
+    public void reset() {
+        this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
     }
 
     private void resetClientScreen() {

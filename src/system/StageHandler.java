@@ -6,7 +6,6 @@ import javafx.stage.StageStyle;
 import system.graphics.common.ClientScreen;
 import system.graphics.common.CustomScene;
 import system.graphics.common.Scenetype;
-import system.graphics.pointOfSale.Controller;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -49,12 +48,6 @@ public class StageHandler {
             this.scenes.put(Scenetype.REPORTPDF, createScene(Scenetype.REPORTPDF));
             this.switchSceneTo(Scenetype.REPORTPDF);
         } else {
-            this.stage.setOnCloseRequest(event -> {
-                CustomScene scene = MainHandler.getPrimaryStageHandler().getScene(Scenetype.POINTOFSALE);
-                if (scene != null) {
-                    ((Controller) scene.getController()).cancel();
-                }
-            });
             this.scenes.put(Scenetype.TICKETINFO, createScene(Scenetype.TICKETINFO));
             this.switchSceneTo(Scenetype.TICKETINFO);
             this.changeScreen();

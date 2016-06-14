@@ -111,7 +111,7 @@ public class Controller extends AbstractController {
         back.setMnemonicParsing(false);
         back.getStyleClass().add("bottomButton");
         back.setOnMouseClicked(event -> {
-            this.parentController.cancel();
+            this.parentController.reset();
             this.scene.getStageHandler().getStage().close();
         });
         HBox hBox = new HBox(back);
