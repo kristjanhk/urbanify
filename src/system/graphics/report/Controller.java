@@ -50,6 +50,7 @@ public class Controller extends AbstractController {
         this.createTotal();
         this.createPieChart();
         if (!this.event.isActive()) {
+            this.edit.setDisable(true);
             this.endEvent.setDisable(true);
             this.pos.setDisable(true);
         }
