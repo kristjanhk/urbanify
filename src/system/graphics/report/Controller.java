@@ -71,17 +71,25 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void doEndEvent() throws Exception {
-        /*if (MainHandler.getReportHandler().generatePdf(this.event)) {
-            this.event.sendToArchive();
-            this.scene.getStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
-        }*/
-        MainHandler.getSecondaryStageHandler().switchSceneTo(Scenetype.REPORTPDF);
-        MainHandler.getSecondaryStageHandler().showStage(false);
+        MainHandler.getTertiaryStageHandler().replaceScene(Scenetype.REPORTPDF);
+        MainHandler.getTertiaryStageHandler().switchSceneTo(Scenetype.REPORTPDF, this);
+        MainHandler.getTertiaryStageHandler().showStage(false);
     }
 
     @FXML
     protected void doPos() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.POINTOFSALE, this.event);
+    }
+
+    public Event getEvent() {
+        return this.event;
+    }
+
+    public void setButtonsDisabled(boolean state) {
+        this.back.setDisable(state);
+        this.edit.setDisable(state);
+        this.endEvent.setDisable(state);
+        this.pos.setDisable(state);
     }
 
     private void setTitle() {

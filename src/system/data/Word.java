@@ -5,7 +5,6 @@ import java.util.HashMap;
 /**
  * Sõnad
  * Hoiab endas sõnu kui konstante
- * Iga sõna on Word klassi isend
  * Igas isendis on temale vastavad sõnad erinevates keeltes
  * Keele määrab ära Lang klassi activeLanguage
  */
@@ -15,7 +14,7 @@ public enum Word {
     EVENTS, SETDATE, SETTIME, SETMAXNROFSEATS, DATEFORMAT, TIMEFORMAT, PATH, LANGUAGE, THEME, LIGHT, DARK,
     SETSEATINGTYPE, SEATINGTYPE, ENGLISH, ESTONIAN, VÕRO, GERMAN, TICKETSTOSELECT, RUSSIAN, CHECKOUT, TOTAL, POS,
     FINISH, COST, QUANTITY, NEW, SEATSLEFT, UNLIMITED, CURRENCY, EDIT, UPDATE, EVENTUPDATER, SHOWQR, AUTHKEY, PRIMARY,
-    SECONDARY, SCREENTYPE, TICKETINFO, FOLDER, PDF;
+    SECONDARY, SCREENTYPE, TICKETINFO, FOLDER, PDF, REPORTPDF, CREATEPDF, COMPANYNAME, REPORTNR, WORKERNAME;
     private static HashMap<Word, String[]> words = createLanguages();
 
     private static HashMap<Word, String[]> createLanguages() {
@@ -142,6 +141,16 @@ public enum Word {
         wordsMap.put(Word.FOLDER, new String[]{"Choose applications' home folder", "Vali programmi andmete kaust",
                 "TODO", "TODO", "TODO"});
         wordsMap.put(Word.PDF, new String[]{"Save pdf file", "Salvesta pdf fail", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.REPORTPDF, new String[]{"report creator", "aruande koostaja", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.CREATEPDF, new String[]{"create pdf", "loo pdf", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.COMPANYNAME, new String[]{"company name", "firma nimi", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.REPORTNR, new String[]{"report nr", "aruande nr", "TODO",
+                "TODO", "TODO"});
+        wordsMap.put(Word.WORKERNAME, new String[]{"report creatorer?", "aruande koostanud isik", "TODO",
                 "TODO", "TODO"});
         return wordsMap;
     }

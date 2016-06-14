@@ -23,36 +23,59 @@ public class StageHandler {
     private double stageXOffset = 0.0;
     private double stageYOffset = 0.0;
 
+    //primary stagehandler
     public StageHandler(Stage primaryStage, String title) {
         this.stage = primaryStage;
         this.init(title);
         this.resizeHandler = new ResizeHandler(this.stage);
         this.stage.setOnCloseRequest(event -> {
             MainHandler.getFileHandler().saveData();
-            MainHandler.getSecondaryStageHandler().getStage().close();
+            for (StageHandler stageHandler : MainHandler.getStageHandlers()) {
+                if (!stageHandler.equals(this)) {
+                    stageHandler.getStage().close();
+                }
+            }
         });
         this.initSaveableScenes();
         this.switchSceneTo(Scenetype.MAINMENU);
         this.showStage(true);
     }
 
+    //secondary stagehandlers
     public StageHandler(String title) {
         this.stage = new Stage();
         this.init(title);
-        this.stage.setOnCloseRequest(event -> ((Controller) MainHandler.getPrimaryStageHandler().
-                getScene(Scenetype.POINTOFSALE).getController()).cancel());
-        this.scenes.put(Scenetype.TICKETINFO, createScene(Scenetype.TICKETINFO));
-        this.switchSceneTo(Scenetype.TICKETINFO);
-        this.changeScreen();
+        if (title.equals("Popup")) {
+            this.scenes.put(Scenetype.REPORTPDF, createScene(Scenetype.REPORTPDF));
+            this.switchSceneTo(Scenetype.REPORTPDF);
+        } else {
+            this.stage.setOnCloseRequest(event -> {
+                CustomScene scene = MainHandler.getPrimaryStageHandler().getScene(Scenetype.POINTOFSALE);
+                if (scene != null) {
+                    ((Controller) scene.getController()).cancel();
+                }
+            });
+            this.scenes.put(Scenetype.TICKETINFO, createScene(Scenetype.TICKETINFO));
+            this.switchSceneTo(Scenetype.TICKETINFO);
+            this.changeScreen();
+        }
     }
 
     private void init(String title) {
         this.stage.initStyle(StageStyle.UNDECORATED);
         this.stage.setTitle(title);
-        this.stage.setHeight(880);
-        this.stage.setWidth(1220);
-        this.stage.setMinHeight(720);
-        this.stage.setMinWidth(1180);
+        if (title.equals("Popup")) {
+            this.stage.setAlwaysOnTop(true);
+            this.stage.setHeight(550);
+            this.stage.setWidth(600);
+            this.stage.setMinHeight(550);
+            this.stage.setMinWidth(600);
+        } else {
+            this.stage.setHeight(880);
+            this.stage.setWidth(1220);
+            this.stage.setMinHeight(720);
+            this.stage.setMinWidth(1180);
+        }
     }
 
     public void changeScreen() {

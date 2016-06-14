@@ -27,14 +27,14 @@ public class CustomScene extends Scene {
     }
 
     public AbstractController getController() {
-        return controller;
+        return this.controller;
     }
 
     public StageHandler getStageHandler() {
-        return stageHandler;
+        return this.stageHandler;
     }
 
     public Scenetype getScenetype() {
-        return scenetype;
+        return this.scenetype;
     }
 }

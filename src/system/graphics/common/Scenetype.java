@@ -18,7 +18,7 @@ public enum Scenetype {
     REPORT("report", "report.fxml"),
     TICKETINFO("ticketInfo", "ticketInfo.fxml"),
     CLIENTLOGO("ticketInfo/clientLogo", "clientLogo.fxml"),
-    REPORTPDF("report/additionalInfo", "additionalInfo.fxml");
+    REPORTPDF("report/pdf", "pdf.fxml");
 
     private String packageString;
     private String sceneString;

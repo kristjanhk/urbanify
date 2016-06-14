@@ -34,7 +34,7 @@ import java.util.Base64;
  * Võimaldab lisada tippudele valideerimist
  */
 public class MainHandler extends Application {
-    private static StageHandler[] stageHandlers = new StageHandler[2];
+    private static StageHandler[] stageHandlers = new StageHandler[3];
     private static FileHandler fileHandler;
     private static ReportHandler reportHandler;
 
@@ -48,6 +48,11 @@ public class MainHandler extends Application {
     public void start(Stage primaryStage) {
         stageHandlers[0] = new StageHandler(primaryStage, "Piletikontroll");
         stageHandlers[1] = new StageHandler("Piletiinfo");
+        stageHandlers[2] = new StageHandler("Popup");
+    }
+
+    public static StageHandler[] getStageHandlers() {
+        return stageHandlers;
     }
 
     public static StageHandler getPrimaryStageHandler() {
@@ -56,6 +61,10 @@ public class MainHandler extends Application {
 
     public static StageHandler getSecondaryStageHandler() {
         return stageHandlers[1];
+    }
+
+    public static StageHandler getTertiaryStageHandler() {
+        return stageHandlers[2];
     }
 
     public static FileHandler getFileHandler() {

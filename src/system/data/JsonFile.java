@@ -31,6 +31,7 @@ public class JsonFile {
     private Lang activeLanguage;
     private Csstype activeTheme;
     private ClientScreen activeClientScreen;
+    private String companyName;
     private HashSet<Event> events;
     private HashSet<Event> archivedEvents;
     private HashMap<String, HashMap<FloorPlanPane.Property, Object>> savedFloorPlans;
@@ -61,6 +62,14 @@ public class JsonFile {
         }
         ClientScreen.setActiveScreenType(ClientScreen.PRIMARY);
         return ClientScreen.PRIMARY;
+    }
+
+    public String getCompanyName() {
+        return this.companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public HashSet<Event> getEvents(Scenetype scenetype) {
