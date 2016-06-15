@@ -77,10 +77,10 @@ public class Controller extends AbstractController {
         variables.put("workername", this.workerName.getText());
         if (MainHandler.getReportHandler().generatePdf(this.parentController.getEvent(), variables)) {
             this.getData().setCompanyName(this.companyName.getText());
-            //this.parentController.getEvent().sendToArchive();
+            this.parentController.getEvent().sendToArchive();
             this.scene.getStageHandler().getStage().close();
             this.parentController.setButtonsDisabled(false);
-            //MainHandler.getPrimaryStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
+            MainHandler.getPrimaryStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
         }
     }
 
