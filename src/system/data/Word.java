@@ -117,41 +117,41 @@ public enum Word {
         wordsMap.put(Word.UNLIMITED, new String[]{"unlimited", "lõpmatu", "ilmotsaldaq",
                 "Unlimitiert", "неограниченный"});
         wordsMap.put(Word.CURRENCY, new String[]{"curr", "ühik", "mõõt",
-                "währ", "вал"}); //vene keel ei lähe äkki üldse kõik kuidagi pmber teha
+                "währ", "вал"});
         wordsMap.put(Word.TICKETSTOSELECT, new String[]{"tickets left", "pileteid valida", "piletit validaq",
-                "TODO", "TODO"});
+                "TODO", "билеты осталось"});
         wordsMap.put(Word.EDIT, new String[]{"edit", "muuda", "muuda",
-                "TODO", "TODO"});
+                "TODO", "редактировать"});
         wordsMap.put(Word.UPDATE, new String[]{"update", "uuenda", "vahtsõnda",
-                "TODO", "TODO"});
+                "TODO", "обновлять"});
         wordsMap.put(Word.EVENTUPDATER, new String[]{"event editor", "ürituse muutja", "ürituse muutja",
-                "TODO", "TODO"});
+                "TODO", "редактирование мероприятий"});
         wordsMap.put(Word.SHOWQR, new String[]{"show qr code", "näita qr koodi", "näuta qr kuudi",
-                "TODO", "TODO"});
+                "TODO", "показать QR-код"});
         wordsMap.put(Word.AUTHKEY, new String[]{"get authentication key", "hangi autentimise võti",
-                "nõvvutõlli salavõti", "TODO", "TODO"});
+                "nõvvutõlli salavõti", "TODO", "получить ключ аутентификации"});
         wordsMap.put(Word.PRIMARY, new String[]{"primary", "peamine", "päämine",
-                "TODO", "TODO"});
+                "TODO", "основной"});
         wordsMap.put(Word.SECONDARY, new String[]{"secondary", "teine", "tõõnõ",
-                "TODO", "TODO"});
+                "TODO", "secondary"});
         wordsMap.put(Word.SCREENTYPE, new String[]{"client screen", "kliendi ekraan", "kundõ pildikruut",
-                "TODO", "TODO"});
+                "TODO", "экран клиента"});
         wordsMap.put(Word.TICKETINFO, new String[]{"ticket", "pilet", "pilet",
-                "TODO", "TODO"});
-        wordsMap.put(Word.FOLDER, new String[]{"Choose applications' home folder", "Vali programmi kodokaust",
-                "TODO", "TODO", "TODO"});
+                "TODO", "билет"});
+        wordsMap.put(Word.FOLDER, new String[]{"Choose application's home folder", "Vali programmi kodokaust",
+                "TODO", "TODO", "Выберите домашнюю папку приложения"});
         wordsMap.put(Word.PDF, new String[]{"Save pdf file", "Salvesta pdf fail", "Pästaq pdf teedüstü",
-                "TODO", "TODO"});
+                "TODO", "Сохранить PDF файл"});
         wordsMap.put(Word.REPORTPDF, new String[]{"report creator", "aruande koostaja", "aruandõ kokkopandja",
-                "TODO", "TODO"});
+                "TODO", "создатель сообщения"});
         wordsMap.put(Word.CREATEPDF, new String[]{"create pdf", "loo pdf", "luu pdf",
-                "TODO", "TODO"});
+                "TODO", "создать PDF"});
         wordsMap.put(Word.COMPANYNAME, new String[]{"company name", "ettevõtte nimi", "ettevõttõ nimi",
-                "TODO", "TODO"});
+                "TODO", "название компании"});
         wordsMap.put(Word.REPORTNR, new String[]{"report nr", "aruande nr", "aruandõ nummõr",
-                "TODO", "TODO"});
+                "TODO", "номер отчета"});
         wordsMap.put(Word.WORKERNAME, new String[]{"report author", "aruande koostanud isik",
-                "aruandõ kokko säädnü inemine", "TODO", "TODO"});
+                "aruandõ kokko säädnü inemine", "TODO", "автор отчета"});
         return wordsMap;
     }
 

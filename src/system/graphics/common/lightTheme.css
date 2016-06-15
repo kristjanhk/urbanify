@@ -711,14 +711,13 @@
 }
 
 .pdfMakerButton {
-    -fx-padding: 0 0 0 0;
+    -fx-padding: 0 10 0 10;
     -fx-background-color: #ffffff;
     -fx-text-fill: #b0afb0;
     -fx-max-height: 70.5;
     -fx-min-height: 70.5;
     -fx-pref-height: 70.5;
     -fx-min-width: 150.0;
-    -fx-pref-width: 150.0;
     -fx-font-family: 'TicketFont';
     -fx-font-size: 30;
     -fx-font-smoothing-type: gray;
