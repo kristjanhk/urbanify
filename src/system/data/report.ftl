@@ -65,7 +65,7 @@
 <body>
 <h1 class="name">${event.name}</h1>
 <h2 class="date">${event.date} ${event.time}</h2>
-<h2 class="date">${logo} ${companyname}</h2>
+<h2 class="date">${companyname}</h2>
 <h2 class="date">${reportnr} ${workername}</h2>
 
 <table border="0" cellspacing="0" align="center">

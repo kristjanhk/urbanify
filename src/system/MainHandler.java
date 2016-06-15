@@ -39,13 +39,13 @@ public class MainHandler extends Application {
     private static ReportHandler reportHandler;
 
     public static void main(String[] args) {
-        fileHandler = new FileHandler();
-        reportHandler = new ReportHandler();
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) {
+        fileHandler = new FileHandler();
+        reportHandler = new ReportHandler();
         stageHandlers[0] = new StageHandler(primaryStage, "Piletikontroll");
         stageHandlers[1] = new StageHandler("Piletiinfo");
         stageHandlers[2] = new StageHandler("Popup");

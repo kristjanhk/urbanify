@@ -1,10 +1,7 @@
 package system;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -78,7 +75,7 @@ public class ReportHandler {
         return htmlStr;
     }
 
-    private Map<String, Object> getFormattedData(Event event, Map<String, Object> extras) {
+    private Map<String, Object> getFormattedData(Event event, Map<String, Object> formattedExtras) {
         Map<String, Object> variables = new HashMap<>();
         variables.put("tickettype", Word.TICKETYPE.toString());
         variables.put("ticketprice", Word.PRICE.toString());
@@ -89,8 +86,8 @@ public class ReportHandler {
         variables.put("totalprice", String.format("%.2f", dataobject.getTotalprice()) +
                 " " + Lang.getActiveLang().getCurrency());
         variables.put("totalamount", dataobject.getTotalamount());
-        for (String key : extras.keySet()) {
-            variables.put(key, extras.get(key));
+        for (String key : formattedExtras.keySet()) {
+            variables.put(key, formattedExtras.get(key));
         }
         return variables;
     }

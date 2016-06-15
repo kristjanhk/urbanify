@@ -72,7 +72,6 @@ public class Controller extends AbstractController {
     @FXML
     protected void handlePdf() {
         Map<String, Object> variables = new HashMap<>();
-        variables.put("logo", "LOGO"); // TODO: 15.06.2016 image or text 
         variables.put("companyname", this.companyName.getText());
         variables.put("reportnr", this.reportNr.getText());
         variables.put("workername", this.workerName.getText());

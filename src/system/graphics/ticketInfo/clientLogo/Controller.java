@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Text;
+import system.MainHandler;
 import system.graphics.common.AbstractController;
 
 import javax.activation.MimetypesFileTypeMap;
@@ -25,23 +26,27 @@ public class Controller extends AbstractController {
     }
 
     private void setLogo() {
-        File logodir = new File(this.getFileHandler().getPath() + "\\logo");
+        Image logo = this.loadLogo();
+        if (logo != null) {
+            this.pane.setCenter(new ImageView(logo));
+        } else {
+            this.createDefaultText();
+        }
+    }
+
+    private Image loadLogo() {
+        File logodir = new File(MainHandler.getFileHandler().getPath() + "\\logo");
         if (logodir.exists()) {
             File[] files = logodir.listFiles();
             if (files != null) {
                 for (File file : files) {
                     if (this.mimetypesFileTypeMap.getContentType(file).split("/")[0].equals("image")) {
-                        this.createImage(file);
-                        return;
+                        return new Image(file.toURI().toString());
                     }
                 }
             }
         }
-        this.createDefaultText();
-    }
-
-    private void createImage(File file) {
-        this.pane.setCenter(new ImageView(new Image(file.toURI().toString())));
+        return null;
     }
 
     private void createDefaultText() {
