@@ -16,15 +16,13 @@
 }
 
 .bottomButton {
-    -fx-padding: 0 0 0 0;
+    -fx-padding: 0 10 0 10;
     -fx-background-color: #ffffff;
     -fx-text-fill: #b0afb0;
     -fx-max-height: 70.5;
     -fx-min-height: 70.5;
     -fx-pref-height: 70.5;
-    -fx-max-width: 121.0;
     -fx-min-width: 121.0;
-    -fx-pref-width: 121.0;
     -fx-font-family: 'TicketFont';
     -fx-font-size: 30;
     -fx-font-smoothing-type: gray;
