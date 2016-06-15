@@ -126,7 +126,7 @@ public enum Word {
                 "TODO", "TODO"});
         wordsMap.put(Word.EVENTUPDATER, new String[]{"event editor", "ürituse muutja", "ürituse muutja",
                 "TODO", "TODO"});
-        wordsMap.put(Word.SHOWQR, new String[]{"show qr code", "näita qr koodi", "TODO",
+        wordsMap.put(Word.SHOWQR, new String[]{"show qr code", "näita qr koodi", "näuta qr kuudi",
                 "TODO", "TODO"});
         wordsMap.put(Word.AUTHKEY, new String[]{"get authentication key", "hangi autentimise võti",
                 "nõvvutõlli salavõti", "TODO", "TODO"});

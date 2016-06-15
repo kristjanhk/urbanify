@@ -311,7 +311,7 @@
 .scroll-bar .increment-button,
 .scroll-bar .decrement-button {
     -fx-background-color:transparent;
-    -fx-background-radius: 0em;
+    -fx-background-radius: 0;
     -fx-padding:0 10 0 10;
 }
 

@@ -89,7 +89,10 @@ public class Controller extends AbstractController {
     private void createFloorPlanItem(String name) {
         MenuItem floorPlanItem = new MenuItem(name);
         floorPlanItem.setMnemonicParsing(false);
-        floorPlanItem.setOnAction(event -> this.floorPlan.loadFloorPlan(name, this));
+        floorPlanItem.setOnAction(event -> {
+            this.floorPlan.loadFloorPlan(name, this);
+            this.borderPane.setOnMouseMoved(event2 -> this.floorPlan.fixPosition()); //hack
+        });
         this.floorPlans.getItems().add(floorPlanItem);
     }
 

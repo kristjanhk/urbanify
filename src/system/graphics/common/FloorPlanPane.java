@@ -27,6 +27,7 @@ public class FloorPlanPane extends VBox {
     private ImageView floorPlanImage;
     private int columnCount;
     private double maxY = 0.0;
+    private boolean fixpos = false;
 
     public FloorPlanPane() {
         this.floorPlan = new StackPane();
@@ -58,7 +59,7 @@ public class FloorPlanPane extends VBox {
 
     public void init(AbstractController parentController, ArrayList<Integer> defaultSize) {
         this.parentController = parentController;
-        this.createNewFloorPlan(defaultSize, null);
+        this.createNewFloorPlan(defaultSize);
     }
 
     public AbstractController getParentController() {
@@ -249,7 +250,7 @@ public class FloorPlanPane extends VBox {
     }
 
     public void loadFloorPlan(String name, Object from) {
-        this.createNewFloorPlan(getSavedFloorPlanDimensions(name, from), from);
+        this.createNewFloorPlan(getSavedFloorPlanDimensions(name, from));
         this.setFloorPlanImage(getSavedFloorPlanImageType(name, from));
         ArrayList<ArrayList<Integer>> unavailables = getSavedFloorPlanCoordinates(name, from, Property.UNAVAILABLE);
         ArrayList<ArrayList<Integer>> disabled = getSavedFloorPlanCoordinates(name, from, Property.DISABLED);
@@ -269,27 +270,22 @@ public class FloorPlanPane extends VBox {
                         ((Seat) disabledSeat).disable();
                     });
         }
+        if (from instanceof Controller) {
+            this.fixpos = true;
+        }
     }
 
     public void loadFloorPlan(Event event) {
         this.loadFloorPlan(null, event);
     }
 
-    private void createNewFloorPlan(ArrayList<Integer> dimensions, Object parent) {
+    private void createNewFloorPlan(ArrayList<Integer> dimensions) {
         this.resetFloor();
         for (int row = 0; row < dimensions.get(0); row++) {
-            if (parent instanceof Controller) {
-                this.addRowAction();
-            } else {
-                this.addNewRow();
-            }
+            this.addNewRow();
         }
         for (int column = 0; column < dimensions.get(1) - 1; column++) {
-            if (parent instanceof Controller) {
-                this.addColumnAction();
-            } else {
-                this.addNewColumn();
-            }
+            this.addNewColumn();
         }
     }
 
@@ -306,7 +302,7 @@ public class FloorPlanPane extends VBox {
         this.floorPlan.getChildren().add(new Group());
         StackPane.setMargin(this.getFloorGroup(), new Insets(10));
         this.columnCount = 0;
-        this.maxY = 0.0;
+        this.resetY();
         this.setRowCountText();
         this.setColumnCountText();
         this.validateButtons();
@@ -326,7 +322,7 @@ public class FloorPlanPane extends VBox {
 
     public void removeRowAction() {
         if (this.getFloor().size() > 1) {
-            double prevY = getGroupMaxY();
+            double prevY = this.getGroupMaxY();
             this.removeFirstRow();
             this.checkPaneHeightResize(this.floorPlan.getHeight());
             this.correctY(prevY);
@@ -471,5 +467,12 @@ public class FloorPlanPane extends VBox {
     private void resetY() {
         this.maxY = 0.0;
         this.getFloorGroup().setTranslateY(this.maxY);
+    }
+
+    public void fixPosition() {
+        if (this.fixpos) {
+            this.checkPaneHeightResize(this.floorPlan.getHeight());
+            this.fixpos = false;
+        }
     }
 }
