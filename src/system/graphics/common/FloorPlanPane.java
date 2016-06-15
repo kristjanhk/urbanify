@@ -40,12 +40,10 @@ public class FloorPlanPane extends VBox {
         this.getChildren().addAll(this.floorPlan, this.floorPlanImage);
         this.setFloorPlanImage(Imagetype.STAGE);
         this.floorPlan.widthProperty().addListener((observable, oldValue, newValue) -> {
-            //this.checkPaneWidthResize(newValue);
-            this.checkResize();
+            this.checkPaneWidthResize(newValue);
         });
         this.floorPlan.heightProperty().addListener((observable, oldValue, newValue) -> {
-            //this.checkPaneHeightResize(newValue);
-            this.checkResize();
+            this.checkPaneHeightResize(newValue);
         });
     }
 
@@ -59,7 +57,7 @@ public class FloorPlanPane extends VBox {
 
     public void init(AbstractController parentController, ArrayList<Integer> defaultSize) {
         this.parentController = parentController;
-        this.createNewFloorPlan(defaultSize, true);
+        this.createNewFloorPlan(defaultSize);
     }
 
     public AbstractController getParentController() {
@@ -250,7 +248,7 @@ public class FloorPlanPane extends VBox {
     }
 
     public void loadFloorPlan(String name, Object from) {
-        this.createNewFloorPlan(getSavedFloorPlanDimensions(name, from), false);
+        this.createNewFloorPlan(getSavedFloorPlanDimensions(name, from));
         this.setFloorPlanImage(getSavedFloorPlanImageType(name, from));
         ArrayList<ArrayList<Integer>> unavailables = getSavedFloorPlanCoordinates(name, from, Property.UNAVAILABLE);
         ArrayList<ArrayList<Integer>> disabled = getSavedFloorPlanCoordinates(name, from, Property.DISABLED);
@@ -278,21 +276,13 @@ public class FloorPlanPane extends VBox {
         this.loadFloorPlan(null, event);
     }
 
-    private void createNewFloorPlan(ArrayList<Integer> dimensions, boolean init) {
+    private void createNewFloorPlan(ArrayList<Integer> dimensions) {
         this.resetFloor();
         for (int row = 0; row < dimensions.get(0); row++) {
-            if (init) {
-                this.addNewRow();
-            } else {
-                this.addRowAction();
-            }
+            this.addNewRow();
         }
         for (int column = 0; column < dimensions.get(1) - 1; column++) {
-            if (init) {
-                this.addNewColumn();
-            } else {
-                this.addColumnAction();
-            }
+            this.addNewColumn();
         }
     }
 
@@ -320,9 +310,7 @@ public class FloorPlanPane extends VBox {
         if (this.getFloor().size() != 0) {
             double prevY = getGroupMaxY();
             this.addNewRow();
-            this.checkResize();
-            //this.checkPaneHeightResize(this.floorPlan.getHeight());
-            //this.checkPaneWidthResize(this.floorPlan.getWidth());
+            this.checkPaneHeightResize(this.floorPlan.getHeight());
             this.correctY(prevY);
         } else {
             this.addNewRow();
@@ -333,9 +321,7 @@ public class FloorPlanPane extends VBox {
         if (this.getFloor().size() > 1) {
             double prevY = getGroupMaxY();
             this.removeFirstRow();
-            this.checkResize();
-            //this.checkPaneHeightResize(this.floorPlan.getHeight());
-            //this.checkPaneWidthResize(this.floorPlan.getWidth());
+            this.checkPaneHeightResize(this.floorPlan.getHeight());
             this.correctY(prevY);
         } else {
             this.resetFloor();
@@ -345,9 +331,7 @@ public class FloorPlanPane extends VBox {
     public void addColumnAction() {
         if (this.columnCount != 0) {
             this.addNewColumn();
-            this.checkResize();
-            //this.checkPaneWidthResize(this.floorPlan.getWidth());
-            //this.checkPaneHeightResize(this.floorPlan.getHeight());
+            this.checkPaneWidthResize(this.floorPlan.getWidth());
         } else {
             this.addNewColumn();
         }
@@ -355,9 +339,7 @@ public class FloorPlanPane extends VBox {
 
     public void removeColumnAction() {
         this.removeLastColumn();
-        this.checkResize();
-        //this.checkPaneWidthResize(this.floorPlan.getWidth());
-        //this.checkPaneHeightResize(this.floorPlan.getHeight());
+        this.checkPaneWidthResize(this.floorPlan.getWidth());
     }
 
     private void addNewRow() {
@@ -374,13 +356,13 @@ public class FloorPlanPane extends VBox {
 
     private void removeFirstRow() {
         if (this.getFloor().size() > 0) {
-            if (this.getFloor().size() == 1) {
+            this.getFloor().remove(this.getFloor().size() - 1);
+            this.setRowCountText();
+            if (this.getFloor().size() == 0) {
                 this.columnCount = 0;
                 this.setColumnCountText();
                 this.resetY();
             }
-            this.getFloor().remove(this.getFloor().size() - 1);
-            this.setRowCountText();
         }
     }
 
@@ -411,11 +393,6 @@ public class FloorPlanPane extends VBox {
         }
     }
 
-    /*public void checkResize() {
-        this.checkPaneWidthResize(this.floorPlan.getWidth());
-        this.checkPaneHeightResize(this.floorPlan.getHeight());
-    }*/
-
     // TODO: 23.04.2016 viimane if condition on bugine mõlemal
     // selle asemel get ratio, korrutada oma kõrguse laiusega läbi ja saada teada uus scaletud suurus
     // kontrollida seda kõrguse/laiusega või ymaxga??
@@ -428,15 +405,13 @@ public class FloorPlanPane extends VBox {
      * istmetegrupi kõrgus on väiksem kui istmegrupi scalemata kõrgus,
      * istmetegrupi kõrgus on väiksem kui saaliplaani kõrgus - 30 fixme
      */
-    /*private void checkPaneWidthResize(Number width) {
+    private void checkPaneWidthResize(Number width) {
         double paneWidth = width.doubleValue() - 20;
         double groupWidth = this.getFloorGroup().getBoundsInParent().getWidth();
         double groupOrigWidth = this.getFloorGroup().getBoundsInLocal().getWidth();
         double groupHeight = this.getFloorGroup().getBoundsInParent().getHeight();
         double groupOrigHeight = this.getFloorGroup().getBoundsInLocal().getHeight();
         double ratio = paneWidth / groupWidth;
-        *//*System.out.println("W::pW:" + paneWidth + ";gH:" + groupHeight + ";goH:" + groupOrigHeight +
-                ";gW:" + groupWidth + ";goW:" + groupOrigWidth);*//*
         if (groupWidth > paneWidth) {
             this.resizeFloorPlan(this.getGroupMaxY(), ratio);
         } else if (groupWidth < groupOrigWidth &&
@@ -445,7 +420,7 @@ public class FloorPlanPane extends VBox {
             this.resizeFloorPlan(this.getGroupMaxY(), ratio);
             this.checkPaneHeightResize(this.floorPlan.getHeight());
         }
-    }*/
+    }
 
     /**
      * Saaliplaani kõrguse kontroll
@@ -455,61 +430,20 @@ public class FloorPlanPane extends VBox {
      * istmetegrupi laius on väiksem kui istmegrupi scalemata laius,
      * istmetegrupi laius on väiksem kui saaliplaani laius - 30 fixme
      */
-    /*private void checkPaneHeightResize(Number height) {
+    private void checkPaneHeightResize(Number height) {
         double paneHeight = height.doubleValue() - 20;
         double groupHeight = this.getFloorGroup().getBoundsInParent().getHeight();
         double groupOrigHeight = this.getFloorGroup().getBoundsInLocal().getHeight();
         double groupWidth = this.getFloorGroup().getBoundsInParent().getWidth();
         double groupOrigWidth = this.getFloorGroup().getBoundsInLocal().getWidth();
         double ratio = paneHeight / groupHeight;
-        *//*System.out.println("H::pH:" + paneHeight + ";gH:" + groupHeight + ";goH:" + groupOrigHeight +
-                ";gW:" + groupWidth + ";goW:" + groupOrigWidth);*//*
         if (groupHeight > paneHeight) {
             this.resizeFloorPlan(this.getGroupMaxY(), ratio);
         } else if (groupHeight < groupOrigHeight &&
                 groupWidth < groupOrigWidth &&
                 groupWidth < this.floorPlan.getWidth() - 30) {
-
-            double scale = this.getFloorGroup().getScaleY() * ratio;
-            double newHeight = groupOrigWidth * scale;
-            System.out.println("R::nW: " + newHeight + ";pW: " + paneHeight + ";gW: " + groupHeight + ";goW: " + groupOrigHeight);
-
             this.resizeFloorPlan(this.getGroupMaxY(), ratio);
             this.checkPaneWidthResize(this.floorPlan.getWidth());
-        }
-    }*/
-
-    private void checkResize() {
-        double paneWidth = this.floorPlan.widthProperty().doubleValue() - 20;
-        double paneHeight = this.floorPlan.heightProperty().doubleValue() - 20;
-
-        double groupWidth = this.getFloorGroup().getBoundsInParent().getWidth();
-        double groupOrigWidth = this.getFloorGroup().getBoundsInLocal().getWidth();
-
-        double groupHeight = this.getFloorGroup().getBoundsInParent().getHeight();
-        double groupOrigHeight = this.getFloorGroup().getBoundsInLocal().getHeight();
-
-        if (groupWidth > paneWidth || groupHeight > paneHeight) { //liiga suur, vähendame
-            double scale = groupWidth > paneWidth ? paneWidth / groupOrigWidth : paneHeight / groupOrigHeight;
-            double y = this.getGroupMaxY();
-            System.out.println("V:" +
-                    ";pH: " + paneHeight + ";pW: " + paneWidth +
-                    ";gH: " + groupHeight + ";goH: " + groupOrigHeight +
-                    ";gW: " + groupWidth + ";goW: " + groupOrigWidth);
-            this.getFloorGroup().setScaleX(scale);
-            this.getFloorGroup().setScaleY(scale);
-            this.correctY(y);
-            //this.resizeFloorPlan(this.getGroupMaxY(), ratio);
-        } else if (groupWidth < groupOrigWidth && groupHeight < groupOrigHeight) { //väiksemad kui orig suurus, suurendame
-            double scale = groupWidth < groupOrigWidth ? paneWidth / groupOrigWidth : paneHeight / groupOrigHeight;
-            double y = this.getGroupMaxY();
-            System.out.println("S:" +
-                    ";pH: " + paneHeight + ";pW: " + paneWidth +
-                    ";gH: " + groupHeight + ";goH: " + groupOrigHeight +
-                    ";gW: " + groupWidth + ";goW: " + groupOrigWidth);
-            this.getFloorGroup().setScaleX(scale);
-            this.getFloorGroup().setScaleY(scale);
-            this.correctY(y);
         }
     }
 
@@ -517,11 +451,11 @@ public class FloorPlanPane extends VBox {
         return this.getFloorGroup().getBoundsInParent().getMaxY();
     }
 
-    /*private void resizeFloorPlan(double prevY, double scalefactor) {
+    private void resizeFloorPlan(double prevY, double scalefactor) {
         this.getFloorGroup().setScaleX(this.getFloorGroup().getScaleX() * scalefactor);
         this.getFloorGroup().setScaleY(this.getFloorGroup().getScaleY() * scalefactor);
-        //this.correctY(prevY);
-    }*/
+        this.correctY(prevY);
+    }
 
     private void correctY(double prevY) {
         if (prevY != -1.0) {

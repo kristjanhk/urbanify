@@ -150,7 +150,7 @@ public enum Word {
                 "TODO", "TODO"});
         wordsMap.put(Word.REPORTNR, new String[]{"report nr", "aruande nr", "TODO",
                 "TODO", "TODO"});
-        wordsMap.put(Word.WORKERNAME, new String[]{"report author", "aruande koostanud isik", "TODO",
+        wordsMap.put(Word.WORKERNAME, new String[]{"report author", "aruande koostanud isik", "aruandõ",
                 "TODO", "TODO"});
         return wordsMap;
     }
