@@ -64,9 +64,9 @@ public class StageHandler {
             this.stage.setMinWidth(600);
         } else {
             this.stage.setHeight(880);
-            this.stage.setWidth(1220);
-            this.stage.setMinHeight(720);
-            this.stage.setMinWidth(1180);
+            this.stage.setWidth(1240);
+            this.stage.setMinHeight(840);
+            this.stage.setMinWidth(1240);
         }
     }
 
