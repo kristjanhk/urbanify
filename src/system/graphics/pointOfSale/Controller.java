@@ -57,7 +57,6 @@ public class Controller extends AbstractController {
             this.floorPlan = new FloorPlanPane(this);
             this.content.getChildren().add(this.floorPlan);
             this.floorPlan.loadFloorPlan(this.event);
-            //this.floorPlan.checkResize();
             this.seatsLeft.set(0);
             this.updateSeatsLeft(false);
         } else {

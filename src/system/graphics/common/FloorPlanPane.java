@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import system.data.Event;
 import system.data.Lang;
 import system.data.Word;
+import system.graphics.floorPlanner.Controller;
 import system.graphics.floorPlanner.Imagetype;
 import system.graphics.floorPlanner.Seat;
 
@@ -34,8 +35,8 @@ public class FloorPlanPane extends VBox {
         this.floorPlan.setPrefSize(9999.0, 9999.0);
         this.floorPlan.getStyleClass().add("background");
         this.floorPlanImage = new ImageView();
-        this.floorPlanImage.setFitWidth(443.0);
-        this.floorPlanImage.setFitHeight(82.0);
+        this.floorPlanImage.setFitWidth(445.0);
+        this.floorPlanImage.setFitHeight(47.0);
         VBox.setMargin(this.floorPlanImage, new Insets(0.0, 0.0, 20.0, 0.0));
         this.getChildren().addAll(this.floorPlan, this.floorPlanImage);
         this.setFloorPlanImage(Imagetype.STAGE);
@@ -52,12 +53,12 @@ public class FloorPlanPane extends VBox {
         this.parentController = parentController;
         this.setAlignment(Pos.CENTER);
         this.setPrefSize(9999.0, 9999.0);
-        HBox.setMargin(this.floorPlan, new Insets(0.0, 20.0, 0.0, 0.0));
+        HBox.setMargin(this, new Insets(0.0, 20.0, 0.0, 0.0));
     }
 
     public void init(AbstractController parentController, ArrayList<Integer> defaultSize) {
         this.parentController = parentController;
-        this.createNewFloorPlan(defaultSize);
+        this.createNewFloorPlan(defaultSize, null);
     }
 
     public AbstractController getParentController() {
@@ -248,7 +249,7 @@ public class FloorPlanPane extends VBox {
     }
 
     public void loadFloorPlan(String name, Object from) {
-        this.createNewFloorPlan(getSavedFloorPlanDimensions(name, from));
+        this.createNewFloorPlan(getSavedFloorPlanDimensions(name, from), from);
         this.setFloorPlanImage(getSavedFloorPlanImageType(name, from));
         ArrayList<ArrayList<Integer>> unavailables = getSavedFloorPlanCoordinates(name, from, Property.UNAVAILABLE);
         ArrayList<ArrayList<Integer>> disabled = getSavedFloorPlanCoordinates(name, from, Property.DISABLED);
@@ -264,11 +265,9 @@ public class FloorPlanPane extends VBox {
             ((Group) group).getChildren().stream().filter(
                     seat -> disabled.contains(((Seat) seat).getCoordinates())).forEach(
                     disabledSeat -> {
-                        if (this.parentController instanceof system.graphics.pointOfSale.Controller) {
-                            ((Seat) disabledSeat).setSeattype(Seat.Seattype.DISABLED);
-                            ((Seat) disabledSeat).disable();
-                        }
-            });
+                        ((Seat) disabledSeat).setSeattype(Seat.Seattype.DISABLED);
+                        ((Seat) disabledSeat).disable();
+                    });
         }
     }
 
@@ -276,13 +275,21 @@ public class FloorPlanPane extends VBox {
         this.loadFloorPlan(null, event);
     }
 
-    private void createNewFloorPlan(ArrayList<Integer> dimensions) {
+    private void createNewFloorPlan(ArrayList<Integer> dimensions, Object parent) {
         this.resetFloor();
         for (int row = 0; row < dimensions.get(0); row++) {
-            this.addNewRow();
+            if (parent instanceof Controller) {
+                this.addRowAction();
+            } else {
+                this.addNewRow();
+            }
         }
         for (int column = 0; column < dimensions.get(1) - 1; column++) {
-            this.addNewColumn();
+            if (parent instanceof Controller) {
+                this.addColumnAction();
+            } else {
+                this.addNewColumn();
+            }
         }
     }
 
@@ -393,17 +400,13 @@ public class FloorPlanPane extends VBox {
         }
     }
 
-    // TODO: 23.04.2016 viimane if condition on bugine mõlemal
-    // selle asemel get ratio, korrutada oma kõrguse laiusega läbi ja saada teada uus scaletud suurus
-    // kontrollida seda kõrguse/laiusega või ymaxga??
-
     /**
      * Saaliplaani laiuse kontroll
      * <p>
      * Vähendame suurust kui istmetegrupi laius on suurem kui saaliplaani laius
      * Suurendame suurust kui istmetegrupi laius on väiksem kui istmegrupi scalemata laius,
      * istmetegrupi kõrgus on väiksem kui istmegrupi scalemata kõrgus,
-     * istmetegrupi kõrgus on väiksem kui saaliplaani kõrgus - 30 fixme
+     * istmetegrupi kõrgus on väiksem kui saaliplaani kõrgus - 30
      */
     private void checkPaneWidthResize(Number width) {
         double paneWidth = width.doubleValue() - 20;
@@ -428,7 +431,7 @@ public class FloorPlanPane extends VBox {
      * Vähendame suurust kui istmetegrupi kõrgus on suurem kui saaliplaani kõrgus
      * Suurendame suurust kui istmetegrupi kõrgus on väiksem kui istmegrupi scalemata kõrgus,
      * istmetegrupi laius on väiksem kui istmegrupi scalemata laius,
-     * istmetegrupi laius on väiksem kui saaliplaani laius - 30 fixme
+     * istmetegrupi laius on väiksem kui saaliplaani laius - 30
      */
     private void checkPaneHeightResize(Number height) {
         double paneHeight = height.doubleValue() - 20;
@@ -465,7 +468,7 @@ public class FloorPlanPane extends VBox {
         }
     }
 
-    private void resetY() { // FIXME: 24.04.2016 ei toimi
+    private void resetY() {
         this.maxY = 0.0;
         this.getFloorGroup().setTranslateY(this.maxY);
     }

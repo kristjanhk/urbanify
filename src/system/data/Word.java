@@ -33,7 +33,7 @@ public enum Word {
                 "nennen Sie Ihres Ereignis", "назовите мероприятие"});
         wordsMap.put(Word.PRICE, new String[]{"price", "hind", "hind",
                 "Preis", "цена"});
-        wordsMap.put(Word.TICKETYPE, new String[]{"ticket type", "pileti tüüp", "lubatähe muud",
+        wordsMap.put(Word.TICKETYPE, new String[]{"ticket type", "pileti tüüp", "piledi tüüp",
                 "Ticket-typ", "тип билета"});
         wordsMap.put(Word.OPENSEATING, new String[]{"open seating", "vabad kohad", "vaba kotosõ",
                 "freie Plätze", "открыт рассадка"});
@@ -54,7 +54,7 @@ public enum Word {
                 "zurück", "назад"});
         wordsMap.put(Word.CREATE, new String[]{"create", "loo", "luu",
                 "erstellen", "создайте"});
-        wordsMap.put(Word.SAVE, new String[]{"save", "salvesta", "panõ tallõlõ",
+        wordsMap.put(Word.SAVE, new String[]{"save", "salvesta", "pästäq",
                 "speichern", "сохранить"});
         wordsMap.put(Word.NEWFLOORPLAN, new String[]{"new floorplan", "uus saaliplaan", "vahtsõnõ saaliplaan",
                 "neue Saalplan", "новый план этажа"});
@@ -118,40 +118,40 @@ public enum Word {
                 "Unlimitiert", "неограниченный"});
         wordsMap.put(Word.CURRENCY, new String[]{"curr", "ühik", "mõõt",
                 "währ", "вал"}); //vene keel ei lähe äkki üldse kõik kuidagi pmber teha
-        wordsMap.put(Word.TICKETSTOSELECT, new String[]{"tickets left", "pileteid valida", "TODO",
+        wordsMap.put(Word.TICKETSTOSELECT, new String[]{"tickets left", "pileteid valida", "piletit validaq",
                 "TODO", "TODO"});
-        wordsMap.put(Word.EDIT, new String[]{"edit", "muuda", "TODO",
+        wordsMap.put(Word.EDIT, new String[]{"edit", "muuda", "muuda",
                 "TODO", "TODO"});
-        wordsMap.put(Word.UPDATE, new String[]{"update", "uuenda", "TODO",
+        wordsMap.put(Word.UPDATE, new String[]{"update", "uuenda", "vahtsõnda",
                 "TODO", "TODO"});
-        wordsMap.put(Word.EVENTUPDATER, new String[]{"event editor", "ürituse muutja", "TODO",
+        wordsMap.put(Word.EVENTUPDATER, new String[]{"event editor", "ürituse muutja", "ürituse muutja",
                 "TODO", "TODO"});
         wordsMap.put(Word.SHOWQR, new String[]{"show qr code", "näita qr koodi", "TODO",
                 "TODO", "TODO"});
-        wordsMap.put(Word.AUTHKEY, new String[]{"get authentication key", "hangi autentimise võti", "TODO",
+        wordsMap.put(Word.AUTHKEY, new String[]{"get authentication key", "hangi autentimise võti",
+                "nõvvutõlli salavõti", "TODO", "TODO"});
+        wordsMap.put(Word.PRIMARY, new String[]{"primary", "peamine", "päämine",
                 "TODO", "TODO"});
-        wordsMap.put(Word.PRIMARY, new String[]{"primary", "peamine", "TODO",
+        wordsMap.put(Word.SECONDARY, new String[]{"secondary", "teine", "tõõnõ",
                 "TODO", "TODO"});
-        wordsMap.put(Word.SECONDARY, new String[]{"secondary", "teine", "TODO",
+        wordsMap.put(Word.SCREENTYPE, new String[]{"client screen", "kliendi ekraan", "kundõ pildikruut",
                 "TODO", "TODO"});
-        wordsMap.put(Word.SCREENTYPE, new String[]{"client screen", "kliendi ekraan", "TODO",
+        wordsMap.put(Word.TICKETINFO, new String[]{"ticket", "pilet", "pilet",
                 "TODO", "TODO"});
-        wordsMap.put(Word.TICKETINFO, new String[]{"ticket", "pilet", "TODO",
-                "TODO", "TODO"});
-        wordsMap.put(Word.FOLDER, new String[]{"Choose applications' home folder", "Vali programmi andmete kaust",
+        wordsMap.put(Word.FOLDER, new String[]{"Choose applications' home folder", "Vali programmi kodokaust",
                 "TODO", "TODO", "TODO"});
-        wordsMap.put(Word.PDF, new String[]{"Save pdf file", "Salvesta pdf fail", "TODO",
+        wordsMap.put(Word.PDF, new String[]{"Save pdf file", "Salvesta pdf fail", "Pästaq pdf teedüstü",
                 "TODO", "TODO"});
-        wordsMap.put(Word.REPORTPDF, new String[]{"report creator", "aruande koostaja", "TODO",
+        wordsMap.put(Word.REPORTPDF, new String[]{"report creator", "aruande koostaja", "aruandõ kokkopandja",
                 "TODO", "TODO"});
-        wordsMap.put(Word.CREATEPDF, new String[]{"create pdf", "loo pdf", "TODO",
+        wordsMap.put(Word.CREATEPDF, new String[]{"create pdf", "loo pdf", "luu pdf",
                 "TODO", "TODO"});
-        wordsMap.put(Word.COMPANYNAME, new String[]{"company name", "firma nimi", "TODO",
+        wordsMap.put(Word.COMPANYNAME, new String[]{"company name", "ettevõtte nimi", "ettevõttõ nimi",
                 "TODO", "TODO"});
-        wordsMap.put(Word.REPORTNR, new String[]{"report nr", "aruande nr", "TODO",
+        wordsMap.put(Word.REPORTNR, new String[]{"report nr", "aruande nr", "aruandõ nummõr",
                 "TODO", "TODO"});
-        wordsMap.put(Word.WORKERNAME, new String[]{"report author", "aruande koostanud isik", "aruandõ",
-                "TODO", "TODO"});
+        wordsMap.put(Word.WORKERNAME, new String[]{"report author", "aruande koostanud isik",
+                "aruandõ kokko säädnü inemine", "TODO", "TODO"});
         return wordsMap;
     }
 

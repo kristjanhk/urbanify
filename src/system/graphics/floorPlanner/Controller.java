@@ -59,15 +59,8 @@ public class Controller extends AbstractController {
     }
 
     private void initSaveButton() {
-        this.save.setOnMouseEntered(event -> this.setFloorPlanTextFieldHighlight(true));
-        this.save.setOnMouseExited(event -> this.setFloorPlanTextFieldHighlight(false));
-        // FIXME: 3.06.2016 
-        this.save.setOnMouseReleased(event -> this.save.getStyleClass().remove("save_button"));
-        this.save.setOnMousePressed(event -> {
-            if (!this.titleValidated) {
-                this.save.getStyleClass().add("save_button");
-            }
-        });
+        this.save.setOnMousePressed(event -> this.setFloorPlanTextFieldHighlight(true));
+        this.save.setOnMouseReleased(event -> this.setFloorPlanTextFieldHighlight(false));
     }
 
     public void setColumnCountText(int count) {
