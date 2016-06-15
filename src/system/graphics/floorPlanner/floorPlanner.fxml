@@ -118,7 +118,7 @@
                      <Insets bottom="40.0" />
                  </HBox.margin>
              </Button>
-             <Button fx:id="save" minWidth="121.0" mnemonicParsing="false" onAction="#doSave" styleClass="bottomButton">
+             <Button fx:id="save" minWidth="121.0" mnemonicParsing="false" onAction="#doSave" styleClass="floorplanSave">
                  <HBox.margin>
                      <Insets bottom="40.0" left="40.0" />
                  </HBox.margin>

@@ -636,13 +636,42 @@
 }
 
 .floorPlanTextField_highlighted {
-    -fx-background-color: #ff5152;
+    -fx-background-color: #ff8e87;
     -fx-prompt-text-fill: white;
 }
 
 .save_button {
     -fx-background-color: #7e2b2c;
 }
+
+.floorplanSave {
+    -fx-padding: 0 10 0 10;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #b0afb0;
+    -fx-max-height: 70.5;
+    -fx-min-height: 70.5;
+    -fx-pref-height: 70.5;
+    -fx-min-width: 121.0;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 30;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
+
+.floorplanSave:hover {
+    -fx-background-color: #dddddd;
+    -fx-text-fill: #b0afb0;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
+
+.floorplanSave:armed {
+    -fx-background-color: #ff8e87;
+    -fx-text-fill: #ffffff;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
+
 
 .qrGenButton {
     -fx-padding: 0 0 0 0;
