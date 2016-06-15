@@ -23,6 +23,7 @@
     -fx-min-height: 70.5;
     -fx-pref-height: 70.5;
     -fx-min-width: 121.0;
+    -fx-text-alignment: center;
     -fx-font-family: 'TicketFont';
     -fx-font-size: 30;
     -fx-font-smoothing-type: gray;
