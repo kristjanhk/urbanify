@@ -10,6 +10,8 @@ import system.graphics.common.AbstractController;
 import system.graphics.common.Scenetype;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class Controller extends AbstractController {
@@ -24,14 +26,41 @@ public class Controller extends AbstractController {
     @FXML protected Button createpdf;
 
     private system.graphics.report.Controller parentController;
+    private boolean companyNameValidated = false;
+    private boolean reportNrValidated = false;
+    private boolean workerNameValidated = false;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.setLanguage();
+        this.addValidation();
     }
 
     private void init() {
         this.companyName.setText(this.getData().getCompanyName());
+    }
+
+    private void addValidation() {
+        MainHandler.setValidationFor(this.companyName, "^(?=\\s*\\S).*$").addListener(
+                (observable, oldValue, newValue) -> {
+                    this.companyNameValidated = !newValue;
+                    this.checkPdfButtonValidation();
+                });
+        MainHandler.setValidationFor(this.reportNr, "^(?=\\s*\\S).*$").addListener(
+                (observable, oldValue, newValue) -> {
+                    this.reportNrValidated = !newValue;
+                    this.checkPdfButtonValidation();
+                });
+        MainHandler.setValidationFor(this.workerName, "^(?=\\s*\\S).*$").addListener(
+                (observable, oldValue, newValue) -> {
+                    this.workerNameValidated = !newValue;
+                    this.checkPdfButtonValidation();
+                });
+    }
+
+    private void checkPdfButtonValidation() {
+        boolean valid = this.companyNameValidated && this.reportNrValidated && this.workerNameValidated;
+        this.createpdf.setDisable(!valid);
     }
 
     @FXML
@@ -42,12 +71,17 @@ public class Controller extends AbstractController {
 
     @FXML
     protected void handlePdf() {
-        if (MainHandler.getReportHandler().generatePdf(this.parentController.getEvent())) {
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("logo", "LOGO"); // TODO: 15.06.2016 image or text 
+        variables.put("companyname", this.companyName.getText());
+        variables.put("reportnr", this.reportNr.getText());
+        variables.put("workername", this.workerName.getText());
+        if (MainHandler.getReportHandler().generatePdf(this.parentController.getEvent(), variables)) {
             this.getData().setCompanyName(this.companyName.getText());
-            this.parentController.getEvent().sendToArchive();
+            //this.parentController.getEvent().sendToArchive();
             this.scene.getStageHandler().getStage().close();
             this.parentController.setButtonsDisabled(false);
-            MainHandler.getPrimaryStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
+            //MainHandler.getPrimaryStageHandler().switchSceneTo(Scenetype.EVENTMANAGER);
         }
     }
 

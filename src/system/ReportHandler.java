@@ -29,9 +29,9 @@ import system.data.Word;
  */
 public class ReportHandler {
 
-    public boolean generatePdf(Event event) {
+    public boolean generatePdf(Event event, Map<String, Object> variables) {
         try {
-            this.generatePdf(generateTemplate(this.getFormattedData(event)),
+            this.generatePdf(generateTemplate(this.getFormattedData(event, variables)),
                     new FileOutputStream(this.getFileLocation(event.getName() + "_" +
                             event.getFormattedDate().replaceAll("/", ".") + "_" +
                             event.getTime().replaceAll(":", "."))));
@@ -47,7 +47,7 @@ public class ReportHandler {
         fileChooser.setInitialDirectory(new File(MainHandler.getFileHandler().getPath()));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF", "*.pdf"));
         fileChooser.setInitialFileName(name);
-        return fileChooser.showSaveDialog(MainHandler.getPrimaryStageHandler().getStage());
+        return fileChooser.showSaveDialog(MainHandler.getSecondaryStageHandler().getStage());
     }
 
     public void generatePdf(String htmlStr, OutputStream out) throws Exception {
@@ -78,7 +78,7 @@ public class ReportHandler {
         return htmlStr;
     }
 
-    private Map<String, Object> getFormattedData(Event event) {
+    private Map<String, Object> getFormattedData(Event event, Map<String, Object> extras) {
         Map<String, Object> variables = new HashMap<>();
         variables.put("tickettype", Word.TICKETYPE.toString());
         variables.put("ticketprice", Word.PRICE.toString());
@@ -89,6 +89,9 @@ public class ReportHandler {
         variables.put("totalprice", String.format("%.2f", dataobject.getTotalprice()) +
                 " " + Lang.getActiveLang().getCurrency());
         variables.put("totalamount", dataobject.getTotalamount());
+        for (String key : extras.keySet()) {
+            variables.put(key, extras.get(key));
+        }
         return variables;
     }
 

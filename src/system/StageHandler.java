@@ -58,7 +58,6 @@ public class StageHandler {
         this.stage.initStyle(StageStyle.UNDECORATED);
         this.stage.setTitle(title);
         if (title.equals("Popup")) {
-            this.stage.setAlwaysOnTop(true);
             this.stage.setHeight(550);
             this.stage.setWidth(600);
             this.stage.setMinHeight(550);

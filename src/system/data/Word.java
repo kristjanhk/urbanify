@@ -15,9 +15,9 @@ public enum Word {
     SETSEATINGTYPE, SEATINGTYPE, ENGLISH, ESTONIAN, VÕRO, GERMAN, TICKETSTOSELECT, RUSSIAN, CHECKOUT, TOTAL, POS,
     FINISH, COST, QUANTITY, NEW, SEATSLEFT, UNLIMITED, CURRENCY, EDIT, UPDATE, EVENTUPDATER, SHOWQR, AUTHKEY, PRIMARY,
     SECONDARY, SCREENTYPE, TICKETINFO, FOLDER, PDF, REPORTPDF, CREATEPDF, COMPANYNAME, REPORTNR, WORKERNAME;
-    private static HashMap<Word, String[]> words = createLanguages();
+    private static HashMap<Word, String[]> words = createWords();
 
-    private static HashMap<Word, String[]> createLanguages() {
+    private static HashMap<Word, String[]> createWords() {
         HashMap<Word, String[]> wordsMap = new HashMap<>();
         wordsMap.put(Word.NEWEVENT, new String[]{"new event", "uus üritus", "vahtsõnõ üritus",
                 "neue Ereignis", "новое мероприятие"});

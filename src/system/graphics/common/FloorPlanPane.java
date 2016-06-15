@@ -272,6 +272,7 @@ public class FloorPlanPane extends VBox {
         }
         if (from instanceof Controller) {
             this.fixpos = true;
+            this.floorPlan.setVisible(false);
         }
     }
 
@@ -472,6 +473,7 @@ public class FloorPlanPane extends VBox {
     public void fixPosition() {
         if (this.fixpos) {
             this.checkPaneHeightResize(this.floorPlan.getHeight());
+            this.floorPlan.setVisible(true);
             this.fixpos = false;
         }
     }

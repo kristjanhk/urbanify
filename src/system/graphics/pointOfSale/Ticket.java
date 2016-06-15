@@ -77,7 +77,7 @@ public class Ticket extends GridPane {
         this.add(this.ticketName, 0, 0);
         this.getColumnConstraints().add(new ColumnConstraints(280, 280, 280));
 
-        this.removeTicket = new Button("-");
+        this.removeTicket = new Button("ô");
         this.removeTicket.getStyleClass().add("buttonRound");
         this.removeTicket.setMnemonicParsing(false);
         HBox.setMargin(this.removeTicket, new Insets(0.0, 0.0, 0.0, 0.0));
