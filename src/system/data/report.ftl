@@ -25,10 +25,17 @@
             line-height: 25%;
         }
 
+        .logo {
+            color: #262626;
+            font-size: 15pt;
+            font-family: 'TicketFont', serif;
+        }
+
         .date {
             color: #5b5c5c;
-            font-size: 20pt;
+            font-size: 15pt;
             font-family: 'TicketFont', serif;
+            line-height: 25%;
         }
 
         .bottom {
@@ -63,10 +70,19 @@
     </style>
 </head>
 <body>
-<h1 class="name">${event.name}</h1>
-<h2 class="date">${event.date} ${event.time}</h2>
-<h2 class="date">${companyname}</h2>
-<h2 class="date">${reportnr} ${workername}</h2>
+
+<table width="100%">
+    <tbody>
+    <tr>
+        <th class="name" align="left">${event.name}</th>
+        <th class="date" align="right">${companyname}</th>
+    </tr>
+
+    <tr>
+        <th class="date" align="left"><p>${event.date} ${event.time}</p></th>
+    </tr>
+    </tbody>
+</table>
 
 <table border="0" cellspacing="0" align="center">
     <thead>
@@ -98,5 +114,18 @@
     </tr>
     </tbody>
 </table>
+<h1></h1>
+<table width="100%">
+    <tbody>
+    <tr>
+        <th class="date" align="left">Aruande nr: ${reportnr}</th>
+    </tr>
+
+    <tr>
+        <th class="date" align="left"><p>Aruande koostaja: ${workername}</p></th>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>
