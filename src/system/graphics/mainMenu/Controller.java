@@ -50,7 +50,7 @@ public class Controller extends AbstractController {
 
     @Override
     public void setLanguage() {
-        if (Lang.getActiveLang() == Lang.RUSSIAN) {
+        /*if (Lang.getActiveLang() == Lang.RUSSIAN) {
             this.constraint.setMaxWidth(200.0);
             this.constraint.setMinWidth(200.0);
             this.constraint.setPrefWidth(200.0);
@@ -58,7 +58,10 @@ public class Controller extends AbstractController {
             this.constraint.setMaxWidth(90.0);
             this.constraint.setMinWidth(90.0);
             this.constraint.setPrefWidth(90.0);
-        }
+        }*/
+        this.constraint.setMaxWidth(90.0);
+        this.constraint.setMinWidth(90.0);
+        this.constraint.setPrefWidth(90.0);
         this.newEventText.setText(Word.NEWEVENT.toString());
         this.eventsText.setText(Word.EVENTS.toString());
         this.settingsText.setText(Word.SETTINGS.toString());

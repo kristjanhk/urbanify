@@ -1,6 +1,7 @@
 package system;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import system.graphics.common.ClientScreen;
@@ -57,6 +58,7 @@ public class StageHandler {
     private void init(String title) {
         this.stage.initStyle(StageStyle.UNDECORATED);
         this.stage.setTitle(title);
+        this.stage.getIcons().add(new Image(this.getClass().getResourceAsStream("graphics/common/icon.png")));
         if (title.equals("Popup")) {
             this.stage.setHeight(550);
             this.stage.setWidth(600);

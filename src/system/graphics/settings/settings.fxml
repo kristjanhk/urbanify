@@ -110,8 +110,8 @@
                     <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="english"/>
                     <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="eesti keel"/>
                     <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="võro kiil"/>
-                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="deutsch"/>
-                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="русский язык"/>
+                    <!--<MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="deutsch"/>
+                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="русский язык"/>-->
                 </items>
             </MenuButton>
             <Text fx:id="langLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" GridPane.rowIndex="1">

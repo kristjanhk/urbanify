@@ -11,13 +11,15 @@ import java.util.Locale;
  * Hoiab endas keeli kui konstante
  * Iga keel on Lang klassi isend
  * Iga isend määrab ära Word klassis isendite sõna, samuti määra ära lokaali (kalendri jaoks)
+ *
+ * (Saksa ja Vene keel vajavad veel korrastamist)
  */
 public enum Lang {
     ENGLISH(0, Locale.UK, "english"),
     ESTONIAN(1, new Locale.Builder().setLanguage("et").setScript("Latn").setRegion("EE").build(), "eesti keel"),
-    VÕRO(2, new Locale.Builder().setLanguage("et").setScript("Latn").setRegion("EE").build(), "võro kiil"),
-    GERMAN(3, new Locale.Builder().setLanguage("de").setScript("Latn").setRegion("GR").build(), "deutsch"),
-    RUSSIAN(4, new Locale.Builder().setLanguage("ru").setScript("Cyrl").setRegion("RU").build(), "русский язык");
+    VÕRO(2, new Locale.Builder().setLanguage("et").setScript("Latn").setRegion("EE").build(), "võro kiil");
+    /*GERMAN(3, new Locale.Builder().setLanguage("de").setScript("Latn").setRegion("GR").build(), "deutsch"),
+    RUSSIAN(4, new Locale.Builder().setLanguage("ru").setScript("Cyrl").setRegion("RU").build(), "русский язык");*/
 
     private int index;
     private Locale locale;
@@ -58,9 +60,9 @@ public enum Lang {
     }
 
     public String getCurrencyIn(Lang language) {
-        if (language == RUSSIAN) {
+        /*if (language == RUSSIAN) {
             return "\u20BD";
-        }
+        }*/
         return Currency.getInstance(language.locale).getSymbol();
     }
 
