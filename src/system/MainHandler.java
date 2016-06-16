@@ -46,8 +46,8 @@ public class MainHandler extends Application {
     public void start(Stage primaryStage) {
         fileHandler = new FileHandler();
         reportHandler = new ReportHandler();
-        stageHandlers[0] = new StageHandler(primaryStage, "Piletikontroll");
-        stageHandlers[1] = new StageHandler("Piletiinfo");
+        stageHandlers[0] = new StageHandler(primaryStage, "Urbanify");
+        stageHandlers[1] = new StageHandler("Urbanify 2");
         stageHandlers[2] = new StageHandler("Popup");
     }
 

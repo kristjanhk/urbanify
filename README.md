@@ -11,7 +11,6 @@ kasvõi ühekordselt ja kiirelt mingi üritus pidada. Lisaks teistele keeltele s
 (Manuaal lisada)
 
 Pileteid kontrolliva nutirakenduse leiab siit: [Piletikontrollija](https://bitbucket.org/urban-team/piletikontrollija)
-(Play store link lisada)
 
 Allalaadimised (varsti tekivad)
 --------------

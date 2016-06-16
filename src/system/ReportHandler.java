@@ -73,7 +73,6 @@ public class ReportHandler {
         stringWriter.flush();
         String htmlStr = stringWriter.toString();
         stringWriter.close();
-        System.out.println("6");
         return htmlStr;
     }
 

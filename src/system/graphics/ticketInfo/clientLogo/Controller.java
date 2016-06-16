@@ -50,7 +50,7 @@ public class Controller extends AbstractController {
     }
 
     private void createDefaultText() {
-        Text text = new Text("Piletikassa");
+        Text text = new Text("Urbanify");
         text.setStrokeType(StrokeType.OUTSIDE);
         text.setStrokeWidth(0.0);
         text.getStyleClass().add("topText");
