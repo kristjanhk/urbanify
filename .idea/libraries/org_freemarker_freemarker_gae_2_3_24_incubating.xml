@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="org.freemarker:freemarker-gae:2.3.24-incubating" type="repository">
+    <properties maven-id="org.freemarker:freemarker-gae:2.3.24-incubating" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/freemarker-gae-2.3.24-incubating.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

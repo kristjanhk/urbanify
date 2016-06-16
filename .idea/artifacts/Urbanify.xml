@@ -1,0 +1,30 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="Urbanify">
+    <output-path>$PROJECT_DIR$/out/artifacts/Urbanify</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="system.MainHandler" />
+        <option name="description" value="" />
+        <option name="height" value="880" />
+        <option name="htmlParamFile" value="" />
+        <option name="paramFile" value="" />
+        <option name="title" value="Urbanify" />
+        <option name="vendor" value="Urbanteam" />
+        <option name="width" value="1220" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="Urbanify.jar">
+        <element id="module-output" name="Urbanify" />
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="com.google.code.gson:gson:2.6.2" />
+          <element id="library" level="project" name="org.controlsfx:controlsfx:8.40.10" />
+          <element id="library" level="project" name="org.freemarker:freemarker-gae:2.3.24-incubating" />
+          <element id="library" level="project" name="com.google.zxing:javase:3.2.1" />
+          <element id="library" level="project" name="openhtmltopdf-pdfbox-0.0.1-RC3-local" />
+          <element id="library" level="project" name="com.openhtmltopdf:openhtmltopdf-jsoup-dom-converter:0.0.1-RC2" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

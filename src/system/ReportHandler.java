@@ -3,13 +3,12 @@ package system;
 import java.io.*;
 import java.util.*;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import com.lowagie.text.pdf.BaseFont;
+import com.openhtmltopdf.DOMBuilder;
+import com.openhtmltopdf.pdfboxout.PdfBoxRenderer;
+import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
+import freemarker.template.TemplateExceptionHandler;
 import javafx.stage.FileChooser;
-import org.w3c.dom.Document;
-import org.xhtmlrenderer.pdf.ITextRenderer;
+import org.jsoup.Jsoup;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -19,12 +18,19 @@ import system.data.Word;
 
 /**
  * Aruande genereerija
- * Kasutab Apache FreeMarker, Flying-saucer ja iText teeke
  * http://freemarker.org/
- * https://code.google.com/archive/p/flying-saucer/
- * https://sourceforge.net/projects/itext/
+ * https://github.com/danfickle/openhtmltopdf
  */
 public class ReportHandler {
+    private Configuration cfg;
+
+    public ReportHandler() {
+        this.cfg = new Configuration(Configuration.VERSION_2_3_24);
+        this.cfg.setClassForTemplateLoading(ReportHandler.class, "data");
+        this.cfg.setDefaultEncoding("UTF-8");
+        this.cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
+        this.cfg.setLogTemplateExceptions(false);
+    }
 
     public boolean generatePdf(Event event, Map<String, Object> variables) {
         try {
@@ -47,31 +53,27 @@ public class ReportHandler {
         return fileChooser.showSaveDialog(MainHandler.getSecondaryStageHandler().getStage());
     }
 
-    public void generatePdf(String htmlStr, OutputStream out) throws Exception {
-        DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        Document doc = builder.parse(new ByteArrayInputStream(htmlStr.getBytes()));
-        ITextRenderer renderer = new ITextRenderer();
-        renderer.getFontResolver().addFont(System.getProperty("user.dir") +
-                "\\src\\system\\graphics\\common\\TicketFont.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-        renderer.setDocument(doc, null);
+    private void generatePdf(String htmlString, OutputStream out) throws Exception {
+        PdfRendererBuilder builder = new PdfRendererBuilder();
+        PdfBoxRenderer renderer = builder.buildPdfRenderer();
+        renderer.getFontResolver().addFont(
+                this.getClass().getResourceAsStream("graphics/common/TicketFont.ttf"), "TicketFont");
+        renderer.setDocument(DOMBuilder.jsoup2DOM(Jsoup.parse(htmlString)), null);
         renderer.layout();
         renderer.createPDF(out);
+        renderer.finishPDF();
         out.close();
-        System.out.println("PDF OK");
     }
 
-    public String generateTemplate(Map<String, Object> variables) throws Exception {
-        Configuration config = new Configuration(Configuration.VERSION_2_3_24);
-        config.setDirectoryForTemplateLoading(new File("src\\system\\data"));
-        config.setDefaultEncoding("UTF-8");
-        Template tp = config.getTemplate("report.ftl");
+    private String generateTemplate(Map<String, Object> variables) throws Exception {
+        Template tp = this.cfg.getTemplate("report.ftl", "UTF-8");
         StringWriter stringWriter = new StringWriter();
-        BufferedWriter writer = new BufferedWriter(stringWriter);
-        tp.process(variables, writer);
+        tp.setOutputEncoding("UTF-8");
+        tp.process(variables, stringWriter);
+        stringWriter.flush();
         String htmlStr = stringWriter.toString();
-        writer.flush();
-        writer.close();
         stringWriter.close();
+        System.out.println("6");
         return htmlStr;
     }
 

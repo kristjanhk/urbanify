@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.6.2" level="project" />
+    <orderEntry type="library" name="org.controlsfx:controlsfx:8.40.10" level="project" />
+    <orderEntry type="library" name="com.google.zxing:javase:3.2.1" level="project" />
+    <orderEntry type="library" name="org.freemarker:freemarker-gae:2.3.24-incubating" level="project" />
+    <orderEntry type="library" name="openhtmltopdf-pdfbox-0.0.1-RC3-local" level="project" />
+    <orderEntry type="library" name="com.openhtmltopdf:openhtmltopdf-jsoup-dom-converter:0.0.1-RC2" level="project" />
+  </component>
+</module>

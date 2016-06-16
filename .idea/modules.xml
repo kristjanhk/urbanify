@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/piletisystem.iml" filepath="$PROJECT_DIR$/piletisystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Urbanify.iml" filepath="$PROJECT_DIR$/Urbanify.iml" />
     </modules>
   </component>
 </project>

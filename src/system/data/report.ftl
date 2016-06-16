@@ -1,9 +1,13 @@
+<#ftl encoding="utf-8">
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <style>
-        @page {background-color: #F2F2F2;}
+    <meta charset="utf-8" http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style type="text/css">
+        @page {
+            background-color: #F2F2F2;
+        }
+
         /*html {
             margin: 0;
             min-height: 100%;
@@ -106,7 +110,7 @@
         <td width="189" align="center"><p style="content" align="center">${event.tickettotals[i - 1]}</p></td>
     </tr>
     </#list>
-    <tr >
+    <tr>
         <td class="bottom" height="2" width="189" align="center"><p align="center"></p></td>
         <td class="bottom" height="2" width="189" align="center"><p align="center">${tickettotal}</p></td>
         <td class="bottom" height="2" width="189" align="center"><p align="center">${totalamount}</p></td>

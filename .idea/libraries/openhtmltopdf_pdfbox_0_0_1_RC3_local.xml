@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="openhtmltopdf-pdfbox-0.0.1-RC3-local">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/openhtmltopdf-pdfbox-0.0.1-RC3-local.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
