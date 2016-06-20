@@ -112,8 +112,6 @@ public class Seat extends Button {
 
     @FXML
     protected void handleClick() {
-        // TODO: 10.06.2016 remove 
-        System.out.println("Clicked: (" + this.y + "," + this.x + ")");
         if (!this.locked) {
             if (this.floorPlan.getParentController() instanceof system.graphics.pointOfSale.Controller) {
                 if (this.seattype == Seattype.AVAILABLE) {

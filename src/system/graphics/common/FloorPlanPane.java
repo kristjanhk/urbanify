@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import system.data.Event;
 import system.data.Lang;
 import system.data.Word;
@@ -24,7 +25,9 @@ public class FloorPlanPane extends VBox {
 
     private AbstractController parentController;
     private StackPane floorPlan;
-    private ImageView floorPlanImage;
+    private StackPane imagePane;
+    private Text imageText;
+    private ImageView imageView;
     private int columnCount;
     private double maxY = 0.0;
     private boolean fixpos = false;
@@ -35,12 +38,8 @@ public class FloorPlanPane extends VBox {
         this.floorPlan.setMinSize(0.0, 0.0);
         this.floorPlan.setPrefSize(9999.0, 9999.0);
         this.floorPlan.getStyleClass().add("background");
-        this.floorPlanImage = new ImageView();
-        this.floorPlanImage.setFitWidth(445.0);
-        this.floorPlanImage.setFitHeight(47.0);
-        VBox.setMargin(this.floorPlanImage, new Insets(0.0, 0.0, 20.0, 0.0));
-        this.getChildren().addAll(this.floorPlan, this.floorPlanImage);
-        this.setFloorPlanImage(Imagetype.STAGE);
+        this.createImagePane();
+        this.getChildren().addAll(this.floorPlan, this.imagePane);
         this.floorPlan.widthProperty().addListener((observable, oldValue, newValue) -> {
             this.checkPaneWidthResize(newValue);
         });
@@ -60,6 +59,29 @@ public class FloorPlanPane extends VBox {
     public void init(AbstractController parentController, ArrayList<Integer> defaultSize) {
         this.parentController = parentController;
         this.createNewFloorPlan(defaultSize);
+    }
+
+    private void createImagePane() {
+        this.imagePane = new StackPane();
+        VBox.setMargin(this.imagePane, new Insets(0.0, 0.0, 20.0, 0.0));
+        this.imageView = new ImageView();
+        this.imageView.setFitWidth(445.0);
+        this.imageView.setFitHeight(47.0);
+        this.imageText = new Text();
+        this.imageText.getStyleClass().add("text35");
+        this.replaceImageText(Word.STAGE);
+        this.imagePane.getChildren().addAll(this.imageView, this.imageText);
+        this.setFloorPlanImage(Imagetype.STAGE);
+    }
+
+    private void replaceImageText(Word type) {
+        this.imageText.setText(type.toString());
+        this.imageText.setTranslateY(0.0);
+        if (type == Word.STAGE) {
+            this.imageText.setTranslateY(10.0);
+        } else {
+            this.imageText.setTranslateY(40.0);
+        }
     }
 
     public AbstractController getParentController() {
@@ -160,13 +182,15 @@ public class FloorPlanPane extends VBox {
 
     public void setFloorPlanImage(String imageName) {
         Word imageConstant = Word.toEnum(imageName);
+        this.replaceImageText(imageConstant);
         if (imageConstant != null) {
             this.setFloorPlanImage(Imagetype.valueOf(imageConstant.inLang(Lang.ENGLISH).toUpperCase()));
         }
     }
 
     private void setFloorPlanImage(Imagetype imagetype) {
-        this.floorPlanImage.setImage(imagetype.toImage());
+        this.replaceImageText(Word.valueOf(imagetype.name()));
+        this.imageView.setImage(imagetype.toImage());
     }
 
     public static int getSeatsLeft(Event event) {
@@ -268,6 +292,7 @@ public class FloorPlanPane extends VBox {
                     disabledSeat -> {
                         ((Seat) disabledSeat).setSeattype(Seat.Seattype.DISABLED);
                         ((Seat) disabledSeat).disable();
+                        ((Seat) disabledSeat).lock();
                     });
         }
         if (from instanceof Controller) {

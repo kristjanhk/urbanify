@@ -618,12 +618,6 @@
 .default-color5.chart-pie { -fx-pie-color: #626262; }
 .default-color11.chart-pie { -fx-pie-color: #626262; }
 
-.popOver {
-    -fx-background-color: #e6e6e5;
-    -fx-fill: #8c8c8b;
-    -fx-padding: 20,20,20,20;
-}
-
 .floorplanName {
     -fx-background-color: #e6e6e5;
     -fx-font-size: 50;
@@ -659,14 +653,14 @@
     -fx-background-radius: 0;
 }
 
-.floorplanSave:hover {
+.floorplanSave_hover {
     -fx-background-color: #dddddd;
     -fx-text-fill: #b0afb0;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
 }
 
-.floorplanSave:armed {
+.floorplanSave_armed {
     -fx-background-color: #ff8e87;
     -fx-text-fill: #ffffff;
     -fx-font-smoothing-type: gray;

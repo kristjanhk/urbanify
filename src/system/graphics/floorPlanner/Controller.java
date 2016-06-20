@@ -59,8 +59,10 @@ public class Controller extends AbstractController {
     }
 
     private void initSaveButton() {
-        this.save.setOnMousePressed(event -> this.setFloorPlanTextFieldHighlight(true));
-        this.save.setOnMouseReleased(event -> this.setFloorPlanTextFieldHighlight(false));
+        this.save.setOnMouseEntered(event -> this.save.getStyleClass().add("floorplanSave_hover"));
+        this.save.setOnMouseExited(event -> this.save.getStyleClass().remove("floorplanSave_hover"));
+        this.save.setOnMousePressed(event -> this.setHighlight(true));
+        this.save.setOnMouseReleased(event -> this.setHighlight(false));
     }
 
     public void setColumnCountText(int count) {
@@ -73,11 +75,13 @@ public class Controller extends AbstractController {
         this.validateButtons();
     }
 
-    private void setFloorPlanTextFieldHighlight(boolean enable) {
+    private void setHighlight(boolean enable) {
         if (enable && !this.titleValidated) {
             this.floorPlanTextField.getStyleClass().add("floorPlanTextField_highlighted");
+            this.save.getStyleClass().add("floorplanSave_armed");
         } else {
             this.floorPlanTextField.getStyleClass().remove("floorPlanTextField_highlighted");
+            this.save.getStyleClass().remove("floorplanSave_armed");
         }
     }
 

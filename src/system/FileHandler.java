@@ -8,6 +8,8 @@ import system.data.Lang;
 import system.graphics.common.ClientScreen;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 /**
  * Failihaldaja
@@ -24,10 +26,6 @@ public class FileHandler {
     public FileHandler() {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.loadData();
-    }
-
-    public void setPath(String path) {
-        this.jsonPath = path;
     }
 
     public String getPath() {
@@ -60,6 +58,17 @@ public class FileHandler {
                     this.jsonFile.getActiveClientScreen());
         } catch (IOException ignored) {
             this.resetData();
+        }
+    }
+
+    public boolean moveJson(String path) {
+        try {
+            Files.move(new File(this.jsonPath + "\\andmed.json").toPath(),
+                    new File(path + "\\andmed.json").toPath(), StandardCopyOption.REPLACE_EXISTING);
+            this.jsonPath = path;
+            return true;
+        } catch (IOException ignored) {
+            return false;
         }
     }
 

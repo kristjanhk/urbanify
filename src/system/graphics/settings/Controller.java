@@ -6,7 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.DirectoryChooser;
 import system.MainHandler;
 import system.graphics.common.AbstractController;
@@ -28,6 +30,7 @@ public class Controller extends AbstractController {
     @FXML protected Text settingsText;
     @FXML protected Button back;
     @FXML protected Text pathText;
+    @FXML protected TextFlow textFlow;
     @FXML protected Text filepath;
     @FXML protected MenuButton language;
     @FXML protected MenuButton theme;
@@ -42,24 +45,28 @@ public class Controller extends AbstractController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.setLanguage();
+
+
+        this.textFlow.setMinWidth(0.0);
+        //this.textFlow.setMaxWidth(Double.MAX_VALUE);
+        this.textFlow.setPrefWidth(Double.MAX_VALUE);
+
+
         this.filepath.setText(this.getFileHandler().getPath());
         this.language.setText(Word.valueOf(Lang.getActiveLang().toString()).inLang(Lang.getActiveLang()));
     }
 
-    @Override
-    public <T> void prepareToDisplay(T object) {
-        this.qrContent.getChildren().clear();
-    }
-
     @FXML
     protected void handleDirectoryChange() {
+        System.out.println(this.textFlow.getWidth());
         DirectoryChooser dc = new DirectoryChooser();
         dc.setTitle(Word.FOLDER.toString());
         dc.setInitialDirectory(new File(System.getProperty("user.dir")));
         File sd = dc.showDialog(this.getStage());
         if (sd != null) {
-            this.getFileHandler().setPath(sd.getAbsolutePath());
-            this.filepath.setText(sd.getAbsolutePath());
+            if (this.getFileHandler().moveJson(sd.getAbsolutePath())) {
+                this.filepath.setText(sd.getAbsolutePath());
+            }
         }
     }
 
@@ -105,6 +112,11 @@ public class Controller extends AbstractController {
     @FXML
     protected void doBack() {
         this.scene.getStageHandler().switchSceneTo(Scenetype.MAINMENU);
+    }
+
+    @Override
+    public <T> void prepareToDisplay(T object) {
+        this.qrContent.getChildren().clear();
     }
 
     @Override

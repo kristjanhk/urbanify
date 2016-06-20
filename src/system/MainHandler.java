@@ -89,7 +89,7 @@ public class MainHandler extends Application {
     /**
      * Lisab antud tipule antud valideerimise
      * Kasutab controlsfx teeki http://fxexperience.com/controlsfx/
-     * (abimaterjal http://stackoverflow.com/questions/29607080/textfield-component-validation-with-controls-fx)
+     * (http://stackoverflow.com/questions/29607080/textfield-component-validation-with-controls-fx)
      *
      * @param node       tipp, millele valideerimist vaja
      * @param validation regulaaravaldis
@@ -162,18 +162,3 @@ public class MainHandler extends Application {
         return null;
     }
 }
-
-//cssi hierarhia
-//default caspian.css < API settings < user's Scene css < user's Parent css < setStyle()
-
-/*
-mainhandler - staatiline main meetod
-    |
-StageHandler - haldab lava
-    |
-Hashmap<Scenetype, CustomScene>
-   /|\
-CustomScene - mähisklass, haldab stseeni
-    |
-fxml + controller - fxml määrab üldjoontes stseeni sisu, controller loogikat
-*/
