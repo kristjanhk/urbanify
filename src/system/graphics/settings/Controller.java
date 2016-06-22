@@ -82,6 +82,7 @@ public class Controller extends AbstractController {
         if (newLang != null) {
             Lang.setActiveLang(newLang);
             this.language.setText(Word.valueOf(newLang.toString()).inLang(newLang));
+            this.scene.getStageHandler().replaceScene(Scenetype.EVENTMANAGER);
         }
     }
 

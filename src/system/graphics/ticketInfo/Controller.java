@@ -104,6 +104,7 @@ public class Controller extends AbstractController {
         this.floorPlan = floorPlan;
         this.floorPlan.loadFloorPlan(this.parentController.getEvent());
         this.rightContent.getChildren().add(this.floorPlan);
+        this.floorPlan.setTranslateY(-15.0);
     }
 
     public void updateTicket(String ticketname, ArrayList<Double> ticketdata, String currency) {
