@@ -699,6 +699,35 @@
     -fx-background-radius: 0;
 }
 
+.locPathButton {
+    -fx-padding: 0 10 0 10;
+    -fx-background-color: #151515;
+    -fx-text-fill: #f05455;
+    -fx-text-alignment: center;
+    -fx-max-height: 70.5;
+    -fx-min-height: 70.5;
+    -fx-pref-height: 70.5;
+    -fx-min-width: 121.0;
+    -fx-font-family: 'TicketFont';
+    -fx-font-size: 35;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
+
+.locPathButton:hover {
+    -fx-background-color: #5b5c5c;
+    -fx-text-fill: #f05455;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
+
+.locPathButton:armed {
+    -fx-background-color: #333333;
+    -fx-text-fill: #f05455;
+    -fx-font-smoothing-type: gray;
+    -fx-background-radius: 0;
+}
+
 .pdfMakerBack {
     -fx-border-color: #f05455;
     -fx-border-width: 5;
