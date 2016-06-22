@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import system.MainHandler;
@@ -33,12 +34,14 @@ public class Controller extends AbstractController {
     @FXML protected Text total2;
     @FXML protected Text totalQuantity;
     @FXML protected Text totalPrice;
-    @FXML protected HBox rightContent;
+    @FXML protected StackPane rightContent;
 
     private system.graphics.pointOfSale.Controller parentController;
     private FloorPlanPane floorPlan;
     private Button back;
     private boolean locked = false;
+    private ImageView qrCode;
+    private HBox qrLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -53,6 +56,23 @@ public class Controller extends AbstractController {
         }
     }
 
+    private void createQrBackground() {
+        ImageView imageView = new ImageView();
+        imageView.getStyleClass().add("qrBorder");
+        imageView.setFitHeight(685.0);
+        imageView.setFitWidth(388.0);
+        imageView.setPickOnBounds(true);
+        imageView.setPreserveRatio(true);
+        this.rightContent.getChildren().add(imageView);
+    }
+
+    private void resetQrBackground() {
+        if (this.rightContent.getChildren().contains(this.floorPlan) || this.rightContent.getChildren().size() == 0) {
+            this.rightContent.getChildren().clear();
+            this.createQrBackground();
+        }
+    }
+
     /**
      * Meetod, mis loob Zxing teegiga qr koodi
      * https://github.com/zxing/zxing
@@ -62,7 +82,7 @@ public class Controller extends AbstractController {
      * @param totalcost kogu piletite hind
      */
     public void createQrCode(ArrayList<String> ticketdata, String totalcost) {
-        this.rightContent.getChildren().clear();
+        this.resetQrBackground();
         StringBuilder tekst = new StringBuilder("ID: " + this.getData().getGlobalIndex() + "\n" +
                 this.parentController.getEvent().getName() + "\n" +
                 this.parentController.getEvent().getFormattedDate() + " " +

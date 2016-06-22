@@ -7,6 +7,7 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import javafx.application.Application;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.scene.Node;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Control;
@@ -123,12 +124,8 @@ public class MainHandler extends Application {
             Canvas canvas = new Canvas((int) qrcode.getFitWidth() - cropsize, (int) qrcode.getFitHeight() - cropsize);
             GraphicsContext gc = canvas.getGraphicsContext2D();
             if (Csstype.getActiveTheme().equals(Csstype.DARK)) {
-                gc.setFill(Color.valueOf("262626"));
-                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
                 gc.setFill(Color.BLACK);
             } else {
-                gc.setFill(Color.valueOf("e6e6e5"));
-                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
                 gc.setFill(Color.valueOf("5b5c5c"));
             }
             for (int i = 0; i < canvas.getHeight(); i++) {
@@ -138,7 +135,9 @@ public class MainHandler extends Application {
                     }
                 }
             }
-            qrcode.setImage(new WritableImage(canvas.snapshot(null, null).getPixelReader(), cropsize, cropsize,
+            SnapshotParameters params = new SnapshotParameters();
+            params.setFill(Color.TRANSPARENT);
+            qrcode.setImage(new WritableImage(canvas.snapshot(params, null).getPixelReader(), cropsize, cropsize,
                     (int) canvas.getWidth() - cropsize, (int) canvas.getHeight() - cropsize));
             return qrcode;
         } catch (WriterException ignored) {
