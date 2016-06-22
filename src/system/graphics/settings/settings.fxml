@@ -14,66 +14,65 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="system.graphics.settings.Controller">
+<BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.graphics.settings.Controller">
     <top>
-        <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0"
-              prefWidth="1600.0" BorderPane.alignment="CENTER">
+        <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="100.0">
-                <Button mnemonicParsing="false" onMouseClicked="#handleStageMinimize" styleClass="barButton" text="→"
-                        textAlignment="CENTER">
+                <Button mnemonicParsing="false" onMouseClicked="#handleStageMinimize" styleClass="barButton" text="→" textAlignment="CENTER">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="maximizeButton" mnemonicParsing="false" onMouseClicked="#handleStageMaximize"
-                        styleClass="barButton" textAlignment="CENTER">
+                <Button fx:id="maximizeButton" mnemonicParsing="false" onMouseClicked="#handleStageMaximize" styleClass="barButton" textAlignment="CENTER">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
                 <Button mnemonicParsing="false" onMouseClicked="#handleStageClose" styleClass="barButton" text="←">
                     <HBox.margin>
-                        <Insets right="1.0" top="1.0"/>
+                        <Insets right="1.0" top="1.0" />
                     </HBox.margin>
                 </Button>
             </HBox>
-            <Text fx:id="settingsText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText"
-                  BorderPane.alignment="TOP_LEFT">
+            <Text fx:id="settingsText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topText" BorderPane.alignment="TOP_LEFT">
                 <VBox.margin>
-                    <Insets left="70.0" top="40.0"/>
+                    <Insets left="70.0" top="40.0" />
                 </VBox.margin>
             </Text>
-            <HBox alignment="CENTER_LEFT">
-                <Text fx:id="pathText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35">
-                    <font>
-                        <Font size="36.0"/>
-                    </font>
-                    <HBox.margin>
-                        <Insets right="40.0"/>
-                    </HBox.margin>
-                </Text>
-                <Button fx:id="locationButton" mnemonicParsing="false" maxHeight="70.5" minHeight="70.5"
-                        onMouseClicked="#handleDirectoryChange" prefHeight="70.5" styleClass="locPathButton"
-                        HBox.hgrow="ALWAYS">
-                    <HBox.margin>
-                        <Insets right="40.0"/>
-                    </HBox.margin>
-                </Button>
-                <VBox.margin>
-                    <Insets left="40.0" top="40.0"/>
-                </VBox.margin>
-            </HBox>
+         <GridPane>
+           <columnConstraints>
+             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+           </columnConstraints>
+           <rowConstraints>
+             <RowConstraints maxHeight="70.5" minHeight="70.5" prefHeight="70.5" vgrow="SOMETIMES" />
+             <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+             <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+            <VBox.margin>
+               <Insets left="40.0" right="40.0" top="40.0" />
+            </VBox.margin>
+            <children>
+                   <Button fx:id="locationButton" maxHeight="70.5" minHeight="70.5" mnemonicParsing="false" onMouseClicked="#handleDirectoryChange" prefHeight="70.5" styleClass="locPathButton" />
+                   <Text fx:id="pathText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" GridPane.rowIndex="1">
+                       <font>
+                           <Font size="36.0" />
+                       </font>
+                  <GridPane.margin>
+                     <Insets left="20.0" top="6.0" />
+                  </GridPane.margin>
+                   </Text>
+            </children>
+         </GridPane>
         </VBox>
     </top>
     <bottom>
         <HBox alignment="BOTTOM_RIGHT" BorderPane.alignment="BOTTOM_RIGHT">
             <BorderPane.margin>
-                <Insets bottom="40.0" right="40.0"/>
+                <Insets bottom="40.0" right="40.0" />
             </BorderPane.margin>
             <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#doBack" styleClass="bottomButton">
                 <HBox.margin>
-                    <Insets left="40.0"/>
+                    <Insets left="40.0" />
                 </HBox.margin>
             </Button>
         </HBox>
@@ -81,69 +80,66 @@
     <left>
         <GridPane BorderPane.alignment="CENTER">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="300.0" prefWidth="300.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="70.5" minHeight="70.5" prefHeight="70.5" valignment="TOP" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="TOP" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="70.5" minHeight="70.5" prefHeight="70.5" valignment="TOP" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="TOP" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="70.5" minHeight="70.5" prefHeight="70.5" valignment="TOP" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="TOP" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="70.5" minHeight="70.5" prefHeight="70.5"/>
-                <RowConstraints/>
+                <RowConstraints maxHeight="70.5" minHeight="70.5" prefHeight="70.5" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="70.5" minHeight="70.5" prefHeight="70.5" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="70.5" minHeight="70.5" prefHeight="70.5" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="70.5" minHeight="70.5" prefHeight="70.5" />
+                <RowConstraints />
             </rowConstraints>
             <BorderPane.margin>
-                <Insets left="40.0" top="40.0"/>
+                <Insets left="40.0" />
             </BorderPane.margin>
             <MenuButton fx:id="language" mnemonicParsing="false">
                 <items>
-                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="english"/>
-                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="eesti keel"/>
-                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="võro kiil"/>
+                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="english" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="eesti keel" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="võro kiil" />
                     <!--<MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="deutsch"/>
                     <MenuItem mnemonicParsing="false" onAction="#handleLangSwitch" text="русский язык"/>-->
                 </items>
             </MenuButton>
             <Text fx:id="langLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" GridPane.rowIndex="1">
                 <GridPane.margin>
-                    <Insets left="20.0" top="6.0"/>
+                    <Insets left="20.0" top="6.0" />
                 </GridPane.margin>
             </Text>
             <MenuButton fx:id="theme" mnemonicParsing="false" GridPane.rowIndex="3">
                 <items>
-                    <MenuItem id="LIGHT" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
-                    <MenuItem id="DARK" mnemonicParsing="false" onAction="#handleThemeSwitch"/>
+                    <MenuItem id="LIGHT" mnemonicParsing="false" onAction="#handleThemeSwitch" />
+                    <MenuItem id="DARK" mnemonicParsing="false" onAction="#handleThemeSwitch" />
                 </items>
             </MenuButton>
             <Text fx:id="themeLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" GridPane.rowIndex="4">
                 <GridPane.margin>
-                    <Insets left="20.0" top="6.0"/>
+                    <Insets left="20.0" top="6.0" />
                 </GridPane.margin>
             </Text>
-            <Button fx:id="qrButton" mnemonicParsing="false" onMouseClicked="#handleQrCodeGenerate"
-                    styleClass="qrGenButton" GridPane.rowIndex="6"/>
-            <Pane fx:id="qrContent" maxHeight="320.0" maxWidth="320.0" minHeight="320.0" minWidth="320.0"
-                  prefHeight="320.0" prefWidth="320.0" GridPane.columnIndex="1"/>
+            <Button fx:id="qrButton" mnemonicParsing="false" onMouseClicked="#handleQrCodeGenerate" styleClass="qrGenButton" GridPane.rowIndex="6" />
+            <Pane fx:id="qrContent" maxHeight="320.0" maxWidth="320.0" minHeight="320.0" minWidth="320.0" prefHeight="320.0" prefWidth="320.0" GridPane.columnIndex="1" />
             <Text fx:id="qrLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" GridPane.rowIndex="7">
                 <GridPane.margin>
-                    <Insets left="20.0" top="6.0"/>
+                    <Insets left="20.0" top="6.0" />
                 </GridPane.margin>
             </Text>
             <MenuButton fx:id="clientScreen" mnemonicParsing="false" GridPane.rowIndex="9">
                 <items>
-                    <MenuItem id="PRIMARY" mnemonicParsing="false" onAction="#handleScreenTypeChange"/>
-                    <MenuItem id="SECONDARY" mnemonicParsing="false" onAction="#handleScreenTypeChange"/>
+                    <MenuItem id="PRIMARY" mnemonicParsing="false" onAction="#handleScreenTypeChange" />
+                    <MenuItem id="SECONDARY" mnemonicParsing="false" onAction="#handleScreenTypeChange" />
                 </items>
             </MenuButton>
-            <Text fx:id="clientScreenLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19"
-                  GridPane.rowIndex="10">
+            <Text fx:id="clientScreenLabel" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text19" GridPane.rowIndex="10">
                 <GridPane.margin>
-                    <Insets left="20.0" top="6.0"/>
+                    <Insets left="20.0" top="6.0" />
                 </GridPane.margin>
             </Text>
         </GridPane>
