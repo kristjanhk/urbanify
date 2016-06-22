@@ -676,12 +676,10 @@
     -fx-max-height: 70.5;
     -fx-min-height: 70.5;
     -fx-pref-height: 70.5;
-    -fx-min-width: 200.0;
     -fx-font-family: 'TicketFont';
     -fx-font-size: 35;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
-    -fx-text-alignment: center;
 }
 
 .qrGenButton:hover {
@@ -711,6 +709,7 @@
     -fx-font-size: 35;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
+    -fx-alignment: center-left;
 }
 
 .locPathButton:hover {

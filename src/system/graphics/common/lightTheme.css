@@ -698,19 +698,19 @@
 }
 
 .locPathButton {
-    -fx-padding: 0 20 0 20;
+    -fx-padding: 0 10 0 20;
     -fx-background-color: #ffffff;
     -fx-text-fill: #b0afb0;
     -fx-max-height: 70.5;
     -fx-min-height: 70.5;
     -fx-pref-height: 70.5;
-    -fx-min-width: 121.0;
-    -fx-text-alignment: center;
     -fx-font-family: 'TicketFont';
     -fx-font-size: 35;
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
+    -fx-alignment: center-left;
 }
+
 
 .locPathButton:hover {
     -fx-background-color: #dddddd;
