@@ -74,7 +74,7 @@ public class FileHandler {
 
     private void resetData() {
         this.jsonFile = new JsonFile();
-        this.setActiveConstants(Csstype.DARK, Lang.ENGLISH, ClientScreen.PRIMARY);
+        this.setActiveConstants(Csstype.LIGHT, Lang.ENGLISH, ClientScreen.PRIMARY);
     }
 
     private String loadJsonPath() {
