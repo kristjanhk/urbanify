@@ -40,8 +40,6 @@ public class Controller extends AbstractController {
     private FloorPlanPane floorPlan;
     private Button back;
     private boolean locked = false;
-    private ImageView qrCode;
-    private HBox qrLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -59,8 +57,8 @@ public class Controller extends AbstractController {
     private void createQrBackground() {
         ImageView imageView = new ImageView();
         imageView.getStyleClass().add("qrBorder");
-        imageView.setFitHeight(685.0);
-        imageView.setFitWidth(388.0);
+        imageView.setFitHeight(396.0);
+        imageView.setFitWidth(396.0);
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
         this.rightContent.getChildren().add(imageView);

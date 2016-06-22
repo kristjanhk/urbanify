@@ -5,7 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import system.MainHandler;
@@ -34,7 +35,7 @@ public class Controller extends AbstractController {
     @FXML protected MenuButton theme;
     @FXML protected Text langLabel;
     @FXML protected Text themeLabel;
-    @FXML protected Pane qrContent;
+    @FXML protected StackPane qrContent;
     @FXML protected Button qrButton;
     @FXML protected Text qrLabel;
     @FXML protected MenuButton clientScreen;
@@ -94,9 +95,14 @@ public class Controller extends AbstractController {
     @FXML
     protected void handleQrCodeGenerate() {
         this.qrContent.getChildren().clear();
-        this.qrContent.getChildren().add(
-                MainHandler.createQrCode("Auth: " +
-                        Base64.getEncoder().encodeToString(this.getData().getKeyBytes()), 320.0, 37));
+        ImageView imageView = new ImageView();
+        imageView.getStyleClass().add("qrBorder");
+        imageView.setFitHeight(396.0);
+        imageView.setFitWidth(396.0);
+        imageView.setPreserveRatio(true);
+        imageView.setPickOnBounds(true);
+        this.qrContent.getChildren().addAll(imageView, MainHandler.createQrCode("Auth: " +
+                Base64.getEncoder().encodeToString(this.getData().getKeyBytes()), 320.0, 37));
     }
 
     @FXML
