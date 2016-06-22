@@ -37,6 +37,7 @@ public class Controller extends AbstractController {
 
     private system.graphics.pointOfSale.Controller parentController;
     private FloorPlanPane floorPlan;
+    private Button back;
     private boolean locked = false;
 
     @Override
@@ -106,16 +107,28 @@ public class Controller extends AbstractController {
         }
     }
 
+    public void delayBackButton() {
+        this.back.setDisable(true);
+        new Thread(() -> {
+            try {
+                Thread.sleep(1000);
+                this.back.setDisable(false);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
     private void setBackButton() {
-        Button back = new Button(Word.BACK.toString());
-        back.setMnemonicParsing(false);
-        back.getStyleClass().add("bottomButton");
-        back.setOnMouseClicked(event -> {
+        this.back = new Button(Word.BACK.toString());
+        this.back.setMnemonicParsing(false);
+        this.back.getStyleClass().add("bottomButton");
+        this.back.setOnMouseClicked(event -> {
             this.parentController.reset();
             this.scene.getStageHandler().getStage().close();
         });
-        HBox hBox = new HBox(back);
-        HBox.setMargin(back, new Insets(0.0, 40.0, 40.0, 0.0));
+        HBox hBox = new HBox(this.back);
+        HBox.setMargin(this.back, new Insets(0.0, 40.0, 40.0, 0.0));
         hBox.setAlignment(Pos.BOTTOM_RIGHT);
         hBox.setMinSize(0.0, 0.0);
         BorderPane.setAlignment(hBox, Pos.CENTER);

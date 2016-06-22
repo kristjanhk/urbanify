@@ -94,6 +94,7 @@ public class Controller extends AbstractController {
             this.clientController.createQrCode(ticketdata, this.totalcost.getText());
             this.checkout.setText(Word.NEW.toString());
             if (!ClientScreen.isSecondScreenEnabled()) {
+                this.clientController.delayBackButton();
                 this.clientController.getScene().getStageHandler().showStage(true);
             }
         } else {

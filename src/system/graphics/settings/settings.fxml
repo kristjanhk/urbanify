@@ -16,7 +16,7 @@
 <?import javafx.scene.text.TextFlow?>
 
 <BorderPane prefHeight="900.0" prefWidth="1600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/8.0.65" fx:controller="system.graphics.settings.Controller">
+            fx:controller="system.graphics.settings.Controller">
     <top>
         <VBox onMouseDragged="#handleStageLocationDrag" onMousePressed="#handleStageLocationOffset" prefHeight="123.0"
               prefWidth="1600.0" BorderPane.alignment="CENTER">
@@ -54,17 +54,13 @@
                         <Insets right="40.0"/>
                     </HBox.margin>
                 </Text>
-                <TextFlow fx:id="textFlow" maxHeight="70.5" minHeight="70.5" onMouseClicked="#handleDirectoryChange"
-                          prefHeight="70.5" styleClass="textFlowNimi" HBox.hgrow="ALWAYS">
+                <Button fx:id="locationButton" mnemonicParsing="false" maxHeight="70.5" minHeight="70.5"
+                        onMouseClicked="#handleDirectoryChange" prefHeight="70.5" styleClass="bottomButton"
+                        HBox.hgrow="ALWAYS">
                     <HBox.margin>
                         <Insets right="40.0"/>
                     </HBox.margin>
-                    <Text fx:id="filepath" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text35">
-                        <font>
-                            <Font size="35.0"/>
-                        </font>
-                    </Text>
-                </TextFlow>
+                </Button>
                 <VBox.margin>
                     <Insets left="40.0" top="40.0"/>
                 </VBox.margin>
