@@ -88,10 +88,7 @@
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="685.0" fitWidth="388.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/posQRframe.png" />
-               </image>
+            <ImageView fitHeight="685.0" fitWidth="388.0" pickOnBounds="true" preserveRatio="true" styleClass="qrBorder">
             </ImageView>
               <HBox fx:id="rightContent" alignment="TOP_CENTER" minHeight="0.0" minWidth="0.0">
                <StackPane.margin>

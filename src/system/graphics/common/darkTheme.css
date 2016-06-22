@@ -760,3 +760,7 @@
     -fx-font-smoothing-type: gray;
     -fx-background-radius: 0;
 }
+
+.qrBorder {
+    -fx-image: url("../ticketInfo/images/posQRframeDark.png");
+}
