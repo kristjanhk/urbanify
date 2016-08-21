@@ -22,4 +22,4 @@ Windowsile kaasaskantav exe: [Urbanify_portable.zip](https://bitbucket.org/urban
 Teistele platvormidele: [Urbanify_jar.zip](https://bitbucket.org/urban-team/urbanify/downloads/Urbanify_jar.zip)
 
 Jar ja ilma Java keskkonnata kaasaskantav exe vajavad jooksutamiseks Java 8 olemasolu.  
-Allalaadimised on kättesaadavad ka siit: [Alternatiivne allalaadimiskoht](http://bit.ly/1XYv3MJ)
+Allalaadimised on kättesaadavad ka siit: [Alternatiivne allalaadimiskoht](http://xn--kngas-kva.eu/urbanify/)
