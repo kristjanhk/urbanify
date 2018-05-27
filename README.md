@@ -11,7 +11,7 @@ kasvõi ühekordselt ja kiirelt mingi üritus pidada. Lisaks teistele keeltele s
 Urbanify plakat: [Urbanify_plakat.pdf](https://bitbucket.org/urban-team/urbanify/downloads/Urbanify_plakat.pdf)  
 Urbanify kasutusjuhend: [Urbanify_user_manual.pdf](https://bitbucket.org/urban-team/urbanify/downloads/Urbanify_user_manual.pdf)
 
-Pileteid kontrolliva nutirakenduse leiab siit: [Piletikontrollija](https://bitbucket.org/urban-team/piletikontrollija)
+Pileteid kontrolliva nutirakenduse leiab siit: [Piletikontrollija](https://github.com/kristenkotkas/piletikontrollija)
 
 Allalaadimised
 --------------
